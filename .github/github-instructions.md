@@ -1,9 +1,3 @@
-Oh, saya mengerti! Jadi ini adalah tugas Logika Pemrograman atau Manipulasi Data Temporary (tanpa database SQL/MySQL), di mana data hanya disimpan dalam Session atau Array Static selama aplikasi berjalan.
-
-Ini tantangan menarik karena kita akan memaksimalkan Filament 4 namun dengan Custom Page atau State Management tanpa migrasi database.
-
-Berikut adalah Prompt Master untuk AI VS Code kamu:
-
 Prompt: Pengembangan "Green School Tracker" (Tanpa Database)
 Target: SMK Karya Bangsa Sintang
 
