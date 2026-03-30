@@ -19,6 +19,20 @@ if (isset($hasil)) {
         $hasilMap[$d['jenis']] = $d;
     }
 }
+
+$initialDailyTotal = 0;
+foreach (array_keys($jenisConfig) as $jenisKey) {
+    $beratValue = $hasilMap[$jenisKey]['berat'] ?? old('items.' . $jenisKey);
+    if ($beratValue !== null && is_numeric($beratValue) && (float) $beratValue > 0) {
+        $initialDailyTotal += (float) $beratValue;
+    }
+}
+
+$initialDays = min(365, max(1, (int) old('jumlah_hari', request('jumlah_hari', 30))));
+$initialDailyAverage = $initialDailyTotal / $initialDays;
+$initialThirtyDays = $initialDailyAverage * 30;
+$initialBottleEq = $initialThirtyDays / 0.02;
+$initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 300) * 100) : 0;
 @endphp
 
 <style>
@@ -32,6 +46,12 @@ if (isset($hasil)) {
     .weight-input:disabled { opacity: 0.35; cursor: not-allowed; }
     .weight-input:focus { border-color: #059669 !important; box-shadow: 0 0 0 3px rgba(252, 252, 252, 0.15); }
     .check-circle { transition: background-color 0.2s ease, border-color 0.2s ease; }
+    .big-impact-glow { animation: bigImpactGlow 1.4s ease-in-out 1; }
+    @keyframes bigImpactGlow {
+        0% { box-shadow: 0 0 0 rgba(16,185,129,0); }
+        30% { box-shadow: 0 0 0 8px rgba(16,185,129,0.20), 0 18px 40px rgba(6,78,59,0.15); }
+        100% { box-shadow: 0 20px 40px rgba(16,33,25,0.07); }
+    }
 </style>
 
 {{-- Hero Section --}}
@@ -50,7 +70,7 @@ if (isset($hasil)) {
     </div>
 </section>
 {{-- Main Content Grid --}}
-<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8" style="padding-top:3rem;padding-bottom:5rem;margin-top:-2.5rem;position:relative;z-index:20;">
+<main id="kalkulator-section" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8" style="padding-top:3rem;padding-bottom:5rem;margin-top:-2.5rem;position:relative;z-index:20;">
     <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="lg-grid-kalkulator">
 
         {{-- Left Column: Calculator Form --}}
@@ -62,6 +82,7 @@ if (isset($hasil)) {
                         <h3 class="text-xl font-bold text-slate-900">{{ __('app.form_title') }}</h3>
                     </div>
                     <p class="text-sm mb-6" style="color:#94a3b8;margin-left:4px;">{{ __('app.form_types_hint') }}</p>
+                    
 
                     @if($errors->has('items'))
                     <div class="mb-6 p-4 rounded-xl flex items-center gap-3" style="background-color:#fef2f2;border:1px solid #fecaca;">
@@ -70,9 +91,47 @@ if (isset($hasil)) {
                     </div>
                     @endif
 
-                    <form action="{{ url('/kalkulator') }}" method="POST" class="space-y-6">
+                    <form id="waste-calculator-form" action="{{ url('/kalkulator') }}#kalkulator-section" method="POST" class="space-y-6">
                         @csrf
 
+                        {{-- Class Input --}}
+                        <div>
+                            <label for="kelas" class="text-sm font-semibold text-slate-800 mb-2 block">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:#059669;">school</span>
+                                    Kelas
+                                </span>
+                            </label>
+                            <input type="text"
+                                   name="kelas"
+                                   id="kelas"
+                                   placeholder="Contoh: XI RPL 1"
+                                   value="{{ old('kelas', request('kelas')) }}"
+                                   class="w-full rounded-xl focus:outline-none"
+                                   style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
+                        </div>
+                        
+                        {{-- Days Input --}}
+                        <div>
+                            <label for="jumlah_hari" class="text-sm font-semibold text-slate-800 mb-2 block">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:#059669;">calendar_month</span>
+                                    Jumlah Hari
+                                </span>
+                            </label>
+                            <input type="number"
+                                   name="jumlah_hari"
+                                   id="jumlah_hari"
+                                   min="1"
+                                   max="365"
+                                   step="1"
+                                inputmode="numeric"
+                                value="{{ $initialDays }}"
+                                   class="w-full rounded-xl focus:outline-none"
+                                   style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
+                        </div>
+                        <p class="text-xs mb-6 -mt-4" style="color:#6b7280;margin-left:4px;">Masukkan total sampah yang dikumpulkan dalam beberapa hari. Contoh: 2 kg dalam 2 hari.</p>
+                        
                         {{-- Waste Type Rows --}}
                         <div class="space-y-2">
                             @foreach($jenisConfig as $val => $info)
@@ -103,6 +162,8 @@ if (isset($hasil)) {
                                            name="items[{{ $val }}]"
                                            id="input_{{ $val }}"
                                            step="0.1" min="0" max="10000"
+                                         inputmode="decimal"
+                                         pattern="[0-9]+([\\.,][0-9]+)?"
                                            placeholder="0"
                                            value="{{ $currentBerat ?? '' }}"
                                            class="weight-input w-24 text-right focus:outline-none rounded-xl"
@@ -122,6 +183,53 @@ if (isset($hasil)) {
                             @endforeach
                         </div>
 
+                        {{-- Live 30-day estimation --}}
+                        <div class="rounded-2xl border p-4 sm:p-5" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                                <div>
+                                    <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">Estimasi Otomatis</p>
+                                    <p class="text-sm font-semibold text-slate-700 mt-1">Perkiraan sampah selama 30 hari: <span id="thirty-days-estimate" class="font-black" style="color:#065f46;">{{ number_format($initialThirtyDays, 1, ',', '.') }} kg</span></p>
+                                </div>
+                                <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style="background-color:#ffffffcc;border:1px solid #a7f3d0;">
+                                    <span class="material-symbols-outlined" style="font-size:16px;color:#059669;">monitoring</span>
+                                    <span class="text-xs font-bold" style="color:#047857;">Rata-rata harian: <span id="daily-total-estimate">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between text-xs font-semibold" style="color:#065f46;">
+                                    <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:15px;">recycling</span> Kontribusi pengurangan sampah</span>
+                                    <span id="contribution-percent">{{ number_format($initialProgressPct, 1, ',', '.') }}%</span>
+                                </div>
+                                <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
+                                    <div id="contribution-bar" class="h-full rounded-full" style="width:{{ $initialProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
+                                </div>
+                                <p class="mt-2 text-xs" style="color:#047857;">Setara sekitar <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> botol plastik 500ml.</p>
+                            </div>
+
+                            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
+                                    <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">Preview Input</p>
+                                    <p class="text-sm mt-1" style="color:#065f46;">Total inputmu <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg untuk <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> hari (rata-rata <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg/hari).</p>
+                                </div>
+                                <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
+                                    <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#047857;">
+                                        <span class="material-symbols-outlined" style="font-size:14px;">emoji_events</span>
+                                        Level Kamu
+                                    </p>
+                                    <p id="gamification-level" class="text-sm mt-1 font-black" style="color:#065f46;">{{ __('app.reward_keep') }}</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 rounded-xl p-3" style="background-color:#ecfeff;border:1px solid #bae6fd;">
+                                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#0f766e;">
+                                    <span class="material-symbols-outlined" style="font-size:14px;">eco</span>
+                                    Panel Dampak Lingkungan
+                                </p>
+                                <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">Kamu menyelamatkan 0 botol plastik dan dampakmu setara menanam 0 pohon.</p>
+                            </div>
+                        </div>
+
                         {{-- Buttons --}}
                         <div class="flex flex-col sm:flex-row gap-4" style="padding-top:8px;">
                             <button type="submit" class="flex-1 flex items-center justify-center gap-2 font-bold transition-all" style="background-color:#11d473;color:#064e3b;padding:16px 24px;border-radius:12px;border:none;font-size:15px;box-shadow:0 10px 25px rgba(17,212,115,0.25);cursor:pointer;">
@@ -137,7 +245,7 @@ if (isset($hasil)) {
 
                     @unless(isset($hasil))
                     <div class="mt-10 p-8 text-center" style="background-color:#f8fafc;border:2px dashed #e2e8f0;border-radius:16px;">
-                        <p class="text-4xl mb-3">♻️</p>
+                        <span class="material-symbols-outlined" style="font-size:42px;color:#22c55e;font-variation-settings:'FILL' 1,'wght' 500;">eco</span>
                         <p class="font-medium" style="color:#64748b;">{{ __('app.hasil_empty') }}</p>
                         <p class="text-sm mt-1" style="color:#94a3b8;">{{ __('app.hasil_empty_sub') }}</p>
                     </div>
@@ -236,6 +344,50 @@ if (isset($hasil)) {
     </div>
     {{-- ===== RESULTS SECTION (full width, shows after calculation) ===== --}}
     @if(isset($hasil))
+    @php
+        $resultDays = min(365, max(1, (int) old('jumlah_hari', request('jumlah_hari', 30))));
+        $resultThirtyDays = $hasil['total_berat'] * (30 / $resultDays);
+        $resultProgressPct = min(100, ($resultThirtyDays / 300) * 100);
+    @endphp
+    <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
+                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
+                    <span class="material-symbols-outlined" style="font-size:15px;">monitoring</span>
+                    Estimasi 30 Hari
+                </p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">Perkiraan sampah selama 30 hari</p>
+                <p id="result-total-kg" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultThirtyDays, 1, ',', '.') }} kg</p>
+            </div>
+            <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
+                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
+                    <span class="material-symbols-outlined" style="font-size:15px;">recycling</span>
+                    Kontribusi
+                </p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">Kontribusi kamu terhadap pengurangan sampah</p>
+                <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
+                    <div id="result-progress-bar" class="h-full rounded-full" style="width:{{ $resultProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
+                </div>
+                <p id="result-progress-text" class="text-xs mt-2 font-bold" style="color:#047857;">{{ number_format($resultProgressPct, 1, ',', '.') }}% dari target 300 kg</p>
+            </div>
+            <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
+                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
+                    <span class="material-symbols-outlined" style="font-size:15px;">eco</span>
+                    Dampak Setara
+                </p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">Setara dengan</p>
+                <p id="result-bottle-value" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultThirtyDays / 0.02, 0, ',', '.') }}</p>
+                <p class="text-xs mt-1" style="color:#047857;">botol plastik 500ml</p>
+                @if(request()->filled('kelas'))
+                    <span class="inline-flex items-center gap-1 mt-2 rounded-full px-2.5 py-1 text-xs font-bold" style="background-color:#dcfce7;color:#065f46;">
+                        <span class="material-symbols-outlined" style="font-size:14px;">school</span>
+                        {{ request('kelas') }}
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
     <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         {{-- Left: Summary + Breakdown per Type --}}
@@ -411,6 +563,226 @@ function toggleRow(jenis) {
         check.style.borderColor      = '#e2e8f0';
         checkIcon.style.display      = 'none';
     }
+
+    if (typeof window.updateWasteEstimate === 'function') {
+        window.updateWasteEstimate();
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('waste-calculator-form');
+    const section = document.getElementById('kalkulator-section');
+    const daysInput = document.getElementById('jumlah_hari');
+    const thirtyDaysEl = document.getElementById('thirty-days-estimate');
+    const dailyEl = document.getElementById('daily-total-estimate');
+    const progressEl = document.getElementById('contribution-percent');
+    const progressBarEl = document.getElementById('contribution-bar');
+    const bottleEqEl = document.getElementById('bottle-equivalent');
+    const daysLabelEl = document.getElementById('selected-days-label');
+    const previewTotalEl = document.getElementById('input-preview-total');
+    const previewDaysEl = document.getElementById('input-preview-days');
+    const previewKgEl = document.getElementById('input-preview-kg');
+    const levelEl = document.getElementById('gamification-level');
+    const impactMessageEl = document.getElementById('impact-message');
+    const resultCard = document.getElementById('hasil-highlight-card');
+    const resultTotalKgEl = document.getElementById('result-total-kg');
+    const resultBottleValueEl = document.getElementById('result-bottle-value');
+    const resultProgressBarEl = document.getElementById('result-progress-bar');
+    const resultProgressTextEl = document.getElementById('result-progress-text');
+    const rewardLabelChampion = @json(__('app.reward_champion'));
+    const rewardLabelWarrior = @json(__('app.reward_warrior'));
+    const rewardLabelStarter = @json(__('app.reward_starter'));
+    const rewardLabelKeep = @json(__('app.reward_keep'));
+
+    const formatNumber = function (value, digit) {
+        return Number(value).toLocaleString('id-ID', {
+            minimumFractionDigits: digit,
+            maximumFractionDigits: digit,
+        });
+    };
+
+    const animateNumber = function (el, target, digit, suffix) {
+        if (!el) return;
+
+        const safeTarget = Number.isFinite(target) ? target : 0;
+        const start = Number(el.getAttribute('data-current-number') || 0);
+        const duration = 450;
+        const startTime = performance.now();
+
+        const frame = function (now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = start + (safeTarget - start) * eased;
+            el.textContent = formatNumber(value, digit) + (suffix || '');
+
+            if (progress < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                el.setAttribute('data-current-number', String(safeTarget));
+            }
+        };
+
+        requestAnimationFrame(frame);
+    };
+
+    const getSelectedDays = function () {
+        const daysRaw = daysInput ? parseInt(daysInput.value || '30', 10) : 30;
+        if (Number.isNaN(daysRaw) || daysRaw < 1) return 30;
+        return Math.min(daysRaw, 365);
+    };
+
+    const normalizeDaysInput = function () {
+        if (!daysInput) return 30;
+
+        const parsed = parseInt(daysInput.value || '30', 10);
+        const clamped = Number.isNaN(parsed) ? 30 : Math.min(365, Math.max(1, parsed));
+        daysInput.value = String(clamped);
+        return clamped;
+    };
+
+    const sanitizeWeightInputValue = function (rawValue) {
+        let clean = String(rawValue || '').replace(',', '.').replace(/[^0-9.]/g, '');
+        const firstDot = clean.indexOf('.');
+
+        if (firstDot !== -1) {
+            clean = clean.slice(0, firstDot + 1) + clean.slice(firstDot + 1).replace(/\./g, '');
+        }
+
+        if (clean.startsWith('.')) {
+            clean = '0' + clean;
+        }
+
+        const parsed = parseFloat(clean);
+        if (!Number.isNaN(parsed) && parsed > 10000) {
+            return '10000';
+        }
+
+        return clean;
+    };
+
+    const updateImpactPanels = function (projected30Kg, bottleEq) {
+        const treeEq = Math.max(0, Math.floor(projected30Kg / 60));
+
+        if (impactMessageEl) {
+            impactMessageEl.textContent = 'Kamu menyelamatkan ' + formatNumber(bottleEq, 0) + ' botol plastik dan dampakmu setara menanam ' + formatNumber(treeEq, 0) + ' pohon.';
+        }
+
+        if (levelEl) {
+            if (projected30Kg >= 150) {
+                levelEl.textContent = rewardLabelChampion;
+            } else if (projected30Kg >= 60) {
+                levelEl.textContent = rewardLabelWarrior;
+            } else if (projected30Kg >= 20) {
+                levelEl.textContent = rewardLabelStarter;
+            } else {
+                levelEl.textContent = rewardLabelKeep;
+            }
+        }
+    };
+
+    const applyBigResultEffect = function (totalKg) {
+        if (!resultCard) return;
+        if (totalKg >= 120) {
+            resultCard.classList.remove('big-impact-glow');
+            void resultCard.offsetWidth;
+            resultCard.classList.add('big-impact-glow');
+        }
+    };
+
+    window.updateWasteEstimate = function () {
+        const weightInputs = document.querySelectorAll('.weight-input');
+        const days = getSelectedDays();
+        let totalInput = 0;
+
+        weightInputs.forEach(function (input) {
+            if (!input.disabled) {
+                const value = parseFloat(input.value || '0');
+                if (!Number.isNaN(value) && value > 0) {
+                    totalInput += value;
+                }
+            }
+        });
+
+        const dailyAverage = totalInput / days;
+        const total30Days = dailyAverage * 30;
+        const progressPct = total30Days > 0 ? Math.min(100, (total30Days / 300) * 100) : 0;
+        const bottleEq = total30Days / 0.02;
+
+        if (daysLabelEl) daysLabelEl.textContent = String(days);
+        if (previewDaysEl) previewDaysEl.textContent = String(days);
+        if (previewTotalEl) animateNumber(previewTotalEl, totalInput, 1, '');
+        if (dailyEl) animateNumber(dailyEl, dailyAverage, 1, '');
+        if (previewKgEl) animateNumber(previewKgEl, dailyAverage, 1, '');
+        if (thirtyDaysEl) animateNumber(thirtyDaysEl, total30Days, 1, ' kg');
+        if (progressEl) animateNumber(progressEl, progressPct, 1, '%');
+        if (progressBarEl) progressBarEl.style.width = progressPct + '%';
+        if (bottleEqEl) animateNumber(bottleEqEl, bottleEq, 0, '');
+
+        updateImpactPanels(total30Days, bottleEq);
+
+        if (resultCard) {
+            if (resultTotalKgEl) animateNumber(resultTotalKgEl, total30Days, 1, ' kg');
+            if (resultBottleValueEl) animateNumber(resultBottleValueEl, bottleEq, 0, '');
+            if (resultProgressBarEl) resultProgressBarEl.style.width = progressPct + '%';
+            if (resultProgressTextEl) {
+                resultProgressTextEl.textContent = formatNumber(progressPct, 1) + '% dari target 300 kg';
+            }
+            applyBigResultEffect(total30Days);
+        }
+    };
+
+    if (daysInput) {
+        daysInput.addEventListener('input', function () {
+            normalizeDaysInput();
+            window.updateWasteEstimate();
+        });
+        daysInput.addEventListener('change', function () {
+            normalizeDaysInput();
+            window.updateWasteEstimate();
+        });
+        daysInput.addEventListener('blur', function () {
+            normalizeDaysInput();
+            window.updateWasteEstimate();
+        });
+    }
+
+    document.querySelectorAll('.weight-input').forEach(function (input) {
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'e' || e.key === 'E' || e.key === '+' || e.key === '-') {
+                e.preventDefault();
+            }
+        });
+
+        input.addEventListener('input', function () {
+            this.value = sanitizeWeightInputValue(this.value);
+            window.updateWasteEstimate();
+        });
+
+        input.addEventListener('blur', function () {
+            this.value = sanitizeWeightInputValue(this.value);
+        });
+    });
+
+    window.updateWasteEstimate();
+
+    if (window.location.hash === '#kalkulator-section' && section) {
+        requestAnimationFrame(function () {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    if (form) {
+        form.addEventListener('submit', function () {
+            normalizeDaysInput();
+            document.querySelectorAll('.weight-input').forEach(function (input) {
+                input.value = sanitizeWeightInputValue(input.value);
+            });
+
+            if (section && !window.location.hash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search + '#kalkulator-section');
+            }
+        });
+    }
+});
 </script>
 @endpush
