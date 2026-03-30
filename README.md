@@ -7,6 +7,91 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Setup Proyek (First Run)
+
+Panduan ini untuk teman tim setelah `git pull` di Herd, Laragon, atau lingkungan lokal lain.
+
+### Requirement
+
+- PHP 8.3+ (disarankan 8.4 jika tersedia)
+- Composer
+- Node.js dan npm
+- Extension PHP database sesuai driver yang dipakai:
+  - SQLite: `pdo_sqlite` dan `sqlite3`
+  - MySQL: `pdo_mysql`
+
+### Langkah Cepat Setelah Pull
+
+1. Install dependency backend:
+
+	```bash
+	composer install
+	```
+
+2. Siapkan file environment:
+
+	```bash
+	cp .env.example .env
+	```
+
+3. Generate app key:
+
+	```bash
+	php artisan key:generate
+	```
+
+4. Install dependency frontend dan build Vite:
+
+	```bash
+	npm install
+	npm run build
+	```
+
+5. Setup database (pilih salah satu opsi di bawah), lalu jalankan migrasi:
+
+	```bash
+	php artisan migrate
+	```
+
+6. Jalankan aplikasi:
+
+	```bash
+	php artisan serve
+	```
+
+### Opsi Database: SQLite (Paling Cepat untuk Development)
+
+1. Set di `.env`:
+
+	```env
+	DB_CONNECTION=sqlite
+	DB_DATABASE=database/database.sqlite
+	```
+
+2. Buat file database:
+
+	```bash
+	mkdir -p database
+	type nul > database/database.sqlite
+	```
+
+Jika muncul error `could not find driver`, aktifkan extension `pdo_sqlite` dan `sqlite3` di `php.ini` yang dipakai CLI.
+
+### Opsi Database: MySQL (Herd/Laragon)
+
+Set `.env` sesuai database lokal:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gogreenschool
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Pastikan databasenya sudah dibuat dulu di MySQL, kemudian jalankan `php artisan migrate`.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
