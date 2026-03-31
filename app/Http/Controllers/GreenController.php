@@ -94,9 +94,42 @@ class GreenController extends Controller
      */
     public function hitungSampah(Request $request)
     {
+        $normalizeWeight = function ($value) {
+            if ($value === null) {
+                return $value;
+            }
+
+            $clean = str_replace(',', '.', (string) $value);
+            $clean = preg_replace('/[^0-9.]/', '', $clean);
+
+            if ($clean === '') {
+                return $clean;
+            }
+
+            $parts = explode('.', $clean, 3);
+            if (count($parts) > 2) {
+                $clean = $parts[0] . '.' . $parts[1];
+            }
+
+            return $clean;
+        };
+
+        $itemsInput = $request->input('items', []);
+        if (is_array($itemsInput)) {
+            foreach ($itemsInput as $jenis => $berat) {
+                if (is_string($berat) || is_numeric($berat)) {
+                    $itemsInput[$jenis] = $normalizeWeight($berat);
+                }
+            }
+            $request->merge(['items' => $itemsInput]);
+        }
+
         $request->validate([
+            'kelas'   => 'required|string|max:100',
             'items'   => 'required|array',
             'items.*' => 'nullable|numeric|min:0|max:10000',
+        ], [
+            'kelas.required' => __('app.val_kelas_required'),
         ]);
 
         // Tabel poin per kg (hardcoded array — tanpa database)

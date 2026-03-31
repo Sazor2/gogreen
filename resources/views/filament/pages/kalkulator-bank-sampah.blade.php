@@ -18,7 +18,7 @@
                 <h3 class="text-white font-semibold text-lg">📝 Input Data Sampah</h3>
             </div>
             <div class="p-6">
-                <form wire:submit="hitung">
+                <form wire:submit.prevent="hitung">
                     {{ $this->form }}
 
                     <div class="mt-6 flex gap-3">

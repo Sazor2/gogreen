@@ -137,6 +137,7 @@ return [
     'hasil_diagram'          => 'Points Contribution Chart',
 
     'val_items_required'     => 'Select at least 1 waste type and fill in its weight (> 0 kg).',
+    'val_kelas_required'     => 'Class must be filled.',
 
     'jenis_plastik'          => 'Plastic',
     'jenis_kertas'           => 'Paper / Cardboard',

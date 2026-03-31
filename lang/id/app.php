@@ -137,6 +137,7 @@ return [
     'hasil_diagram'          => 'Diagram Kontribusi Poin',
 
     'val_items_required'     => 'Pilih minimal 1 jenis sampah dan isi beratnya (> 0 kg).',
+    'val_kelas_required'     => 'Kelas harus diisi.',
 
     'jenis_plastik'          => 'Plastik',
     'jenis_kertas'           => 'Kertas / Kardus',

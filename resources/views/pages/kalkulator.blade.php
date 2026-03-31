@@ -84,12 +84,20 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                     <p class="text-sm mb-6" style="color:#94a3b8;margin-left:4px;">{{ __('app.form_types_hint') }}</p>
                     
 
-                    @if($errors->has('items'))
-                    <div class="mb-6 p-4 rounded-xl flex items-center gap-3" style="background-color:#fef2f2;border:1px solid #fecaca;">
-                        <span class="material-symbols-outlined" style="color:#b91c1c;font-size:20px;">warning</span>
-                        <p class="text-sm font-medium" style="color:#b91c1c;">{{ $errors->first('items') }}</p>
+                    <div id="kalkulator-errors">
+                        @if($errors->has('kelas'))
+                        <div class="mb-6 p-4 rounded-xl flex items-center gap-3" style="background-color:#fef2f2;border:1px solid #fecaca;">
+                            <span class="material-symbols-outlined" style="color:#b91c1c;font-size:20px;">warning</span>
+                            <p class="text-sm font-medium" style="color:#b91c1c;">{{ $errors->first('kelas') }}</p>
+                        </div>
+                        @endif
+                        @if($errors->has('items'))
+                        <div class="mb-6 p-4 rounded-xl flex items-center gap-3" style="background-color:#fef2f2;border:1px solid #fecaca;">
+                            <span class="material-symbols-outlined" style="color:#b91c1c;font-size:20px;">warning</span>
+                            <p class="text-sm font-medium" style="color:#b91c1c;">{{ $errors->first('items') }}</p>
+                        </div>
+                        @endif
                     </div>
-                    @endif
 
                     <form id="waste-calculator-form" action="{{ url('/kalkulator') }}#kalkulator-section" method="POST" class="space-y-6">
                         @csrf
@@ -107,6 +115,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                    id="kelas"
                                    placeholder="Contoh: XI RPL 1"
                                    value="{{ old('kelas', request('kelas')) }}"
+                                required
                                    class="w-full rounded-xl focus:outline-none"
                                    style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
                         </div>
@@ -158,10 +167,10 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                 </label>
 
                                 <div class="flex items-center gap-1.5 flex-shrink-0" onclick="event.stopPropagation()">
-                                    <input type="number"
+                                     <input type="text"
                                            name="items[{{ $val }}]"
                                            id="input_{{ $val }}"
-                                           step="0.1" min="0" max="10000"
+                                         step="0.1" min="0" max="10000"
                                          inputmode="decimal"
                                          pattern="[0-9]+([\\.,][0-9]+)?"
                                            placeholder="0"
@@ -183,53 +192,6 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                             @endforeach
                         </div>
 
-                        {{-- Live 30-day estimation --}}
-                        <div class="rounded-2xl border p-4 sm:p-5" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                <div>
-                                    <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">Estimasi Otomatis</p>
-                                    <p class="text-sm font-semibold text-slate-700 mt-1">Perkiraan sampah selama 30 hari: <span id="thirty-days-estimate" class="font-black" style="color:#065f46;">{{ number_format($initialThirtyDays, 1, ',', '.') }} kg</span></p>
-                                </div>
-                                <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style="background-color:#ffffffcc;border:1px solid #a7f3d0;">
-                                    <span class="material-symbols-outlined" style="font-size:16px;color:#059669;">monitoring</span>
-                                    <span class="text-xs font-bold" style="color:#047857;">Rata-rata harian: <span id="daily-total-estimate">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-4">
-                                <div class="flex items-center justify-between text-xs font-semibold" style="color:#065f46;">
-                                    <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:15px;">recycling</span> Kontribusi pengurangan sampah</span>
-                                    <span id="contribution-percent">{{ number_format($initialProgressPct, 1, ',', '.') }}%</span>
-                                </div>
-                                <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
-                                    <div id="contribution-bar" class="h-full rounded-full" style="width:{{ $initialProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
-                                </div>
-                                <p class="mt-2 text-xs" style="color:#047857;">Setara sekitar <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> botol plastik 500ml.</p>
-                            </div>
-
-                            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
-                                    <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">Preview Input</p>
-                                    <p class="text-sm mt-1" style="color:#065f46;">Total inputmu <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg untuk <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> hari (rata-rata <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg/hari).</p>
-                                </div>
-                                <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
-                                    <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#047857;">
-                                        <span class="material-symbols-outlined" style="font-size:14px;">emoji_events</span>
-                                        Level Kamu
-                                    </p>
-                                    <p id="gamification-level" class="text-sm mt-1 font-black" style="color:#065f46;">{{ __('app.reward_keep') }}</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-3 rounded-xl p-3" style="background-color:#ecfeff;border:1px solid #bae6fd;">
-                                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#0f766e;">
-                                    <span class="material-symbols-outlined" style="font-size:14px;">eco</span>
-                                    Panel Dampak Lingkungan
-                                </p>
-                                <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">Kamu menyelamatkan 0 botol plastik dan dampakmu setara menanam 0 pohon.</p>
-                            </div>
-                        </div>
-
                         {{-- Buttons --}}
                         <div class="flex flex-col sm:flex-row gap-4" style="padding-top:8px;">
                             <button type="submit" class="flex-1 flex items-center justify-center gap-2 font-bold transition-all" style="background-color:#11d473;color:#064e3b;padding:16px 24px;border-radius:12px;border:none;font-size:15px;box-shadow:0 10px 25px rgba(17,212,115,0.25);cursor:pointer;">
@@ -243,13 +205,15 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                         </div>
                     </form>
 
-                    @unless(isset($hasil))
-                    <div class="mt-10 p-8 text-center" style="background-color:#f8fafc;border:2px dashed #e2e8f0;border-radius:16px;">
-                        <span class="material-symbols-outlined" style="font-size:42px;color:#22c55e;font-variation-settings:'FILL' 1,'wght' 500;">eco</span>
-                        <p class="font-medium" style="color:#64748b;">{{ __('app.hasil_empty') }}</p>
-                        <p class="text-sm mt-1" style="color:#94a3b8;">{{ __('app.hasil_empty_sub') }}</p>
+                    <div id="kalkulator-empty">
+                        @unless(isset($hasil))
+                        <div class="mt-10 p-8 text-center" style="background-color:#f8fafc;border:2px dashed #e2e8f0;border-radius:16px;">
+                            <span class="material-symbols-outlined" style="font-size:42px;color:#22c55e;font-variation-settings:'FILL' 1,'wght' 500;">eco</span>
+                            <p class="font-medium" style="color:#64748b;">{{ __('app.hasil_empty') }}</p>
+                            <p class="text-sm mt-1" style="color:#94a3b8;">{{ __('app.hasil_empty_sub') }}</p>
+                        </div>
+                        @endunless
                     </div>
-                    @endunless
                 </div>
             </div>
         </div>
@@ -343,12 +307,66 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         </div>
     </div>
     {{-- ===== RESULTS SECTION (full width, shows after calculation) ===== --}}
+    <div
+        id="kalkulator-results"
+        data-chart-labels='@json(isset($hasil) ? array_column($hasil["detail"], "nama") : [])'
+        data-chart-points='@json(isset($hasil) ? array_column($hasil["detail"], "poin") : [])'
+        data-chart-percents='@json(isset($hasil) ? array_column($hasil["detail"], "persen") : [])'
+        data-chart-colors='@json(isset($hasil) ? array_map(function ($d) use ($jenisConfig) {
+            return $jenisConfig[$d["jenis"]]["color"];
+        }, $hasil["detail"]) : [])'
+    >
     @if(isset($hasil))
     @php
         $resultDays = min(365, max(1, (int) old('jumlah_hari', request('jumlah_hari', 30))));
         $resultThirtyDays = $hasil['total_berat'] * (30 / $resultDays);
         $resultProgressPct = min(100, ($resultThirtyDays / 300) * 100);
     @endphp
+    <div class="rounded-2xl border p-4 sm:p-5" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+                <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">Estimasi Otomatis</p>
+                <p class="text-sm font-semibold text-slate-700 mt-1">Perkiraan sampah selama 30 hari: <span id="thirty-days-estimate" class="font-black" style="color:#065f46;">{{ number_format($initialThirtyDays, 1, ',', '.') }} kg</span></p>
+            </div>
+            <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style="background-color:#ffffffcc;border:1px solid #a7f3d0;">
+                <span class="material-symbols-outlined" style="font-size:16px;color:#059669;">monitoring</span>
+                <span class="text-xs font-bold" style="color:#047857;">Rata-rata harian: <span id="daily-total-estimate">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg</span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <div class="flex items-center justify-between text-xs font-semibold" style="color:#065f46;">
+                <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:15px;">recycling</span> Kontribusi pengurangan sampah</span>
+                <span id="contribution-percent">{{ number_format($initialProgressPct, 1, ',', '.') }}%</span>
+            </div>
+            <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
+                <div id="contribution-bar" class="h-full rounded-full" style="width:{{ $initialProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
+            </div>
+            <p class="mt-2 text-xs" style="color:#047857;">Setara sekitar <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> botol plastik 500ml.</p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
+                <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">Preview Input</p>
+                <p class="text-sm mt-1" style="color:#065f46;">Total inputmu <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg untuk <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> hari (rata-rata <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg/hari).</p>
+            </div>
+            <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
+                <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#047857;">
+                    <span class="material-symbols-outlined" style="font-size:14px;">emoji_events</span>
+                    Level Kamu
+                </p>
+                <p id="gamification-level" class="text-sm mt-1 font-black" style="color:#065f46;">{{ __('app.reward_keep') }}</p>
+            </div>
+        </div>
+
+        <div class="mt-3 rounded-xl p-3" style="background-color:#ecfeff;border:1px solid #bae6fd;">
+            <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#0f766e;">
+                <span class="material-symbols-outlined" style="font-size:14px;">eco</span>
+                Panel Dampak Lingkungan
+            </p>
+            <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">Kamu menyelamatkan 0 botol plastik dan dampakmu setara menanam 0 pohon.</p>
+        </div>
+    </div>
     <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
@@ -489,6 +507,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 
     </div>
     @endif
+    </div>
 
 </main>
 
@@ -497,17 +516,32 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
-@if(isset($hasil))
-(function () {
+window.renderKalkulatorChart = function () {
+    const resultsEl = document.getElementById('kalkulator-results');
     const ctx = document.getElementById('wasteChart');
-    if (!ctx) return;
+    if (!resultsEl || !ctx || typeof Chart === 'undefined') return;
 
-    const labels = @json(array_column($hasil['detail'], 'nama'));
-    const data   = @json(array_column($hasil['detail'], 'poin'));
-    const colors = @json(array_map(fn($d) => $jenisConfig[$d['jenis']]['color'], $hasil['detail']));
-    const perens = @json(array_column($hasil['detail'], 'persen'));
+    let labels = [];
+    let data = [];
+    let colors = [];
+    let percents = [];
 
-    new Chart(ctx, {
+    try {
+        labels = JSON.parse(resultsEl.dataset.chartLabels || '[]');
+        data = JSON.parse(resultsEl.dataset.chartPoints || '[]');
+        colors = JSON.parse(resultsEl.dataset.chartColors || '[]');
+        percents = JSON.parse(resultsEl.dataset.chartPercents || '[]');
+    } catch (e) {
+        return;
+    }
+
+    if (!labels.length || !data.length) return;
+
+    if (window.kalkulatorChart) {
+        window.kalkulatorChart.destroy();
+    }
+
+    window.kalkulatorChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: labels,
@@ -528,7 +562,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                     callbacks: {
                         label: function (ctx) {
                             const poin = ctx.raw.toLocaleString('id-ID');
-                            const pct  = perens[ctx.dataIndex];
+                            const pct  = percents[ctx.dataIndex];
                             return `  ${poin} poin  (${pct}%)`;
                         }
                     }
@@ -536,8 +570,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             }
         }
     });
-})();
-@endif
+};
 
 function toggleRow(jenis) {
     const input     = document.getElementById('input_' + jenis);
@@ -572,6 +605,9 @@ function toggleRow(jenis) {
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('waste-calculator-form');
     const section = document.getElementById('kalkulator-section');
+    let resultsContainer = document.getElementById('kalkulator-results');
+    let errorsContainer = document.getElementById('kalkulator-errors');
+    let emptyContainer = document.getElementById('kalkulator-empty');
     const daysInput = document.getElementById('jumlah_hari');
     const thirtyDaysEl = document.getElementById('thirty-days-estimate');
     const dailyEl = document.getElementById('daily-total-estimate');
@@ -584,15 +620,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const previewKgEl = document.getElementById('input-preview-kg');
     const levelEl = document.getElementById('gamification-level');
     const impactMessageEl = document.getElementById('impact-message');
-    const resultCard = document.getElementById('hasil-highlight-card');
-    const resultTotalKgEl = document.getElementById('result-total-kg');
-    const resultBottleValueEl = document.getElementById('result-bottle-value');
-    const resultProgressBarEl = document.getElementById('result-progress-bar');
-    const resultProgressTextEl = document.getElementById('result-progress-text');
+    let resultCard = null;
+    let resultTotalKgEl = null;
+    let resultBottleValueEl = null;
+    let resultProgressBarEl = null;
+    let resultProgressTextEl = null;
     const rewardLabelChampion = @json(__('app.reward_champion'));
     const rewardLabelWarrior = @json(__('app.reward_warrior'));
     const rewardLabelStarter = @json(__('app.reward_starter'));
     const rewardLabelKeep = @json(__('app.reward_keep'));
+
+    const refreshResultElements = function () {
+        resultCard = document.getElementById('hasil-highlight-card');
+        resultTotalKgEl = document.getElementById('result-total-kg');
+        resultBottleValueEl = document.getElementById('result-bottle-value');
+        resultProgressBarEl = document.getElementById('result-progress-bar');
+        resultProgressTextEl = document.getElementById('result-progress-text');
+    };
+
+    refreshResultElements();
 
     const formatNumber = function (value, digit) {
         return Number(value).toLocaleString('id-ID', {
@@ -764,6 +810,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.updateWasteEstimate();
+    window.renderKalkulatorChart();
 
     if (window.location.hash === '#kalkulator-section' && section) {
         requestAnimationFrame(function () {
@@ -771,8 +818,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const replaceSection = function (currentEl, nextEl) {
+        if (!nextEl) return currentEl;
+        if (currentEl) {
+            currentEl.replaceWith(nextEl);
+        }
+        return nextEl;
+    };
+
     if (form) {
-        form.addEventListener('submit', function () {
+        form.addEventListener('submit', async function (event) {
             normalizeDaysInput();
             document.querySelectorAll('.weight-input').forEach(function (input) {
                 input.value = sanitizeWeightInputValue(input.value);
@@ -780,6 +835,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (section && !window.location.hash) {
                 history.replaceState(null, '', window.location.pathname + window.location.search + '#kalkulator-section');
+            }
+
+            if (!window.fetch || !window.DOMParser) {
+                return;
+            }
+
+            event.preventDefault();
+
+            try {
+                const requestUrl = form.action.split('#')[0];
+                const formData = new FormData(form);
+                const response = await fetch(requestUrl, {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'text/html',
+                    },
+                });
+
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const nextResults = doc.getElementById('kalkulator-results');
+                const nextErrors = doc.getElementById('kalkulator-errors');
+                const nextEmpty = doc.getElementById('kalkulator-empty');
+
+                if (nextResults) {
+                    resultsContainer = replaceSection(resultsContainer, nextResults);
+                }
+                if (nextErrors) {
+                    errorsContainer = replaceSection(errorsContainer, nextErrors);
+                }
+                if (nextEmpty) {
+                    emptyContainer = replaceSection(emptyContainer, nextEmpty);
+                }
+
+                refreshResultElements();
+                window.updateWasteEstimate();
+                window.renderKalkulatorChart();
+            } catch (error) {
+                form.submit();
             }
         });
     }
