@@ -62,7 +62,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 xl:gap-10 items-start">
 
         <aside class="lg:col-span-5 space-y-6 xl:space-y-8">
-            <div class="glass-panel p-7 md:p-8 rounded-2xl shadow-xl border border-white/20 space-y-8">
+            <div class="glass-panel p-7 md:p-8 rounded-2xl shadow-xl border border-white/20 space-y-8 reveal-on-scroll">
                 <h2 class="font-headline text-2xl font-bold text-[var(--contact-on-surface)]">{{ __('app.contact_info_title') }}</h2>
 
                 <div class="space-y-6">
@@ -108,7 +108,7 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl ring-8 ring-white/30 hover:ring-white/50 transition-all duration-500 group relative">
+            <div class="rounded-2xl overflow-hidden shadow-2xl ring-8 ring-white/30 hover:ring-white/50 transition-all duration-500 group relative reveal-on-scroll">
                 <iframe
                     src="https://maps.google.com/maps?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat&output=embed&z=17&hl=id"
                     width="100%"
@@ -125,7 +125,7 @@
         </aside>
 
         <section class="lg:col-span-7 lg:pl-1">
-            <div class="bg-white p-7 md:p-10 lg:p-11 rounded-2xl shadow-2xl relative">
+            <div class="bg-white p-7 md:p-10 lg:p-11 rounded-2xl shadow-2xl relative reveal-on-scroll">
                 <div class="absolute -top-6 -right-6 w-24 h-24 bg-[var(--contact-primary-container)] rounded-full blur-2xl opacity-40"></div>
                 <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[var(--contact-secondary-fixed)] rounded-full blur-3xl opacity-20"></div>
                 <div class="relative">

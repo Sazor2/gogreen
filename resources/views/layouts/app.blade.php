@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <style>
+        .reveal-on-scroll { opacity: 0; transform: translateY(18px) scale(0.985); transition: opacity 0.45s ease, transform 0.45s ease; }
+        .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+        .reveal-on-scroll.reveal-no-animate { transition: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll { transition: none; transform: none; opacity: 1; }
+        }
+    </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-display bg-background-light text-slate-900 antialiased">
@@ -248,6 +256,62 @@
                 infoChevron.style.transform = '';
             });
         }
+    </script>
+    <script>
+        (function () {
+            let revealObserver = null;
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const markRevealVisible = function (el, instant) {
+                el.classList.add('is-visible');
+                if (instant) {
+                    el.classList.add('reveal-no-animate');
+                }
+            };
+
+            const isInView = function (el) {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+            };
+
+            window.setupRevealOnScroll = function () {
+                const revealItems = document.querySelectorAll('.reveal-on-scroll');
+                if (!revealItems.length) return;
+
+                if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+                    revealItems.forEach(function (el) {
+                        markRevealVisible(el, true);
+                    });
+                    return;
+                }
+
+                if (revealObserver) {
+                    revealObserver.disconnect();
+                }
+
+                revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            markRevealVisible(entry.target, false);
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+                revealItems.forEach(function (el) {
+                    if (el.classList.contains('is-visible')) return;
+                    if (isInView(el)) {
+                        markRevealVisible(el, true);
+                    } else {
+                        revealObserver.observe(el);
+                    }
+                });
+            };
+
+            document.addEventListener('DOMContentLoaded', function () {
+                window.setupRevealOnScroll();
+            });
+        })();
     </script>
     @stack('scripts')
 </body>

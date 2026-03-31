@@ -47,6 +47,14 @@ class GreenController extends Controller
     }
 
     /**
+     * Halaman Artikel Go Green
+     */
+    public function artikel()
+    {
+        return view('pages.artikel');
+    }
+
+    /**
      * Halaman Profil Sekolah
      */
     public function profilSekolah()

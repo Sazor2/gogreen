@@ -75,7 +75,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 
         {{-- Left Column: Calculator Form --}}
         <div class="flex flex-col gap-8" style="min-width:0;">
-            <div class="bg-white rounded-2xl border border-emerald-50 overflow-hidden" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
+            <div class="bg-white rounded-2xl border border-emerald-50 overflow-hidden reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1,'wght' 400;color:#11d473;background:rgba(17,212,115,0.1);padding:8px;border-radius:8px;">calculate</span>
@@ -221,7 +221,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         <div class="flex flex-col gap-8" style="min-width:0;">
 
             {{-- Point Reference Table --}}
-            <div class="bg-white rounded-2xl border border-emerald-50 overflow-hidden" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
+            <div class="bg-white rounded-2xl border border-emerald-50 overflow-hidden reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
                 <div class="p-6 flex items-center justify-between" style="background-color:rgba(236,253,245,0.5);border-bottom:1px solid rgba(6,78,59,0.05);">
                     <h3 class="font-bold flex items-center gap-2 text-slate-900">
                         <span class="material-symbols-outlined" style="color:#059669;font-variation-settings:'FILL' 1,'wght' 400;">list_alt</span>
@@ -255,7 +255,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             </div>
 
             {{-- Reward Levels Card --}}
-            <div class="bg-white rounded-2xl border border-emerald-50 p-6" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
+            <div class="bg-white rounded-2xl border border-emerald-50 p-6 reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
                 <h3 class="font-bold flex items-center gap-2 text-slate-900 mb-6">
                     <span class="material-symbols-outlined" style="color:#f59e0b;font-variation-settings:'FILL' 1,'wght' 400;">military_tech</span>
                     {{ __('app.reward_title') }}
@@ -322,7 +322,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         $resultThirtyDays = $hasil['total_berat'] * (30 / $resultDays);
         $resultProgressPct = min(100, ($resultThirtyDays / 300) * 100);
     @endphp
-    <div class="rounded-2xl border p-4 sm:p-5" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
+    <div class="rounded-2xl border p-4 sm:p-5 reveal-on-scroll" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
                 <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">Estimasi Otomatis</p>
@@ -367,7 +367,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">Kamu menyelamatkan 0 botol plastik dan dampakmu setara menanam 0 pohon.</p>
         </div>
     </div>
-    <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
+    <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6 reveal-on-scroll" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
@@ -409,7 +409,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
     <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         {{-- Left: Summary + Breakdown per Type --}}
-        <div class="bg-white rounded-2xl border border-emerald-50 p-6" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
+        <div class="bg-white rounded-2xl border border-emerald-50 p-6 reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
 
             {{-- Total summary --}}
             <div class="flex items-center gap-5 p-5 rounded-2xl mb-6" style="background-color:#ecfdf5;border:2px dashed #a7f3d0;">
@@ -474,7 +474,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         </div>
 
         {{-- Right: Doughnut Chart --}}
-        <div class="bg-white rounded-2xl border border-emerald-50 p-6 flex flex-col" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
+        <div class="bg-white rounded-2xl border border-emerald-50 p-6 flex flex-col reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
             <h4 class="font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <span class="material-symbols-outlined" style="color:#059669;font-size:18px;font-variation-settings:'FILL' 1,'wght' 400;">pie_chart</span>
                 {{ __('app.hasil_diagram') }}
@@ -811,6 +811,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.updateWasteEstimate();
     window.renderKalkulatorChart();
+    if (window.setupRevealOnScroll) {
+        window.setupRevealOnScroll();
+    }
 
     if (window.location.hash === '#kalkulator-section' && section) {
         requestAnimationFrame(function () {
@@ -874,6 +877,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 refreshResultElements();
                 window.updateWasteEstimate();
                 window.renderKalkulatorChart();
+                if (window.setupRevealOnScroll) {
+                    window.setupRevealOnScroll();
+                }
             } catch (error) {
                 form.submit();
             }

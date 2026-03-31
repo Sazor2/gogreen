@@ -10,6 +10,7 @@ Route::post('/kalkulator', [GreenController::class, 'hitungSampah'])->name('kalk
 Route::get('/lang/{locale}', [GreenController::class, 'setLanguage'])->name('lang.switch');
 Route::get('/tentang', [GreenController::class, 'about'])->name('about');
 Route::get('/latar-belakang', [GreenController::class, 'latarBelakang'])->name('latar-belakang');
+Route::get('/artikel', [GreenController::class, 'artikel'])->name('artikel');
 Route::get('/profil-sekolah', [GreenController::class, 'profilSekolah'])->name('profil-sekolah');
 Route::get('/contact', [GreenController::class, 'contact'])->name('contact');
 Route::post('/contact', [GreenController::class, 'contactSend'])->name('contact.send');

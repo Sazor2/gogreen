@@ -71,7 +71,7 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
     {{-- Informasi Status --}}
-    <div class="mb-8 bg-white/90 rounded-2xl border border-emerald-100 p-5 shadow-sm">
+    <div class="mb-8 bg-white/90 rounded-2xl border border-emerald-100 p-5 shadow-sm reveal-on-scroll">
         <div class="flex items-start gap-3">
             <span class="material-symbols-outlined text-emerald-700" style="font-size:22px;">info</span>
             <div>
@@ -161,7 +161,7 @@
             ],
         ] as $pohon)
         <button type="button"
-            class="group tanaman-card rounded-2xl border {{ $pohon['card_border'] }} hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left"
+            class="group tanaman-card rounded-2xl border {{ $pohon['card_border'] }} hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left reveal-on-scroll"
                 data-nama="{{ $pohon['nama'] }}"
                 data-latin="{{ $pohon['nama_latin'] }}"
                 data-famili="{{ $pohon['jenis'] }}"

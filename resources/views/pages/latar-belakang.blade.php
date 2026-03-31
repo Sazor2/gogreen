@@ -25,7 +25,7 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
 
     {{-- Pendahuluan --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden reveal-on-scroll">
         <div class="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4 border-b border-green-100">
             <h2 class="text-xl font-bold text-green-800">🌍 {{ __('app.latar_intro_title') }}</h2>
         </div>
@@ -54,7 +54,7 @@
     </div>
 
     {{-- Identifikasi Masalah --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden reveal-on-scroll">
         <div class="bg-gradient-to-r from-red-50 to-orange-50 px-6 py-4 border-b border-red-100">
             <h2 class="text-xl font-bold text-red-800">⚠️ {{ __('app.latar_masalah_title') }}</h2>
         </div>
@@ -82,7 +82,7 @@
     </div>
 
     {{-- Solusi --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden reveal-on-scroll">
         <div class="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4 border-b border-green-100">
             <h2 class="text-xl font-bold text-green-800">💡 {{ __('app.latar_solusi_title') }}</h2>
         </div>
@@ -104,7 +104,7 @@
     </div>
 
     {{-- Tujuan Proyek --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden reveal-on-scroll">
         <div class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-blue-100">
             <h2 class="text-xl font-bold text-blue-800">🎯 {{ __('app.latar_tujuan_title') }}</h2>
         </div>
@@ -128,7 +128,7 @@
     </div>
 
     {{-- Dasar Pemikiran --}}
-    <div class="bg-gradient-to-br from-green-700 to-emerald-600 text-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="bg-gradient-to-br from-green-700 to-emerald-600 text-white rounded-2xl shadow-lg overflow-hidden reveal-on-scroll">
         <div class="px-6 py-4 border-b border-green-600">
             <h2 class="text-xl font-bold">📌 {{ __('app.latar_dasar_title') }}</h2>
         </div>

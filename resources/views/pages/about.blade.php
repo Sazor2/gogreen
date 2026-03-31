@@ -38,7 +38,7 @@
     {{-- Developer Profile --}}
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div class="space-y-6">
+            <div class="space-y-6 reveal-on-scroll">
                 <div class="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase">
                     {{ __('app.about_developer') }}
                 </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="relative group">
+            <div class="relative group reveal-on-scroll">
                 <div class="absolute -inset-4 bg-emerald-100 rounded-[2rem] transform group-hover:scale-105 transition-transform duration-500"></div>
 
                 <div class="relative about-soft-card p-10 rounded-xl about-ghost-border-top text-center">
@@ -88,7 +88,7 @@
                     ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => ['Backend Developer', 'API Integration', 'Server Logic']],
                     ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), 'Environmental Analyst', 'Content Strategy']],
                 ] as $member)
-                <div class="about-soft-card p-6 rounded-xl about-ghost-border-top hover:-translate-y-1 transition-transform duration-300">
+                <div class="about-soft-card p-6 rounded-xl about-ghost-border-top hover:-translate-y-1 transition-transform duration-300 reveal-on-scroll">
                     <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-5">
                         <span class="material-symbols-outlined text-emerald-700" style="font-size:24px;">{{ $member['icon'] }}</span>
                     </div>
@@ -124,7 +124,7 @@
                         ['name' => 'Pest PHP',      'desc' => __('app.tech_pest_desc'),     'icon' => 'bug_report', 'color' => 'border-green-100  bg-green-50  text-green-700'],
                         ['name' => 'MySQL',         'desc' => __('app.tech_mysql_desc'),    'icon' => 'storage', 'color' => 'border-teal-100   bg-teal-50   text-teal-700'],
                     ] as $tech)
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 reveal-on-scroll">
                         <div class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-emerald-200" style="font-size:22px;line-height:1;">{{ $tech['icon'] }}</span>
                             <div>
@@ -147,7 +147,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors">
+            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
                 <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                     <span class="material-symbols-outlined text-emerald-700">alternate_email</span>
                 </div>
@@ -155,7 +155,7 @@
                 <p class="text-slate-600 text-sm">{{ __('app.about_email') }}</p>
             </div>
 
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors">
+            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
                 <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                     <span class="material-symbols-outlined text-emerald-700">photo_camera</span>
                 </div>
@@ -163,7 +163,7 @@
                 <p class="text-slate-600 text-sm">{{ __('app.about_instagram') }}</p>
             </div>
 
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors">
+            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
                 <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                     <span class="material-symbols-outlined text-emerald-700">language</span>
                 </div>

@@ -50,7 +50,7 @@
             ['icon' => 'meeting_room', 'value' => '10',   'label' => __('app.profil_sek_stat_kelas')],
             ['icon' => 'history',      'value' => '2003', 'label' => __('app.profil_sek_stat_tahun')],
         ] as $stat)
-        <div class="stat-card bg-white flex flex-col items-center text-center" style="padding:24px 16px;border-radius:12px;box-shadow:0 20px 40px rgba(16,33,25,0.1);border:1px solid rgba(6,78,59,0.05);">
+        <div class="stat-card bg-white flex flex-col items-center text-center reveal-on-scroll" style="padding:24px 16px;border-radius:12px;box-shadow:0 20px 40px rgba(16,33,25,0.1);border:1px solid rgba(6,78,59,0.05);">
             <span class="stat-icon material-symbols-outlined" style="font-size:2.5rem;color:#064e3b;margin-bottom:8px;font-variation-settings:'FILL' 1,'wght' 400;">{{ $stat['icon'] }}</span>
             <h3 class="stat-value text-3xl font-black" style="color:#1e293b;">{{ $stat['value'] }}</h3>
             <p class="stat-label text-sm font-bold uppercase" style="color:#64748b;">{{ $stat['label'] }}</p>
@@ -69,7 +69,7 @@
 
         {{-- Top row: Location (wide) + Accreditation --}}
         <div class="lg-grid-bento-top" style="display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.5rem;">
-            <div class="bg-white" style="padding:2rem;border-radius:12px;border:1px solid rgba(6,78,59,0.1);box-shadow:0 10px 25px rgba(16,33,25,0.05);">
+            <div class="bg-white reveal-on-scroll" style="padding:2rem;border-radius:12px;border:1px solid rgba(6,78,59,0.1);box-shadow:0 10px 25px rgba(16,33,25,0.05);">
                 <div style="display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.25rem;">
                     <div style="background-color:rgba(6,78,59,0.1);padding:16px;border-radius:12px;flex-shrink:0;">
                         <span class="material-symbols-outlined" style="font-size:2rem;color:#064e3b;font-variation-settings:'FILL' 1,'wght' 400;">location_on</span>
@@ -93,7 +93,7 @@
                     </iframe>
                 </div>
             </div>
-            <div class="text-white" style="background-color:#064e3b;padding:2rem;border-radius:12px;position:relative;overflow:hidden;">
+            <div class="text-white reveal-on-scroll" style="background-color:#064e3b;padding:2rem;border-radius:12px;position:relative;overflow:hidden;">
                 <span class="material-symbols-outlined" style="position:absolute;right:-16px;bottom:-16px;font-size:8rem;color:rgba(255,255,255,0.06);font-variation-settings:'FILL' 1,'wght' 400;">verified_user</span>
                 <div style="position:relative;z-index:10;">
                     <h3 class="text-xl font-bold" style="margin-bottom:16px;">{{ __('app.profil_sek_akreditasi') }}</h3>
@@ -105,7 +105,7 @@
 
         {{-- Bottom row: NPSN/Details + Status (wide) --}}
         <div class="lg-grid-bento-bot" style="display:grid;grid-template-columns:1fr;gap:1.5rem;">
-            <div class="bg-white" style="padding:2rem;border-radius:12px;border:1px solid rgba(6,78,59,0.1);box-shadow:0 10px 25px rgba(16,33,25,0.05);">
+            <div class="bg-white reveal-on-scroll" style="padding:2rem;border-radius:12px;border:1px solid rgba(6,78,59,0.1);box-shadow:0 10px 25px rgba(16,33,25,0.05);">
                 <div style="display:flex;flex-direction:column;gap:1rem;">
                     <div style="display:flex;align-items:center;gap:12px;">
                         <span class="material-symbols-outlined" style="color:#064e3b;font-variation-settings:'FILL' 1,'wght' 400;">tag</span>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color:#ecfdf5;padding:2rem;border-radius:12px;border:1px solid #a7f3d0;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+            <div class="reveal-on-scroll" style="background-color:#ecfdf5;padding:2rem;border-radius:12px;border:1px solid #a7f3d0;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
                 <div style="background-color:#059669;color:white;padding:16px;border-radius:12px;flex-shrink:0;">
                     <span class="material-symbols-outlined" style="font-size:2rem;font-variation-settings:'FILL' 1,'wght' 400;">account_balance</span>
                 </div>
@@ -141,7 +141,7 @@
 <section class="px-4 sm:px-6 lg:px-8" style="padding-top:5rem;padding-bottom:5rem;background-color:rgba(6,78,59,0.03);">
     <div class="max-w-7xl mx-auto lg-grid-2col" style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;">
         {{-- Vision --}}
-        <div style="position:relative;">
+        <div class="reveal-on-scroll" style="position:relative;">
             <span class="material-symbols-outlined" style="position:absolute;top:-40px;left:-40px;font-size:12rem;color:rgba(6,78,59,0.06);font-variation-settings:'FILL' 1,'wght' 400;">format_quote</span>
             <div style="position:relative;z-index:10;">
                 <h2 class="font-black text-4xl" style="color:#064e3b;margin-bottom:2rem;">{{ __('app.profil_sek_visi_title') }}</h2>
@@ -151,7 +151,7 @@
             </div>
         </div>
         {{-- Mission --}}
-        <div class="bg-white" style="padding:2.5rem;border-radius:16px;box-shadow:0 25px 50px rgba(6,78,59,0.08);border:1px solid rgba(6,78,59,0.05);">
+        <div class="bg-white reveal-on-scroll" style="padding:2.5rem;border-radius:16px;box-shadow:0 25px 50px rgba(6,78,59,0.08);border:1px solid rgba(6,78,59,0.05);">
             <h2 class="font-black text-3xl flex items-center gap-3" style="color:#064e3b;margin-bottom:2rem;">
                 <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1,'wght' 400;">assignment</span>
                 {{ __('app.profil_sek_misi_title') }}
@@ -190,7 +190,7 @@
                 ['name' => __('app.jurusan_bdp'), 'icon' => 'storefront',    'desc' => __('app.jurusan_bdp_desc'), 'rombel' => 1],
                 ['name' => __('app.jurusan_at'),  'icon' => 'potted_plant',  'desc' => __('app.jurusan_at_desc'),  'rombel' => 1],
             ] as $j)
-            <div class="program-card bg-white" style="padding:2rem;border-radius:16px;border-bottom:4px solid #064e3b;box-shadow:0 10px 30px rgba(16,33,25,0.07);">
+            <div class="program-card bg-white reveal-on-scroll" style="padding:2rem;border-radius:16px;border-bottom:4px solid #064e3b;box-shadow:0 10px 30px rgba(16,33,25,0.07);">
                 <div style="width:64px;height:64px;background-color:rgba(6,78,59,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
                     <span class="material-symbols-outlined" style="font-size:2rem;color:#064e3b;font-variation-settings:'FILL' 1,'wght' 400;">{{ $j['icon'] }}</span>
                 </div>
@@ -211,7 +211,7 @@
         <span class="material-symbols-outlined" style="font-size:8rem;position:absolute;bottom:10%;left:20%;">recycling</span>
     </div>
     <div class="max-w-7xl mx-auto lg-grid-2col" style="position:relative;z-index:10;display:grid;grid-template-columns:1fr;gap:4rem;align-items:center;">
-        <div>
+        <div class="reveal-on-scroll">
             <span class="font-black uppercase tracking-widest text-sm" style="color:#6ee7b7;margin-bottom:16px;display:block;">{{ __('app.profil_sek_green_sub') }}</span>
             <h2 class="text-white font-black text-5xl" style="margin-bottom:2rem;">{{ __('app.profil_sek_green_title') }}</h2>
             <p class="text-xl leading-relaxed" style="color:#ecfdf5;margin-bottom:2.5rem;">{{ __('app.profil_sek_green_desc') }}</p>
@@ -234,7 +234,7 @@
                 @endforeach
             </div>
         </div>
-        <div style="position:relative;">
+        <div class="reveal-on-scroll" style="position:relative;">
             <div style="border-radius:16px;overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,0.3);transform:rotate(2deg);transition:transform 0.5s;" onmouseout="this.style.transform='rotate(2deg)'" onmouseover="this.style.transform='rotate(0deg)'">
                 <img alt="School environmental garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpUteCe7oq-_NWPXFTGa3wBSlRTtMqR9VK_SgQ9y9FuIiZ_K1B50ZwO_kX6Y0XOdaEsR-7d8tTF_tvnbldu473VuptNqIPxygU0cmwfrl2JQeC4X8lbdIDQWmSiDtajZZ-hugynYKdF9fHeLlQkTAqSSvE4aLRY1O0VSrKQWpFuqHPccz793ejScHWpeLWGoUTry_3GflHCGY1boyV_W-km8DbVLWKi9RVneH1PuTWCLxrDrfplFubNyUMD3pjQoI5An51F_tn9Ydb" style="width:100%;height:500px;object-fit:cover;">
             </div>
@@ -259,7 +259,7 @@
                 ['name' => __('app.fasilitas_kantin'),   'icon' => 'restaurant'],
                 ['name' => __('app.fasilitas_parkir'),   'icon' => 'two_wheeler'],
             ] as $f)
-            <div class="facility-card bg-white text-center" style="padding:24px 16px;border-radius:12px;border:1px solid rgba(6,78,59,0.05);">
+            <div class="facility-card bg-white text-center reveal-on-scroll" style="padding:24px 16px;border-radius:12px;border:1px solid rgba(6,78,59,0.05);">
                 <span class="material-symbols-outlined" style="font-size:2.5rem;color:#064e3b;margin-bottom:16px;display:block;font-variation-settings:'FILL' 1,'wght' 400;">{{ $f['icon'] }}</span>
                 <h4 class="font-bold text-sm">{{ $f['name'] }}</h4>
             </div>
@@ -278,7 +278,7 @@
 
         {{-- Kepala Sekolah --}}
         <div class="text-center" style="margin-bottom:4rem;">
-            <div class="bg-white" style="display:inline-block;padding:2rem;border-radius:16px;box-shadow:0 20px 40px rgba(16,33,25,0.1);border-top:8px solid #064e3b;min-width:280px;">
+            <div class="bg-white reveal-on-scroll" style="display:inline-block;padding:2rem;border-radius:16px;box-shadow:0 20px 40px rgba(16,33,25,0.1);border-top:8px solid #064e3b;min-width:280px;">
                 <div style="width:96px;height:96px;background-color:rgba(6,78,59,0.1);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
                     <span class="material-symbols-outlined" style="font-size:3rem;color:#064e3b;font-variation-settings:'FILL' 1,'wght' 400;">person</span>
                 </div>
@@ -293,7 +293,7 @@
                 ['jabatan' => __('app.profil_sek_wakasek'), 'nama' => 'Yandora Elisda, S.Psi'],
                 ['jabatan' => __('app.profil_sek_pembina'), 'nama' => 'Fiersia Vinderly'],
             ] as $org)
-            <div class="bg-white text-center" style="padding:2rem;border-radius:16px;box-shadow:0 10px 25px rgba(16,33,25,0.05);border-top:4px solid rgba(6,78,59,0.3);">
+            <div class="bg-white text-center reveal-on-scroll" style="padding:2rem;border-radius:16px;box-shadow:0 10px 25px rgba(16,33,25,0.05);border-top:4px solid rgba(6,78,59,0.3);">
                 <div style="width:80px;height:80px;background-color:rgba(6,78,59,0.05);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
                     <span class="material-symbols-outlined" style="font-size:2.5rem;color:rgba(6,78,59,0.5);font-variation-settings:'FILL' 1,'wght' 400;">person</span>
                 </div>

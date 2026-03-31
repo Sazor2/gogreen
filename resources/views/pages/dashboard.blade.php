@@ -45,7 +45,7 @@
 {{-- Floating Stats Section --}}
 <section class="max-w-7xl mx-auto px-4 relative z-10" style="margin-top:-3rem">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
+        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
             <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-emerald-50 rounded-xl text-primary">
                     <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">co2</span>
@@ -56,7 +56,7 @@
             <p class="text-3xl font-black mt-1">1.28 <span class="text-lg font-normal">Tons</span></p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
+        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
             <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-emerald-50 rounded-xl text-primary">
                     <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">forest</span>
@@ -67,7 +67,7 @@
             <p class="text-3xl font-black mt-1">1,450 <span class="text-lg font-normal">Trees</span></p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
+        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
             <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-emerald-50 rounded-xl text-primary">
                     <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">recycling</span>
@@ -78,7 +78,7 @@
             <p class="text-3xl font-black mt-1">88.5 <span class="text-lg font-normal">%</span></p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
+        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
             <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-emerald-50 rounded-xl text-primary">
                     <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">verified</span>
@@ -101,7 +101,7 @@
 
         {{-- Left Column: Agenda (2/3) --}}
         <div class="lg:col-span-2 space-y-8">
-            <div class="bg-white rounded-2xl border border-emerald-50 shadow-sm overflow-hidden">
+            <div class="bg-white rounded-2xl border border-emerald-50 shadow-sm overflow-hidden reveal-on-scroll">
                 <div class="px-6 py-5 border-b border-emerald-50 flex justify-between items-center">
                     <h2 class="text-xl font-bold flex items-center gap-2 text-slate-800">
                         <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">calendar_today</span>
@@ -143,13 +143,66 @@
                     </table>
                 </div>
             </div>
+
+            {{-- Mini Artikel --}}
+            <div class="bg-white rounded-2xl border border-emerald-50 shadow-sm p-6 reveal-on-scroll">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">article</span>
+                            Mini Artikel Go Green
+                        </h2>
+                        <p class="text-sm text-slate-500 mt-1">Ringkasan singkat untuk inspirasi aksi hijau di sekolah.</p>
+                    </div>
+                    <a href="{{ url('/artikel') }}" class="text-primary text-sm font-bold hover:underline">Lihat semua</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    @foreach([
+                        [
+                            'tag' => 'Edukasi',
+                            'title' => '3 Langkah Kurangi Sampah Plastik di Kelas',
+                            'desc' => 'Mulai dari botol isi ulang, kotak makan, dan aturan tanpa plastik sekali pakai.',
+                            'link' => url('/artikel#artikel-plastik'),
+                            'icon' => 'recycling',
+                        ],
+                        [
+                            'tag' => 'Program',
+                            'title' => 'Bank Sampah Sekolah: Cara Mengumpulkan Poin',
+                            'desc' => 'Kenali jenis sampah bernilai dan jadwal setoran yang efisien untuk kelasmu.',
+                            'link' => url('/artikel#artikel-bank-sampah'),
+                            'icon' => 'calculate',
+                        ],
+                        [
+                            'tag' => 'Tanaman',
+                            'title' => 'Pohon Lokal yang Cocok untuk Halaman Sekolah',
+                            'desc' => 'Tengkawang, jelutung, dan meranti punya manfaat besar untuk iklim mikro.',
+                            'link' => url('/artikel#artikel-pohon-lokal'),
+                            'icon' => 'park',
+                        ],
+                    ] as $artikel)
+                    <div class="rounded-2xl border border-emerald-100 bg-white p-5 hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 18px 36px rgba(16,33,25,0.06);">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="material-symbols-outlined text-emerald-600" style="font-size:1.2rem">{{ $artikel['icon'] }}</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">{{ $artikel['tag'] }}</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800 leading-snug mb-2">{{ $artikel['title'] }}</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">{{ $artikel['desc'] }}</p>
+                        <a href="{{ $artikel['link'] }}" class="text-sm font-bold text-primary inline-flex items-center gap-2">
+                            Baca selengkapnya
+                            <span class="material-symbols-outlined" style="font-size:1rem">arrow_forward</span>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
         {{-- Right Column: Profil & Motto (1/3) --}}
         <div class="space-y-8">
 
             {{-- Profil Sekolah --}}
-            <div class="rounded-2xl border border-emerald-50 shadow-sm p-6" style="background: linear-gradient(145deg, #ffffff 0%, #f7fdf9 100%);">
+            <div class="rounded-2xl border border-emerald-50 shadow-sm p-6 reveal-on-scroll" style="background: linear-gradient(145deg, #ffffff 0%, #f7fdf9 100%);">
                 <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">school</span>
                     {{ __('app.profil_title') }}
@@ -190,7 +243,7 @@
             </div>
 
             {{-- Motto Card --}}
-            <div class="relative rounded-2xl overflow-hidden p-8 shadow-2xl shadow-emerald-500/20">
+            <div class="relative rounded-2xl overflow-hidden p-8 shadow-2xl shadow-emerald-500/20 reveal-on-scroll">
                 <div class="absolute inset-0" style="background: linear-gradient(135deg, #11d473 0%, #059669 35%, #065f46 70%, #022c22 100%);"></div>
                 <div class="absolute inset-0 opacity-20"
                      style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9qKl8YQhWqC8lp3JYJg4YUsYzTef_OdJKiu4ZfwgrHCf5AGKJAquFeZt6MSEMSITTN35tabgMHutEQaM-ZEkvpRtMq8P6BxKAQ-MEii5UThM9k40bbg9qj6npM-Hr4zRiPMHmeynuuhJEEZd9vnLdhGz-h3zj1CHCQZtjx0ntYn7HmA2dTLyd_5jwRgNfd13qlwRHVbh1ZjrrDhptWVEk3DnBDxNzTeDZAwWEq6zD_64LwesGbCtnNpdJcJgYn8kcGKna7-Dhzro');"></div>
