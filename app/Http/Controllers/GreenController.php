@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GreenController extends Controller
 {
@@ -81,6 +83,10 @@ class GreenController extends Controller
             'subject' => 'required|string|max:150',
             'message' => 'required|string|max:2000',
         ]);
+
+        $payload = $request->only(['name', 'email', 'subject', 'message']);
+        Mail::to(config('mail.contact_to'))
+            ->send(new ContactMessage($payload));
 
         session()->flash('contact_success', true);
         return redirect()->route('contact');
