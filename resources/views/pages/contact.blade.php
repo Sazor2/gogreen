@@ -6,248 +6,263 @@
 
 <style>
     :root {
-        --contact-primary: #006948;
-        --contact-primary-dim: #005b3e;
-        --contact-primary-container: #7ff3be;
-        --contact-secondary-fixed: #69f6b8;
-        --contact-on-surface: #00362a;
-        --contact-on-surface-variant: #2f6556;
-        --contact-outline-variant: #81b8a6;
+        --eco-dark: #012d1d;
+        --eco-medium: #059669;
+        --eco-accent: #a2f31f; /* Neon Lime khas EcoVibes */
+        --eco-background: #f8fafc;
     }
 
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    /* Fonts matching EcoScholar/EcoVibes style */
+    @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+    .font-headline { font-family: 'DM Sans', 'Epilogue', sans-serif; }
+    .font-body { font-family: 'Roboto', 'Inter', sans-serif; }
+
+    /* Reveal on Scroll Animation */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .contact-hero {
-        background: linear-gradient(135deg, var(--contact-primary) 0%, var(--contact-primary-dim) 100%);
+    .editorial-shadow {
+        box-shadow: 0 20px 50px rgba(1, 45, 29, 0.05);
     }
 
-    .bg-pattern {
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .glass-panel {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .contact-input {
-        transition: all 0.25s ease;
+        transition: all 0.3s ease;
+        border: 2px solid #f1f5f9 !important;
+        background-color: #f8fafc !important;
     }
 
     .contact-input:focus {
-        box-shadow: 0 0 0 2px rgba(0, 105, 72, 0.18), 0 0 15px rgba(0, 105, 72, 0.1);
-        border-color: transparent;
+        border-color: var(--eco-medium) !important;
+        background-color: #ffffff !important;
+        box-shadow: 0 0 0 4px rgba(162, 243, 31, 0.15);
+        outline: none;
+    }
+
+    .btn-eco-vibes {
+        background: linear-gradient(135deg, #006948 0%, #059669 100%);
+        color: #ffffff;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 20px rgba(0, 105, 72, 0.25);
+    }
+
+    .btn-eco-vibes:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(0, 105, 72, 0.35);
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
     }
 </style>
 
-<section class="relative overflow-hidden contact-hero py-24 md:py-32 text-white">
-    <div class="absolute inset-0 bg-pattern opacity-30"></div>
-    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-[var(--contact-primary-container)]/20 rounded-full blur-[120px]"></div>
-    <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-64 h-64 bg-[var(--contact-secondary-fixed)]/20 rounded-full blur-[80px]"></div>
-    <div class="relative max-w-7xl mx-auto px-6 text-center">
-        <p class="text-white/75 uppercase tracking-[0.2em] text-xs font-semibold mb-4">{{ __('app.contact_title') }}</p>
-        <h1 class="font-headline font-extrabold text-5xl md:text-7xl text-white leading-tight tracking-tighter mb-6">
-            {{ __('app.contact_title') }}
-        </h1>
-        <p class="text-white/80 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
-            {{ __('app.contact_desc') }}
-        </p>
-    </div>
-</section>
+<div class="bg-[var(--eco-background)] min-h-screen pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12 font-body">
 
-<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-14 relative z-10 pb-20">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 xl:gap-10 items-start">
+        {{-- Hero Section (Balanced Deep Green) --}}
+        <section class="relative h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-[var(--eco-dark)] reveal-on-scroll">
+            <div class="absolute inset-0 z-10 bg-gradient-to-t from-[var(--eco-dark)] via-[var(--eco-dark)]/40 to-transparent"></div>
+            <img
+                src="{{ asset('images/background2.jpg') }}"
+                alt="Contact Go Green School"
+                class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[0.2] transition-transform duration-1000 group-hover:scale-105"
+            >
 
-        <aside class="lg:col-span-5 space-y-6 xl:space-y-8">
-            <div class="glass-panel p-7 md:p-8 rounded-2xl shadow-xl border border-white/20 space-y-8 reveal-on-scroll">
-                <h2 class="font-headline text-2xl font-bold text-[var(--contact-on-surface)]">{{ __('app.contact_info_title') }}</h2>
+            <div class="relative z-20 h-full flex flex-col justify-end p-10 md:p-16">
+                <div class="max-w-3xl">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[var(--eco-accent)] font-headline font-bold text-[10px] uppercase tracking-[0.2em] mb-6 border border-white/10">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--eco-accent)] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--eco-accent)]"></span>
+                        </span>
+                        {{ __('app.contact_title') }}
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-headline font-black text-white leading-[1.1] tracking-tighter mb-6">
+                        {{ __('app.contact_form_title') }}
+                    </h1>
+                    <p class="text-lg text-white/80 leading-relaxed max-w-xl">
+                        {{ __('app.contact_desc') }}
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                <div class="space-y-6">
-                    <div class="flex items-start gap-5 group">
-                        <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[var(--contact-primary-container)] flex items-center justify-center text-[var(--contact-primary)] shadow-[0_0_20px_rgba(127,243,190,0.4)] group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-symbols-outlined text-3xl">location_on</span>
+        {{-- Main Grid --}}
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-30">
+            
+            {{-- Info Card (Left) --}}
+            <aside class="lg:col-span-5 space-y-6">
+                <div class="bg-white p-10 rounded-[2rem] editorial-shadow border border-emerald-50 h-full reveal-on-scroll">
+                    <h2 class="text-2xl font-headline font-black text-[var(--eco-dark)] mb-8 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--eco-accent)]/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[var(--eco-dark)] text-sm">hub</span>
+                        </span>
+                        Connect with Us
+                    </h2>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">location_on</span>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_address_title') }}</p>
+                                <p class="text-sm font-semibold text-slate-700 leading-relaxed">{{ __('app.contact_address_val') }}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-xs font-bold text-[var(--contact-primary)] uppercase tracking-widest mb-1">{{ __('app.contact_address_title') }}</p>
-                            <p class="text-[var(--contact-on-surface-variant)] font-medium leading-relaxed">{{ __('app.contact_address_val') }}</p>
+
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">alternate_email</span>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_email_title') }}</p>
+                                <a href="mailto:{{ __('app.contact_email_val') }}" class="text-sm font-bold text-[var(--eco-dark)] hover:text-[var(--eco-medium)] transition-colors">{{ __('app.contact_email_val') }}</a>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">phone_in_talk</span>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_phone_title') }}</p>
+                                <p class="text-sm font-bold text-slate-700">{{ __('app.contact_phone_val') }}</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-5 group">
-                        <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[var(--contact-secondary-fixed)] flex items-center justify-center text-[var(--contact-primary)] shadow-[0_0_20px_rgba(105,246,184,0.4)] group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-symbols-outlined text-3xl">call</span>
+                    <div class="mt-12 pt-8 border-t border-slate-100 flex gap-4">
+                        <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
+                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Response</p>
+                            <p class="font-headline font-bold text-slate-800 text-sm">Fast</p>
                         </div>
-                        <div>
-                            <p class="text-xs font-bold text-[var(--contact-primary)] uppercase tracking-widest mb-1">{{ __('app.contact_phone_title') }}</p>
-                            <a href="tel:056521234" class="text-[var(--contact-on-surface-variant)] font-medium hover:text-[var(--contact-primary)] transition-colors">{{ __('app.contact_phone_val') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-5 group">
-                        <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[var(--contact-secondary-fixed)]/50 flex items-center justify-center text-[var(--contact-primary-dim)] shadow-[0_0_20px_rgba(167,241,217,0.4)] group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-symbols-outlined text-3xl">mail</span>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[var(--contact-primary)] uppercase tracking-widest mb-1">{{ __('app.contact_email_title') }}</p>
-                            <a href="mailto:smkkaryabangsasintang@gmail.com" class="text-[var(--contact-on-surface-variant)] font-medium hover:text-[var(--contact-primary)] transition-colors break-all">{{ __('app.contact_email_val') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-5 group">
-                        <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-emerald-100 flex items-center justify-center text-[var(--contact-primary-dim)] shadow-[0_0_20px_rgba(156,236,211,0.4)] group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-symbols-outlined text-3xl">schedule</span>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[var(--contact-primary-dim)] uppercase tracking-widest mb-1">{{ __('app.contact_hours_title') }}</p>
-                            <p class="text-[var(--contact-on-surface-variant)] font-medium">{{ __('app.contact_hours_val') }}</p>
+                        <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
+                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Status</p>
+                            <p class="font-headline font-bold text-emerald-600 text-sm">Active</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl ring-8 ring-white/30 hover:ring-white/50 transition-all duration-500 group relative reveal-on-scroll">
-                <iframe
-                    src="https://maps.google.com/maps?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat&output=embed&z=17&hl=id"
-                    width="100%"
-                    height="290"
-                    style="border:0;display:block;"
-                    class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Lokasi SMK Karya Bangsa Sintang">
-                </iframe>
-                <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/40 to-transparent pointer-events-none"></div>
-            </div>
-        </aside>
+            {{-- Form Card (Right) --}}
+            <article class="lg:col-span-7 bg-white p-10 rounded-[2.5rem] editorial-shadow border border-emerald-50 reveal-on-scroll">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-headline font-black text-[var(--eco-dark)] tracking-tight">Kirim Pesan</h2>
+                    <p class="text-slate-500 mt-2">Punya pertanyaan atau saran? Kami siap mendengarkan.</p>
+                </div>
 
-        <section class="lg:col-span-7 lg:pl-1">
-            <div class="bg-white p-7 md:p-10 lg:p-11 rounded-2xl shadow-2xl relative reveal-on-scroll">
-                <div class="absolute -top-6 -right-6 w-24 h-24 bg-[var(--contact-primary-container)] rounded-full blur-2xl opacity-40"></div>
-                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[var(--contact-secondary-fixed)] rounded-full blur-3xl opacity-20"></div>
-                <div class="relative">
-                    <div class="mb-10">
-                        <h2 class="font-headline text-3xl font-extrabold text-[var(--contact-on-surface)] tracking-tight mb-2">{{ __('app.contact_form_title') }}</h2>
-                        <p class="text-[var(--contact-on-surface-variant)] font-medium">{{ __('app.contact_form_desc') }}</p>
-                    </div>
+                @if(session('contact_success'))
+                <div class="mb-8 flex items-center gap-3 bg-emerald-50 border-2 border-emerald-100 text-emerald-800 rounded-2xl px-6 py-4">
+                    <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                    <p class="text-sm font-bold">{{ __('app.contact_success') }}</p>
+                </div>
+                @endif
 
-                    @if(session('contact_success'))
-                    <div class="flex items-start gap-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg px-5 py-4 shadow-sm mb-6">
-                        <span class="material-symbols-outlined text-emerald-600 mt-0.5" style="font-size:1.35rem">check_circle</span>
-                        <p class="text-sm font-medium">{{ __('app.contact_success') }}</p>
+                <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
+                    @csrf
+                    @if($errors->any())
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-xl mb-6">
+                        <ul class="text-xs text-red-700 font-bold space-y-1">
+                            @foreach($errors->all() as $error)
+                            <li>• {{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                     @endif
 
-                    <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
-                        @csrf
-
-                        @if($errors->any())
-                        <div class="bg-red-50 border border-red-200 rounded-lg px-4 py-3">
-                            <ul class="text-sm text-red-600 space-y-1 list-disc list-inside">
-                                @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="font-headline text-sm font-bold text-[var(--contact-on-surface-variant)] ml-1" for="contact_name">{{ __('app.contact_name') }} <span class="text-red-500">*</span></label>
-                                <input
-                                    type="text"
-                                    id="contact_name"
-                                    name="name"
-                                    value="{{ old('name') }}"
-                                    placeholder="{{ __('app.contact_name_ph') }}"
-                                    required
-                                    class="contact-input w-full px-5 py-4 rounded-lg bg-emerald-50/40 border-none ring-1 ring-[var(--contact-outline-variant)]/30 focus:ring-2 focus:ring-[var(--contact-primary)] focus:bg-white transition-all outline-none @error('name') ring-red-300 bg-red-50 @enderror"
-                                >
-                                @error('name')
-                                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div class="space-y-2">
-                                <label class="font-headline text-sm font-bold text-[var(--contact-on-surface-variant)] ml-1" for="contact_email">{{ __('app.contact_email') }} <span class="text-red-500">*</span></label>
-                                <input
-                                    type="email"
-                                    id="contact_email"
-                                    name="email"
-                                    value="{{ old('email') }}"
-                                    placeholder="{{ __('app.contact_email_ph') }}"
-                                    required
-                                    class="contact-input w-full px-5 py-4 rounded-lg bg-emerald-50/40 border-none ring-1 ring-[var(--contact-outline-variant)]/30 focus:ring-2 focus:ring-[var(--contact-primary)] focus:bg-white transition-all outline-none @error('email') ring-red-300 bg-red-50 @enderror"
-                                >
-                                @error('email')
-                                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="font-headline text-sm font-bold text-[var(--contact-on-surface-variant)] ml-1" for="contact_subject">{{ __('app.contact_subject') }} <span class="text-red-500">*</span></label>
-                            <input
-                                type="text"
-                                id="contact_subject"
-                                name="subject"
-                                value="{{ old('subject') }}"
-                                placeholder="{{ __('app.contact_subject_ph') }}"
-                                required
-                                class="contact-input w-full px-5 py-4 rounded-lg bg-emerald-50/40 border-none ring-1 ring-[var(--contact-outline-variant)]/30 focus:ring-2 focus:ring-[var(--contact-primary)] focus:bg-white transition-all outline-none @error('subject') ring-red-300 bg-red-50 @enderror"
-                            >
-                            @error('subject')
-                            <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
-                            @enderror
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_name') }}</label>
+                            <input type="text" name="name" value="{{ old('name') }}" required placeholder="Nama lengkap Anda"
+                                   class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
                         </div>
-
                         <div class="space-y-2">
-                            <label class="font-headline text-sm font-bold text-[var(--contact-on-surface-variant)] ml-1" for="contact_message">{{ __('app.contact_message') }} <span class="text-red-500">*</span></label>
-                            <textarea
-                                id="contact_message"
-                                name="message"
-                                rows="6"
-                                placeholder="{{ __('app.contact_message_ph') }}"
-                                required
-                                class="contact-input w-full px-5 py-4 rounded-lg bg-emerald-50/40 border-none ring-1 ring-[var(--contact-outline-variant)]/30 focus:ring-2 focus:ring-[var(--contact-primary)] focus:bg-white transition-all outline-none resize-none @error('message') ring-red-300 bg-red-50 @enderror"
-                            >{{ old('message') }}</textarea>
-                            @error('message')
-                            <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
-                            @enderror
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_email') }}</label>
+                            <input type="email" name="email" value="{{ old('email') }}" required placeholder="Email aktif"
+                                   class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
                         </div>
+                    </div>
 
-                        <div class="pt-4">
-                            <button
-                                type="submit"
-                                class="w-full bg-gradient-to-r from-[var(--contact-primary)] to-[var(--contact-primary-dim)] text-white py-5 rounded-lg font-headline font-bold text-lg shadow-lg shadow-emerald-700/20 hover:shadow-emerald-700/40 hover:-translate-y-0.5 transition-all active:scale-[0.98] flex items-center justify-center gap-3"
-                            >
-                                <span>{{ __('app.contact_send') }}</span>
-                                <span class="material-symbols-outlined">send</span>
-                            </button>
-                        </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_subject') }}</label>
+                        <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="Subjek pesan"
+                               class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
+                    </div>
 
-                        <div class="mt-2 flex items-center justify-center gap-6">
-                            <span class="text-xs font-bold text-[var(--contact-on-surface-variant)]/50 uppercase tracking-[0.2em]">{{ __('app.contact_map_title') }}</span>
-                            <div class="flex gap-4">
-                                <a class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-[var(--contact-primary)] hover:bg-[var(--contact-primary)] hover:text-white transition-all shadow-sm" href="mailto:smkkaryabangsasintang@gmail.com">
-                                    <span class="material-symbols-outlined text-xl">mail</span>
-                                </a>
-                                <a class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-[var(--contact-primary)] hover:bg-[var(--contact-primary)] hover:text-white transition-all shadow-sm" href="tel:056521234">
-                                    <span class="material-symbols-outlined text-xl">call</span>
-                                </a>
-                                <a class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-[var(--contact-primary)] hover:bg-[var(--contact-primary)] hover:text-white transition-all shadow-sm" href="https://maps.google.com/?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat" target="_blank" rel="noopener noreferrer">
-                                    <span class="material-symbols-outlined text-xl">public</span>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_message') }}</label>
+                        <textarea name="message" rows="5" required placeholder="Tuliskan pesan Anda di sini..."
+                                  class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700 resize-none">{{ old('message') }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn-eco-vibes w-full py-5 rounded-[1.5rem] font-headline font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                        {{ __('app.contact_send') }}
+                        <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+                    </button>
+                </form>
+            </article>
+        </div>
+
+        {{-- Map Section --}}
+        <section class="bg-white rounded-[2.5rem] overflow-hidden editorial-shadow border border-emerald-50 reveal-on-scroll">
+            <div class="flex flex-col md:flex-row h-full">
+                <div class="w-full md:w-1/2 min-h-[350px]">
+                    <iframe
+                        src="https://maps.google.com/maps?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat&output=embed&z=17&hl=id"
+                        width="100%" height="100%" style="border:0; filter: grayscale(0.2) contrast(1.1);"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
+                    <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">Location</span>
+                    <h3 class="text-3xl font-headline font-black mb-6 leading-tight">Kunjungi Sekolah Kami</h3>
+                    <p class="text-white/70 mb-8 leading-relaxed font-medium">
+                        {{ __('app.contact_address_val') }}
+                    </p>
+                    <a href="https://maps.google.com/?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat" target="_blank" 
+                       class="inline-flex items-center gap-3 text-[var(--eco-accent)] font-bold text-sm hover:underline">
+                        Buka di Google Maps
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
                 </div>
             </div>
         </section>
     </div>
-</section>
+</div>
+
+@push('scripts')
+<script>
+    // Reveal on Scroll Animation Setup
+    window.setupRevealOnScroll = function () {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.setupRevealOnScroll);
+    } else {
+        window.setupRevealOnScroll();
+    }
+</script>
+@endpush
 
 @endsection

@@ -240,6 +240,52 @@ return [
     'latar_dasar_title'      => 'Dasar Pemikiran',
     'latar_dasar_desc'       => 'Berdasarkan data Kementerian Lingkungan Hidup dan Kehutanan, deforestasi di Kalimantan Barat mencapai angka yang mengkhawatirkan. SMK Karya Bangsa Sintang berkomitmen untuk menjadi bagian dari solusi melalui program Green School yang terukur dan berbasis teknologi.',
 
+    // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
+    'latar_information_title'    => '📋 INFORMASI',
+    'latar_information_intro'    => 'Go Green School adalah sekolah yang mempromosikan kesadaran lingkungan dan praktik keberlanjutan. Sekolah mendorong siswa, guru, dan staf untuk peduli terhadap lingkungan dan mengurangi dampak negatif terhadap alam. Tujuan utama Go Green School adalah menciptakan lingkungan belajar yang bersih, sehat, dan ramah lingkungan.',
+    'latar_information_body'     => 'Go Green School menerapkan berbagai program ramah lingkungan. Salah satu kegiatan utama adalah mengurangi limbah plastik dengan mendorong siswa membawa botol dan kotak makan yang dapat digunakan kembali. Sekolah juga menyediakan tempat sampah terpisah untuk limbah organik dan anorganik untuk mendukung program daur ulang.
+
+Program penting lainnya adalah menanam pohon dan merawat taman sekolah. Pohon membantu mengurangi polusi udara dan membuat lingkungan lebih sejuk dan nyaman. Sekolah juga dapat menghemat energi dengan mematikan lampu dan perangkat elektronik saat tidak digunakan. Beberapa sekolah bahkan menggunakan panel surya sebagai sumber energi alternatif.
+
+Selain itu, pendidikan lingkungan terintegrasi dalam kegiatan pembelajaran. Siswa diajarkan tentang perubahan iklim, daur ulang, dan pentingnya melindungi alam. Melalui kegiatan ini, siswa mengembangkan tanggung jawab dan kesadaran terhadap lingkungan.',
+    'latar_information_conclusion' => 'Kesimpulannya, Go Green School memainkan peran penting dalam melindungi lingkungan. Dengan menerapkan kebiasaan ramah lingkungan di sekolah, siswa belajar untuk peduli terhadap alam dan membangun masa depan yang lebih baik.',
+
+    'latar_description_title'    => '📖 DESKRIPSI',
+    'latar_description_text'     => '"Green School Tracker" merupakan sebuah aplikasi berbasis web yang dirancang untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang, Kalimantan Barat. Aplikasi ini membantu sekolah dalam memantau pertumbuhan tanaman, mengelola informasi mengenai pohon lokal khas daerah, serta mengedukasi siswa tentang daur ulang sampah melalui fitur kalkulator bank sampah.
+
+Aplikasi ini menyediakan beberapa fitur utama yang mendukung kegiatan lingkungan di sekolah. Halaman utama menampilkan ringkasan data program penghijauan, seperti jumlah pohon yang ditanam, luas area penghijauan, jumlah spesies tanaman, serta kondisi kesehatan tanaman secara keseluruhan.
+
+Aplikasi ini juga menampilkan daftar lengkap tanaman lokal Kalimantan yang ada di lingkungan sekolah, beserta informasi seperti nama lokal dan nama ilmiah, jenis tanaman, lokasi penanaman, manfaat ekologis dan ekonomis, perkiraan tinggi tanaman, serta kondisi kesehatannya.
+
+Selain itu, aplikasi juga dilengkapi dengan fitur kalkulator bank sampah yang memungkinkan pengguna menghitung poin berdasarkan jenis dan berat sampah. Fitur ini membantu siswa memahami nilai dari kegiatan daur ulang secara sederhana dan interaktif. Aplikasi ini dibangun tanpa ketergantungan database, sehingga bersifat ringan, mudah dijalankan, dan cocok digunakan sebagai media pembelajaran maupun demonstrasi.',
+
+    'latar_procedure_title'      => '⚙️ PROSEDUR',
+    'latar_procedure_intro'      => 'Cara Membuat Go Green School',
+    'latar_procedure_objective'  => 'Untuk menjelaskan langkah-langkah membuat sekolah lebih ramah lingkungan.',
+    'latar_procedure_materials'  => 'Bahan dan Perlengkapan',
+    'latar_procedure_items'      => '• Botol dan kotak makan yang dapat digunakan kembali
+• Tempat sampah terpisah
+• Tanaman atau pohon
+• Poster atau bahan kampanye
+1. Kurangi Limbah Plastik - Dorong siswa untuk membawa botol dan kotak makan yang dapat digunakan kembali alih-alih kemasan plastik.
+2. Pisahkan Sampah - Sediakan tempat sampah berbeda untuk limbah organik dan anorganik untuk mendukung daur ulang.
+3. Tanam Pohon dan Tanaman - Selenggarakan kegiatan penanaman pohon atau buat taman sekolah untuk membuat lingkungan lebih bersih dan sejuk.
+4. Hemat Energi - Matikan lampu, kipas angin, dan perangkat elektronik saat tidak digunakan.
+5. Promosikan Kesadaran Lingkungan - Edukasi siswa tentang pemanasan global, daur ulang, dan melindungi lingkungan melalui pelajaran atau poster.
+6. Praktikkan Kebiasaan Ramah Lingkungan - Dorong semua orang di sekolah untuk menjaga kebersihan dan peduli terhadap alam.
+Kesimpulannya, dengan mengikuti langkah-langkah ini, sekolah dapat menjadi lebih bersih, sehat, dan ramah lingkungan. Praktik Go Green membantu mengurangi masalah lingkungan dan mendukung masa depan yang lebih baik.',
+
+    'latar_explanation_title'    => '💡 PENJELASAN',
+    'latar_explanation_intro'    => 'Pemanasan global adalah kondisi di mana Bumi menjadi lebih panas dari waktu ke waktu. Hal ini terjadi karena adanya gas rumah kaca di atmosfer. "Go Green" adalah gerakan yang membantu mengurangi masalah lingkungan dan memperlambat pemanasan global.',
+    'latar_explanation_body'     => 'Pemanasan global terjadi karena aktivitas manusia menghasilkan terlalu banyak gas rumah kaca. Gas-gas ini termasuk karbon dioksida (CO₂) dan metana. Mereka sebagian besar berasal dari pembakaran bahan bakar fosil seperti batu bara, minyak, dan gas untuk listrik, pabrik, dan kendaraan.
+
+Normalnya, sinar matahari memasuki Bumi dan membuatnya hangat. Sebagian panas kembali ke luar angkasa. Namun, gas rumah kaca menjebak sebagian panas di atmosfer. Proses ini disebut efek rumah kaca. Ketika ada terlalu banyak gas rumah kaca, lebih banyak panas yang terperangkap. Akibatnya, suhu Bumi meningkat.
+
+Ketika suhu naik, banyak perubahan terjadi. Es di Kutub Utara dan Selatan mencair lebih cepat. Ini menyebabkan permukaan laut naik. Cuaca juga menjadi lebih ekstrem, seperti badai yang lebih kuat, banjir, dan gelombang panas. Hewan dan tumbuhan mungkin kesulitan bertahan karena lingkungan mereka berubah terlalu cepat.
+
+Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam pohon membantu menyerap karbon dioksida dari udara. Menggunakan energi terbarukan seperti tenaga surya dan angin mengurangi polusi. Menghemat listrik dan mengurangi limbah plastik juga membantu menurunkan emisi gas rumah kaca. Ketika emisi gas rumah kaca menurun, lebih sedikit panas yang terperangkap di atmosfer.',
+    'latar_explanation_conclusion' => 'Kesimpulannya, pemanasan global terjadi karena gas rumah kaca menjebak terlalu banyak panas di atmosfer. Hal ini menyebabkan perubahan iklim dan masalah lingkungan. Tindakan Go Green dapat mengurangi gas rumah kaca dan membantu melindungi Bumi. Oleh karena itu, mempraktikkan Go Green penting untuk memperlambat pemanasan global dan menjaga planet kita tetap aman untuk masa depan.',
+
     // Profil Sekolah
     'profil_sek_title'       => 'Profil Sekolah',
     'profil_sek_subtitle'    => 'SMK Karya Bangsa Sintang — Menuju Sekolah Hijau Terbaik Kalimantan',

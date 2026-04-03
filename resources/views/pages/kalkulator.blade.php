@@ -36,6 +36,21 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 @endphp
 
 <style>
+    /* Font System */
+    .font-headline { font-family: 'DM Sans', sans-serif; }
+    .font-body { font-family: 'Roboto', sans-serif; }
+
+    /* Reveal on Scroll Animation */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     @media (min-width: 1024px) {
         .lg-grid-kalkulator { grid-template-columns: 7fr 5fr !important; }
     }
@@ -52,25 +67,33 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         30% { box-shadow: 0 0 0 8px rgba(16,185,129,0.20), 0 18px 40px rgba(6,78,59,0.15); }
         100% { box-shadow: 0 20px 40px rgba(16,33,25,0.07); }
     }
+
 </style>
 
-{{-- Hero Section --}}
-<section class="relative overflow-hidden flex items-center justify-center text-center text-white" style="min-height:380px; background-image: linear-gradient(rgba(6,78,59,0.85), rgba(6,78,59,0.95)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd'); background-size:cover; background-position:center;">
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(2,44,34,0.55) 0%, rgba(6,37,28,0.38) 40%, rgba(1,20,15,0.18) 100%);"></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(1,20,15,0.28) 80%, #f6f8f7 100%);"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(17,212,115,0.07) 0%, transparent 70%);"></div>
-    <div class="relative z-10 max-w-3xl mx-auto px-6">
-        <span class="inline-block py-1 px-4 text-xs font-bold uppercase tracking-widest mb-4" style="background:rgba(17,212,115,0.2);border:1px solid rgba(17,212,115,0.3);color:#13ec92;border-radius:9999px;">
-            {{ __('app.program_active') }}
-        </span>
-        <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">{{ __('app.kalkulator_title') }}</h2>
-        <p class="text-lg leading-relaxed" style="color:rgba(236,253,245,0.8)">
-            {{ __('app.hero_kalkulator_desc') }}
-        </p>
-    </div>
-</section>
+<div class="bg-[#f3f7fb] font-body text-[#2a2f32]">
+<div class="relative max-w-7xl mx-auto px-6 md:px-8 mt-8">
+    <section class="relative overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group" style="min-height:500px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd'); background-size:cover; background-position:center;">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" alt="Calculator Hero">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+        </div>
+        <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+                Platform Peduli Lingkungan
+            </div>
+            <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+                {{ __('app.kalkulator_title') }}
+            </h1>
+            <div class="text-white/90 text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
+                {{ __('app.hero_kalkulator_desc') }}
+            </div>
+        </div>
+    </section>
+</div>
+</div>
 {{-- Main Content Grid --}}
-<main id="kalkulator-section" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8" style="padding-top:3rem;padding-bottom:5rem;margin-top:-2.5rem;position:relative;z-index:20;">
+<main id="kalkulator-section" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 font-body" style="padding-top:3rem;padding-bottom:5rem;margin-top:-2.5rem;position:relative;z-index:20;">
     <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="lg-grid-kalkulator">
 
         {{-- Left Column: Calculator Form --}}
@@ -78,8 +101,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <div class="bg-white rounded-2xl border border-emerald-50 overflow-hidden reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07);">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-2">
-                        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1,'wght' 400;color:#11d473;background:rgba(17,212,115,0.1);padding:8px;border-radius:8px;">calculate</span>
-                        <h3 class="text-xl font-bold text-slate-900">{{ __('app.form_title') }}</h3>
+                        <h3 class="text-xl font-bold text-slate-900 font-headline">{{ __('app.form_title') }}</h3>
                     </div>
                     <p class="text-sm mb-6" style="color:#94a3b8;margin-left:4px;">{{ __('app.form_types_hint') }}</p>
                     
@@ -886,5 +908,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Reveal on Scroll Animation Setup
+window.setupRevealOnScroll = function () {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.setupRevealOnScroll);
+} else {
+    window.setupRevealOnScroll();
+}
 </script>
 @endpush

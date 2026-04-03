@@ -4,263 +4,460 @@
 
 @section('content')
 
-{{-- Hero Section --}}
-<header class="relative w-full overflow-hidden flex items-center" style="min-height:640px">
-    <div class="absolute inset-0 bg-cover bg-center"
-         style="background-image: url('{{ asset('images/begeron.jpeg') }}');">
-    </div>
-    {{-- Multi-layer gradient overlay --}}
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(2,44,34,0.55) 0%, rgba(6,37,28,0.38) 40%, rgba(1,20,15,0.18) 100%);"></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(1,20,15,0.28) 80%, #f6f8f7 100%);"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 10% 50%, rgba(17,212,115,0.07) 0%, transparent 70%);"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-28">
-        <div class="max-w-2xl">
-            <span class="inline-block px-3 py-1 border text-xs font-bold tracking-widest uppercase rounded-full mb-6"
-                  style="background:rgba(255, 255, 255, 0.96);border-color:rgb(255, 255, 255);color:#11d473">
-                {{ __('app.program_active') }}
-            </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight">
-                {{ __('app.hero_title') }}<br>
-                <span class="text-primary">{{ __('app.hero_school') }}</span>
-            </h1>
-            <p class="text-white/80 text-lg md:text-xl mb-10 leading-relaxed font-medium">
-                {{ __('app.hero_desc') }} — <strong class="text-white/95">{{ __('app.hero_province') }}</strong>
-            </p>
-            <div class="flex flex-wrap gap-5">
-                <a href="{{ url('/tanaman') }}"
-                   class="bg-primary hover:bg-emerald-400 text-emerald-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all inline-flex items-center gap-2 hover:scale-[1.02]"
-                   style="box-shadow:0 10px 25px rgba(17,212,115,0.3)">
-                    {{ __('app.btn_lihat_tanaman') }}
-                    <span class="material-symbols-outlined" style="font-size:1.2rem;line-height:1">trending_up</span>
-                </a>
-                <a href="{{ url('/kalkulator') }}"
-                   class="glass-effect bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl border border-white/20 transition-all inline-flex items-center gap-2 hover:scale-[1.02]">
-                    {{ __('app.btn_hitung_poin') }}
-                </a>
-            </div>
+<style>
+    /* Glass Effect dari ECO-VIBE */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+    }
+
+    /* Animasi Reveal on Scroll (Solusi #2) */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Floating Neon Leaves Animation - dengan 3D Rotation */
+    @keyframes float-leaf {
+        0%, 100% { 
+            transform: translateY(0px) rotateZ(0deg) rotateY(0deg); 
+            opacity: 0.8; 
+        }
+        25% { 
+            transform: translateY(-30px) rotateZ(90deg) rotateY(25deg); 
+            opacity: 1; 
+        }
+        50% { 
+            transform: translateY(-60px) rotateZ(180deg) rotateY(-10deg); 
+            opacity: 0.9; 
+        }
+        75% { 
+            transform: translateY(-30px) rotateZ(270deg) rotateY(20deg); 
+            opacity: 1; 
+        }
+    }
+    
+    .floating-leaf {
+        animation: float-leaf 8s ease-in-out infinite;
+        filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.6));
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+    
+    .leaf-1 { animation-delay: 0s; }
+    .leaf-2 { animation-delay: 2s; }
+    .leaf-3 { animation-delay: 4s; }
+    .leaf-4 { animation-delay: 6s; }
+
+    /* Dark Forest Framing Pillar */
+    .forest-pillar-left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 25%;
+        background: linear-gradient(90deg, rgba(10, 47, 34, 0.45) 0%, transparent 100%);
+        z-index: 8;
+        pointer-events: none;
+    }
+    
+    .forest-pillar-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 25%;
+        background: linear-gradient(270deg, rgba(10, 47, 34, 0.45) 0%, transparent 100%);
+        z-index: 8;
+        pointer-events: none;
+    }
+</style>
+
+<div class="relative max-w-7xl mx-auto px-6 md:px-8 pb-20 overflow-hidden">
+
+    {{-- Floating Neon Leaves Background --}}
+    <div class="fixed inset-0 -z-10 pointer-events-none">
+        <!-- Floating Leaf 1 - Realistic Curved Leaf with Prominent Veins -->
+        <div class="floating-leaf leaf-1 absolute top-[15%] left-[10%]">
+            <svg width="60" height="60" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Smooth curved leaf body -->
+                <path d="M 50 5 C 50 5 75 15 82 40 C 88 65 75 90 50 110 C 25 90 12 65 18 40 C 25 15 50 5 50 5 Z" fill="#00ff88" opacity="0.93"/>
+                
+                <!-- Central vein - thick and prominent -->
+                <path d="M 50 5 Q 50 30 50 110" stroke="#ffffff" stroke-width="2.2" opacity="0.8" stroke-linecap="round"/>
+                
+                <!-- Secondary veins left - curved organic -->
+                <path d="M 50 20 Q 38 28 30 40" stroke="#ffffff" stroke-width="1.4" opacity="0.65"/>
+                <path d="M 50 40 Q 32 50 22 65" stroke="#ffffff" stroke-width="1.3" opacity="0.58"/>
+                <path d="M 50 65 Q 35 80 25 95" stroke="#ffffff" stroke-width="1.2" opacity="0.55"/>
+                
+                <!-- Secondary veins right - curved organic -->
+                <path d="M 50 20 Q 62 28 70 40" stroke="#ffffff" stroke-width="1.4" opacity="0.65"/>
+                <path d="M 50 40 Q 68 50 78 65" stroke="#ffffff" stroke-width="1.3" opacity="0.58"/>
+                <path d="M 50 65 Q 65 80 75 95" stroke="#ffffff" stroke-width="1.2" opacity="0.55"/>
+                
+                <!-- Tertiary vein details -->
+                <path d="M 32 28 L 40 35 M 35 55 L 42 65 M 38 85 L 45 95" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+                <path d="M 68 28 L 60 35 M 65 55 L 58 65 M 62 85 L 55 95" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+            </svg>
+        </div>
+        
+        <!-- Floating Leaf 2 - Wide Oval Leaf -->
+        <div class="floating-leaf leaf-2 absolute top-[20%] right-[12%]">
+            <svg width="45" height="45" viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Soft oval leaf -->
+                <path d="M 45 8 C 65 15 75 30 75 50 C 75 70 65 85 45 92 C 25 85 15 70 15 50 C 15 30 25 15 45 8 Z" fill="#00ff88" opacity="0.91"/>
+                
+                <!-- Central vein -->
+                <path d="M 45 8 L 45 92" stroke="#ffffff" stroke-width="2" opacity="0.78" stroke-linecap="round"/>
+                
+                <!-- Left side veins -->
+                <path d="M 45 22 Q 32 30 25 42" stroke="#ffffff" stroke-width="1.3" opacity="0.62"/>
+                <path d="M 45 45 Q 28 52 18 65" stroke="#ffffff" stroke-width="1.2" opacity="0.58"/>
+                <path d="M 45 70 Q 30 78 20 85" stroke="#ffffff" stroke-width="1.2" opacity="0.55"/>
+                
+                <!-- Right side veins -->
+                <path d="M 45 22 Q 58 30 65 42" stroke="#ffffff" stroke-width="1.3" opacity="0.62"/>
+                <path d="M 45 45 Q 62 52 72 65" stroke="#ffffff" stroke-width="1.2" opacity="0.58"/>
+                <path d="M 45 70 Q 60 78 70 85" stroke="#ffffff" stroke-width="1.2" opacity="0.55"/>
+            </svg>
+        </div>
+        
+        <!-- Floating Leaf 3 - Balanced Teardrop Leaf -->
+        <div class="floating-leaf leaf-3 absolute top-[50%] right-[8%]">
+            <svg width="52" height="52" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Teardrop/rounded leaf shape - more balanced -->
+                <path d="M 50 8 C 70 15 82 35 80 60 C 78 85 65 100 50 105 C 35 100 22 85 20 60 C 18 35 30 15 50 8 Z" fill="#00ff88" opacity="0.90"/>
+                
+                <!-- Central vein -->
+                <path d="M 50 8 L 50 105" stroke="#ffffff" stroke-width="1.9" opacity="0.76" stroke-linecap="round"/>
+                
+                <!-- Left side veins -->
+                <path d="M 50 22 Q 35 30 28 45" stroke="#ffffff" stroke-width="1.2" opacity="0.60"/>
+                <path d="M 50 50 Q 30 60 22 75" stroke="#ffffff" stroke-width="1.1" opacity="0.55"/>
+                <path d="M 50 80 Q 35 90 28 100" stroke="#ffffff" stroke-width="1.1" opacity="0.53"/>
+                
+                <!-- Right side veins -->
+                <path d="M 50 22 Q 65 30 72 45" stroke="#ffffff" stroke-width="1.2" opacity="0.60"/>
+                <path d="M 50 50 Q 70 60 78 75" stroke="#ffffff" stroke-width="1.1" opacity="0.55"/>
+                <path d="M 50 80 Q 65 90 72 100" stroke="#ffffff" stroke-width="1.1" opacity="0.53"/>
+                
+                <!-- Subtle tertiary details -->
+                <path d="M 32 35 L 40 42 M 35 65 L 42 75" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+                <path d="M 68 35 L 60 42 M 65 65 L 58 75" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+            </svg>
+        </div>
+        
+        <!-- Floating Leaf 4 - Pointed Leaf -->
+        <div class="floating-leaf leaf-4 absolute bottom-[18%] left-[15%]">
+            <svg width="50" height="50" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sharp pointed leaf -->
+                <path d="M 50 5 C 68 12 80 30 82 55 C 83 80 72 105 50 125 C 28 105 17 80 18 55 C 20 30 32 12 50 5 Z" fill="#00ff88" opacity="0.92"/>
+                
+                <!-- Central vein - prominent -->
+                <path d="M 50 5 Q 50 35 50 125" stroke="#ffffff" stroke-width="2.1" opacity="0.78" stroke-linecap="round"/>
+                
+                <!-- Left veins -->
+                <path d="M 50 20 Q 38 32 28 48" stroke="#ffffff" stroke-width="1.3" opacity="0.64"/>
+                <path d="M 50 50 Q 34 70 24 90" stroke="#ffffff" stroke-width="1.2" opacity="0.58"/>
+                <path d="M 50 95 Q 38 110 28 120" stroke="#ffffff" stroke-width="1.2" opacity="0.56"/>
+                
+                <!-- Right veins -->
+                <path d="M 50 20 Q 62 32 72 48" stroke="#ffffff" stroke-width="1.3" opacity="0.64"/>
+                <path d="M 50 50 Q 66 70 76 90" stroke="#ffffff" stroke-width="1.2" opacity="0.58"/>
+                <path d="M 50 95 Q 62 110 72 120" stroke="#ffffff" stroke-width="1.2" opacity="0.56"/>
+                
+                <!-- Subtle vein details -->
+                <path d="M 35 35 L 42 45 M 34 75 L 40 85" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+                <path d="M 65 35 L 58 45 M 66 75 L 60 85" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+            </svg>
         </div>
     </div>
-</header>
 
-{{-- Floating Stats Section --}}
-<section class="max-w-7xl mx-auto px-4 relative z-10" style="margin-top:-3rem">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
-            <div class="flex items-center justify-between mb-4">
-                <div class="p-3 bg-emerald-50 rounded-xl text-primary">
-                    <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">co2</span>
-                </div>
-                <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+12.4%</span>
-            </div>
-            <h3 class="text-slate-500 text-sm font-semibold uppercase tracking-wider">{{ __('app.stat_co2') }}</h3>
-            <p class="text-3xl font-black mt-1">1.28 <span class="text-lg font-normal">Tons</span></p>
+    {{-- Hero Section (Solusi #4: Kontras dan Bentuk) --}}
+{{-- Tambahan Animasi Kustom untuk Efek Daun Melayang --}}
+<style>
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0) rotate(var(--tw-rotate)); }
+        50% { transform: translateY(-15px) rotate(calc(var(--tw-rotate) + 10deg)); }
+    }
+    @keyframes float-med {
+        0%, 100% { transform: translateY(0) rotate(var(--tw-rotate)); }
+        50% { transform: translateY(-20px) rotate(calc(var(--tw-rotate) - 10deg)); }
+    }
+    .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+    .animate-float-med { animation: float-med 5s ease-in-out infinite; animation-delay: 1s; }
+    .animate-float-fast { animation: float-slow 4s ease-in-out infinite; animation-delay: 2s; }
+</style>
+
+<section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+    
+    {{-- 1. Gambar Background Asli (Jernih di Tengah) --}}
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        {{-- Tambahan efek zoom in sangat lambat saat di-hover (group-hover) --}}
+        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/begeron.jpeg') }}" alt="Hero Background"/>
+    </div>
+
+    {{-- 2. BACKGROUND GRADIENT FRAME (Diperbaiki agar seimbang & kontras) --}}
+    {{-- Gradien Kiri (Dipergelap sedikit agar teks putih 100% aman terbaca) --}}
+    <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+    
+    {{-- Gradien Kanan (Pilar Gelap Penyeimbang) --}}
+    <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+
+    {{-- 3. PILAR CAHAYA GLOWING NEON --}}
+    <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+    {{-- 4. KONTEN UTAMA --}}
+    <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+        
+        {{-- Badge Premium (Efek Glassmorphism Ditingkatkan) --}}
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-pulse shadow-[0_0_10px_#00ff88]"></span>
+            Platform Peduli Lingkungan
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
-            <div class="flex items-center justify-between mb-4">
-                <div class="p-3 bg-emerald-50 rounded-xl text-primary">
-                    <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">forest</span>
-                </div>
-                <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+45 today</span>
-            </div>
-            <h3 class="text-slate-500 text-sm font-semibold uppercase tracking-wider">{{ __('app.stat_total_pohon') }}</h3>
-            <p class="text-3xl font-black mt-1">1,450 <span class="text-lg font-normal">Trees</span></p>
+        {{-- Judul --}}
+        <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            Go Green <br/> School Today.
+        </h1>
+        
+        <p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed drop-shadow-md max-w-xl">
+            Perubahan besar dimulai dari aksi kecil di lingkungan sekolah. Monitor jejak karbonmu dan mulai kebiasaan hijau dari sekarang.
+        </p>
+        
+        {{-- Tombol --}}
+        <div class="flex flex-wrap gap-4">
+            {{-- Tombol Mulai Hitung --}}
+            <a href="{{ url('/kalkulator') }}" class="bg-[#a3e635] hover:bg-[#b4f825] text-[#0a2f22] px-8 py-4 rounded-full font-headline font-extrabold scale-100 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(163,230,53,0.3)] hover:shadow-[0_12px_25px_rgba(163,230,53,0.5)] text-center flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">recycling</span> Mulai Hitung
+            </a>
+            
+            {{-- Tombol Jelajahi --}}
+            <a href="{{ url('/tanaman') }}" class="bg-white/5 backdrop-blur-md text-white px-8 py-4 rounded-full font-headline font-bold border border-white/30 hover:bg-white/20 hover:-translate-y-1 transition-all text-center flex items-center gap-2 shadow-lg hover:shadow-xl">
+                <span class="material-symbols-outlined text-xl">eco</span> Jelajahi
+            </a>
         </div>
+    </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
-            <div class="flex items-center justify-between mb-4">
-                <div class="p-3 bg-emerald-50 rounded-xl text-primary">
-                    <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">recycling</span>
-                </div>
-                <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">Target: 95%</span>
-            </div>
-            <h3 class="text-slate-500 text-sm font-semibold uppercase tracking-wider">{{ __('app.stat_poin') }}</h3>
-            <p class="text-3xl font-black mt-1">88.5 <span class="text-lg font-normal">%</span></p>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-emerald-50 group hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 20px 40px rgba(16,33,25,0.07); background: linear-gradient(145deg, #ffffff 70%, #f7fdf9 100%)">
-            <div class="flex items-center justify-between mb-4">
-                <div class="p-3 bg-emerald-50 rounded-xl text-primary">
-                    <span class="material-symbols-outlined" style="font-size:1.875rem;line-height:1">verified</span>
-                </div>
-                <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">Platinum</span>
-            </div>
-            <h3 class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Eco Score</h3>
-            <p class="text-3xl font-black mt-1">98/100</p>
-        </div>
-
+    {{-- 6. WAVE DIVIDER BAWAH --}}
+    <div class="absolute bottom-0 w-full overflow-hidden leading-none z-30 transform translate-y-1 pointer-events-none">
+        <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.34,201.39,98.4,242.41,86.27,282.89,71.21,321.39,56.44Z" fill="var(--md-sys-color-background, #f4fbf6)"></path>
+        </svg>
     </div>
 </section>
 
-{{-- Main Content Grid --}}
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" style="position:relative">
-    {{-- Decorative gradient blobs --}}
-    <div style="position:absolute; top:-80px; right:-120px; width:500px; height:500px; border-radius:50%; background: radial-gradient(circle, rgba(17,212,115,0.04) 0%, transparent 70%); pointer-events:none; z-index:0;"></div>
-    <div style="position:absolute; bottom:0; left:-100px; width:400px; height:400px; border-radius:50%; background: radial-gradient(circle, rgba(6,148,162,0.03) 0%, transparent 70%); pointer-events:none; z-index:0;"></div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" style="position:relative; z-index:1;">
+    {{-- Quick Navigation Bento Grid --}}
+    <section class="mt-16 reveal-on-scroll">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            @php
+            $navItems = [
+                ['title'=>'Kalkulator Sampah','icon'=>'recycling','link'=>'/kalkulator','desc'=>'Hitung dampak sampahmu', 'color'=>'primary'],
+                ['title'=>'Tanaman','icon'=>'eco','link'=>'/tanaman','desc'=>'Kenali tanaman hijau', 'color'=>'tertiary'],
+                ['title'=>'Tentang','icon'=>'school','link'=>'/profil-sekolah','desc'=>'Profil sekolah', 'color'=>'primary'],
+                ['title'=>'Contact','icon'=>'call','link'=>'/contact','desc'=>'Hubungi kami', 'color'=>'tertiary']
+            ];
+            @endphp
 
-        {{-- Left Column: Agenda (2/3) --}}
-        <div class="lg:col-span-2 space-y-8">
-            <div class="bg-white rounded-2xl border border-emerald-50 shadow-sm overflow-hidden reveal-on-scroll">
-                <div class="px-6 py-5 border-b border-emerald-50 flex justify-between items-center">
-                    <h2 class="text-xl font-bold flex items-center gap-2 text-slate-800">
-                        <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">calendar_today</span>
-                        {{ __('app.agenda_title') }}
-                    </h2>
-                    <button class="text-primary text-sm font-bold hover:underline">{{ __('app.agenda_lihat_semua') }}</button>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead style="background: linear-gradient(90deg, rgba(240,253,248,0.8) 0%, rgba(236,253,245,0.6) 100%)">
-                            <tr>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">{{ __('app.agenda_tanggal') }}</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">{{ __('app.agenda_kegiatan') }}</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">{{ __('app.agenda_koordinator') }}</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">{{ __('app.agenda_status') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-emerald-50">
-                            @foreach([
-                                ['tanggal' => '10 Mar 2026', 'kegiatan' => __('app.agenda_1'), 'koord' => __('app.agenda_koord_tim'),   'status' => __('app.status_mendatang'), 'badge' => 'bg-blue-100 text-blue-700',        'glow' => 'box-shadow:0 0 8px rgba(59,130,246,0.2)'],
-                                ['tanggal' => '15 Mar 2026', 'kegiatan' => __('app.agenda_2'), 'koord' => __('app.agenda_koord_kelas_xi'), 'status' => __('app.status_mendatang'), 'badge' => 'bg-blue-100 text-blue-700',        'glow' => 'box-shadow:0 0 8px rgba(59,130,246,0.2)'],
-                                ['tanggal' => '20 Feb 2026', 'kegiatan' => __('app.agenda_3'), 'koord' => __('app.agenda_koord_osis'),  'status' => __('app.status_selesai'),   'badge' => 'bg-emerald-100 text-emerald-700',  'glow' => 'box-shadow:0 0 8px rgba(17,212,115,0.2)'],
-                                ['tanggal' => '05 Feb 2026', 'kegiatan' => __('app.agenda_4'), 'koord' => __('app.agenda_koord_semua'), 'status' => __('app.status_selesai'),   'badge' => 'bg-emerald-100 text-emerald-700',  'glow' => 'box-shadow:0 0 8px rgba(17,212,115,0.2)'],
-                                ['tanggal' => '20 Jan 2026', 'kegiatan' => __('app.agenda_5'), 'koord' => __('app.agenda_koord_guru'),  'status' => __('app.status_selesai'),   'badge' => 'bg-emerald-100 text-emerald-700',  'glow' => 'box-shadow:0 0 8px rgba(17,212,115,0.2)'],
-                            ] as $item)
-                            <tr class="hover:bg-emerald-50/30 transition-colors">
-                                <td class="px-6 py-4 text-sm font-medium text-slate-500 whitespace-nowrap">{{ $item['tanggal'] }}</td>
-                                <td class="px-6 py-4 text-sm font-bold text-slate-800">{{ $item['kegiatan'] }}</td>
-                                <td class="px-6 py-4 text-sm text-slate-600">{{ $item['koord'] }}</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold {{ $item['badge'] }}"
-                                          style="{{ $item['glow'] }}">
-                                        {{ strtoupper($item['status']) }}
-                                    </span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            {{-- Mini Artikel --}}
-            <div class="bg-white rounded-2xl border border-emerald-50 shadow-sm p-6 reveal-on-scroll">
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">article</span>
-                            Mini Artikel Go Green
-                        </h2>
-                        <p class="text-sm text-slate-500 mt-1">Ringkasan singkat untuk inspirasi aksi hijau di sekolah.</p>
-                    </div>
-                    <a href="{{ url('/artikel') }}" class="text-primary text-sm font-bold hover:underline">Lihat semua</a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    @foreach([
-                        [
-                            'tag' => 'Edukasi',
-                            'title' => '3 Langkah Kurangi Sampah Plastik di Kelas',
-                            'desc' => 'Mulai dari botol isi ulang, kotak makan, dan aturan tanpa plastik sekali pakai.',
-                            'link' => url('/artikel#artikel-plastik'),
-                            'icon' => 'recycling',
-                        ],
-                        [
-                            'tag' => 'Program',
-                            'title' => 'Bank Sampah Sekolah: Cara Mengumpulkan Poin',
-                            'desc' => 'Kenali jenis sampah bernilai dan jadwal setoran yang efisien untuk kelasmu.',
-                            'link' => url('/artikel#artikel-bank-sampah'),
-                            'icon' => 'calculate',
-                        ],
-                        [
-                            'tag' => 'Tanaman',
-                            'title' => 'Pohon Lokal yang Cocok untuk Halaman Sekolah',
-                            'desc' => 'Tengkawang, jelutung, dan meranti punya manfaat besar untuk iklim mikro.',
-                            'link' => url('/artikel#artikel-pohon-lokal'),
-                            'icon' => 'park',
-                        ],
-                    ] as $artikel)
-                    <div class="rounded-2xl border border-emerald-100 bg-white p-5 hover:-translate-y-1 transition-all reveal-on-scroll" style="box-shadow:0 18px 36px rgba(16,33,25,0.06);">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="material-symbols-outlined text-emerald-600" style="font-size:1.2rem">{{ $artikel['icon'] }}</span>
-                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">{{ $artikel['tag'] }}</span>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800 leading-snug mb-2">{{ $artikel['title'] }}</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-4">{{ $artikel['desc'] }}</p>
-                        <a href="{{ $artikel['link'] }}" class="text-sm font-bold text-primary inline-flex items-center gap-2">
-                            Baca selengkapnya
-                            <span class="material-symbols-outlined" style="font-size:1rem">arrow_forward</span>
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+            @foreach($navItems as $item)
+            {{-- Rounded diperbesar jadi 3xl agar lebih organik --}}
+<a href="{{ url($item['link']) }}" class="relative group bg-surface-container-lowest p-8 rounded-3xl flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300 shadow-[0_8px_32px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_48px_rgba(0,105,72,0.1)]">
+        
+        {{-- Elemen Glow Baru --}}
+        <div class="bento-glow absolute inset-0 z-0 rounded-3xl"></div>
+        
+        <div class="relative z-10 bg-{{ $item['color'] }}-container/20 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-{{ $item['color'] }}-container/40 transition-colors">
+            <span class="material-symbols-outlined text-{{ $item['color'] }} text-3xl group-hover:scale-110 transition-transform">{{ $item['icon'] }}</span>
         </div>
+        <div class="relative z-10">
+            <h3 class="font-headline font-extrabold text-xl mb-1 text-primary">{{ $item['title'] }}</h3>
+            <p class="text-on-surface-variant text-sm">{{ $item['desc'] }}</p>
+        </div>
+    </a>
+            @endforeach
 
-        {{-- Right Column: Profil & Motto (1/3) --}}
-        <div class="space-y-8">
+        </div>
+    </section>
 
-            {{-- Profil Sekolah --}}
-            <div class="rounded-2xl border border-emerald-50 shadow-sm p-6 reveal-on-scroll" style="background: linear-gradient(145deg, #ffffff 0%, #f7fdf9 100%);">
-                <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
-                    <span class="material-symbols-outlined text-primary" style="font-size:1.3rem">school</span>
-                    {{ __('app.profil_title') }}
-                </h2>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">location_on</span>
-                        </div>
-                        <div>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">{{ __('app.profil_lokasi') }}</p>
-                            <p class="text-sm font-semibold">{{ __('app.profil_lokasi_sub') }}</p>
-                        </div>
+    {{-- Eco-System Features --}}
+    <section class="mt-24 reveal-on-scroll">
+        <div class="text-center md:text-left mb-10">
+            <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Fasilitas Utama</span>
+                <h2 class="font-headline text-3xl font-extrabold text-primary mb-10 tracking-tight text-center md:text-left">Eco-System Features</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="relative h-[350px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+                <div class="absolute inset-0 bg-primary transition-colors duration-500 group-hover:bg-[#005b3e]"></div>
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
+                <div class="absolute bottom-0 p-8 md:p-10 z-10 w-full">
+                    <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-3xl">recycling</span>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">stars</span>
-                        </div>
-                        <div>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">{{ __('app.profil_program') }}</p>
-                            <p class="text-sm font-semibold">{{ __('app.profil_program_sub') }}</p>
-                        </div>
+                    <h3 class="font-headline text-3xl font-extrabold text-white mb-3">Kalkulator Sampah</h3>
+                    <p class="text-white/80 mb-6 max-w-sm text-sm md:text-base">Hitung dampak lingkungan dari sampah yang kamu hasilkan dan mulai perubahan dari sekarang.</p>
+                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-6 py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Coba Kalkulator</a>
+                </div>
+            </div>
+
+            <div class="relative h-[350px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+                <div class="absolute inset-0 bg-tertiary transition-colors duration-500 group-hover:bg-[#375900]"></div>
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
+                <div class="absolute bottom-0 p-8 md:p-10 z-10 w-full">
+                    <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-3xl">park</span>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">group</span>
-                        </div>
-                        <div>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">{{ __('app.profil_nama') }}</p>
-                            <p class="text-sm font-semibold">{{ __('app.profil_jenis') }}</p>
-                        </div>
+                    <h3 class="font-headline text-3xl font-extrabold text-white mb-3">Edukasi Lingkungan</h3>
+                    <p class="text-white/80 mb-6 max-w-sm text-sm md:text-base">Pelajari cara menjaga bumi melalui informasi tanaman dan tips go green dengan mudah.</p>
+                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-6 py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Mulai Belajar</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {{-- Articles & Education Grid (Solusi #1: Kerangka Real Image) --}}
+    <section class="mt-28 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4 text-center sm:text-left">
+            <div>
+                <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Inspirasi Hijau</span>
+                <h2 class="font-headline text-3xl font-extrabold text-primary tracking-tight">Artikel & Edukasi</h2>
+                <p class="text-on-surface-variant font-medium mt-2">Inspirasi terbaru untuk masa depan hijau.</p>
+            </div>
+            <a href="{{ url('/artikel') }}" class="bg-primary/10 text-primary px-6 py-3 rounded-full font-headline font-bold flex items-center gap-2 group hover:bg-primary hover:text-white transition-colors">
+                Lihat Semua <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @php
+            $articles = [
+                [
+                    'title' => 'Bahaya Sampah Plastik Sekali Pakai',
+                    'link'  => '/artikel#artikel-plastik',
+                    'image' => 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
+                    'tag'   => 'Environment',
+                    'date'  => '12 Okt 2023',
+                    'desc'  => 'Plastik sekali pakai adalah ancaman besar bagi lingkungan kita. Pelajari dampak buruknya dan bagaimana kita bisa menguranginya.'
+                ],
+                [
+                    'title' => 'Membangun Bank Sampah Sekolah',
+                    'link'  => '/artikel#artikel-bank-sampah',
+                    'image' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
+                    'tag'   => 'Community',
+                    'date'  => '28 Nov 2023',
+                    'desc'  => 'Bank sampah tidak hanya menjaga kebersihan, tapi juga bernilai ekonomis. Simak panduan membangun sistem bank sampah yang efektif.'
+                ],
+                [
+                    'title' => 'Manfaat Menanam Pohon di Sekitar',
+                    'link'  => '/artikel#artikel-pohon',
+                    'image' => 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
+                    'tag'   => 'Horticulture',
+                    'date'  => '05 Jan 2024',
+                    'desc'  => 'Menanam satu pohon bisa memberikan oksigen berkualitas. Mari pahami peran penting pepohonan dalam menekan emisi karbon.'
+                ]
+            ];
+            @endphp
+
+            @foreach($articles as $artikel)
+            <a href="{{ url($artikel['link']) }}" class="bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_4px_20px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_40px_rgba(0,105,72,0.12)] border border-outline-variant/10 flex flex-col group transition-all duration-500 hover:-translate-y-3">
+                
+                {{-- Area Foto Artikel Asli --}}
+                <div class="h-52 relative overflow-hidden bg-surface-container-high">
+                    <img src="{{ $artikel['image'] }}" alt="{{ $artikel['title'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" loading="lazy">
+                    
+                    {{-- Overlay Gradient Tipis biar gambar gak mati --}}
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+                    
+                    <div class="absolute top-4 left-4 z-10">
+                        <span class="bg-white/90 backdrop-blur text-primary px-3 py-1.5 rounded-full text-xs font-bold font-headline uppercase tracking-wider shadow-sm">
+                            {{ $artikel['tag'] }}
+                        </span>
                     </div>
                 </div>
-                <a href="{{ url('/profil-sekolah') }}"
-                   class="w-full mt-8 block text-center bg-slate-50 border border-emerald-50 text-slate-600 py-3 rounded-xl font-bold hover:bg-emerald-50 transition-colors text-sm">
-                    {{ __('app.profil_visi') }}
+
+                {{-- Konten Teks --}}
+                <div class="p-6 md:p-8 flex flex-col flex-grow relative">
+                    <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-medium mb-3">
+                        <span class="material-symbols-outlined text-[1rem]">calendar_today</span>
+                        <span>{{ $artikel['date'] }}</span>
+                    </div>
+
+                    <h4 class="font-headline text-xl font-extrabold text-primary leading-snug mb-3 group-hover:text-tertiary transition-colors line-clamp-2">
+                        {{ $artikel['title'] }}
+                    </h4>
+
+                    <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                        {{ $artikel['desc'] }}
+                    </p>
+
+                    <div class="mt-auto pt-4 border-t border-outline-variant/20 flex items-center gap-2 text-primary font-bold text-sm font-headline group-hover:translate-x-2 transition-transform">
+                        Baca selengkapnya <span class="material-symbols-outlined text-base">arrow_forward</span>
+                    </div>
+                </div>
+            </a>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- Bold CTA Section --}}
+    <section class="mt-32 relative rounded-[3rem] overflow-hidden bg-primary py-24 text-center reveal-on-scroll shadow-2xl">
+        <div class="absolute inset-0 z-0 opacity-20 mix-blend-luminosity">
+            <img class="w-full h-full object-cover" src="{{ asset('images/begeron.jpeg') }}" alt="Background CTA"/>
+        </div>
+        {{-- Gradient tambahan supaya teks aman --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/60"></div>
+
+        <div class="relative z-10 max-w-2xl mx-auto px-8">
+            <h2 class="font-headline text-[2.5rem] md:text-[3.5rem] font-extrabold text-white leading-tight mb-6 tracking-tight drop-shadow-md">
+                Waktunya Hijaukan<br/>Langkahmu ☘
+            </h2>
+            <p class="text-white/90 text-lg md:text-xl mb-10 font-medium drop-shadow-sm">
+                Bergabunglah dengan gerakan ini. Mulai kontribusi nyatamu untuk sekolah dan bumi yang lebih bersih hari ini juga.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="{{ url('/kalkulator') }}" class="bg-tertiary-container text-on-tertiary-container px-12 py-5 rounded-full font-headline font-black text-lg shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-transform inline-block">
+                    Mulai Sekarang
                 </a>
             </div>
-
-            {{-- Motto Card --}}
-            <div class="relative rounded-2xl overflow-hidden p-8 shadow-2xl shadow-emerald-500/20 reveal-on-scroll">
-                <div class="absolute inset-0" style="background: linear-gradient(135deg, #11d473 0%, #059669 35%, #065f46 70%, #022c22 100%);"></div>
-                <div class="absolute inset-0 opacity-20"
-                     style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9qKl8YQhWqC8lp3JYJg4YUsYzTef_OdJKiu4ZfwgrHCf5AGKJAquFeZt6MSEMSITTN35tabgMHutEQaM-ZEkvpRtMq8P6BxKAQ-MEii5UThM9k40bbg9qj6npM-Hr4zRiPMHmeynuuhJEEZd9vnLdhGz-h3zj1CHCQZtjx0ntYn7HmA2dTLyd_5jwRgNfd13qlwRHVbh1ZjrrDhptWVEk3DnBDxNzTeDZAwWEq6zD_64LwesGbCtnNpdJcJgYn8kcGKna7-Dhzro');"></div>
-                <div class="relative z-10 text-white">
-                    <span class="material-symbols-outlined mb-4 block opacity-50" style="font-size:2.5rem;font-variation-settings:'FILL' 1">format_quote</span>
-                    <p class="text-2xl font-serif italic font-medium leading-relaxed mb-6">
-                        "{{ __('app.motto_line1') }} {{ __('app.motto_line2') }}"
-                    </p>
-                    <div class="flex items-center gap-2">
-                        <div class="h-0.5 w-8 bg-white/50"></div>
-                        <span class="text-xs font-bold uppercase tracking-[0.2em] opacity-80">{{ __('app.motto_label') }}</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</main>
+    </section>
+
+</div>
+
+{{-- Script untuk memicu animasi reveal-on-scroll (Solusi #2) --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+        const revealOptions = {
+            threshold: 0.15, // Memicu animasi ketika 15% elemen terlihat
+            rootMargin: "0px 0px -50px 0px" // Sedikit margin ke bawah
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target); // Supaya animasi jalan 1x saja
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    });
+</script>
 
 @endsection

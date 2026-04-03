@@ -47,9 +47,13 @@
     .artikel-card:hover .artikel-cover img {
         transform: scale(1.05);
     }
+
+    .editorial-shadow {
+        box-shadow: 0 24px 48px rgba(1, 45, 29, 0.06);
+    }
 </style>
 
-<section class="artikel-hero text-white py-20 md:py-24">
+<section class="artikel-hero text-white py-20 md:py-24 max-w-7xl mx-auto mt-8 rounded-2xl editorial-shadow overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);">
             <span class="material-symbols-outlined" style="font-size:16px;">article</span>

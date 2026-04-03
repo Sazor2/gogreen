@@ -5,97 +5,159 @@
 @section('content')
 
 <style>
-    .about-ghost-border-top {
-        border-top: 2px solid rgba(0, 53, 39, 0.1);
+    :root {
+        --eco-dark: #012d1d;
+        --eco-medium: #059669;
+        --eco-accent: #a2f31f;
+        --eco-bg: #f8fafc;
     }
 
-    .about-soft-card {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 16px 35px rgba(17, 24, 39, 0.06);
+    /* EcoVibes Typography */
+    @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+    .font-headline { font-family: 'DM Sans', 'Epilogue', sans-serif; }
+    .font-body { font-family: 'Roboto', 'Inter', sans-serif; }
+
+    /* Reveal on Scroll Animation */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .editorial-shadow {
+        box-shadow: 0 25px 50px -12px rgba(1, 45, 29, 0.08);
+    }
+
+    .glass-pill {
+        background: rgba(162, 243, 31, 0.1);
+        border: 1px solid rgba(162, 243, 31, 0.2);
+        color: var(--eco-accent);
+    }
+
+    .tech-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .tech-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--eco-accent);
+        transform: translateY(-5px);
+    }
+
+    .team-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #f1f5f9;
+    }
+
+    .team-card:hover {
+        border-color: var(--eco-accent);
+        box-shadow: 0 20px 40px rgba(1, 45, 29, 0.05);
     }
 </style>
 
-<main>
-    {{-- Hero Section --}}
-<section class="relative overflow-hidden flex items-center justify-center text-center text-white" style="min-height:380px; background-image: linear-gradient(rgba(6,78,59,0.85), rgba(6,78,59,0.95)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd'); background-size:cover; background-position:center;">
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(2,44,34,0.55) 0%, rgba(6,37,28,0.38) 40%, rgba(1,20,15,0.18) 100%);"></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(1,20,15,0.28) 80%, #f6f8f7 100%);"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(17,212,115,0.07) 0%, transparent 70%);"></div>
-    <div class="relative z-10 max-w-3xl mx-auto px-6">
-        <span class="inline-block py-1 px-4 text-xs font-bold uppercase tracking-widest mb-4" style="background:rgba(17,212,115,0.2);border:1px solid rgba(17,212,115,0.3);color:#13ec92;border-radius:9999px;">
-            {{ __('app.program_active') }}
-        </span>
-            <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+<main class="font-body bg-[var(--eco-bg)] min-h-screen pb-20">
+    {{-- Hero Section (Modern EcoVibes Style) --}}
+    <section class="relative overflow-hidden flex items-center text-white max-w-7xl mx-auto mt-8 rounded-[2.5rem] editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]" style="min-height:500px;">
+        <div class="absolute inset-0 z-0">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" class="w-full h-full object-cover grayscale-[0.3] scale-105 group-hover:scale-110 transition-transform duration-[10s]" alt="Background">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+                {{ __('app.program_active') }}
+            </div>
+            <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
                 {{ __('app.about_title') }}
             </h1>
-            <p class="text-lg md:text-xl font-medium" style="color:rgba(255,255,255,0.9);">
+            <p class="text-white/90 text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
                 {{ __('app.about_subtitle') }}
             </p>
-    </div>
-</section>
+        </div>
+    </section>
 
     {{-- Developer Profile --}}
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div class="space-y-6 reveal-on-scroll">
-                <div class="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase">
-                    {{ __('app.about_developer') }}
+    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div>
+                    <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">
+                        {{ __('app.about_developer') }}
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-headline font-black text-[var(--eco-dark)] leading-[1.1] tracking-tight">
+                        Building Eco Digital Solutions
+                    </h2>
                 </div>
 
-                <h2 class="text-4xl font-bold text-emerald-950 leading-tight">
-                    Building Eco Digital Solutions
-                </h2>
-
-                <p class="text-slate-600 leading-relaxed text-lg">
+                <p class="text-slate-500 leading-relaxed text-lg font-medium">
                     {{ __('app.about_desc') }}
                 </p>
 
-                <div class="pt-4 flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2 pt-4">
                     @foreach(['Laravel 11', 'Livewire', 'Filament', 'TailwindCSS', 'Vite', 'PHP 8'] as $tech)
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100">{{ $tech }}</span>
+                    <span class="px-4 py-2 rounded-xl text-[11px] font-black bg-white border border-slate-100 text-slate-700 shadow-sm uppercase tracking-wider">
+                        {{ $tech }}
+                    </span>
                     @endforeach
                 </div>
             </div>
 
-            <div class="relative group reveal-on-scroll">
-                <div class="absolute -inset-4 bg-emerald-100 rounded-[2rem] transform group-hover:scale-105 transition-transform duration-500"></div>
-
-                <div class="relative about-soft-card p-10 rounded-xl about-ghost-border-top text-center">
-                    <div class="w-32 h-32 mx-auto mb-6 bg-emerald-50 rounded-full flex items-center justify-center border-4 border-white">
-                        <span class="material-symbols-outlined text-5xl text-emerald-700/60">person</span>
+            <div class="relative">
+                <div class="absolute -inset-6 bg-[var(--eco-accent)]/20 rounded-[3rem] rotate-3 -z-10"></div>
+                
+                <div class="bg-white p-12 rounded-[2.5rem] editorial-shadow text-center border border-emerald-50 reveal-on-scroll">
+                    <div class="relative w-32 h-32 mx-auto mb-8">
+                        <div class="absolute inset-0 bg-[var(--eco-accent)] rounded-full animate-ping opacity-20"></div>
+                        <div class="relative w-full h-full bg-slate-50 rounded-full flex items-center justify-center border-4 border-white shadow-inner">
+                            <span class="material-symbols-outlined text-5xl text-[var(--eco-dark)]">person</span>
+                        </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-emerald-950 mb-1">{{ __('app.about_name') }}</h3>
-                    <p class="text-emerald-700 font-semibold text-sm tracking-widest uppercase mb-2">{{ __('app.about_role') }}</p>
-                    <p class="text-slate-500 text-sm">{{ __('app.about_school') }} | {{ __('app.about_year') }}</p>
+                    <h3 class="text-3xl font-headline font-black text-[var(--eco-dark)] mb-2">{{ __('app.about_name') }}</h3>
+                    <p class="text-[var(--eco-medium)] font-black text-xs tracking-[0.2em] uppercase mb-6">{{ __('app.about_role') }}</p>
+                    
+                    <div class="inline-block px-6 py-3 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-slate-400 text-xs font-bold leading-relaxed">
+                            {{ __('app.about_school') }} <br> 
+                            <span class="text-[var(--eco-dark)] uppercase tracking-widest text-[10px]">{{ __('app.about_year') }}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Team Section --}}
-    <section class="bg-slate-50 py-20 px-4 sm:px-6 lg:px-8">
+    <section class="bg-white py-24 px-4 sm:px-6 lg:px-8 border-y border-slate-100 reveal-on-scroll">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-12 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-emerald-950 mb-3">{{ __('app.about_team_title') }}</h2>
+            <div class="mb-16 text-center">
+                <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">Our Squad</span>
+                <h2 class="text-4xl font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.about_team_title') }}</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach([
-                    ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => ['Lead Developer', 'Systems Architect', 'Database & Testing']],
-                    ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => ['UI / UX Designer', 'Design System', 'Frontend Styling']],
-                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => ['Backend Developer', 'API Integration', 'Server Logic']],
-                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), 'Environmental Analyst', 'Content Strategy']],
+                    ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => ['Lead Developer', 'Systems Architect']],
+                    ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => ['UI / UX Designer', 'Design System']],
+                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => ['Backend Developer', 'Server Logic']],
+                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), 'Content Strategy']],
                 ] as $member)
-                <div class="about-soft-card p-6 rounded-xl about-ghost-border-top hover:-translate-y-1 transition-transform duration-300 reveal-on-scroll">
-                    <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-5">
-                        <span class="material-symbols-outlined text-emerald-700" style="font-size:24px;">{{ $member['icon'] }}</span>
+                <div class="team-card p-8 rounded-[2rem] bg-slate-50 flex flex-col items-center text-center reveal-on-scroll">
+                    <div class="w-14 h-14 bg-[var(--eco-dark)] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20">
+                        <span class="material-symbols-outlined text-[var(--eco-accent)] text-2xl">{{ $member['icon'] }}</span>
                     </div>
-                    <h4 class="text-lg font-bold text-emerald-950">{{ $member['name'] }}</h4>
-                    <div class="mt-3 space-y-1.5">
+                    <h4 class="text-lg font-headline font-black text-[var(--eco-dark)] leading-tight mb-4 min-h-[50px] flex items-center">{{ $member['name'] }}</h4>
+                    <div class="space-y-2">
                         @foreach($member['jobs'] as $job)
-                        <p class="text-slate-600 text-sm font-semibold">{{ $job }}</p>
+                        <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $job }}</span>
                         @endforeach
                     </div>
                 </div>
@@ -104,32 +166,37 @@
         </div>
     </section>
 
-    {{-- Tools Section --}}
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="bg-emerald-950 p-10 md:p-12 rounded-[2rem] text-center text-white relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full -mr-32 -mt-32"></div>
+    {{-- Tools Section (Dark Mode Vibes) --}}
+    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
+        <div class="bg-[var(--eco-dark)] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-80 h-80 bg-[var(--eco-accent)] opacity-10 rounded-full blur-[100px]"></div>
 
-            <div class="z-10 relative">
-                <h2 class="text-3xl font-bold mb-10">{{ __('app.about_tech_title') }}</h2>
+            <div class="relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-headline font-black text-white tracking-tight">{{ __('app.about_tech_title') }}</h2>
+                    <div class="w-20 h-1.5 bg-[var(--eco-accent)] mx-auto mt-6 rounded-full"></div>
+                </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach([
-                        ['name' => 'Laravel 11',    'desc' => __('app.tech_laravel_desc'),  'icon' => 'data_object', 'color' => 'border-red-100   bg-red-50   text-red-700'],
-                        ['name' => 'Blade',         'desc' => __('app.tech_blade_desc'),    'icon' => 'article', 'color' => 'border-orange-100 bg-orange-50 text-orange-700'],
-                        ['name' => 'TailwindCSS',   'desc' => __('app.tech_tailwind_desc'), 'icon' => 'css', 'color' => 'border-blue-100  bg-blue-50  text-blue-700'],
-                        ['name' => 'Vite',          'desc' => __('app.tech_vite_desc'),     'icon' => 'bolt', 'color' => 'border-purple-100 bg-purple-50 text-purple-700'],
-                        ['name' => 'Filament',      'desc' => __('app.tech_filament_desc'), 'icon' => 'dashboard_customize', 'color' => 'border-yellow-100 bg-yellow-50 text-yellow-700'],
-                        ['name' => 'Livewire',      'desc' => __('app.tech_livewire_desc'), 'icon' => 'sync_alt', 'color' => 'border-cyan-100   bg-cyan-50   text-cyan-700'],
-                        ['name' => 'PHP 8.2+',      'desc' => __('app.tech_php_desc'),      'icon' => 'code', 'color' => 'border-indigo-100 bg-indigo-50 text-indigo-700'],
-                        ['name' => 'Pest PHP',      'desc' => __('app.tech_pest_desc'),     'icon' => 'bug_report', 'color' => 'border-green-100  bg-green-50  text-green-700'],
-                        ['name' => 'MySQL',         'desc' => __('app.tech_mysql_desc'),    'icon' => 'storage', 'color' => 'border-teal-100   bg-teal-50   text-teal-700'],
+                        ['name' => 'Laravel 11',    'desc' => __('app.tech_laravel_desc'),  'icon' => 'data_object'],
+                        ['name' => 'Blade',         'desc' => __('app.tech_blade_desc'),    'icon' => 'article'],
+                        ['name' => 'TailwindCSS',   'desc' => __('app.tech_tailwind_desc'), 'icon' => 'css'],
+                        ['name' => 'Vite',          'desc' => __('app.tech_vite_desc'),     'icon' => 'bolt'],
+                        ['name' => 'Filament',      'desc' => __('app.tech_filament_desc'), 'icon' => 'dashboard_customize'],
+                        ['name' => 'Livewire',      'desc' => __('app.tech_livewire_desc'), 'icon' => 'sync_alt'],
+                        ['name' => 'PHP 8.2+',      'desc' => __('app.tech_php_desc'),      'icon' => 'code'],
+                        ['name' => 'Pest PHP',      'desc' => __('app.tech_pest_desc'),     'icon' => 'bug_report'],
+                        ['name' => 'MySQL',         'desc' => __('app.tech_mysql_desc'),    'icon' => 'storage'],
                     ] as $tech)
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 reveal-on-scroll">
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-emerald-200" style="font-size:22px;line-height:1;">{{ $tech['icon'] }}</span>
+                    <div class="tech-card p-6 rounded-2xl reveal-on-scroll">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-[var(--eco-accent)] text-xl">{{ $tech['icon'] }}</span>
+                            </div>
                             <div>
-                                <h4 class="font-bold text-white">{{ $tech['name'] }}</h4>
-                                <p class="text-sm text-emerald-100/80 mt-1">{{ $tech['desc'] }}</p>
+                                <h4 class="font-headline font-bold text-white mb-2">{{ $tech['name'] }}</h4>
+                                <p class="text-sm text-emerald-100/50 leading-relaxed font-medium">{{ $tech['desc'] }}</p>
                             </div>
                         </div>
                     </div>
@@ -138,40 +205,31 @@
             </div>
         </div>
     </section>
-
-    {{-- Contact Section --}}
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="mb-12 text-center">
-            <h2 class="text-3xl font-bold text-emerald-950 mb-2">{{ __('app.about_contact_title') }}</h2>
-            <div class="h-1 w-20 bg-emerald-500 mx-auto"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-emerald-700">alternate_email</span>
-                </div>
-                <h5 class="font-bold text-emerald-950 mb-2">Email</h5>
-                <p class="text-slate-600 text-sm">{{ __('app.about_email') }}</p>
-            </div>
-
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-emerald-700">photo_camera</span>
-                </div>
-                <h5 class="font-bold text-emerald-950 mb-2">Instagram</h5>
-                <p class="text-slate-600 text-sm">{{ __('app.about_instagram') }}</p>
-            </div>
-
-            <div class="bg-slate-50 p-8 rounded-xl flex flex-col items-center text-center group hover:bg-slate-100 transition-colors reveal-on-scroll">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-emerald-700">language</span>
-                </div>
-                <h5 class="font-bold text-emerald-950 mb-2">Website</h5>
-                <p class="text-slate-600 text-sm">{{ __('app.about_website') }}</p>
-            </div>
-        </div>
-    </section>
 </main>
+
+@push('scripts')
+<script>
+    // Reveal on Scroll Animation Setup
+    window.setupRevealOnScroll = function () {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.setupRevealOnScroll);
+    } else {
+        window.setupRevealOnScroll();
+    }
+</script>
+@endpush
 
 @endsection

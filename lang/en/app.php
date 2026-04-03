@@ -240,6 +240,52 @@ return [
     'latar_dasar_title'      => 'Rationale',
     'latar_dasar_desc'       => 'Based on data from the Ministry of Environment and Forestry, deforestation in West Kalimantan has reached alarming levels. SMK Karya Bangsa Sintang is committed to being part of the solution through a measurable, technology-based Green School program.',
 
+    // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
+    'latar_information_title'    => '📋 INFORMATION',
+    'latar_information_intro'    => 'A Go Green School is a school that promotes environmental awareness and sustainable practices. It encourages students, teachers, and staff to care for the environment and reduce negative impacts on nature. The main goal of a Go Green School is to create a clean, healthy, and eco-friendly learning environment.',
+    'latar_information_body'     => 'A Go Green School applies various environmentally friendly programs. One of the main activities is reducing plastic waste by encouraging students to bring reusable bottles and lunch boxes. Schools also provide separate trash bins for organic and inorganic waste to support recycling programs.
+
+Another important program is planting trees and maintaining school gardens. Trees help reduce air pollution and make the environment cooler and more comfortable. Schools may also save energy by turning off lights and electronic devices when not in use. Some schools even use solar panels as an alternative energy source.
+
+In addition, environmental education is integrated into learning activities. Students are taught about climate change, recycling, and the importance of protecting nature. Through these activities, students develop responsibility and awareness toward the environment.',
+    'latar_information_conclusion' => 'In conclusion, a Go Green School plays an important role in protecting the environment. By applying eco-friendly habits at school, students learn to care for nature and build a better future.',
+
+    'latar_description_title'    => '📖 DESCRIPTION',
+    'latar_description_text'     => '"Green School Tracker" is a web application designed to support the greening and environmental management program at SMK Karya Bangsa Sintang, West Kalimantan. The application helps the school monitor plant growth, manage information about regional native trees, and educate students about waste recycling through a waste bank calculator feature.
+
+The application provides several main features that support environmental activities in the school. The main page displays a summary of the school\'s greening program statistics, including the total number of trees planted, total greening area, number of plant species, and overall plant health status.
+
+It also displays a complete list of native Kalimantan trees on the school grounds, with information on local name and Latin (scientific) name, plant type, planting location within the school, ecological and economic benefits, estimated tree height, and plant health status.
+
+In addition, the application includes a waste bank calculator that allows users to calculate points based on the type and weight of waste. This feature helps students understand the value of waste recycling in a simple and interactive way. The application is built without a database dependency, making it extremely lightweight, easy to run, and suitable for use as a learning tool or live demonstration.',
+
+    'latar_procedure_title'      => '⚙️ PROCEDURE',
+    'latar_procedure_intro'      => 'How to Create a Go Green School',
+    'latar_procedure_objective'  => 'To explain the steps for making a school more environmentally friendly.',
+    'latar_procedure_materials'  => 'Materials - Things Needed',
+    'latar_procedure_items'      => '• Reusable bottles and lunch boxes
+• Separate trash bins
+• Plants or trees
+• Posters or campaign materials
+1. Reduce Plastic Waste - Encourage students to bring reusable bottles and lunch boxes instead of plastic packaging.
+2. Separate the Trash - Provide different trash bins for organic and inorganic waste to support recycling.
+3. Plant Trees and Plants - Organize activities to plant trees or create a school garden to make the environment cleaner and cooler.
+4. Save Energy - Turn off lights, fans, and electronic devices when they are not in use.
+5. Promote Environmental Awareness - Educate students about global warming, recycling, and protecting the environment through lessons or posters.
+6. Practice Eco-Friendly Habits - Encourage everyone at school to maintain cleanliness and care for nature.
+By following these steps, schools can become cleaner, healthier, and more eco-friendly. Go Green practices help reduce environmental problems and support a better future.',
+
+    'latar_explanation_title'    => '💡 EXPLANATION',
+    'latar_explanation_intro'    => 'Global warming is a condition where the Earth becomes hotter over time. This happens because of greenhouse gases in the atmosphere. "Go Green" is a movement that helps reduce environmental problems and slow down global warming.',
+    'latar_explanation_body'     => 'Global warming happens because human activities produce too many greenhouse gases. These gases include carbon dioxide (CO₂) and methane. They mostly come from burning fossil fuels like coal, oil, and gas for electricity, factories, and vehicles.
+
+Normally, sunlight enters the Earth and makes it warm. Some of the heat goes back into space. However, greenhouse gases trap some of the heat in the atmosphere. This process is called the greenhouse effect. When there are too many greenhouse gases, more heat is trapped. As a result, the Earth\'s temperature increases.
+
+When the temperature rises, many changes happen. Ice in the North and South Poles melts faster. This causes sea levels to rise. The weather also becomes more extreme, such as stronger storms, floods, and heatwaves. Animals and plants may struggle to survive because their environment changes too quickly.
+
+Go Green actions help reduce these problems. For example, planting trees helps absorb carbon dioxide from the air. Using renewable energy like solar and wind power reduces pollution. Saving electricity and reducing plastic waste also help lower greenhouse gas emissions. When greenhouse gas emissions decrease, less heat is trapped in the atmosphere.',
+    'latar_explanation_conclusion' => 'In conclusion, global warming happens because greenhouse gases trap too much heat in the atmosphere. This causes climate change and environmental problems. Go Green actions can reduce greenhouse gases and help protect the Earth. Therefore, practicing Go Green is important to slow down global warming and keep our planet safe for the future.',
+
     // Profil Sekolah
     'profil_sek_title'       => 'School Profile',
     'profil_sek_subtitle'    => 'SMK Karya Bangsa Sintang — Towards the Best Green School in Kalimantan',

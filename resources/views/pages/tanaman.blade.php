@@ -3,252 +3,215 @@
 @section('title', __('app.tanaman_title'))
 
 @section('content')
-
 <style>
-    .tanaman-hero {
-        background: linear-gradient(135deg, #003527 0%, #064e3b 100%);
+    /* Sinkronisasi dengan ECO-VIBE Design System */
+    :root {
+        --primary: #006948;
+        --tertiary-container: #a2f31f;
+        --on-tertiary-container: #365700;
+        --background: #f3f7fb;
+        --surface-variant: #d7dee3;
     }
 
-    .tanaman-glass-badge {
-        background: rgba(108, 248, 187, 0.15);
-        border: 1px solid rgba(108, 248, 187, 0.35);
-        backdrop-filter: blur(10px);
+    .font-headline { font-family: 'DM Sans', sans-serif; }
+    .font-body { font-family: 'Roboto', sans-serif; }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .tanaman-card {
-        background: #ffffff;
-        border: 1px solid #d5e7de;
-        box-shadow: 0 14px 30px rgba(25, 28, 30, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 32px rgba(42, 47, 50, 0.04);
     }
 
     .tanaman-card:hover {
-        box-shadow: 0 24px 45px rgba(0, 80, 58, 0.18);
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(0, 105, 72, 0.1);
     }
 
-    .tanaman-modal-panel {
-        border: 1px solid #dbe6e1;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* Animasi Reveal on Scroll */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 </style>
 
-<section class="relative overflow-hidden text-white" style="background:linear-gradient(135deg,#003527 0%,#064e3b 100%);">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 80% 20%, rgba(108,248,187,0.18), transparent 40%);"></div>
+<div class="bg-[#f3f7fb] font-body text-[#2a2f32]">
+    
+    <div class="relative max-w-7xl mx-auto px-6 md:px-8">
+        <section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+    <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/pohon.jpg') }}" alt="Plant Management hero">
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+            Platform Peduli Lingkungan
+        </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="text-left lg:col-span-7">
-                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full tanaman-glass-badge">
-                    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1,'wght' 500;">energy_savings_leaf</span>
-                    {{ __('app.program_active') }}
-                </span>
+        <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            Manajemen<br/>Tanaman Hijau
+        </h1>
 
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mt-5">Plant Management</h1>
-                <p class="text-emerald-100 mt-4 text-lg max-w-2xl">List of 5 West Kalimantan native trees in the SMK Karya Bangsa Sintang environment.</p>
-                <p class="text-emerald-200 text-sm mt-3 inline-flex items-center gap-1.5">
-                    <span class="material-symbols-outlined" style="font-size:16px;">info</span>
-                    {{ __('app.tanaman_catatan') }}
-                </p>
-            </div>
+        <p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed drop-shadow-md max-w-xl">
+            Koleksi 5 pohon asli Kalimantan Barat di lingkungan SMK Karya Bangsa Sintang. Kami merawat setiap tunas demi keseimbangan ekosistem lokal dan warisan masa depan.
+        </p>
+        
+        <div class="flex items-center gap-3 text-[#a2f31f] font-bold">
+            <span class="material-symbols-outlined">info</span>
+            <span class="text-sm italic">{{ __('app.tanaman_catatan') }}</span>
+        </div>
+    </div>
 
-            <div class="relative lg:col-span-5">
-                <div class="rounded-[24px] overflow-hidden border border-white/20 shadow-2xl bg-white/10 backdrop-blur max-w-[290px] sm:max-w-[330px] lg:max-w-[350px] ml-0 lg:ml-auto">
-                    <div class="relative" style="height:420px;">
-                        <img src="{{ asset('images/background2.jpg') }}" alt="Plant Management" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%);"></div>
+        </section>
+    </div>
 
-                        
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 pt-16 pb-20">
+        
+        <div class="mb-12 glass-card rounded-2xl border border-[#006948]/10 p-8 shadow-[0_8px_32px_rgba(42,47,50,0.04)] reveal-on-scroll">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="bg-[#006948]/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[#006948] text-3xl">analytics</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline font-extrabold text-xl text-[#006948]">Status Tanaman</h3>
+                        <p class="text-[#575c60] text-sm font-medium">Kondisi kesehatan vegetasi berdasarkan pemantauan terakhir.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="absolute -bottom-10 left-0 right-0 h-24 pointer-events-none">
-        <div class="absolute inset-x-0 top-2 mx-auto h-16 w-[82%] rounded-full bg-emerald-200/35 blur-3xl"></div>
-        <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 75%, #ffffff 100%);"></div>
-    </div>
-</section>
-
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-    {{-- Informasi Status --}}
-    <div class="mb-8 bg-white/90 rounded-2xl border border-emerald-100 p-5 shadow-sm reveal-on-scroll">
-        <div class="flex items-start gap-3">
-            <span class="material-symbols-outlined text-emerald-700" style="font-size:22px;">info</span>
-            <div>
-                <h3 class="font-semibold text-slate-800">Informasi Status Tanaman</h3>
-                <p class="text-sm text-slate-600 mt-1">Status menunjukkan kondisi kesehatan tanaman saat pemantauan terakhir. Klik kartu tanaman untuk melihat detail lengkap.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="inline-flex items-center border rounded-full px-3 py-0.5 text-xs font-semibold bg-green-100 text-green-800 border-green-300">{{ __('app.status_sangat_baik') }}</span>
-                    <span class="inline-flex items-center border rounded-full px-3 py-0.5 text-xs font-semibold bg-blue-100 text-blue-800 border-blue-300">{{ __('app.status_baik') }}</span>
-                    <span class="inline-flex items-center border rounded-full px-3 py-0.5 text-xs font-semibold bg-orange-100 text-orange-800 border-orange-300">{{ __('app.status_perlu_perhatian') }}</span>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-100 text-green-800 border border-green-200">{{ __('app.status_sangat_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-100 text-blue-800 border border-blue-200">{{ __('app.status_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-orange-100 text-orange-800 border border-orange-200">{{ __('app.status_perlu_perhatian') }}</span>
                 </div>
             </div>
         </div>
-    </div>
 
-    {{-- Kartu Tanaman (Foto + Status) --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @foreach([
-            [
-                'id'           => 1,
-                'nama'         => 'Tengkawang',
-                'nama_latin'   => 'Shorea stenoptera',
-                'jenis'        => 'Dipterocarpaceae',
-                'lokasi'       => __('app.pohon_1_lokasi'),
-                'manfaat'      => __('app.pohon_1_manfaat'),
-                'tinggi'       => '± 30 meter',
-                'status'       => __('app.status_sangat_baik'),
-                'status_color' => 'bg-green-100 text-green-800 border-green-300',
-                'icon'         => '🌳',
-                'card_border'  => 'border-green-200 hover:border-green-400',
-                'bg_image'     => asset('images/tanaman/tengkawang.jpg'),
-            ],
-            [
-                'id'           => 2,
-                'nama'         => 'Jelutung',
-                'nama_latin'   => 'Dyera costulata',
-                'jenis'        => 'Apocynaceae',
-                'lokasi'       => __('app.pohon_2_lokasi'),
-                'manfaat'      => __('app.pohon_2_manfaat'),
-                'tinggi'       => '± 40 meter',
-                'status'       => __('app.status_baik'),
-                'status_color' => 'bg-blue-100 text-blue-800 border-blue-300',
-                'icon'         => '🌲',
-                'card_border'  => 'border-blue-200 hover:border-blue-400',
-                'bg_image'     => asset('images/tanaman/jelutung.jpg'),
-            ],
-            [
-                'id'           => 3,
-                'nama'         => 'Meranti Merah',
-                'nama_latin'   => 'Shorea lepidota',
-                'jenis'        => 'Dipterocarpaceae',
-                'lokasi'       => __('app.pohon_3_lokasi'),
-                'manfaat'      => __('app.pohon_3_manfaat'),
-                'tinggi'       => '± 35 meter',
-                'status'       => __('app.status_baik'),
-                'status_color' => 'bg-blue-100 text-blue-800 border-blue-300',
-                'icon'         => '🌲',
-                'card_border'  => 'border-blue-200 hover:border-blue-400',
-                'bg_image'     => asset('images/tanaman/meranti.jpg'),
-            ],
-            [
-                'id'           => 4,
-                'nama'         => 'Rambutan Hutan',
-                'nama_latin'   => 'Nephelium lappaceum',
-                'jenis'        => 'Sapindaceae',
-                'lokasi'       => __('app.pohon_4_lokasi'),
-                'manfaat'      => __('app.pohon_4_manfaat'),
-                'tinggi'       => '± 15 meter',
-                'status'       => __('app.status_sangat_baik'),
-                'status_color' => 'bg-green-100 text-green-800 border-green-300',
-                'icon'         => '🍃',
-                'card_border'  => 'border-green-200 hover:border-green-400',
-                'bg_image'     => asset('images/tanaman/rambutan.jpg'),
-            ],
-            [
-                'id'           => 5,
-                'nama'         => 'Ulin (Kayu Besi)',
-                'nama_latin'   => 'Eusideroxylon zwageri',
-                'jenis'        => 'Lauraceae',
-                'lokasi'       => __('app.pohon_5_lokasi'),
-                'manfaat'      => __('app.pohon_5_manfaat'),
-                'tinggi'       => '± 50 meter',
-                'status'       => __('app.status_perlu_perhatian'),
-                'status_color' => 'bg-orange-100 text-orange-800 border-orange-300',
-                'icon'         => '🪵',
-                'card_border'  => 'border-orange-200 hover:border-orange-400',
-                'bg_image'     => asset('images/tanaman/ulin.jpg'),
-            ],
-        ] as $pohon)
-        <button type="button"
-            class="group tanaman-card rounded-2xl border {{ $pohon['card_border'] }} hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left reveal-on-scroll"
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @foreach([
+                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => 'Pohon penghasil minyak tengkawang yang bernilai ekonomi tinggi. Digunakan untuk industri kosmetik dan farmasi. Kayu berkualitas baik untuk bahan bangunan. Berperan penting dalam menjaga keseimbangan ekosistem hutan tropis.', 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/tengkawang.jpg'],
+                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => 'Pohon penghasil getah yang dikenal sebagai jelutung asli. Getahnya digunakan sebagai bahan baku pembuatan karet. Kayu lunak berkualitas untuk furniture dan patung. Tersebar alami di kawasan Kalimantan Barat.', 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/jelutung.jpg'],
+                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => 'Kayu premium dengan warna merah cerah, sangat berharga untuk furniture mewah dan konstruksi. Tahan terhadap anai-anai dan cuaca ekstrem. Pohon penting dalam program reboisasi hutan tropis Indonesia. Membantu stabilisasi tanah dan pencegahan erosi.', 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/meranti.jpg'],
+                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => 'Pohon penghasil buah rambutan yang kaya vitamin C dan gizi. Buahnya dapat dikonsumsi segar atau diproses menjadi produk makanan. Akar dan daun memiliki khasiat tradisional untuk kesehatan. Menarik fauna lokal termasuk burung dan kelelawar.', 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/rambutan.jpg'],
+                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => 'Pohon berkayu sangat keras dan tahan lama, dikenal sebagai kayu besi. Digunakan untuk konstruksi rumah tradisional, tiang listrik, dan jembatan. Sangat berharga dan menjadi simbol kekayaan alam Kalimantan. Status langka dan dilindungi untuk kelestarian hutan.', 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'color' => 'bg-orange-500', 'bg' => 'images/tanaman/ulin.jpg'],
+            ] as $pohon)
+            
+            <article class="flex flex-col gap-5 group cursor-pointer hover:-translate-y-2 transition-all duration-300" 
                 data-nama="{{ $pohon['nama'] }}"
-                data-latin="{{ $pohon['nama_latin'] }}"
+                data-latin="{{ $pohon['latin'] }}"
                 data-famili="{{ $pohon['jenis'] }}"
                 data-lokasi="{{ $pohon['lokasi'] }}"
                 data-tinggi="{{ $pohon['tinggi'] }}"
                 data-manfaat="{{ $pohon['manfaat'] }}"
                 data-status="{{ $pohon['status'] }}"
-                data-status-color="{{ $pohon['status_color'] }}"
-                data-image="{{ $pohon['bg_image'] }}"
+                data-image="{{ asset($pohon['bg']) }}"
                 onclick="openTanamanModal(this)">
-            <div class="relative overflow-hidden" style="height:240px;background:linear-gradient(135deg,#064e3b,#059669);">
-                <img
-                    src="{{ $pohon['bg_image'] }}"
-                    alt="{{ $pohon['nama'] }}"
-                    onerror="this.style.display='none';"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 65%, transparent 100%);"></div>
-
-                <span class="absolute top-4 right-4 border text-xs font-semibold px-3 py-1 rounded-full bg-white/90 {{ $pohon['status_color'] }}">{{ $pohon['status'] }}</span>
-            </div>
-
-            <div class="p-5">
-                <div class="flex items-start justify-between gap-3">
-                    <div>
-                        <h3 class="text-2xl font-bold text-emerald-900 leading-tight">{{ $pohon['nama'] }}</h3>
-                        <p class="text-xs italic text-slate-500 mt-0.5">{{ $pohon['nama_latin'] }}</p>
+                
+                <div class="aspect-[4/5] rounded-2xl overflow-hidden relative shadow-lg tanaman-card">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset($pohon['bg']) }}" alt="{{ $pohon['nama'] }}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#006948]/80 via-transparent to-transparent opacity-60"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-md text-[#006948] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                            {{ $pohon['jenis'] }}
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined text-emerald-700" style="font-size:18px;font-variation-settings:'FILL' 1,'wght' 500;">eco</span>
-                </div>
 
-                <div class="mt-4 flex items-center gap-5">
-                    <div>
-                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Height</p>
-                        <p class="text-sm font-bold text-emerald-900">{{ $pohon['tinggi'] }}</p>
-                    </div>
-                    <div class="w-px h-8 bg-slate-200"></div>
-                    <div>
-                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Family</p>
-                        <p class="text-sm font-bold text-emerald-900">{{ $pohon['jenis'] }}</p>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="flex items-center gap-1.5 {{ $pohon['color'] }} text-white text-[9px] font-black px-2.5 py-1 rounded-full w-fit">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            {{ $pohon['status'] }}
+                        </span>
                     </div>
                 </div>
 
-                <div class="mt-5 w-full rounded-full bg-slate-100 py-3 text-center text-sm font-bold text-emerald-800 inline-flex items-center justify-center gap-2 group-hover:bg-emerald-800 group-hover:text-white transition-colors">
-                    View Details
-                    <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+                <div class="px-2">
+                    <h4 class="font-headline text-2xl font-extrabold text-[#006948] leading-tight mb-1 group-hover:text-[#a2f31f] transition-colors">
+                        {{ $pohon['nama'] }}
+                    </h4>
+                    <p class="text-[#575c60] text-sm italic font-medium mb-4">{{ $pohon['latin'] }}</p>
+                    
+                    <div class="flex items-center gap-6 border-t border-[#d7dee3] pt-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">Height</span>
+                            <span class="font-headline font-bold text-[#2a2f32]">{{ $pohon['tinggi'] }}</span>
+                        </div>
+                        <div class="h-8 w-px bg-[#d7dee3]"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">Action</span>
+                            <span class="text-[#006948] font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Details <span class="material-symbols-outlined !text-sm">arrow_forward</span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
+            </article>
+            @endforeach
+        </div>
+    </main>
+
+    <div id="tanaman-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-[#0a0f12]/60 backdrop-blur-md" onclick="closeTanamanModal()"></div>
+        
+        <div class="relative w-full max-w-lg bg-white rounded-[2rem] overflow-hidden shadow-2xl transform transition-all">
+            <button onclick="closeTanamanModal()" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/20 backdrop-blur-lg hover:bg-white text-[#2a2f32] rounded-full flex items-center justify-center transition-all group">
+                <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">close</span>
+            </button>
+
+            <div class="relative h-56 sm:h-64">
+                <img id="modal-image" class="w-full h-full object-cover" src="">
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80"></div>
             </div>
-        </button>
-        @endforeach
-    </div>
-</div>
 
-{{-- Modal Informasi Tanaman --}}
-<div id="tanaman-modal" class="fixed inset-0 z-[70] hidden">
-    <div class="absolute inset-0 bg-black/40 backdrop-blur-md" onclick="closeTanamanModal()"></div>
-
-    <div class="relative z-10 min-h-screen flex items-center justify-center p-4 sm:p-6">
-        <div class="w-full max-w-2xl bg-white rounded-2xl tanaman-modal-panel overflow-hidden">
-            <div class="relative" style="height:240px;background:linear-gradient(135deg,#064e3b,#059669);">
-                <img id="modal-image" src="" alt="Tanaman" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 70%);"></div>
-
-                <button type="button" class="absolute top-3 right-3 bg-white/85 backdrop-blur rounded-full w-9 h-9 flex items-center justify-center text-slate-700 hover:bg-white" onclick="closeTanamanModal()">
-                    <span class="material-symbols-outlined" style="font-size:20px;">close</span>
-                </button>
-
-                <div class="absolute bottom-0 left-0 right-0 p-4">
-                    <span id="modal-status" class="inline-flex border text-xs font-semibold px-3 py-1 rounded-full bg-white/90"></span>
-                    <h3 id="modal-nama" class="text-white font-bold text-2xl mt-3"></h3>
-                    <p id="modal-latin" class="text-emerald-100 text-sm italic"></p>
+            <div class="px-6 pb-6 -mt-16 relative z-10">
+                <div class="mb-4 bg-white rounded-2xl p-4 shadow-lg">
+                    <span id="modal-status" class="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm bg-white border border-[#d7dee3]"></span>
+                    <h2 id="modal-nama" class="text-2xl md:text-3xl font-extrabold text-[#006948] mt-2 mb-1 font-headline tracking-tight"></h2>
+                    <p id="modal-latin" class="text-sm italic text-[#575c60] mb-3 font-medium"></p>
                 </div>
-            </div>
 
-            <div class="p-5 sm:p-6 space-y-3 text-sm">
-                <div><span class="font-semibold text-gray-700">{{ __('app.label_famili') }}:</span> <span id="modal-famili" class="text-gray-600"></span></div>
-                <div><span class="font-semibold text-gray-700">{{ __('app.label_lokasi') }}:</span> <span id="modal-lokasi" class="text-gray-600"></span></div>
-                <div><span class="font-semibold text-gray-700">{{ __('app.label_tinggi') }}:</span> <span id="modal-tinggi" class="text-gray-600"></span></div>
+                <div class="grid grid-cols-3 gap-2 mb-4">
+                    <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Family</p>
+                        <p id="modal-famili" class="font-bold text-[#2a2f32] text-xs"></p>
+                    </div>
+                    <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Location</p>
+                        <p id="modal-lokasi" class="font-bold text-[#2a2f32] text-xs"></p>
+                    </div>
+                    <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Height</p>
+                        <p id="modal-tinggi" class="font-bold text-[#2a2f32] text-xs"></p>
+                    </div>
+                </div>
 
-                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 mt-2">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">{{ __('app.label_manfaat') }}</p>
-                    <p id="modal-manfaat" class="text-sm text-gray-700 leading-relaxed"></p>
+                <div class="space-y-2 bg-[#f9fafb] p-4 rounded-xl border border-[#e5e7eb]">
+                    <h4 class="font-headline font-extrabold text-[#006948] flex items-center gap-2 text-base">
+                        <span class="w-1.5 h-1.5 bg-[#a2f31f] rounded-full"></span>
+                        Manfaat & Deskripsi
+                    </h4>
+                    <p id="modal-manfaat" class="text-[#575c60] leading-relaxed text-xs font-medium"></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
 
 @push('scripts')
@@ -257,16 +220,15 @@
         const modal = document.getElementById('tanaman-modal');
         const statusEl = document.getElementById('modal-status');
 
-        document.getElementById('modal-image').src = element.dataset.image || '';
-        document.getElementById('modal-nama').textContent = element.dataset.nama || '';
-        document.getElementById('modal-latin').textContent = element.dataset.latin || '';
-        document.getElementById('modal-famili').textContent = element.dataset.famili || '';
-        document.getElementById('modal-lokasi').textContent = element.dataset.lokasi || '';
-        document.getElementById('modal-tinggi').textContent = element.dataset.tinggi || '';
-        document.getElementById('modal-manfaat').textContent = element.dataset.manfaat || '';
+        document.getElementById('modal-image').src = element.dataset.image;
+        document.getElementById('modal-nama').textContent = element.dataset.nama;
+        document.getElementById('modal-latin').textContent = element.dataset.latin;
+        document.getElementById('modal-famili').textContent = element.dataset.famili;
+        document.getElementById('modal-lokasi').textContent = element.dataset.lokasi;
+        document.getElementById('modal-tinggi').textContent = element.dataset.tinggi;
+        document.getElementById('modal-manfaat').textContent = element.dataset.manfaat;
 
-        statusEl.className = 'inline-flex border text-xs font-semibold px-3 py-1 rounded-full bg-white/90 ' + (element.dataset.statusColor || '');
-        statusEl.textContent = element.dataset.status || '';
+        statusEl.textContent = element.dataset.status;
 
         modal.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
@@ -278,10 +240,24 @@
         document.body.classList.remove('overflow-hidden');
     }
 
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            closeTanamanModal();
-        }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeTanamanModal();
     });
+
+    // Reveal on Scroll Animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 </script>
 @endpush

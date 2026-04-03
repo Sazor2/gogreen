@@ -22,3 +22,27 @@
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+/* Solusi 1: Smooth Scroll global */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Solusi 2: Premium Glow untuk Bento Card */
+    .bento-glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px; /* Ketebalan glow */
+        background: linear-gradient(135deg, rgba(0, 105, 72, 0.4), transparent, rgba(55, 89, 0, 0.4));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        pointer-events: none;
+    }
+    .group:hover .bento-glow::before {
+        opacity: 1;
+    }
+    
