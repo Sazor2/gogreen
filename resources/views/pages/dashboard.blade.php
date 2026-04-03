@@ -2,6 +2,8 @@
 
 @section('title', __('app.dashboard_title'))
 
+@section('html_class', 'dashboard-page')
+
 @section('content')
 
 <style>
@@ -77,9 +79,142 @@
         z-index: 8;
         pointer-events: none;
     }
+
+    /* Slightly reduce root sizing on small screens for a less zoomed look */
+    @media (max-width: 640px) {
+        html.dashboard-page {
+            font-size: 15px;
+        }
+
+        .dashboard-hero {
+            min-height: 380px;
+            margin-top: 1rem;
+            border-radius: 1.25rem;
+        }
+
+        .dashboard-hero .dashboard-hero-content {
+            padding: 2rem 1.25rem;
+        }
+
+        .dashboard-hero-title {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-hero-text {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-hero-actions a {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .dashboard-nav {
+            margin-top: 2.5rem;
+        }
+
+        .dashboard-features {
+            margin-top: 3rem;
+        }
+
+        .dashboard-articles {
+            margin-top: 3.5rem;
+        }
+
+        .dashboard-cta {
+            margin-top: 3.5rem;
+            padding-top: 3.5rem;
+            padding-bottom: 3.5rem;
+            border-radius: 2rem;
+        }
+
+        .dashboard-section-title {
+            font-size: 1.6rem;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        .dashboard-section-lead {
+            font-size: 0.95rem;
+        }
+
+        .dashboard-cta-title {
+            font-size: 2rem;
+        }
+
+        .dashboard-cta-text {
+            font-size: 1rem;
+        }
+
+        .dashboard-cta-action {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .dashboard-features .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .dashboard-nav .dashboard-nav-grid,
+        .dashboard-articles .dashboard-articles-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .dashboard-nav .dashboard-nav-card {
+            padding: 0.9rem;
+            border-radius: 1.25rem;
+            height: 100%;
+        }
+
+        .dashboard-nav .dashboard-nav-card h3 {
+            font-size: 1rem;
+        }
+
+        .dashboard-nav .dashboard-nav-card p {
+            font-size: 0.8rem;
+        }
+
+        .dashboard-nav .dashboard-nav-grid {
+            grid-auto-rows: 1fr;
+        }
+
+        .dashboard-feature-card {
+            height: auto;
+            min-height: 260px;
+        }
+
+        .dashboard-features h3 {
+            font-size: 1.25rem;
+        }
+
+        .dashboard-features p {
+            font-size: 0.85rem;
+        }
+
+        .dashboard-features a {
+            font-size: 0.8rem;
+        }
+
+        .dashboard-articles .dashboard-article-media {
+            height: 8.5rem;
+        }
+
+        .dashboard-articles .dashboard-article-card h4 {
+            font-size: 1rem;
+        }
+
+        .dashboard-articles .dashboard-article-card p {
+            font-size: 0.8rem;
+        }
+    }
 </style>
 
-<div class="relative max-w-7xl mx-auto px-6 md:px-8 pb-20 overflow-hidden">
+<div class="relative w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 pb-16 sm:pb-20 overflow-hidden">
 
     {{-- Floating Neon Leaves Background --}}
     <div class="fixed inset-0 -z-10 pointer-events-none">
@@ -196,7 +331,7 @@
     .animate-float-fast { animation: float-slow 4s ease-in-out infinite; animation-delay: 2s; }
 </style>
 
-<section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+<section class="dashboard-hero relative mt-6 sm:mt-8 min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
     
     {{-- 1. Gambar Background Asli (Jernih di Tengah) --}}
     <div class="absolute inset-0 z-0 overflow-hidden">
@@ -215,32 +350,32 @@
     <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
     {{-- 4. KONTEN UTAMA --}}
-    <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+    <div class="dashboard-hero-content relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12">
         
         {{-- Badge Premium (Efek Glassmorphism Ditingkatkan) --}}
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-4 sm:mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
             <span class="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-pulse shadow-[0_0_10px_#00ff88]"></span>
             Platform Peduli Lingkungan
         </div>
 
         {{-- Judul --}}
-        <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+        <h1 class="dashboard-hero-title font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl text-white">
             Go Green <br/> School Today.
         </h1>
         
-        <p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed drop-shadow-md max-w-xl">
+        <p class="dashboard-hero-text text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-10 leading-relaxed drop-shadow-md max-w-xl">
             Perubahan besar dimulai dari aksi kecil di lingkungan sekolah. Monitor jejak karbonmu dan mulai kebiasaan hijau dari sekarang.
         </p>
         
         {{-- Tombol --}}
-        <div class="flex flex-wrap gap-4">
+        <div class="dashboard-hero-actions flex flex-wrap gap-3 sm:gap-4">
             {{-- Tombol Mulai Hitung --}}
-            <a href="{{ url('/kalkulator') }}" class="bg-[#a3e635] hover:bg-[#b4f825] text-[#0a2f22] px-8 py-4 rounded-full font-headline font-extrabold scale-100 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(163,230,53,0.3)] hover:shadow-[0_12px_25px_rgba(163,230,53,0.5)] text-center flex items-center gap-2">
+            <a href="{{ url('/kalkulator') }}" class="bg-[#a3e635] hover:bg-[#b4f825] text-[#0a2f22] px-6 py-3 sm:px-8 sm:py-4 rounded-full font-headline font-extrabold text-sm sm:text-base scale-100 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(163,230,53,0.3)] hover:shadow-[0_12px_25px_rgba(163,230,53,0.5)] text-center flex items-center gap-2">
                 <span class="material-symbols-outlined text-xl">recycling</span> Mulai Hitung
             </a>
             
             {{-- Tombol Jelajahi --}}
-            <a href="{{ url('/tanaman') }}" class="bg-white/5 backdrop-blur-md text-white px-8 py-4 rounded-full font-headline font-bold border border-white/30 hover:bg-white/20 hover:-translate-y-1 transition-all text-center flex items-center gap-2 shadow-lg hover:shadow-xl">
+            <a href="{{ url('/tanaman') }}" class="bg-white/5 backdrop-blur-md text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-headline font-bold text-sm sm:text-base border border-white/30 hover:bg-white/20 hover:-translate-y-1 transition-all text-center flex items-center gap-2 shadow-lg hover:shadow-xl">
                 <span class="material-symbols-outlined text-xl">eco</span> Jelajahi
             </a>
         </div>
@@ -255,8 +390,8 @@
 </section>
 
     {{-- Quick Navigation Bento Grid --}}
-    <section class="mt-16 reveal-on-scroll">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section class="dashboard-nav mt-10 sm:mt-16 reveal-on-scroll">
+        <div class="dashboard-nav-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             
             @php
             $navItems = [
@@ -269,16 +404,16 @@
 
             @foreach($navItems as $item)
             {{-- Rounded diperbesar jadi 3xl agar lebih organik --}}
-<a href="{{ url($item['link']) }}" class="relative group bg-surface-container-lowest p-8 rounded-3xl flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300 shadow-[0_8px_32px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_48px_rgba(0,105,72,0.1)]">
+<a href="{{ url($item['link']) }}" class="dashboard-nav-card relative group bg-surface-container-lowest p-5 sm:p-8 rounded-3xl flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300 shadow-[0_8px_32px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_48px_rgba(0,105,72,0.1)]">
         
         {{-- Elemen Glow Baru --}}
         <div class="bento-glow absolute inset-0 z-0 rounded-3xl"></div>
         
-        <div class="relative z-10 bg-{{ $item['color'] }}-container/20 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-{{ $item['color'] }}-container/40 transition-colors">
-            <span class="material-symbols-outlined text-{{ $item['color'] }} text-3xl group-hover:scale-110 transition-transform">{{ $item['icon'] }}</span>
+        <div class="relative z-10 bg-{{ $item['color'] }}-container/20 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center group-hover:bg-{{ $item['color'] }}-container/40 transition-colors">
+            <span class="material-symbols-outlined text-{{ $item['color'] }} text-2xl sm:text-3xl group-hover:scale-110 transition-transform">{{ $item['icon'] }}</span>
         </div>
         <div class="relative z-10">
-            <h3 class="font-headline font-extrabold text-xl mb-1 text-primary">{{ $item['title'] }}</h3>
+            <h3 class="font-headline font-extrabold text-lg sm:text-xl mb-1 text-primary">{{ $item['title'] }}</h3>
             <p class="text-on-surface-variant text-sm">{{ $item['desc'] }}</p>
         </div>
     </a>
@@ -288,36 +423,36 @@
     </section>
 
     {{-- Eco-System Features --}}
-    <section class="mt-24 reveal-on-scroll">
+    <section class="dashboard-features mt-14 sm:mt-24 reveal-on-scroll">
         <div class="text-center md:text-left mb-10">
             <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Fasilitas Utama</span>
-                <h2 class="font-headline text-3xl font-extrabold text-primary mb-10 tracking-tight text-center md:text-left">Eco-System Features</h2>
+                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">Eco-System Features</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
             
-            <div class="relative h-[350px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+            <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
                 <div class="absolute inset-0 bg-primary transition-colors duration-500 group-hover:bg-[#005b3e]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
-                <div class="absolute bottom-0 p-8 md:p-10 z-10 w-full">
-                    <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-white/30 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-white text-3xl">recycling</span>
+                <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
+                    <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">recycling</span>
                     </div>
-                    <h3 class="font-headline text-3xl font-extrabold text-white mb-3">Kalkulator Sampah</h3>
-                    <p class="text-white/80 mb-6 max-w-sm text-sm md:text-base">Hitung dampak lingkungan dari sampah yang kamu hasilkan dan mulai perubahan dari sekarang.</p>
-                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-6 py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Coba Kalkulator</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">Kalkulator Sampah</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">Hitung dampak lingkungan dari sampah yang kamu hasilkan dan mulai perubahan dari sekarang.</p>
+                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Coba Kalkulator</a>
                 </div>
             </div>
 
-            <div class="relative h-[350px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+            <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
                 <div class="absolute inset-0 bg-tertiary transition-colors duration-500 group-hover:bg-[#375900]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
-                <div class="absolute bottom-0 p-8 md:p-10 z-10 w-full">
-                    <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-white/30 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-white text-3xl">park</span>
+                <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
+                    <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">park</span>
                     </div>
-                    <h3 class="font-headline text-3xl font-extrabold text-white mb-3">Edukasi Lingkungan</h3>
-                    <p class="text-white/80 mb-6 max-w-sm text-sm md:text-base">Pelajari cara menjaga bumi melalui informasi tanaman dan tips go green dengan mudah.</p>
-                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-6 py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Mulai Belajar</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">Edukasi Lingkungan</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">Pelajari cara menjaga bumi melalui informasi tanaman dan tips go green dengan mudah.</p>
+                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Mulai Belajar</a>
                 </div>
             </div>
 
@@ -325,19 +460,19 @@
     </section>
 
     {{-- Articles & Education Grid (Solusi #1: Kerangka Real Image) --}}
-    <section class="mt-28 reveal-on-scroll">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4 text-center sm:text-left">
+    <section class="dashboard-articles mt-16 sm:mt-28 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-10 gap-4 text-center sm:text-left">
             <div>
                 <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Inspirasi Hijau</span>
-                <h2 class="font-headline text-3xl font-extrabold text-primary tracking-tight">Artikel & Edukasi</h2>
-                <p class="text-on-surface-variant font-medium mt-2">Inspirasi terbaru untuk masa depan hijau.</p>
+                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">Artikel & Edukasi</h2>
+                <p class="dashboard-section-lead text-on-surface-variant font-medium mt-2">Inspirasi terbaru untuk masa depan hijau.</p>
             </div>
-            <a href="{{ url('/artikel') }}" class="bg-primary/10 text-primary px-6 py-3 rounded-full font-headline font-bold flex items-center gap-2 group hover:bg-primary hover:text-white transition-colors">
+            <a href="{{ url('/artikel') }}" class="bg-primary/10 text-primary px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm sm:text-base flex items-center gap-2 group hover:bg-primary hover:text-white transition-colors">
                 Lihat Semua <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="dashboard-articles-grid grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
             @php
             $articles = [
                 [
@@ -368,10 +503,10 @@
             @endphp
 
             @foreach($articles as $artikel)
-            <a href="{{ url($artikel['link']) }}" class="bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_4px_20px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_40px_rgba(0,105,72,0.12)] border border-outline-variant/10 flex flex-col group transition-all duration-500 hover:-translate-y-3">
+            <a href="{{ url($artikel['link']) }}" class="dashboard-article-card bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_4px_20px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_40px_rgba(0,105,72,0.12)] border border-outline-variant/10 flex flex-col group transition-all duration-500 hover:-translate-y-3">
                 
                 {{-- Area Foto Artikel Asli --}}
-                <div class="h-52 relative overflow-hidden bg-surface-container-high">
+                <div class="dashboard-article-media h-40 sm:h-52 relative overflow-hidden bg-surface-container-high">
                     <img src="{{ $artikel['image'] }}" alt="{{ $artikel['title'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" loading="lazy">
                     
                     {{-- Overlay Gradient Tipis biar gambar gak mati --}}
@@ -385,21 +520,21 @@
                 </div>
 
                 {{-- Konten Teks --}}
-                <div class="p-6 md:p-8 flex flex-col flex-grow relative">
+                <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow relative">
                     <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-medium mb-3">
                         <span class="material-symbols-outlined text-[1rem]">calendar_today</span>
                         <span>{{ $artikel['date'] }}</span>
                     </div>
 
-                    <h4 class="font-headline text-xl font-extrabold text-primary leading-snug mb-3 group-hover:text-tertiary transition-colors line-clamp-2">
+                    <h4 class="font-headline text-lg sm:text-xl font-extrabold text-primary leading-snug mb-3 group-hover:text-tertiary transition-colors line-clamp-2">
                         {{ $artikel['title'] }}
                     </h4>
 
-                    <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                    <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-4 sm:mb-6 flex-grow">
                         {{ $artikel['desc'] }}
                     </p>
 
-                    <div class="mt-auto pt-4 border-t border-outline-variant/20 flex items-center gap-2 text-primary font-bold text-sm font-headline group-hover:translate-x-2 transition-transform">
+                    <div class="mt-auto pt-3 sm:pt-4 border-t border-outline-variant/20 flex items-center gap-2 text-primary font-bold text-sm font-headline group-hover:translate-x-2 transition-transform">
                         Baca selengkapnya <span class="material-symbols-outlined text-base">arrow_forward</span>
                     </div>
                 </div>
@@ -409,22 +544,22 @@
     </section>
 
     {{-- Bold CTA Section --}}
-    <section class="mt-32 relative rounded-[3rem] overflow-hidden bg-primary py-24 text-center reveal-on-scroll shadow-2xl">
+    <section class="dashboard-cta mt-20 sm:mt-32 relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-primary py-16 sm:py-24 text-center reveal-on-scroll shadow-2xl">
         <div class="absolute inset-0 z-0 opacity-20 mix-blend-luminosity">
             <img class="w-full h-full object-cover" src="{{ asset('images/begeron.jpeg') }}" alt="Background CTA"/>
         </div>
         {{-- Gradient tambahan supaya teks aman --}}
         <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/60"></div>
 
-        <div class="relative z-10 max-w-2xl mx-auto px-8">
-            <h2 class="font-headline text-[2.5rem] md:text-[3.5rem] font-extrabold text-white leading-tight mb-6 tracking-tight drop-shadow-md">
+        <div class="relative z-10 max-w-none sm:max-w-2xl mx-auto px-4 sm:px-8">
+            <h2 class="dashboard-cta-title font-headline text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] font-extrabold text-white leading-tight mb-4 sm:mb-6 tracking-tight drop-shadow-md">
                 Waktunya Hijaukan<br/>Langkahmu ☘
             </h2>
-            <p class="text-white/90 text-lg md:text-xl mb-10 font-medium drop-shadow-sm">
+            <p class="dashboard-cta-text text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-10 font-medium drop-shadow-sm">
                 Bergabunglah dengan gerakan ini. Mulai kontribusi nyatamu untuk sekolah dan bumi yang lebih bersih hari ini juga.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="{{ url('/kalkulator') }}" class="bg-tertiary-container text-on-tertiary-container px-12 py-5 rounded-full font-headline font-black text-lg shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-transform inline-block">
+                <a href="{{ url('/kalkulator') }}" class="dashboard-cta-action bg-tertiary-container text-on-tertiary-container px-8 py-4 sm:px-12 sm:py-5 rounded-full font-headline font-black text-base sm:text-lg shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-transform inline-block">
                     Mulai Sekarang
                 </a>
             </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="scroll-smooth light">
+<html lang="{{ app()->getLocale() }}" class="scroll-smooth light @yield('html_class')">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
