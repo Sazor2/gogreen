@@ -2,6 +2,8 @@
 
 @section('title', __('app.latar_title'))
 
+@section('html_class', 'latar-page')
+
 @section('content')
 
 <style>
@@ -10,6 +12,13 @@
         --eco-green: #059669;
         --eco-light: #ecfdf5;
         --eco-accent: #c3f400;
+    }
+
+    html.dark {
+        --eco-dark: #e6f4ee;
+        --eco-green: #7ff3be;
+        --eco-light: #13211a;
+        --eco-accent: #a2f31f;
     }
 
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap');
@@ -68,6 +77,44 @@
         overflow-y: auto;
         position: relative;
         box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+    }
+
+    html.dark.latar-page main {
+        background-color: #0a0f12 !important;
+        color: #dbe3ea;
+    }
+
+    html.dark.latar-page .bento-card {
+        background: #11181e;
+        border-color: #24313a;
+    }
+
+    html.dark.latar-page .bento-card:hover {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    html.dark.latar-page .modal-overlay {
+        background: rgba(10, 15, 18, 0.75);
+    }
+
+    html.dark.latar-page .modal-content {
+        background: #11181e;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    }
+
+    html.dark.latar-page .procedure-section {
+        background-color: #0f1418;
+        color: #e6edf3;
+    }
+
+    html.dark.latar-page .procedure-section p,
+    html.dark.latar-page .procedure-section li {
+        color: #a6b0ba;
+    }
+
+    html.dark.latar-page .procedure-section .bg-white\/5 {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-color: #24313a;
     }
 </style>
 
@@ -142,7 +189,7 @@
             $langkahItems = $procedureItems->filter(fn ($item) => preg_match('/^\d+\./', $item))->values();
         @endphp
 
-        <div class="bg-[var(--eco-dark)] rounded-[3rem] p-10 md:p-16 text-white mb-16 reveal-on-scroll">
+        <div class="procedure-section bg-[var(--eco-dark)] rounded-[3rem] p-10 md:p-16 text-white mb-16 reveal-on-scroll">
             <div class="max-w-3xl mb-12">
                 <span class="text-[var(--eco-accent)] font-bold uppercase tracking-widest text-xs mb-4 block">{{ __('app.latar_procedure_title') }}</span>
                 <h2 class="text-3xl md:text-5xl font-outfit font-black mb-6">{{ __('app.latar_procedure_intro') }}</h2>

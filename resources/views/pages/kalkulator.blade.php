@@ -2,6 +2,8 @@
 
 @section('title', __('app.kalkulator_title'))
 
+@section('html_class', 'kalkulator-page')
+
 @section('content')
 
 @php
@@ -68,9 +70,71 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         100% { box-shadow: 0 20px 40px rgba(16,33,25,0.07); }
     }
 
+    html.dark.kalkulator-page {
+        color: #dbe3ea;
+        background-color: #0a0f12;
+    }
+
+    html.dark.kalkulator-page .waste-row:hover { background-color: #122118 !important; }
+    html.dark.kalkulator-page .waste-row { border-color: #24313a !important; background-color: #0f1418 !important; }
+    html.dark.kalkulator-page .waste-row.active { background-color: #0f2419 !important; border-color: #2f5b48 !important; }
+    html.dark.kalkulator-page .weight-input:focus { border-color: #7ff3be !important; box-shadow: 0 0 0 3px rgba(127, 243, 190, 0.18); }
+
+    html.dark.kalkulator-page .check-circle { border-color: #334155 !important; }
+    html.dark.kalkulator-page .check-circle[style*="background-color:#059669"] {
+        background-color: #2f5b48 !important;
+        border-color: #2f5b48 !important;
+    }
+
+    html.dark.kalkulator-page .kalkulator-input {
+        background-color: #11181e !important;
+        border-color: #24313a !important;
+        color: #dbe3ea !important;
+    }
+
+    html.dark.kalkulator-page .kalkulator-input::placeholder { color: #7f8b96; }
+
+    html.dark.kalkulator-page [style*="background-color:#f6f8f7"] { background-color: #11181e !important; }
+    html.dark.kalkulator-page [style*="background-color:#f8fafc"] { background-color: #141b21 !important; }
+    html.dark.kalkulator-page [style*="background-color:#f1f5f9"] { background-color: #1a232b !important; }
+    html.dark.kalkulator-page [style*="background-color:#ecfdf5"] { background-color: #102419 !important; }
+    html.dark.kalkulator-page [style*="background-color:#f0fdf4"] { background-color: #102019 !important; }
+    html.dark.kalkulator-page [style*="background-color:#ffffff"] { background-color: #11181e !important; }
+    html.dark.kalkulator-page [style*="background-color:#ffffffc9"] { background-color: #11181e !important; }
+    html.dark.kalkulator-page [style*="background-color:#ffffffcc"] { background-color: #11181e !important; }
+    html.dark.kalkulator-page [style*="background-color:#ecfeff"] { background-color: #0f1d20 !important; }
+    html.dark.kalkulator-page [style*="background-color:#bbf7d0"] { background-color: #1f3a30 !important; }
+    html.dark.kalkulator-page [style*="background-color:#dcfce7"] { background-color: #1a3327 !important; }
+    html.dark.kalkulator-page [style*="background-color:#fef2f2"] { background-color: #2a1515 !important; }
+    html.dark.kalkulator-page [style*="background:linear-gradient(135deg, #ecfdf5"] {
+        background: linear-gradient(135deg, #0f2419 0%, #0f2019 55%, #13261d 100%) !important;
+    }
+    html.dark.kalkulator-page [style*="background:linear-gradient(130deg,#ecfdf5"] {
+        background: linear-gradient(130deg, #0f2419 0%, #11181e 48%, #0f2019 100%) !important;
+    }
+    html.dark.kalkulator-page [style*="border:1px solid #d1fae5"] { border-color: #2a4a3b !important; }
+    html.dark.kalkulator-page [style*="border:2px dashed #a7f3d0"] { border-color: #2f5b48 !important; }
+    html.dark.kalkulator-page [style*="border:1px solid #a7f3d0"] { border-color: #2f5b48 !important; }
+    html.dark.kalkulator-page [style*="border:1px solid #bbf7d0"] { border-color: #2f5b48 !important; }
+    html.dark.kalkulator-page [style*="border-bottom:1px solid rgba(6,78,59,0.05)"] { border-bottom-color: #1f2a33 !important; }
+    html.dark.kalkulator-page [style*="border:2px solid #e2e8f0"] { border-color: #24313a !important; }
+    html.dark.kalkulator-page [style*="border:1px solid #f1f5f9"] { border-color: #24313a !important; }
+    html.dark.kalkulator-page [style*="border:1px solid #e2e8f0"] { border-color: #24313a !important; }
+    html.dark.kalkulator-page [style*="border-top:2px solid #e2e8f0"] { border-top-color: #24313a !important; }
+    html.dark.kalkulator-page [style*="color:#1e293b"] { color: #dbe3ea !important; }
+    html.dark.kalkulator-page [style*="color:#0f172a"] { color: #e6edf3 !important; }
+    html.dark.kalkulator-page [style*="color:#64748b"] { color: #9aa7b2 !important; }
+    html.dark.kalkulator-page [style*="color:#94a3b8"] { color: #7f8b96 !important; }
+    html.dark.kalkulator-page [style*="color:#6b7280"] { color: #9aa7b2 !important; }
+    html.dark.kalkulator-page [style*="color:#059669"] { color: #7ff3be !important; }
+    html.dark.kalkulator-page [style*="color:#065f46"] { color: #a7f3d0 !important; }
+    html.dark.kalkulator-page [style*="color:#047857"] { color: #6ee7b7 !important; }
+    html.dark.kalkulator-page [style*="color:#0f766e"] { color: #67e8f9 !important; }
+    html.dark.kalkulator-page [style*="color:#b91c1c"] { color: #fca5a5 !important; }
+
 </style>
 
-<div class="bg-[#f3f7fb] font-body text-[#2a2f32]">
+<div class="kalkulator-page bg-[#f3f7fb] font-body text-[#2a2f32]">
 <div class="relative max-w-7xl mx-auto px-6 md:px-8 mt-8">
     <section class="relative overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group" style="min-height:500px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd'); background-size:cover; background-position:center;">
         <div class="absolute inset-0 z-0 overflow-hidden">
@@ -138,7 +202,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                    placeholder="Contoh: XI RPL 1"
                                    value="{{ old('kelas', request('kelas')) }}"
                                 required
-                                   class="w-full rounded-xl focus:outline-none"
+                                   class="kalkulator-input w-full rounded-xl focus:outline-none"
                                    style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
                         </div>
                         
@@ -158,7 +222,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                    step="1"
                                 inputmode="numeric"
                                 value="{{ $initialDays }}"
-                                   class="w-full rounded-xl focus:outline-none"
+                                   class="kalkulator-input w-full rounded-xl focus:outline-none"
                                    style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
                         </div>
                         <p class="text-xs mb-6 -mt-4" style="color:#6b7280;margin-left:4px;">Masukkan total sampah yang dikumpulkan dalam beberapa hari. Contoh: 2 kg dalam 2 hari.</p>
@@ -197,7 +261,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                          pattern="[0-9]+([\\.,][0-9]+)?"
                                            placeholder="0"
                                            value="{{ $currentBerat ?? '' }}"
-                                           class="weight-input w-24 text-right focus:outline-none rounded-xl"
+                                           class="kalkulator-input weight-input w-24 text-right focus:outline-none rounded-xl"
                                            style="background-color:#f6f8f7;border:2px solid transparent;padding:10px 12px;font-size:14px;color:#1e293b;"
                                            {{ $isActive ? '' : 'disabled' }}>
                                     <span class="text-xs font-bold" style="color:#94a3b8;">kg</span>

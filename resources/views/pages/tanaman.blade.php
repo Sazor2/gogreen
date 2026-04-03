@@ -13,6 +13,14 @@
         --surface-variant: #d7dee3;
     }
 
+    html.dark {
+        --primary: #7ff3be;
+        --tertiary-container: #a2f31f;
+        --on-tertiary-container: #0a0f12;
+        --background: #0a0f12;
+        --surface-variant: #2a3640;
+    }
+
     .font-headline { font-family: 'DM Sans', sans-serif; }
     .font-body { font-family: 'Roboto', sans-serif; }
 
@@ -33,6 +41,24 @@
         box-shadow: 0 16px 48px rgba(0, 105, 72, 0.1);
     }
 
+    html.dark .tanaman-page {
+        background-color: #0a0f12;
+        color: #dbe3ea;
+    }
+
+    html.dark .tanaman-page .glass-card {
+        background: rgba(16, 24, 30, 0.7);
+        border-color: rgba(127, 243, 190, 0.2);
+    }
+
+    html.dark .tanaman-page .tanaman-card {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    html.dark .tanaman-page .tanaman-card:hover {
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+    }
+
     .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
@@ -49,7 +75,7 @@
     }
 </style>
 
-<div class="bg-[#f3f7fb] font-body text-[#2a2f32]">
+<div class="tanaman-page bg-[#f3f7fb] font-body text-[#2a2f32]">
     
     <div class="relative max-w-7xl mx-auto px-6 md:px-8">
         <section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">

@@ -2,6 +2,8 @@
 
 @section('title', 'Artikel Go Green')
 
+@section('html_class', 'artikel-page')
+
 @section('content')
 
 <style>
@@ -50,6 +52,39 @@
 
     .editorial-shadow {
         box-shadow: 0 24px 48px rgba(1, 45, 29, 0.06);
+    }
+
+    html.dark.artikel-page .artikel-card {
+        background: #11181e;
+        border-color: #24313a;
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+    }
+
+    html.dark.artikel-page .artikel-card:hover {
+        box-shadow: 0 26px 55px rgba(0, 0, 0, 0.55);
+    }
+
+    html.dark.artikel-page .artikel-tag {
+        background: rgba(127, 243, 190, 0.16);
+        color: #7ff3be;
+        border-color: rgba(127, 243, 190, 0.35);
+    }
+
+    html.dark.artikel-page h3,
+    html.dark.artikel-page h4 {
+        color: #e6edf3;
+    }
+
+    html.dark.artikel-page .text-slate-600 {
+        color: #a6b0ba;
+    }
+
+    html.dark.artikel-page .text-slate-500 {
+        color: #9aa7b2;
+    }
+
+    html.dark.artikel-page .text-emerald-700 {
+        color: #7ff3be;
     }
 </style>
 

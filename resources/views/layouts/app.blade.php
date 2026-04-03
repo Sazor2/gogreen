@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="scroll-smooth light @yield('html_class')">
+<html lang="{{ app()->getLocale() }}" class="scroll-smooth @yield('html_class')">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,11 +93,470 @@
         .reveal-on-scroll { opacity: 0; transform: translateY(18px) scale(0.985); transition: opacity 0.45s ease, transform 0.45s ease; }
         .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
         @media (prefers-reduced-motion: reduce) { .reveal-on-scroll { transition: none; transform: none; opacity: 1; } }
+
+        .reduceMotionToggle {
+            width: 4em;
+            height: 4em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbb;
+        }
+
+        .st-reduceMotionToggleBtn {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .st-reduceMotionToggleBtn .reduceMotionToggleInput {
+            opacity: 0;
+            width: inherit;
+            aspect-ratio: 1;
+        }
+
+        .st-reduceMotionToggleBtn svg {
+            position: absolute;
+            left: 0;
+            width: inherit;
+            height: inherit;
+        }
+        .st-reduceMotionToggleBtn svg .line {
+            transform: scaleX(0);
+        }
+
+        .st-reduceMotionToggleBtn
+          .reduceMotionToggleInput:not(:checked)
+          + svg
+          .ballTrace {
+            animation: ballTrace_toggleMotionOff9371A 0.3s ease 0s 1 forwards,
+                ballTrace_toggleMotionOff9371B 0.1s steps(2, end)
+                calc(0.32s + var(--_appearOffset)) 1 forwards;
+        }
+        .st-reduceMotionToggleBtn .reduceMotionToggleInput:not(:checked) + svg .ball {
+            animation: ball_toggleMotionOn9371A 0.3s ease 0s 1 forwards,
+                ball_toggleMotionOn9371B 0.4s cubic-bezier(0.165, 0.84, 0.45, 1.11) 0.3s 1
+                forwards;
+        }
+
+        .st-reduceMotionToggleBtn .reduceMotionToggleInput:checked + svg circle {
+            animation: ball_toggleMotionOff9371 0.9s linear 0s 1 forwards;
+        }
+
+        .st-reduceMotionToggleBtn .reduceMotionToggleInput:checked + svg .line {
+            animation: line_toggleMotionOff9371 0.32s cubic-bezier(0.075, 0.82, 0.165, 1)
+                0.47s 1 forwards;
+        }
+
+        @keyframes ball_toggleMotionOff9371 {
+            0% {
+                transform: translateX(0px);
+            }
+            6.66% {
+                transform: translateX(calc(var(--_toCenterXOffset) * 0.45));
+            }
+            13.33% {
+                transform: translateX(calc(var(--_toCenterXOffset) * 0.77));
+            }
+            20% {
+                transform: translateX(calc(var(--_toCenterXOffset) * 0.9));
+            }
+            26.66% {
+                transform: translateX(calc(var(--_toCenterXOffset) * 0.94));
+            }
+            33.33% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.965 + 1px), 2px);
+            }
+            35% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.988), 1px);
+            }
+            37% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.991 + 1px), -1px);
+            }
+            39% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.995 - 1px), -2px);
+            }
+            41% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.999 + 1px), -1px);
+            }
+            43% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.75), 1px);
+            }
+            45% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.5), 0px);
+            }
+            100% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.5), 0px);
+            }
+        }
+
+        @keyframes line_toggleMotionOff9371 {
+            0% {
+                transform: scaleY(0);
+            }
+            100% {
+                transform: scaleY(1);
+            }
+        }
+
+        @keyframes ball_toggleMotionOn9371A {
+            0% {
+                transform: translate(calc(var(--_toCenterXOffset) * 0.5), 0px);
+            }
+            100% {
+                transform: translate(calc(var(--_toCenterXOffset) - 5.67px), 0px);
+            }
+        }
+
+        @keyframes ball_toggleMotionOn9371B {
+            0% {
+                transform: translate(calc(var(--_toCenterXOffset) - 5.67px), 0px);
+            }
+            100% {
+                transform: translate(0px, 0px);
+            }
+        }
+
+        @keyframes ballTrace_toggleMotionOff9371A {
+            0% {
+                opacity: 1;
+                transform: translate(calc(var(--_toCenterXOffset) * 0.5), 0px);
+            }
+            99.9% {
+                opacity: 1;
+                transform: translate(calc(var(--_toCenterXOffset) - 5.67px), 0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(var(--_toCenterXOffset) - 5.67px), 0px);
+            }
+        }
+        @keyframes ballTrace_toggleMotionOff9371B {
+            0% {
+                opacity: 0;
+                transform: translate(0px, 0px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0px, 0px);
+            }
+        }
+
+        html {
+            color-scheme: light;
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+
+        html.dark {
+            --eco-light: #13211a;
+            --eco-dark: #e6f4ee;
+            --eco-medium: #7ff3be;
+            --eco-accent: #a2f31f;
+            --eco-background: #0a0f12;
+            --eco-bg: #0a0f12;
+            --md-sys-color-background: #0a0f12;
+        }
+
+        html.dark body {
+            background-color: #0a0f12;
+            color: #dbe3ea;
+        }
+
+        html.dark nav {
+            background-color: rgba(13, 18, 22, 0.82);
+            box-shadow: 0 8px 32px rgba(7, 10, 13, 0.35);
+        }
+
+        html.dark footer {
+            background-color: #0f1418;
+            border-top-color: rgba(127, 243, 190, 0.12);
+        }
+
+        html.dark .bg-background {
+            background-color: #0a0f12;
+        }
+
+        html.dark .bg-surface {
+            background-color: #10161b;
+        }
+
+        html.dark .bg-surface-container-lowest {
+            background-color: #0f1418;
+        }
+
+        html.dark .bg-surface-container-low {
+            background-color: #141b21;
+        }
+
+        html.dark .bg-surface-container {
+            background-color: #1a2128;
+        }
+
+        html.dark .bg-surface-container-high {
+            background-color: #202830;
+        }
+
+        html.dark .bg-surface-container-highest {
+            background-color: #262f38;
+        }
+
+        html.dark .text-on-surface {
+            color: #dbe3ea;
+        }
+
+        html.dark .text-on-surface-variant {
+            color: #a6b0ba;
+        }
+
+        html.dark .border-outline-variant {
+            border-color: #2f3a44;
+        }
+
+        html.dark .border-outline {
+            border-color: #45515c;
+        }
+
+        html.dark .bg-primary-container {
+            background-color: rgba(16, 59, 45, 0.6);
+        }
+
+        html.dark .text-primary {
+            color: #7ff3be;
+        }
+
+        html.dark .reduceMotionToggle {
+            color: #e6edf3;
+        }
+
+        html.dark .bg-white {
+            background-color: #11181e;
+        }
+
+        html.dark .bg-slate-50 {
+            background-color: #141b21;
+        }
+
+        html.dark .bg-slate-100 {
+            background-color: #1a232b;
+        }
+
+        html.dark .border-slate-100 {
+            border-color: #24313a;
+        }
+
+        html.dark .border-emerald-50 {
+            border-color: #1f2a33;
+        }
+
+        html.dark .text-slate-900 {
+            color: #f0f5f9;
+        }
+
+        html.dark .text-slate-800 {
+            color: #dbe3ea;
+        }
+
+        html.dark .text-slate-700 {
+            color: #c6d2dc;
+        }
+
+        html.dark .text-slate-600 {
+            color: #aebbc6;
+        }
+
+        html.dark .text-slate-500 {
+            color: #9aa7b2;
+        }
+
+        html.dark .text-slate-400 {
+            color: #7f8b96;
+        }
+
+        html.dark .text-emerald-600 {
+            color: #6ee7b7;
+        }
+
+        html.dark .text-emerald-800 {
+            color: #a7f3d0;
+        }
+
+        html.dark .bg-\[\#f3f7fb\] {
+            background-color: #0a0f12;
+        }
+
+        html.dark .bg-\[\#f9fafb\] {
+            background-color: #141b21;
+        }
+
+        html.dark .text-\[\#2a2f32\] {
+            color: #dbe3ea;
+        }
+
+        html.dark .text-\[\#575c60\] {
+            color: #a6b0ba;
+        }
+
+        html.dark .text-\[\#999da1\] {
+            color: #7f8b96;
+        }
+
+        html.dark .text-\[\#006948\] {
+            color: #7ff3be;
+        }
+
+        html.dark .border-\[\#d7dee3\] {
+            border-color: #2a3640;
+        }
+
+        html.dark .border-\[\#e5e7eb\] {
+            border-color: #2a3640;
+        }
+
+        html.dark .bg-\[\#006948\]\/10 {
+            background-color: rgba(127, 243, 190, 0.16);
+        }
+
+        html.dark .border-\[\#006948\]\/10 {
+            border-color: rgba(127, 243, 190, 0.24);
+        }
+
+        .decor-tree {
+            position: fixed;
+            right: 1.25rem;
+            bottom: 2rem;
+            z-index: 30;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .decor-tree .tree-wrap {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .decor-tree .tree {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(30deg);
+            animation: treeAnimate 5s linear infinite;
+        }
+
+        @keyframes treeAnimate {
+            0% {
+                transform: rotateX(-20deg) rotateY(360deg);
+            }
+
+            100% {
+                transform: rotateX(-20deg) rotateY(0deg);
+            }
+        }
+
+        .decor-tree .tree div {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: translateY(calc(25px * var(--x))) translateZ(0px);
+        }
+
+        .decor-tree .tree div.branch span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #69c069, #77dd77);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-bottom: 5px solid #00000019;
+            transform-origin: bottom;
+            transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(28.5px);
+        }
+
+        .decor-tree .tree div.stem span {
+            position: absolute;
+            top: 110px;
+            left: calc(50% - 7.5px);
+            width: 15px;
+            height: 50%;
+            background: linear-gradient(90deg, #bb4622, #df7214);
+            border-bottom: 5px solid #00000019;
+            transform-origin: bottom;
+            transform: rotateY(calc(90deg * var(--i))) translateZ(7.5px);
+        }
+
+        .decor-tree .shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            filter: blur(20px);
+            transform-style: preserve-3d;
+            transform: rotateX(90deg) translateZ(-65px);
+        }
     </style>
+    <script>
+        (function () {
+            var storedTheme = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = storedTheme || (prefersDark ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-background font-body text-on-surface antialiased overflow-x-hidden">
+
+    <div class="decor-tree" aria-hidden="true">
+        <div class="tree-wrap">
+            <div class="tree">
+                <div class="branch" style="--x:0">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                </div>
+                <div class="branch" style="--x:1">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                </div>
+                <div class="branch" style="--x:2">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                </div>
+                <div class="branch" style="--x:3">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                </div>
+                <div class="stem">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                </div>
+                <span class="shadow"></span>
+            </div>
+        </div>
+    </div>
 
     {{-- Top Navigation Bar (ECO-VIBE Style) --}}
     <nav class="bg-[#f3f7fb]/70 backdrop-blur-xl sticky top-0 w-full z-50 shadow-[0_8px_32px_rgba(42,47,50,0.06)]">
@@ -159,6 +618,91 @@
 
             {{-- Right Side: Language & Mobile Menu --}}
             <div class="flex items-center gap-4">
+                <label
+                    class="reduceMotionToggle st-reduceMotionToggleBtn"
+                    for="themeToggle"
+                >
+                    <input
+                        class="reduceMotionToggleInput"
+                        id="themeToggle"
+                        type="checkbox"
+                        aria-label="Toggle dark mode"
+                    />
+                    <svg
+                        stroke-width="0"
+                        stroke="currentColor"
+                        fill="currentColor"
+                        viewBox="0 0 18 18"
+                        height="18"
+                        width="18"
+                    >
+                        <mask id="lineMask">
+                            <rect fill="white" height="18" width="18"></rect>
+                            <rect
+                                fill="black"
+                                style="rotate: 30deg;"
+                                height="16"
+                                width="4.1"
+                                y="-5"
+                                x="9.807"
+                                class="line"
+                            ></rect>
+                        </mask>
+                        <rect
+                            style="rotate: 30deg;"
+                            height="13"
+                            width="1.3"
+                            y="-3.3"
+                            x="11.3"
+                            class="line"
+                        ></rect>
+                        <g mask="url(#lineMask)">
+                            <circle
+                                style="--_toCenterXOffset: 5.76px;--_appearOffset: -.1s;"
+                                fill="none"
+                                stroke-width=".1"
+                                r="2.95"
+                                cy="9"
+                                cx="3.24"
+                                class="ballTrace"
+                            ></circle>
+                            <circle
+                                style="--_toCenterXOffset: 3px;--_appearOffset: .02s;"
+                                fill="none"
+                                stroke-width=".2"
+                                r="2.9"
+                                cy="9"
+                                cx="6"
+                                class="ballTrace"
+                            ></circle>
+                            <circle
+                                style="--_toCenterXOffset: 0px;--_appearOffset: .07s;"
+                                fill="none"
+                                stroke-width=".3"
+                                r="2.8"
+                                cy="9"
+                                cx="9"
+                                class="ballTrace"
+                            ></circle>
+                            <circle
+                                style="--_toCenterXOffset: -2.75px;--_appearOffset: .13s;"
+                                fill="none"
+                                stroke-width=".4"
+                                r="2.75"
+                                cy="9"
+                                cx="11.75"
+                                class="ballTrace"
+                            ></circle>
+                            <circle
+                                style="--_toCenterXOffset: -5.7px;"
+                                r="3"
+                                cy="9"
+                                cx="14.7"
+                                class="ball"
+                            ></circle>
+                        </g>
+                    </svg>
+                </label>
                 {{-- Desktop Language Switcher --}}
                 <div class="relative hidden md:block" id="lang-wrapper">
                     <button id="lang-btn"
@@ -371,6 +915,24 @@
                 });
             };
             document.addEventListener('DOMContentLoaded', window.setupRevealOnScroll);
+        })();
+    </script>
+    <script>
+        (function () {
+            const toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            const storedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+            toggle.checked = theme === 'dark';
+
+            toggle.addEventListener('change', (event) => {
+                const nextTheme = event.target.checked ? 'dark' : 'light';
+                localStorage.setItem('theme', nextTheme);
+                document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+            });
         })();
     </script>
     @stack('scripts')

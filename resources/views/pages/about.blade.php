@@ -2,6 +2,8 @@
 
 @section('title', __('app.about_title'))
 
+@section('html_class', 'about-page')
+
 @section('content')
 
 <style>
@@ -10,6 +12,13 @@
         --eco-medium: #059669;
         --eco-accent: #a2f31f;
         --eco-bg: #f8fafc;
+    }
+
+    html.dark {
+        --eco-dark: #e6f4ee;
+        --eco-medium: #7ff3be;
+        --eco-accent: #a2f31f;
+        --eco-bg: #0a0f12;
     }
 
     /* EcoVibes Typography */
@@ -33,6 +42,10 @@
         box-shadow: 0 25px 50px -12px rgba(1, 45, 29, 0.08);
     }
 
+    html.dark.about-page .editorial-shadow {
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+    }
+
     .glass-pill {
         background: rgba(162, 243, 31, 0.1);
         border: 1px solid rgba(162, 243, 31, 0.2);
@@ -54,6 +67,31 @@
     .team-card {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid #f1f5f9;
+    }
+
+    html.dark .team-card {
+        border-color: #24313a;
+    }
+
+    html.dark.about-page .team-card {
+        background-color: #141b21;
+    }
+
+    html.dark.about-page .about-tech-section {
+        background-color: #0f1418;
+    }
+
+    html.dark.about-page .about-tech-section h2 {
+        color: #e6edf3;
+    }
+
+    html.dark.about-page .about-tech-section .tech-card {
+        background: #11181e;
+        border-color: #24313a;
+    }
+
+    html.dark.about-page .about-tech-section p {
+        color: #a6b0ba;
     }
 
     .team-card:hover {
@@ -168,7 +206,7 @@
 
     {{-- Tools Section (Dark Mode Vibes) --}}
     <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
-        <div class="bg-[var(--eco-dark)] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
+        <div class="about-tech-section bg-[var(--eco-dark)] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
             <div class="absolute -top-20 -left-20 w-80 h-80 bg-[var(--eco-accent)] opacity-10 rounded-full blur-[100px]"></div>
 
             <div class="relative z-10">

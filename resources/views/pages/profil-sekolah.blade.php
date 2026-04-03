@@ -2,6 +2,8 @@
 
 @section('title', __('app.profil_sek_title'))
 
+@section('html_class', 'profil-page')
+
 @section('content')
 
 <style>
@@ -13,6 +15,15 @@
         --soft-bg: #f3f7fb;
         --card-shadow: 0 10px 25px -5px rgba(10, 47, 34, 0.08), 0 8px 10px -6px rgba(10, 47, 34, 0.06);
         --hover-shadow: 0 20px 25px -5px rgba(10, 47, 34, 0.16), 0 10px 10px -5px rgba(10, 47, 34, 0.1);
+    }
+
+    html.dark {
+        --primary-deep: #0a0f12;
+        --primary-green: #7ff3be;
+        --accent-green: #a2f31f;
+        --soft-bg: #0f1418;
+        --card-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+        --hover-shadow: 0 22px 40px rgba(0, 0, 0, 0.6);
     }
 
     @media (min-width: 768px) {
@@ -107,6 +118,37 @@
         border: 1px solid rgba(6, 78, 59, 0.05);
         box-shadow: var(--card-shadow);
     }
+
+    html.dark.profil-page .stat-card {
+        background-color: #11181e;
+        border-color: #24313a;
+    }
+
+    html.dark.profil-page .program-card,
+    html.dark.profil-page .facility-card,
+    html.dark.profil-page .bento-inner {
+        background-color: #11181e;
+        border-color: #24313a;
+    }
+
+    html.dark.profil-page .facility-card:hover {
+        background-color: rgba(127, 243, 190, 0.12) !important;
+    }
+
+    html.dark.profil-page [style*="background-color:#f8fafc"] { background-color: #0f1418 !important; }
+    html.dark.profil-page [style*="background-color:#fcfdfc"] { background-color: #0f1418 !important; }
+    html.dark.profil-page [style*="background-color:#f1f5f9"] { background-color: #141b21 !important; }
+    html.dark.profil-page [style*="border:1px solid #f1f5f9"] { border-color: #24313a !important; }
+    html.dark.profil-page [style*="border-top:1px solid #f1f5f9"] { border-top-color: #24313a !important; }
+    html.dark.profil-page [style*="color:#0f172a"] { color: #e6edf3 !important; }
+    html.dark.profil-page [style*="color:#64748b"] { color: #9aa7b2 !important; }
+    html.dark.profil-page [style*="color:var(--primary-deep)"] { color: #e6edf3 !important; }
+    html.dark.profil-page [style*="color:var(--primary-green)"] { color: #7ff3be !important; }
+    html.dark.profil-page [style*="background-color:var(--primary-deep)"] { background-color: #1a232b !important; }
+    html.dark.profil-page [style*="background-color:rgba(162,243,31,0.16)"] { background-color: rgba(127, 243, 190, 0.18) !important; }
+    html.dark.profil-page [style*="background-color:rgba(162,243,31,0.12)"] { background-color: rgba(127, 243, 190, 0.12) !important; }
+    html.dark.profil-page [style*="background-color:rgba(162,243,31,0.18)"] { background-color: rgba(127, 243, 190, 0.18) !important; }
+    html.dark.profil-page [style*="background-color:rgba(162,243,31,0.2)"] { background-color: rgba(127, 243, 190, 0.2) !important; }
 </style>
 
 {{-- Hero Section --}}

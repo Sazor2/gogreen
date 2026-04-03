@@ -12,6 +12,13 @@
         --eco-background: #f8fafc;
     }
 
+    html.dark {
+        --eco-dark: #e6f4ee;
+        --eco-medium: #7ff3be;
+        --eco-accent: #a2f31f;
+        --eco-background: #0a0f12;
+    }
+
     /* Fonts matching EcoScholar/EcoVibes style */
     @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');
 
@@ -52,6 +59,22 @@
         outline: none;
     }
 
+    html.dark .contact-input {
+        background-color: #11181e !important;
+        border-color: #24313a !important;
+        color: #dbe3ea !important;
+    }
+
+    html.dark .contact-input::placeholder {
+        color: #7f8b96;
+    }
+
+    html.dark .contact-input:focus {
+        background-color: #11181e !important;
+        border-color: #7ff3be !important;
+        box-shadow: 0 0 0 4px rgba(127, 243, 190, 0.18);
+    }
+
     .btn-eco-vibes {
         background: linear-gradient(135deg, #006948 0%, #059669 100%);
         color: #ffffff;
@@ -63,6 +86,87 @@
         transform: translateY(-2px);
         box-shadow: 0 12px 32px rgba(0, 105, 72, 0.35);
         background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    }
+
+    .contact-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(10, 15, 18, 0.72);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
+    }
+
+    .contact-loading.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    .contact-loading svg {
+        width: 140px;
+        height: 140px;
+    }
+
+    .segment {
+        stroke: rgba(0, 0, 0, 0);
+        stroke-width: 10;
+        stroke-linecap: round;
+    }
+
+    .joint {
+        fill: rgba(122, 164, 186, 1);
+        stroke-width: 5px;
+    }
+
+    #mir {
+        scale: -0.25;
+    }
+
+    .arm {
+        filter: url("#metaball");
+        scale: 0.25;
+        transform-origin: 250px 250px;
+        animation: rotate 31s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(-90deg);
+        }
+        25% {
+            transform: rotate(360deg);
+        }
+        50% {
+            transform: rotate(90deg);
+        }
+        75% {
+            transform: rotate(-360deg);
+        }
+        100% {
+            transform: rotate(-90deg);
+        }
+    }
+
+    .arm1 {
+        transform-origin: 300px 200px;
+        animation: rotate 23s ease-in-out infinite;
+    }
+
+    .arm2 {
+        transform-origin: 400px 200px;
+        animation: rotate 17s ease-in-out infinite;
+    }
+
+    .arm3 {
+        transform-origin: 490px 200px;
+        animation: rotate 11s ease-in-out infinite;
     }
 </style>
 
@@ -163,13 +267,13 @@
                 </div>
 
                 @if(session('contact_success'))
-                <div class="mb-8 flex items-center gap-3 bg-emerald-50 border-2 border-emerald-100 text-emerald-800 rounded-2xl px-6 py-4">
+                <div class="contact-success mb-8 flex items-center gap-3 bg-emerald-50 border-2 border-emerald-100 text-emerald-800 rounded-2xl px-6 py-4">
                     <span class="material-symbols-outlined text-emerald-600">check_circle</span>
                     <p class="text-sm font-bold">{{ __('app.contact_success') }}</p>
                 </div>
                 @endif
 
-                <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
+                <form id="contact-form" action="{{ route('contact.send') }}" method="POST" class="space-y-6">
                     @csrf
                     @if($errors->any())
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-xl mb-6">
@@ -223,7 +327,7 @@
                         width="100%" height="100%" style="border:0; filter: grayscale(0.2) contrast(1.1);"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
+                <div class="contact-map-panel w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
                     <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">Location</span>
                     <h3 class="text-3xl font-headline font-black mb-6 leading-tight">Kunjungi Sekolah Kami</h3>
                     <p class="text-white/70 mb-8 leading-relaxed font-medium">
@@ -239,6 +343,118 @@
         </section>
     </div>
 </div>
+
+<div id="contact-loading" class="contact-loading" aria-hidden="true">
+    <svg viewBox="0 0 500 500" aria-hidden="true">
+        <g class="arm">
+            <line class="segment" x1="250" y1="250" x2="300" y2="250"></line>
+            <circle class="joint" cx="250" cy="250" r="64"></circle>
+            <g class="arm1">
+                <line class="segment" x1="300" y1="250" x2="400" y2="250"></line>
+                <circle class="joint" cx="300" cy="250" r="30"></circle>
+                <g class="arm2">
+                    <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                    <circle class="joint" cx="400" cy="250" r="24"></circle>
+                    <g class="arm3">
+                        <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                        <circle class="joint" cx="490" cy="250" r="16"></circle>
+                    </g>
+                </g>
+                <g class="arm1">
+                    <line class="segment" x1="300" y1="250" x2="400" y2="250"></line>
+                    <circle class="joint" cx="300" cy="250" r="30"></circle>
+                    <g class="arm2">
+                        <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                        <circle class="joint" cx="400" cy="250" r="8"></circle>
+                        <g class="arm3">
+                            <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                            <circle class="joint" cx="490" cy="250" r="8"></circle>
+                        </g>
+                        <g class="arm2">
+                            <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                            <circle class="joint" cx="400" cy="250" r="8"></circle>
+                            <g class="arm3">
+                                <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                                <circle class="joint" cx="490" cy="250" r="8"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="mir" class="arm">
+            <line class="segment" x1="250" y1="250" x2="300" y2="250"></line>
+            <circle class="joint" cx="250" cy="250" r="64"></circle>
+            <g class="arm1">
+                <line class="segment" x1="300" y1="250" x2="400" y2="250"></line>
+                <circle class="joint" cx="300" cy="250" r="30"></circle>
+                <g class="arm2">
+                    <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                    <circle class="joint" cx="400" cy="250" r="24"></circle>
+                    <g class="arm3">
+                        <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                        <circle class="joint" cx="490" cy="250" r="16"></circle>
+                    </g>
+                </g>
+                <g class="arm1">
+                    <line class="segment" x1="300" y1="250" x2="400" y2="250"></line>
+                    <circle class="joint" cx="300" cy="250" r="30"></circle>
+                    <g class="arm2">
+                        <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                        <circle class="joint" cx="400" cy="250" r="8"></circle>
+                        <g class="arm3">
+                            <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                            <circle class="joint" cx="490" cy="250" r="8"></circle>
+                        </g>
+                        <g class="arm2">
+                            <line class="segment" x1="400" y1="250" x2="490" y2="250"></line>
+                            <circle class="joint" cx="400" cy="250" r="8"></circle>
+                            <g class="arm3">
+                                <line class="segment" x1="490" y1="250" x2="550" y2="250"></line>
+                                <circle class="joint" cx="490" cy="250" r="8"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <filter id="metaball">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="17" result="blur"></feGaussianBlur>
+            <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -7"
+                result="fluid"
+            ></feColorMatrix>
+            <feComposite in="SourceGraphic" in2="fluid" operator="atop"></feComposite>
+        </filter>
+    </svg>
+</div>
+
+<style>
+    html.dark .contact-map-panel {
+        background-color: #0f1418;
+        color: #e6edf3;
+    }
+
+    html.dark .contact-map-panel p {
+        color: #a6b0ba;
+    }
+
+    html.dark .contact-map-panel a {
+        color: #7ff3be;
+    }
+
+    html.dark .contact-success {
+        background-color: #0f1d20;
+        border-color: #1f3a44;
+        color: #7ff3be;
+    }
+
+    html.dark .contact-success .material-symbols-outlined {
+        color: #7ff3be;
+    }
+</style>
 
 @push('scripts')
 <script>
@@ -257,10 +473,30 @@
         }, observerOptions);
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
     };
+    const setupContactLoading = function () {
+        const form = document.getElementById('contact-form');
+        const overlay = document.getElementById('contact-loading');
+        if (!form || !overlay) return;
+
+        form.addEventListener('submit', () => {
+            overlay.classList.add('is-visible');
+            document.body.style.overflow = 'hidden';
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.setAttribute('disabled', 'disabled');
+            }
+            form.setAttribute('aria-busy', 'true');
+        });
+    };
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', window.setupRevealOnScroll);
+        document.addEventListener('DOMContentLoaded', () => {
+            window.setupRevealOnScroll();
+            setupContactLoading();
+        });
     } else {
         window.setupRevealOnScroll();
+        setupContactLoading();
     }
 </script>
 @endpush
