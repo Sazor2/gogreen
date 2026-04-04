@@ -98,28 +98,50 @@
         border-color: var(--eco-accent);
         box-shadow: 0 20px 40px rgba(1, 45, 29, 0.05);
     }
+
+    .about-member-icon-wrap {
+        background: linear-gradient(145deg, rgba(0, 105, 72, 0.12), rgba(162, 243, 31, 0.2));
+        box-shadow: 0 8px 20px rgba(0, 105, 72, 0.12);
+    }
+
+    .about-member-icon {
+        color: var(--eco-medium);
+    }
+
+    html.dark.about-page .about-member-icon-wrap {
+        background: linear-gradient(145deg, rgba(127, 243, 190, 0.16), rgba(162, 243, 31, 0.2));
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    html.dark.about-page .about-member-icon {
+        color: #a2f31f;
+    }
 </style>
 
 <main class="font-body bg-[var(--eco-bg)] min-h-screen pb-20">
-    {{-- Hero Section (Modern EcoVibes Style) --}}
-    <section class="relative overflow-hidden flex items-center text-white max-w-7xl mx-auto mt-8 rounded-[2.5rem] editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]" style="min-height:500px;">
-        <div class="absolute inset-0 z-0">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" class="w-full h-full object-cover grayscale-[0.3] scale-105 group-hover:scale-110 transition-transform duration-[10s]" alt="Background">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+    {{-- Hero Section (Dashboard Style) --}}
+    <section class="relative mt-8 min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white max-w-7xl mx-auto rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" class="w-full h-full object-cover" alt="Background">
         </div>
 
-        <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+        <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
-                {{ __('app.program_active') }}
+                {{ __('app.badge_environment_platform') }}
             </div>
-            <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
                 {{ __('app.about_title') }}
             </h1>
-            <p class="text-white/90 text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
+            <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
                 {{ __('app.about_subtitle') }}
             </p>
         </div>
+
     </section>
 
     {{-- Developer Profile --}}
@@ -189,8 +211,8 @@
                     ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), __('app.about_job_content_strategy')]],
                 ] as $member)
                 <div class="team-card p-8 rounded-[2rem] bg-slate-50 flex flex-col items-center text-center reveal-on-scroll">
-                    <div class="w-14 h-14 bg-[var(--eco-dark)] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20">
-                        <span class="material-symbols-outlined text-[var(--eco-accent)] text-2xl">{{ $member['icon'] }}</span>
+                    <div class="about-member-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="about-member-icon material-symbols-outlined text-2xl">{{ $member['icon'] }}</span>
                     </div>
                     <h4 class="text-lg font-headline font-black text-[var(--eco-dark)] leading-tight mb-4 min-h-[50px] flex items-center">{{ $member['name'] }}</h4>
                     <div class="space-y-2">

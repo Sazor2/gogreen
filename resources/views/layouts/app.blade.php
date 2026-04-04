@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Go Green School') — SMK Karya Bangsa Sintang</title>
+    <title>@yield('title', 'Go Green School') — {{ __('app.hero_school') }}</title>
     
     {{-- Flag Icons for Language Switcher --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
@@ -449,85 +449,809 @@
 
         .decor-tree {
             position: fixed;
-            right: 1.25rem;
-            bottom: 2rem;
-            z-index: 30;
-            pointer-events: none;
+            right: 2rem;
+            bottom: 3rem;
+            z-index: 50;
             user-select: none;
+            animation: mascotFloat 6.6s ease-in-out infinite;
         }
 
         .decor-tree .tree-wrap {
-            width: 70px;
-            height: 70px;
+            width: 120px;
+            height: 152px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
+            animation: mascotSway 4.8s ease-in-out infinite;
         }
 
-        .decor-tree .tree {
+        .decor-tree .pine-body {
             position: relative;
-            width: 50px;
-            height: 50px;
-            transform-style: preserve-3d;
-            transform: rotateX(-20deg) rotateY(30deg);
-            animation: treeAnimate 5s linear infinite;
+            width: 112px;
+            height: 138px;
+            animation: mascotBreath 3.8s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(38, 87, 43, 0.16));
         }
 
-        @keyframes treeAnimate {
-            0% {
-                transform: rotateX(-20deg) rotateY(360deg);
-            }
-
+        @keyframes mascotFloat {
+            0%,
             100% {
-                transform: rotateX(-20deg) rotateY(0deg);
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
             }
         }
 
-        .decor-tree .tree div {
-            position: absolute;
-            top: -50px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transform: translateY(calc(25px * var(--x))) translateZ(0px);
+        @keyframes mascotSway {
+            0%,
+            100% {
+                transform: rotate(-1.2deg);
+            }
+            50% {
+                transform: rotate(1.2deg);
+            }
         }
 
-        .decor-tree .tree div.branch span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #69c069, #77dd77);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            border-bottom: 5px solid #00000019;
-            transform-origin: bottom;
-            transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(28.5px);
+        @keyframes mascotBreath {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.018);
+            }
         }
 
-        .decor-tree .tree div.stem span {
+        .decor-tree .face-center {
             position: absolute;
-            top: 110px;
-            left: calc(50% - 7.5px);
-            width: 15px;
-            height: 50%;
-            background: linear-gradient(90deg, #bb4622, #df7214);
-            border-bottom: 5px solid #00000019;
-            transform-origin: bottom;
-            transform: rotateY(calc(90deg * var(--i))) translateZ(7.5px);
+            left: 50%;
+            top: 52px;
+            width: 48px;
+            height: 34px;
+            transform: translateX(-50%);
+            z-index: 120;
+            pointer-events: none;
+            animation: faceBob 3.1s ease-in-out infinite;
+        }
+
+        @keyframes faceBob {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-1.6px);
+            }
+        }
+
+        .decor-tree .pine-layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(50% 0%, 7% 100%, 93% 100%);
+            border-radius: 0 0 16px 16px;
+            background: linear-gradient(145deg, #9be66f 0%, #7fd25b 62%, #69b84e 100%);
+            box-shadow: inset 0 -5px 0 rgba(53, 120, 40, 0.15);
+        }
+
+        .decor-tree .pine-layer::after {
+            content: '';
+            position: absolute;
+            inset: 12% 10% 22%;
+            background: repeating-linear-gradient(140deg, rgba(255, 255, 255, 0.1) 0 2px, rgba(255, 255, 255, 0) 2px 7px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .decor-tree .pine-layer.layer-4 {
+            bottom: 28px;
+            width: 104px;
+            height: 58px;
+            z-index: 10;
+        }
+
+        .decor-tree .pine-layer.layer-3 {
+            bottom: 52px;
+            width: 88px;
+            height: 52px;
+            z-index: 20;
+        }
+
+        .decor-tree .pine-layer.layer-2 {
+            bottom: 74px;
+            width: 72px;
+            height: 46px;
+            z-index: 30;
+        }
+
+        .decor-tree .pine-layer.layer-1 {
+            bottom: 95px;
+            width: 56px;
+            height: 40px;
+            z-index: 40;
+        }
+
+        .decor-tree .leaf-fall {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 80;
+            overflow: visible;
+        }
+
+        .decor-tree .leaf-fall .leaf {
+            position: absolute;
+            width: 11px;
+            height: 7px;
+            background: linear-gradient(140deg, #b9ef79, #6cbf4a);
+            border-radius: 80% 20% 80% 20%;
+            box-shadow: inset -1px -1px 0 rgba(48, 115, 38, 0.45);
+            opacity: 0;
+            animation: leafDrift 6.8s linear infinite;
+        }
+
+        .decor-tree .leaf-fall .leaf::after {
+            content: '';
+            position: absolute;
+            left: 48%;
+            top: 1px;
+            width: 1px;
+            height: 5px;
+            background: rgba(44, 100, 38, 0.4);
+            transform: rotate(20deg);
+        }
+
+        .decor-tree .leaf-fall .leaf.leaf-1 { left: 8px; top: 26px; animation-delay: 0s; }
+        .decor-tree .leaf-fall .leaf.leaf-2 { right: 2px; top: 16px; animation-delay: 1.7s; }
+        .decor-tree .leaf-fall .leaf.leaf-3 { left: -4px; top: 48px; animation-delay: 3.2s; }
+        .decor-tree .leaf-fall .leaf.leaf-4 { right: 8px; top: 40px; animation-delay: 4.7s; }
+
+        @keyframes leafDrift {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+            }
+            10% {
+                opacity: 0.45;
+            }
+            55% {
+                opacity: 0.5;
+                transform: translate3d(-8px, 24px, 0) rotate(105deg) scale(0.98);
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(9px, 52px, 0) rotate(210deg) scale(0.9);
+            }
+        }
+
+        @keyframes blinkOnce {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            45%, 55% {
+                transform: scaleY(0.14);
+            }
+        }
+
+        .decor-tree .trunk {
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            width: 24px;
+            height: 34px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #a85631, #ce6a2f);
+            border-radius: 0 0 6px 6px;
+            box-shadow: inset -3px -3px 0 rgba(78, 41, 23, 0.2);
+            z-index: 2;
+            transform-origin: top center;
+            animation: trunkSway 4.8s ease-in-out infinite;
+        }
+
+        @keyframes trunkSway {
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(-0.65deg);
+            }
+            50% {
+                transform: translateX(-50%) rotate(0.65deg);
+            }
         }
 
         .decor-tree .shadow {
             position: absolute;
-            top: 0;
+            bottom: -3px;
+            left: 50%;
+            width: 68px;
+            height: 12px;
+            background: rgba(0, 0, 0, 0.22);
+            filter: blur(4px);
+            border-radius: 100%;
+            transform: translateX(-50%);
+            z-index: 0;
+            animation: shadowBreathe 3.8s ease-in-out infinite;
+        }
+
+        @keyframes shadowBreathe {
+            0%,
+            100% {
+                transform: translateX(-50%) scaleX(1);
+                opacity: 0.22;
+            }
+            50% {
+                transform: translateX(-50%) scaleX(0.9);
+                opacity: 0.16;
+            }
+        }
+
+        .decor-tree .mascot-eyes {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 130;
+            pointer-events: none;
+        }
+
+        .decor-tree .mascot-eyes .eye {
+            width: 8px;
+            height: 8px;
+            background: #364130;
+            border: 1px solid #4a5f3f;
+            border-radius: 50%;
+            position: relative;
+            transform-origin: center center;
+            transition: all 220ms ease;
+            overflow: hidden;
+            animation: none;
+        }
+
+        .decor-tree .tree-wrap.is-blinking .mascot-eyes .eye {
+            animation: blinkOnce 170ms ease;
+        }
+
+        .decor-tree .mascot-eyes .eye::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+        }
+
+        .decor-tree .mascot-eyes .eye::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #78b365;
+            border-radius: 50%;
+            right: 1px;
+            bottom: 1px;
+            opacity: 0.28;
+        }
+
+        .decor-tree .mascot-brows {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 18px;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            z-index: 43;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 220ms ease;
+        }
+
+        .decor-tree .mascot-brows span {
+            width: 6px;
+            height: 2px;
+            border-radius: 999px;
+            background: #4f5d45;
+            transform-origin: center;
+        }
+
+        .decor-tree .face-sparkle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            opacity: 0;
+            transform: scale(0.75) rotate(0deg);
+            pointer-events: none;
+            z-index: 138;
+            background: #f59e0b;
+            clip-path: polygon(50% 0%, 64% 36%, 100% 50%, 64% 64%, 50% 100%, 36% 64%, 0 50%, 36% 36%);
+        }
+
+        .decor-tree .face-sparkle::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #fff233;
+            clip-path: polygon(50% 0%, 64% 36%, 100% 50%, 64% 64%, 50% 100%, 36% 64%, 0 50%, 36% 36%);
+        }
+
+        .decor-tree .face-sparkle.sparkle-top-left {
+            left: -7px;
+            top: -11px;
+            width: 8px;
+            height: 8px;
+        }
+
+        .decor-tree .face-sparkle.sparkle-bottom-right {
+            right: -11px;
+            bottom: -9px;
+            width: 12px;
+            height: 12px;
+        }
+
+        .decor-tree .face-sparkle.sparkle-bottom-right-sm {
+            right: -16px;
+            bottom: 1px;
+            width: 7px;
+            height: 7px;
+        }
+
+        @keyframes sparkleTwinkle {
+            0% {
+                opacity: 0.22;
+                transform: scale(0.75) rotate(0deg);
+            }
+            55% {
+                opacity: 0.95;
+                transform: scale(1.08) rotate(18deg);
+            }
+            100% {
+                opacity: 0.38;
+                transform: scale(0.85) rotate(36deg);
+            }
+        }
+
+        .decor-tree .tree-wrap.mood-wink .face-sparkle,
+        .decor-tree .tree-wrap.mood-excited .face-sparkle {
+            animation: sparkleTwinkle 1.15s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .face-sparkle.sparkle-bottom-right,
+        .decor-tree .tree-wrap.mood-excited .face-sparkle.sparkle-bottom-right {
+            animation-delay: 0.32s;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .face-sparkle.sparkle-bottom-right-sm,
+        .decor-tree .tree-wrap.mood-excited .face-sparkle.sparkle-bottom-right-sm {
+            animation-delay: 0.56s;
+        }
+
+        .decor-tree .mascot-mouth {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            width: 11px;
+            height: 7px;
+            border: 1px solid #2f3f2f;
+            border-radius: 0 0 12px 12px;
+            background: #2f3f2f;
+            transform: translateX(-50%);
+            z-index: 42;
+            pointer-events: none;
+            transition: all 220ms ease;
+            overflow: hidden;
+        }
+
+        .decor-tree .mascot-mouth::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -4px;
+            width: 10px;
+            height: 6px;
+            transform: translateX(-50%);
+            border-radius: 0 0 10px 10px;
+            background: #92dc65;
+        }
+
+        .decor-tree .mascot-mouth::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 1px;
+            width: 6px;
+            height: 3px;
+            transform: translateX(-50%);
+            border-radius: 8px 8px 10px 10px;
+            background: #f79ab3;
+            opacity: 0;
+            transition: opacity 220ms ease;
+        }
+
+        .decor-tree .mascot-cheek {
+            position: absolute;
+            top: 13px;
+            width: 6px;
+            height: 4px;
+            background: rgba(248, 141, 167, 0.45);
+            border-radius: 999px;
+            z-index: 41;
+            pointer-events: none;
+            transition: all 220ms ease;
+        }
+
+        .decor-tree .mascot-cheek.left {
+            left: 8px;
+        }
+
+        .decor-tree .mascot-cheek.right {
+            right: 8px;
+        }
+
+        .decor-tree .tree-wrap[class*='mood-'] {
+            transition: transform 260ms ease;
+        }
+
+        .decor-tree .tree-wrap.mood-smile .mascot-mouth {
+            width: 11px;
+            height: 7px;
+            transform: translateX(-50%);
+        }
+
+        .decor-tree .tree-wrap.mood-happy .mascot-mouth {
+            width: 13px;
+            height: 8px;
+            transform: translateX(-50%) translateY(0.5px);
+        }
+
+        .decor-tree .tree-wrap.mood-happy .mascot-mouth::after {
+            opacity: 0.65;
+        }
+
+        .decor-tree .tree-wrap.mood-happy .mascot-cheek {
+            transform: scale(1.06);
+            background: rgba(247, 116, 145, 0.52);
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:first-child {
+            width: 8px;
+            height: 8px;
+            margin-top: 1px;
+            border: 0;
+            background: transparent;
+            animation: none;
+            overflow: visible;
+            z-index: 64;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes {
+            z-index: 64;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:last-child {
+            animation: none;
+            transform: scaleY(1);
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-mouth {
+            width: 13px;
+            height: 8px;
+            transform: translateX(-50%) translateY(0.5px);
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-mouth::after {
+            opacity: 0.65;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:first-child::before,
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:first-child::after {
+            content: '';
+            position: absolute;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            filter: blur(20px);
-            transform-style: preserve-3d;
-            transform: rotateX(90deg) translateZ(-65px);
+            width: 7px;
+            height: 2px;
+            border-radius: 999px;
+            background: #4f5d45;
+            transform-origin: right center;
+            opacity: 1;
+            display: block;
+            z-index: 132;
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:first-child::before {
+            top: 1px;
+            transform: rotate(30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-wink .mascot-eyes .eye:first-child::after {
+            bottom: 1px;
+            transform: rotate(-30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye {
+            width: 8px;
+            height: 8px;
+            margin-top: 1px;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            animation: none;
+            overflow: visible;
+            z-index: 134;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes {
+            z-index: 134;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye::before,
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye::after {
+            content: '';
+            position: absolute;
+            width: 7px;
+            height: 2px;
+            border-radius: 999px;
+            background: #4f5d45;
+            opacity: 1;
+            display: block;
+            z-index: 136;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:first-child::before,
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:first-child::after {
+            left: 0;
+            transform-origin: right center;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:first-child::before {
+            top: 1px;
+            transform: rotate(30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:first-child::after {
+            bottom: 1px;
+            transform: rotate(-30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:last-child::before,
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:last-child::after {
+            right: 0;
+            transform-origin: left center;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:last-child::before {
+            top: 1px;
+            transform: rotate(-30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-eyes .eye:last-child::after {
+            bottom: 1px;
+            transform: rotate(30deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-mouth {
+            width: 13px;
+            height: 8px;
+            border-radius: 0 0 12px 12px;
+            border: 1px solid #2f3f2f;
+            background: #2f3f2f;
+            transform: translateX(-50%) translateY(0.5px);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-mouth::before {
+            display: block;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-mouth::after {
+            opacity: 0.65;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-brows {
+            opacity: 1;
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-brows span:first-child {
+            transform: rotate(-10deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited .mascot-brows span:last-child {
+            transform: rotate(10deg);
+        }
+
+        .decor-tree .tree-wrap.mood-excited.brow-pop .mascot-brows span {
+            animation: browLiftOnce 420ms ease-out forwards;
+        }
+
+        .decor-tree .tree-wrap.mood-excited.brow-pop .mascot-brows span:first-child {
+            --brow-rot: -10deg;
+        }
+
+        .decor-tree .tree-wrap.mood-excited.brow-pop .mascot-brows span:last-child {
+            --brow-rot: 10deg;
+        }
+
+        @keyframes browLiftOnce {
+            0% {
+                transform: rotate(var(--brow-rot, 0deg)) translateY(0);
+            }
+            100% {
+                transform: rotate(var(--brow-rot, 0deg)) translateY(-2px);
+            }
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-brows {
+            opacity: 1;
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-brows span:first-child {
+            transform: rotate(-16deg) translateY(-2px);
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-brows span:last-child {
+            transform: rotate(14deg) translateY(1px);
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-mouth {
+            width: 12px;
+            height: 6px;
+            border-radius: 0 0 9px 9px;
+            transform: translateX(-50%) translateX(1px) rotate(9deg);
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-mouth::after {
+            width: 7px;
+            height: 4px;
+            opacity: 0.88;
+            left: 64%;
+            bottom: 0;
+            border-radius: 8px 8px 12px 12px;
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-eyes {
+            gap: 10px;
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-eyes .eye:first-child {
+            transform: translateY(1px);
+        }
+
+        .decor-tree .tree-wrap.mood-mock .mascot-eyes .eye:last-child {
+            transform: scaleY(0.72) translateY(1px);
+        }
+
+        .decor-tree .speech-bubble.is-visible,
+        .decor-tree:hover .speech-bubble {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .speech-bubble {
+            position: absolute;
+            bottom: calc(100% + 26px);
+            right: -16px;
+            background: linear-gradient(145deg, #ffffff, #f2fff8);
+            color: #05533a;
+            padding: 12px 14px 13px;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 105, 72, 0.22);
+            box-shadow: 0 20px 34px rgba(0, 39, 27, 0.2), 0 6px 14px rgba(0, 0, 0, 0.08);
+            font-size: 12.5px;
+            width: 220px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 300ms ease;
+            pointer-events: none;
+            line-height: 1.55;
+            text-align: left;
+            letter-spacing: 0.01em;
+            backdrop-filter: blur(3px);
+        }
+
+        .speech-bubble-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 7px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: rgba(0, 105, 72, 0.1);
+            color: #006948;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .speech-bubble-title-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.16);
+        }
+
+        .speech-bubble-body {
+            display: block;
+            color: #0a4b35;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .speech-bubble.is-pop {
+            animation: bubblePop 0.35s ease;
+        }
+
+        @keyframes bubblePop {
+            0% {
+                transform: translateY(8px) scale(0.96);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 28px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #f4fff9;
+        }
+
+        html.dark .speech-bubble {
+            background: linear-gradient(155deg, #12202b, #162735);
+            color: #7ff3be;
+            border-color: rgba(127, 243, 190, 0.28);
+            box-shadow: 0 20px 34px rgba(1, 8, 12, 0.5), 0 6px 14px rgba(0, 0, 0, 0.24);
+        }
+
+        html.dark .speech-bubble-header {
+            background: rgba(127, 243, 190, 0.15);
+            color: #8ff7c7;
+        }
+
+        html.dark .speech-bubble-title-dot {
+            background: #7ff3be;
+            box-shadow: 0 0 0 4px rgba(127, 243, 190, 0.18);
+        }
+
+        html.dark .speech-bubble-body {
+            color: #d3ffe9;
+        }
+
+        html.dark .speech-bubble::after {
+            border-top-color: #152634;
+        }
+
+        @media (max-width: 768px) {
+            .decor-tree {
+                right: 1rem;
+                bottom: 2.6rem;
+            }
+
+            .decor-tree .tree-wrap {
+                width: 72px;
+                height: 72px;
+            }
+
+            .speech-bubble {
+                right: -8px;
+                bottom: calc(100% + 18px);
+                width: 196px;
+                font-size: 12px;
+            }
+
+            .speech-bubble-body {
+                font-size: 12px;
+            }
         }
     </style>
     <script>
@@ -545,40 +1269,92 @@
 
 <body class="bg-background font-body text-on-surface antialiased overflow-x-hidden">
 
-    <div class="decor-tree" aria-hidden="true">
-        <div class="tree-wrap">
-            <div class="tree">
-                <div class="branch" style="--x:0">
-                    <span style="--i:0;"></span>
-                    <span style="--i:1;"></span>
-                    <span style="--i:2;"></span>
-                    <span style="--i:3;"></span>
+    @php
+        $mascotMessageKeys = match (true) {
+            request()->is('kalkulator') => [
+                'mascot_kalkulator_1',
+                'mascot_kalkulator_2',
+                'mascot_kalkulator_3',
+            ],
+            request()->is('tanaman') => [
+                'mascot_tanaman_1',
+                'mascot_tanaman_2',
+                'mascot_tanaman_3',
+            ],
+            request()->is('contact') => [
+                'mascot_contact_1',
+                'mascot_contact_2',
+                'mascot_contact_3',
+            ],
+            request()->is('tentang') => [
+                'mascot_about_1',
+                'mascot_about_2',
+                'mascot_about_3',
+            ],
+            request()->is('latar-belakang') => [
+                'mascot_latar_1',
+                'mascot_latar_2',
+                'mascot_latar_3',
+            ],
+            request()->is('profil-sekolah') => [
+                'mascot_profil_1',
+                'mascot_profil_2',
+                'mascot_profil_3',
+            ],
+            default => [
+                'mascot_dashboard_1',
+                'mascot_dashboard_2',
+                'mascot_dashboard_3',
+            ]
+        };
+
+        $mascotMessages = array_map(
+            fn (string $messageKey): string => __('app.' . $messageKey),
+            $mascotMessageKeys
+        );
+    @endphp
+
+    <div class="decor-tree group cursor-pointer" aria-hidden="true">
+        {{-- Speech Bubble --}}
+        <div class="speech-bubble" id="mascot-bubble" data-messages='@json($mascotMessages)'>
+            <span class="speech-bubble-header">
+                <span class="speech-bubble-title-dot"></span>
+                {{ __('app.mascot_title') }}
+            </span>
+            <span class="speech-bubble-body" id="mascot-bubble-body">{{ $mascotMessages[0] }} 🌿</span>
+        </div>
+
+        <div class="tree-wrap mood-smile" id="mascot-face">
+            <div class="pine-body">
+                <div class="pine-layer layer-4"></div>
+                <div class="pine-layer layer-3"></div>
+                <div class="pine-layer layer-2"></div>
+                <div class="pine-layer layer-1"></div>
+                <div class="face-center" aria-hidden="true">
+                    <span class="face-sparkle sparkle-top-left"></span>
+                    <span class="face-sparkle sparkle-bottom-right"></span>
+                    <span class="face-sparkle sparkle-bottom-right-sm"></span>
+                    {{-- Mascot Eyes --}}
+                    <div class="mascot-eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="mascot-brows">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="mascot-cheek left"></div>
+                    <div class="mascot-cheek right"></div>
+                    <div class="mascot-mouth"></div>
                 </div>
-                <div class="branch" style="--x:1">
-                    <span style="--i:0;"></span>
-                    <span style="--i:1;"></span>
-                    <span style="--i:2;"></span>
-                    <span style="--i:3;"></span>
-                </div>
-                <div class="branch" style="--x:2">
-                    <span style="--i:0;"></span>
-                    <span style="--i:1;"></span>
-                    <span style="--i:2;"></span>
-                    <span style="--i:3;"></span>
-                </div>
-                <div class="branch" style="--x:3">
-                    <span style="--i:0;"></span>
-                    <span style="--i:1;"></span>
-                    <span style="--i:2;"></span>
-                    <span style="--i:3;"></span>
-                </div>
-                <div class="stem">
-                    <span style="--i:0;"></span>
-                    <span style="--i:1;"></span>
-                    <span style="--i:2;"></span>
-                    <span style="--i:3;"></span>
-                </div>
+                <div class="trunk"></div>
                 <span class="shadow"></span>
+            </div>
+            <div class="leaf-fall" aria-hidden="true">
+                <span class="leaf leaf-1"></span>
+                <span class="leaf leaf-2"></span>
+                <span class="leaf leaf-3"></span>
+                <span class="leaf leaf-4"></span>
             </div>
         </div>
     </div>
@@ -890,7 +1666,7 @@
 
             {{-- Copyright & Social --}}
             <div class="flex flex-col gap-4 items-start md:items-end">
-                <p class="font-body text-sm text-on-surface-variant text-left md:text-right">© {{ date('Y') }} SMK Karya Bangsa Sintang. All rights reserved.</p>
+                <p class="font-body text-sm text-on-surface-variant text-left md:text-right">© {{ date('Y') }} {{ __('app.hero_school') }}. All rights reserved.</p>
                 <div class="flex gap-4">
                     <a href="#" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity">public</a>
                     <a href="{{ url('/contact') }}" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity">mail</a>
@@ -1029,6 +1805,182 @@
                 localStorage.setItem('theme', nextTheme);
                 document.documentElement.classList.toggle('dark', nextTheme === 'dark');
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            const bubble = document.getElementById('mascot-bubble');
+            const bubbleBody = document.getElementById('mascot-bubble-body');
+            const mascotFace = document.querySelector('.decor-tree .tree-wrap');
+            if (!bubble) return;
+            if (!bubbleBody) return;
+            if (!mascotFace) return;
+
+            let messages = [];
+            try {
+                messages = JSON.parse(bubble.getAttribute('data-messages') || '[]');
+            } catch (error) {
+                messages = [];
+            }
+
+            if (!Array.isArray(messages) || !messages.length) return;
+
+            let currentIndex = 0;
+            const leafSuffix = ' 🌿';
+            const visibleDurationMs = 8000;
+            const minPauseMs = 22000;
+            const maxPauseMs = 38000;
+            const expressionNames = ['smile', 'happy', 'wink', 'mock', 'excited'];
+            const expressionWeights = {
+                smile: 34,
+                happy: 26,
+                wink: 18,
+                excited: 16,
+                mock: 6,
+            };
+            let currentExpression = 'smile';
+            let blinkTimeoutId = null;
+            let expressionTimeoutId = null;
+            let isBlinkLoopRunning = false;
+            const fastBlinkBatchSizes = [4, 8];
+            let fastBatchIndex = 0;
+
+            const randomPauseMs = () => {
+                const spread = maxPauseMs - minPauseMs;
+                return minPauseMs + Math.floor(Math.random() * (spread + 1));
+            };
+
+            const setBubbleMessage = (index, withPop) => {
+                const text = (messages[index] || '').trim();
+                if (!text) return;
+                bubbleBody.textContent = text + leafSuffix;
+                bubble.classList.add('is-visible');
+                if (withPop) {
+                    bubble.classList.remove('is-pop');
+                    window.requestAnimationFrame(() => bubble.classList.add('is-pop'));
+                    window.setTimeout(() => bubble.classList.remove('is-pop'), 360);
+                }
+            };
+
+            const applyExpression = (name) => {
+                expressionNames.forEach((exp) => {
+                    mascotFace.classList.remove('mood-' + exp);
+                });
+                mascotFace.classList.add('mood-' + name);
+                if (name === 'excited') {
+                    mascotFace.classList.remove('brow-pop');
+                    window.requestAnimationFrame(() => mascotFace.classList.add('brow-pop'));
+                    window.setTimeout(() => mascotFace.classList.remove('brow-pop'), 460);
+                } else {
+                    mascotFace.classList.remove('brow-pop');
+                }
+                currentExpression = name;
+            };
+
+            const nextExpression = () => {
+                const totalWeight = expressionNames.reduce((sum, name) => sum + (expressionWeights[name] || 1), 0);
+                if (totalWeight <= 0) return 'smile';
+
+                let candidate = currentExpression;
+                let guard = 0;
+                while (candidate === currentExpression && guard < 8) {
+                    let roll = Math.random() * totalWeight;
+                    for (const name of expressionNames) {
+                        roll -= (expressionWeights[name] || 1);
+                        if (roll <= 0) {
+                            candidate = name;
+                            break;
+                        }
+                    }
+                    guard += 1;
+                }
+
+                return candidate;
+            };
+
+            const expressionDelayMs = (name) => {
+                if (name === 'wink') return 3000 + Math.floor(Math.random() * 1001);
+                if (name === 'excited') return 3200 + Math.floor(Math.random() * 1101);
+                if (name === 'mock') return 3200 + Math.floor(Math.random() * 1201);
+                return 9000 + Math.floor(Math.random() * 7000);
+            };
+
+            const runExpressionLoop = () => {
+                const next = nextExpression();
+                applyExpression(next);
+                expressionTimeoutId = window.setTimeout(runExpressionLoop, expressionDelayMs(next));
+            };
+
+            const clearBlinkState = () => {
+                mascotFace.classList.remove('is-blinking');
+            };
+
+            const sleep = (delay) => new Promise((resolve) => {
+                blinkTimeoutId = window.setTimeout(resolve, delay);
+            });
+
+            const triggerBlink = async () => {
+                clearBlinkState();
+                await sleep(0);
+                if (currentExpression === 'wink' || currentExpression === 'excited') {
+                    clearBlinkState();
+                    return;
+                }
+                mascotFace.classList.add('is-blinking');
+                await sleep(185);
+                clearBlinkState();
+            };
+
+            const runBlinkLoop = async () => {
+                if (isBlinkLoopRunning) return;
+                isBlinkLoopRunning = true;
+
+                while (true) {
+                    if (currentExpression === 'wink' || currentExpression === 'excited') {
+                        clearBlinkState();
+                        await sleep(280);
+                        continue;
+                    }
+
+                    const fastBlinks = fastBlinkBatchSizes[fastBatchIndex % fastBlinkBatchSizes.length];
+                    fastBatchIndex += 1;
+
+                    for (let i = 0; i < fastBlinks; i += 1) {
+                        await triggerBlink();
+                        await sleep(1000 + Math.floor(Math.random() * 1001));
+                    }
+
+                    await sleep(5000 + Math.floor(Math.random() * 2001));
+                    await triggerBlink();
+                    await sleep(5000);
+                }
+            };
+
+            const hideBubble = () => {
+                bubble.classList.remove('is-visible');
+                bubble.classList.remove('is-pop');
+            };
+
+            const nextIndex = () => {
+                if (messages.length <= 1) return 0;
+                return (currentIndex + 1) % messages.length;
+            };
+
+            const runCycle = () => {
+                setBubbleMessage(currentIndex, true);
+
+                window.setTimeout(() => {
+                    hideBubble();
+                    currentIndex = nextIndex();
+                    window.setTimeout(runCycle, randomPauseMs());
+                }, visibleDurationMs);
+            };
+
+            applyExpression('smile');
+            runBlinkLoop();
+            expressionTimeoutId = window.setTimeout(runExpressionLoop, 8500);
+            hideBubble();
+            window.setTimeout(runCycle, 650);
         })();
     </script>
     @stack('scripts')

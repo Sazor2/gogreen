@@ -73,37 +73,115 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* Floating Plant Growth Elements */
+    @keyframes float-growth {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg) rotateY(0deg) scale(1);
+            opacity: 0.62;
+        }
+        25% {
+            transform: translateY(-14px) rotate(6deg) rotateY(12deg) scale(1.04);
+            opacity: 0.88;
+        }
+        50% {
+            transform: translateY(-26px) rotate(-8deg) rotateY(-10deg) scale(0.96);
+            opacity: 0.72;
+        }
+        75% {
+            transform: translateY(-12px) rotate(4deg) rotateY(8deg) scale(1.02);
+            opacity: 0.84;
+        }
+    }
+
+    .floating-growth {
+        position: absolute;
+        color: #11d473;
+        font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+        filter: drop-shadow(0 0 8px rgba(17, 212, 115, 0.45));
+        animation: float-growth 8.5s ease-in-out infinite;
+        will-change: transform, opacity;
+    }
+
+    .growth-1 { animation-delay: 0s; }
+    .growth-2 { animation-delay: 1.7s; }
+    .growth-3 { animation-delay: 3.4s; }
+
+    html.dark .tanaman-page .floating-growth {
+        color: #7ff3be;
+        filter: drop-shadow(0 0 10px rgba(127, 243, 190, 0.58));
+    }
+
+    .status-pill {
+        border: 1px solid transparent;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .status-pill-excellent { background: linear-gradient(145deg, #1faa63, #0f8d4f); border-color: #43d38a; }
+    .status-pill-good { background: linear-gradient(145deg, #2f8dff, #276be0); border-color: #73b4ff; }
+    .status-pill-watch { background: linear-gradient(145deg, #fb8c2a, #e06410); border-color: #ffb16c; }
+    .status-dot-excellent { background: #9cfac6; }
+    .status-dot-good { background: #cde5ff; }
+    .status-dot-watch { background: #ffe0b8; }
+
+    html.dark .tanaman-page .status-pill {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 10px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    html.dark .tanaman-page .status-dot {
+        box-shadow: 0 0 10px currentColor;
+    }
+
+    html.dark .tanaman-page #modal-status {
+        background: #11181e;
+        border-color: #24313a;
+        color: #dbe3ea;
+    }
 </style>
 
 <div class="tanaman-page bg-[#f3f7fb] font-body text-[#2a2f32]">
-    
-    <div class="relative max-w-7xl mx-auto px-6 md:px-8">
-        <section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
-    <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/pohon.jpg') }}" alt="{{ __('app.tanaman_hero_alt') }}">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <span class="material-symbols-outlined floating-growth growth-1" style="top:16%; left:11%; font-size:30px;">grass</span>
+        <span class="material-symbols-outlined floating-growth growth-2" style="top:34%; right:12%; font-size:24px;">grass</span>
+        <span class="material-symbols-outlined floating-growth growth-3" style="top:63%; left:18%; font-size:27px;">grass</span>
     </div>
     
-    <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
-            {{ __('app.badge_environment_platform') }}
-        </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
+        <section class="relative mt-8 min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img class="w-full h-full object-cover" src="{{ asset('images/pohon.jpg') }}" alt="{{ __('app.tanaman_hero_alt') }}">
+            </div>
 
-        <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
-            {!! __('app.tanaman_hero_title') !!}
-        </h1>
+            <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-        <p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed drop-shadow-md max-w-xl">
-            {{ __('app.tanaman_hero_desc') }}
-        </p>
-        
-        <div class="flex items-center gap-3 text-[#a2f31f] font-bold">
-            <span class="material-symbols-outlined">info</span>
-            <span class="text-sm italic">{{ __('app.tanaman_catatan') }}</span>
-        </div>
-    </div>
+            <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+                    {{ __('app.badge_environment_platform') }}
+                </div>
+
+                <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+                    {!! __('app.tanaman_hero_title') !!}
+                </h1>
+
+                <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl">
+                    {{ __('app.tanaman_hero_desc') }}
+                </p>
+
+                <div class="flex items-center gap-3 text-[#a2f31f] font-bold">
+                    <span class="material-symbols-outlined">info</span>
+                    <span class="text-sm italic">{{ __('app.tanaman_catatan') }}</span>
+                </div>
+            </div>
 
         </section>
     </div>
@@ -122,20 +200,20 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-100 text-green-800 border border-green-200">{{ __('app.status_sangat_baik') }}</span>
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-100 text-blue-800 border border-blue-200">{{ __('app.status_baik') }}</span>
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-orange-100 text-orange-800 border border-orange-200">{{ __('app.status_perlu_perhatian') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-excellent text-white">{{ __('app.status_sangat_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-good text-white">{{ __('app.status_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-watch text-white">{{ __('app.status_perlu_perhatian') }}</span>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach([
-                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/tengkawang.jpg'],
-                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/jelutung.jpg'],
-                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/meranti.jpg'],
-                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/rambutan.jpg'],
-                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'color' => 'bg-orange-500', 'bg' => 'images/tanaman/ulin.jpg'],
+                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'tone' => 'excellent', 'bg' => 'images/tanaman/tengkawang.jpg'],
+                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'tone' => 'good', 'bg' => 'images/tanaman/jelutung.jpg'],
+                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'tone' => 'good', 'bg' => 'images/tanaman/meranti.jpg'],
+                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'tone' => 'excellent', 'bg' => 'images/tanaman/rambutan.jpg'],
+                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'tone' => 'watch', 'bg' => 'images/tanaman/ulin.jpg'],
             ] as $pohon)
             
             <article class="flex flex-col gap-5 group cursor-pointer hover:-translate-y-2 transition-all duration-300" 
@@ -146,6 +224,7 @@
                 data-tinggi="{{ $pohon['tinggi'] }}"
                 data-manfaat="{{ $pohon['manfaat'] }}"
                 data-status="{{ $pohon['status'] }}"
+                data-status-tone="{{ $pohon['tone'] }}"
                 data-image="{{ asset($pohon['bg']) }}"
                 onclick="openTanamanModal(this)">
                 
@@ -160,8 +239,8 @@
                     </div>
 
                     <div class="absolute bottom-6 left-6 right-6">
-                        <span class="flex items-center gap-1.5 {{ $pohon['color'] }} text-white text-[9px] font-black px-2.5 py-1 rounded-full w-fit">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                        <span class="status-pill status-pill-{{ $pohon['tone'] }} flex items-center gap-1.5 text-white text-[9px] font-black px-2.5 py-1 rounded-full w-fit">
+                            <span class="status-dot status-dot-{{ $pohon['tone'] }} animate-pulse"></span>
                             {{ $pohon['status'] }}
                         </span>
                     </div>
@@ -255,6 +334,10 @@
         document.getElementById('modal-manfaat').textContent = element.dataset.manfaat;
 
         statusEl.textContent = element.dataset.status;
+        statusEl.classList.remove('status-pill-excellent', 'status-pill-good', 'status-pill-watch', 'text-white');
+        if (element.dataset.statusTone) {
+            statusEl.classList.add('status-pill-' + element.dataset.statusTone, 'text-white');
+        }
 
         modal.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');

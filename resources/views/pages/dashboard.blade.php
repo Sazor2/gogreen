@@ -57,6 +57,20 @@
     .leaf-3 { animation-delay: 4s; }
     .leaf-4 { animation-delay: 6s; }
 
+    html.dark.dashboard-page .dashboard-key-title {
+        color: #dfffea !important;
+        text-shadow: 0 2px 12px rgba(127, 243, 190, 0.15);
+    }
+
+    html.dark.dashboard-page .dashboard-nav-icon--bright {
+        color: #98f5cd !important;
+        text-shadow: 0 0 12px rgba(127, 243, 190, 0.4);
+    }
+
+    html.dark.dashboard-page .dashboard-nav-card .dashboard-nav-label {
+        color: #b6c3cf;
+    }
+
     /* Dark Forest Framing Pillar */
     .forest-pillar-left {
         position: absolute;
@@ -336,7 +350,7 @@
     {{-- 1. Gambar Background Asli (Jernih di Tengah) --}}
     <div class="absolute inset-0 z-0 overflow-hidden">
         {{-- Tambahan efek zoom in sangat lambat saat di-hover (group-hover) --}}
-        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/begeron.jpeg') }}" alt="Hero Background"/>
+        <img class="w-full h-full object-cover" src="{{ asset('images/begeron.jpeg') }}" alt="Hero Background"/>
     </div>
 
     {{-- 2. BACKGROUND GRADIENT FRAME (Diperbaiki agar seimbang & kontras) --}}
@@ -382,11 +396,6 @@
     </div>
 
     {{-- 6. WAVE DIVIDER BAWAH --}}
-    <div class="absolute bottom-0 w-full overflow-hidden leading-none z-30 transform translate-y-1 pointer-events-none">
-        <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.34,201.39,98.4,242.41,86.27,282.89,71.21,321.39,56.44Z" fill="var(--md-sys-color-background, #f4fbf6)"></path>
-        </svg>
-    </div>
 </section>
 
     {{-- Quick Navigation Bento Grid --}}
@@ -410,11 +419,11 @@
         <div class="bento-glow absolute inset-0 z-0 rounded-3xl"></div>
         
         <div class="relative z-10 bg-{{ $item['color'] }}-container/20 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center group-hover:bg-{{ $item['color'] }}-container/40 transition-colors">
-            <span class="material-symbols-outlined text-{{ $item['color'] }} text-2xl sm:text-3xl group-hover:scale-110 transition-transform">{{ $item['icon'] }}</span>
+            <span class="material-symbols-outlined text-{{ $item['color'] }} text-2xl sm:text-3xl group-hover:scale-110 transition-transform {{ in_array($item['link'], ['/tanaman', '/contact']) ? 'dashboard-nav-icon--bright' : '' }}">{{ $item['icon'] }}</span>
         </div>
         <div class="relative z-10">
             <h3 class="font-headline font-extrabold text-lg sm:text-xl mb-1 text-primary">{{ $item['title'] }}</h3>
-            <p class="text-on-surface-variant text-sm">{{ $item['desc'] }}</p>
+            <p class="dashboard-nav-label text-on-surface-variant text-sm">{{ $item['desc'] }}</p>
         </div>
     </a>
             @endforeach
@@ -426,7 +435,7 @@
     <section class="dashboard-features mt-14 sm:mt-24 reveal-on-scroll">
         <div class="text-center md:text-left mb-10">
             <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">{{ __('app.dashboard_section_primary_label') }}</span>
-                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">{{ __('app.dashboard_section_primary_title') }}</h2>
+                <h2 class="dashboard-key-title dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">{{ __('app.dashboard_section_primary_title') }}</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
             
@@ -464,7 +473,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-10 gap-4 text-center sm:text-left">
             <div>
                 <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">{{ __('app.dashboard_articles_label') }}</span>
-                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">{{ __('app.dashboard_articles_title') }}</h2>
+                <h2 class="dashboard-key-title dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">{{ __('app.dashboard_articles_title') }}</h2>
                 <p class="dashboard-section-lead text-on-surface-variant font-medium mt-2">{{ __('app.dashboard_articles_subtitle') }}</p>
             </div>
             <a href="{{ url('/artikel') }}" class="bg-primary/10 text-primary px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm sm:text-base flex items-center gap-2 group hover:bg-primary hover:text-white transition-colors">

@@ -88,15 +88,28 @@
     }
 </style>
 
-<section class="artikel-hero text-white py-20 md:py-24 max-w-7xl mx-auto mt-8 rounded-2xl editorial-shadow overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);">
-            <span class="material-symbols-outlined" style="font-size:16px;">article</span>
-            {{ __('app.artikel_badge') }}
-        </span>
-        <h1 class="text-4xl md:text-6xl font-black mt-5">{{ __('app.artikel_hero_title') }}</h1>
-        <p class="text-white/80 mt-4 text-lg max-w-3xl mx-auto">{{ __('app.artikel_hero_desc') }}</p>
+<section class="relative mt-8 min-h-[420px] sm:min-h-[500px] max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <img class="w-full h-full object-cover" src="{{ asset('images/background.jpg') }}" alt="{{ __('app.artikel_hero_title') }}">
     </div>
+
+    <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+    <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+    <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12 text-white">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+            {{ __('app.badge_environment_platform') }}
+        </span>
+        <h1 class="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-black leading-[1.05] tracking-tight mb-6 drop-shadow-2xl">
+            {{ __('app.artikel_hero_title') }}
+        </h1>
+        <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium leading-relaxed drop-shadow-md max-w-xl">
+            {{ __('app.artikel_hero_desc') }}
+        </p>
+    </div>
+
 </section>
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10 pb-16">

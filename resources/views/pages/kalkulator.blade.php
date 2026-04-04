@@ -70,6 +70,46 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         100% { box-shadow: 0 20px 40px rgba(16,33,25,0.07); }
     }
 
+    /* Floating Neon Recycle Icons */
+    @keyframes float-recycle {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg) rotateY(0deg) scale(1);
+            opacity: 0.78;
+        }
+        25% {
+            transform: translateY(-24px) rotate(90deg) rotateY(20deg) scale(1.08);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(-48px) rotate(180deg) rotateY(-12deg) scale(0.95);
+            opacity: 0.9;
+        }
+        75% {
+            transform: translateY(-20px) rotate(270deg) rotateY(14deg) scale(1.06);
+            opacity: 1;
+        }
+    }
+
+    .floating-recycle {
+        position: absolute;
+        color: #11d473;
+        font-variation-settings: 'FILL' 1, 'wght' 700;
+        filter: drop-shadow(0 0 10px rgba(17, 212, 115, 0.65));
+        animation: float-recycle 8s ease-in-out infinite;
+        will-change: transform, opacity;
+    }
+
+    .recycle-1 { animation-delay: 0s; }
+    .recycle-2 { animation-delay: 1.6s; }
+    .recycle-3 { animation-delay: 3.2s; }
+    .recycle-4 { animation-delay: 4.8s; }
+    .recycle-5 { animation-delay: 6.4s; }
+
+    html.dark.kalkulator-page .floating-recycle {
+        color: #7ff3be;
+        filter: drop-shadow(0 0 12px rgba(127, 243, 190, 0.7));
+    }
+
     html.dark.kalkulator-page {
         color: #dbe3ea;
         background-color: #0a0f12;
@@ -132,27 +172,49 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
     html.dark.kalkulator-page [style*="color:#0f766e"] { color: #67e8f9 !important; }
     html.dark.kalkulator-page [style*="color:#b91c1c"] { color: #fca5a5 !important; }
 
+    html.dark.kalkulator-page .text-slate-900 { color: #e6edf3 !important; }
+    html.dark.kalkulator-page .text-slate-800 { color: #dbe3ea !important; }
+    html.dark.kalkulator-page .text-slate-700 { color: #c5d0da !important; }
+    html.dark.kalkulator-page .text-slate-500 { color: #9aa7b2 !important; }
+    html.dark.kalkulator-page .text-on-surface-variant { color: #a6b0ba !important; }
+
+    html.dark.kalkulator-page .kalkulator-page a[style*="background-color:#f1f5f9"] {
+        color: #c7d3de !important;
+    }
+
 </style>
 
 <div class="kalkulator-page bg-[#f3f7fb] font-body text-[#2a2f32]">
-<div class="relative max-w-7xl mx-auto px-6 md:px-8 mt-8">
-    <section class="relative overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group" style="min-height:500px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd'); background-size:cover; background-position:center;">
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <span class="material-symbols-outlined floating-recycle recycle-1" style="top:14%; left:8%; font-size:56px;">recycling</span>
+    <span class="material-symbols-outlined floating-recycle recycle-2" style="top:26%; right:10%; font-size:42px;">recycling</span>
+    <span class="material-symbols-outlined floating-recycle recycle-3" style="top:50%; left:16%; font-size:48px;">recycling</span>
+    <span class="material-symbols-outlined floating-recycle recycle-4" style="top:66%; right:14%; font-size:38px;">recycling</span>
+    <span class="material-symbols-outlined floating-recycle recycle-5" style="top:80%; left:44%; font-size:50px;">recycling</span>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 mt-8">
+    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" alt="Calculator Hero">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
+            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" alt="Calculator Hero">
         </div>
-        <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+        <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
                 {{ __('app.badge_environment_platform') }}
             </div>
-            <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
                 {{ __('app.kalkulator_title') }}
             </h1>
-            <div class="text-white/90 text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
+            <div class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
                 {{ __('app.hero_kalkulator_desc') }}
             </div>
         </div>
+
     </section>
 </div>
 </div>

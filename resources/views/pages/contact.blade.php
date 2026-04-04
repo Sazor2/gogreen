@@ -88,6 +88,16 @@
         background: linear-gradient(135deg, #059669 0%, #10b981 100%);
     }
 
+    .contact-connect-icon {
+        color: var(--eco-medium);
+        transition: all 0.25s ease;
+    }
+
+    html.dark .contact-connect-icon {
+        color: #98f5cd;
+        text-shadow: 0 0 10px rgba(127, 243, 190, 0.45);
+    }
+
     .contact-loading {
         position: fixed;
         inset: 0;
@@ -173,32 +183,33 @@
 <div class="bg-[var(--eco-background)] min-h-screen pb-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12 font-body">
 
-        {{-- Hero Section (Balanced Deep Green) --}}
-        <section class="relative h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-[var(--eco-dark)] reveal-on-scroll">
-            <div class="absolute inset-0 z-10 bg-gradient-to-t from-[var(--eco-dark)] via-[var(--eco-dark)]/40 to-transparent"></div>
-            <img
-                src="{{ asset('images/background2.jpg') }}"
-                alt="{{ __('app.contact_hero_alt') }}"
-                class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[0.2] transition-transform duration-1000 group-hover:scale-105"
-            >
-
-            <div class="relative z-20 h-full flex flex-col justify-end p-10 md:p-16">
-                <div class="max-w-3xl">
-                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[var(--eco-accent)] font-headline font-bold text-[10px] uppercase tracking-[0.2em] mb-6 border border-white/10">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--eco-accent)] opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--eco-accent)]"></span>
-                        </span>
-                        {{ __('app.contact_title') }}
-                    </span>
-                    <h1 class="text-4xl md:text-6xl font-headline font-black text-white leading-[1.1] tracking-tighter mb-6">
-                        {{ __('app.contact_form_title') }}
-                    </h1>
-                    <p class="text-lg text-white/80 leading-relaxed max-w-xl">
-                        {{ __('app.contact_desc') }}
-                    </p>
-                </div>
+        {{-- Hero Section (Dashboard Style) --}}
+        <section class="relative min-h-[420px] sm:min-h-[500px] rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img
+                    src="{{ asset('images/background2.jpg') }}"
+                    alt="{{ __('app.contact_hero_alt') }}"
+                    class="w-full h-full object-cover"
+                >
             </div>
+
+            <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+            <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+                <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+                    {{ __('app.badge_environment_platform') }}
+                </span>
+                <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+                    {{ __('app.contact_form_title') }}
+                </h1>
+                <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl">
+                    {{ __('app.contact_desc') }}
+                </p>
+            </div>
+
         </section>
 
         {{-- Main Grid --}}
@@ -209,7 +220,7 @@
                 <div class="bg-white p-10 rounded-[2rem] editorial-shadow border border-emerald-50 h-full reveal-on-scroll">
                     <h2 class="text-2xl font-headline font-black text-[var(--eco-dark)] mb-8 flex items-center gap-3">
                         <span class="w-8 h-8 rounded-lg bg-[var(--eco-accent)]/20 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[var(--eco-dark)] text-sm">hub</span>
+                            <span class="material-symbols-outlined contact-connect-icon text-sm">hub</span>
                         </span>
                         {{ __('app.contact_connect_title') }}
                     </h2>

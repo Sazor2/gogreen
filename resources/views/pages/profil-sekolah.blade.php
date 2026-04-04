@@ -153,28 +153,32 @@
 
 {{-- Hero Section --}}
 <div class="relative max-w-7xl mx-auto px-6 md:px-8 mt-8">
-    <section class="relative overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group gradient-animate" style="min-height:500px;">
+    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQtgIcghTWlgSYIlJXFz45mZOTRYmk7o5qw2kxvft-ez6VTDCBphsQrqFH97scw7aPmmxynDkog0Zup2D0kT5mjIoiG9pcheBpWqQzFCiuenvi4KPKY5yYOw027tPMs7fJrKxcjHycRzsOpIKqfdViF0vsxHEvF-sCuF56_QW84W2EP5CfVMggDBvhUrE6aMv9jQBebUlxxyb2_aUuHgKDzIquvowoRGVTxNmhhI95gsEEJ9vZT1nJojMDym5v5fvgrODs8JIzK-qn"
                 alt="Profil Sekolah Hero"
-                class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110"
+                class="w-full h-full object-cover"
             >
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
         </div>
 
-        <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+
+        <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
                 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default reveal-on-scroll reveal-delay-1">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] shadow-[0_0_10px_#a2f31f] pulse-glow"></span>
-                {{ __('app.profil_resmi') }}
+                {{ __('app.badge_environment_platform') }}
             </div>
-            <h1 class="text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white reveal-on-scroll reveal-delay-2">
+            <h1 class="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white reveal-on-scroll reveal-delay-2">
                 {{ __('app.profil_sek_val_nama') }}
             </h1>
-            <p class="text-white/90 text-lg md:text-xl font-medium leading-relaxed drop-shadow-md max-w-xl reveal-on-scroll reveal-delay-3">
+            <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium leading-relaxed drop-shadow-md max-w-xl reveal-on-scroll reveal-delay-3">
                 {{ __('app.profil_sek_hero_tagline') }}
             </p>
         </div>
+
     </section>
 </div>
 
@@ -411,6 +415,9 @@
                 ['jabatan' => __('app.profil_sek_pembina'), 'nama' => 'Fiersia Vinderly'],
             ] as $org)
             <div class="bg-white text-center reveal-on-scroll" style="padding:3rem 2rem;border-radius:32px;box-shadow:var(--card-shadow);transition-delay: {{ $loop->index * 0.08 }}s;">
+                <div style="width:86px;height:86px;background-color:#f1f5f9;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:#cbd5e1;">
+                    <span class="material-symbols-outlined" style="font-size:2.8rem;font-variation-settings:'FILL' 1;">person</span>
+                </div>
                 <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">{{ $org['jabatan'] }}</p>
                 <h4 class="font-black text-xl text-slate-800 italic tracking-tight">{{ $org['nama'] }}</h4>
             </div>
