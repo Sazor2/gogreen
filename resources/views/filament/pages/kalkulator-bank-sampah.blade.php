@@ -4,9 +4,9 @@
         <div class="flex items-center gap-4">
             <span class="text-4xl">♻️</span>
             <div>
-                <h2 class="text-2xl font-bold">Kalkulator Bank Sampah</h2>
-                <p class="text-green-100 mt-1">Hitung poin dari sampah yang kamu kumpulkan — real-time, tanpa menyimpan ke database</p>
-                <p class="text-green-200 text-xs mt-1">⚡ Hasil kalkulasi diproses di Livewire memory (session state)</p>
+                <h2 class="text-2xl font-bold">{{ __('app.kalkulator_title') }}</h2>
+                <p class="text-green-100 mt-1">{{ __('app.kalkulator_desc') }}</p>
+                <p class="text-green-200 text-xs mt-1">⚡ {{ __('app.filament_kalkulator_note') }}</p>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         {{-- Form Kalkulator --}}
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div class="bg-green-600 px-5 py-3">
-                <h3 class="text-white font-semibold text-lg">📝 Input Data Sampah</h3>
+                <h3 class="text-white font-semibold text-lg">📝 {{ __('app.form_title') }}</h3>
             </div>
             <div class="p-6">
                 <form wire:submit.prevent="hitung">
@@ -26,14 +26,14 @@
                             type="submit"
                             class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-sm"
                         >
-                            ♻️ Hitung Poin!
+                            ♻️ {{ __('app.form_hitung') }}
                         </button>
                         <button
                             type="button"
                             wire:click="resetForm"
                             class="px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-colors duration-200"
                         >
-                            🔄 Reset
+                            🔄 {{ __('app.form_reset') }}
                         </button>
                     </div>
                 </form>
@@ -45,7 +45,7 @@
                             <p class="text-5xl font-black text-green-700 dark:text-green-300">
                                 {{ number_format($this->hasilPoin, 0, ',', '.') }}
                             </p>
-                            <p class="text-green-600 dark:text-green-400 font-bold text-lg mt-1">POIN</p>
+                            <p class="text-green-600 dark:text-green-400 font-bold text-lg mt-1">{{ __('app.hasil_poin') }}</p>
                             <p class="text-gray-700 dark:text-gray-300 mt-3 text-sm">{{ $this->pesanHasil }}</p>
                             <div class="mt-4 inline-block bg-green-600 text-white rounded-full px-6 py-2 font-bold text-lg">
                                 {{ $this->kategoriHasil }}
@@ -54,16 +54,15 @@
 
                         <div class="mt-4 bg-white/60 dark:bg-gray-800/60 rounded-lg p-3 text-center">
                             <p class="text-xs text-gray-500 dark:text-gray-400">
-                                💡 <strong>Catatan:</strong> Hasil ini hanya ditampilkan di layar.
-                                Data <strong>tidak disimpan</strong> ke database — hanya ada di Livewire session memory.
+                                💡 <strong>{{ __('app.catatan_teknis') }}:</strong> {{ __('app.filament_kalkulator_result_note') }}
                             </p>
                         </div>
                     </div>
                 @else
                     <div class="mt-6 rounded-xl bg-gray-50 dark:bg-gray-700/50 border border-dashed border-gray-300 dark:border-gray-600 p-8 text-center">
                         <p class="text-4xl mb-3">♻️</p>
-                        <p class="text-gray-500 dark:text-gray-400 font-medium">Isi form dan klik "Hitung Poin!"</p>
-                        <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Hasil akan muncul di sini secara real-time</p>
+                        <p class="text-gray-500 dark:text-gray-400 font-medium">{{ __('app.hasil_empty') }}</p>
+                        <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">{{ __('app.filament_kalkulator_empty_sub') }}</p>
                     </div>
                 @endif
             </div>
@@ -72,15 +71,15 @@
         {{-- Tabel Referensi Poin --}}
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div class="bg-emerald-600 px-5 py-3">
-                <h3 class="text-white font-semibold text-lg">📊 Tabel Poin per Kg Sampah</h3>
+                <h3 class="text-white font-semibold text-lg">📊 {{ __('app.tabel_title') }}</h3>
             </div>
             <div class="p-4">
                 <table class="w-full text-sm">
                     <thead class="bg-emerald-50 dark:bg-emerald-900/30">
                         <tr>
-                            <th class="text-left py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">Jenis Sampah</th>
-                            <th class="text-center py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">Poin/kg</th>
-                            <th class="text-left py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">Keterangan</th>
+                            <th class="text-left py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">{{ __('app.tabel_jenis') }}</th>
+                            <th class="text-center py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">{{ __('app.tabel_poin') }}</th>
+                            <th class="text-left py-2 px-3 text-emerald-800 dark:text-emerald-300 font-semibold">{{ __('app.tabel_keterangan') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,7 +93,7 @@
                                 </td>
                                 <td class="py-3 px-3 text-center">
                                     <span class="inline-block bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 font-bold px-3 py-1 rounded-full">
-                                        {{ $row['poin'] }} poin
+                                        {{ $row['poin'] }} {{ __('app.satuan_poin') }}
                                     </span>
                                 </td>
                                 <td class="py-3 px-3 text-gray-500 dark:text-gray-400 text-xs">
@@ -108,23 +107,23 @@
 
             {{-- Reward System --}}
             <div class="border-t border-gray-100 dark:border-gray-700 p-4">
-                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-3">🏆 Sistem Reward</h4>
+                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-3">🏆 {{ __('app.reward_title') }}</h4>
                 <div class="space-y-2">
                     <div class="flex items-center gap-2 text-sm">
                         <span>🥇</span>
-                        <span class="text-gray-700 dark:text-gray-300"><strong>Green Champion!</strong> — ≥ 500 poin</span>
+                        <span class="text-gray-700 dark:text-gray-300"><strong>{{ __('app.reward_champion') }}</strong> — {{ __('app.reward_champion_range') }}</span>
                     </div>
                     <div class="flex items-center gap-2 text-sm">
                         <span>🥈</span>
-                        <span class="text-gray-700 dark:text-gray-300"><strong>Eco Warrior</strong> — 200–499 poin</span>
+                        <span class="text-gray-700 dark:text-gray-300"><strong>{{ __('app.reward_warrior') }}</strong> — {{ __('app.reward_warrior_range') }}</span>
                     </div>
                     <div class="flex items-center gap-2 text-sm">
                         <span>🥉</span>
-                        <span class="text-gray-700 dark:text-gray-300"><strong>Green Starter</strong> — 100–199 poin</span>
+                        <span class="text-gray-700 dark:text-gray-300"><strong>{{ __('app.reward_starter') }}</strong> — {{ __('app.reward_starter_range') }}</span>
                     </div>
                     <div class="flex items-center gap-2 text-sm">
                         <span>🌱</span>
-                        <span class="text-gray-700 dark:text-gray-300"><strong>Keep Going!</strong> — < 100 poin</span>
+                        <span class="text-gray-700 dark:text-gray-300"><strong>{{ __('app.reward_keep') }}</strong> — {{ __('app.reward_keep_range') }}</span>
                     </div>
                 </div>
             </div>

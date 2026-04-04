@@ -422,6 +422,31 @@
             border-color: rgba(127, 243, 190, 0.24);
         }
 
+        .dropdown-anim {
+            opacity: 0;
+            transform: translateY(8px) scale(0.98);
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+
+        .dropdown-anim.is-open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .dropdown-item-anim {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition-delay: var(--dropdown-delay, 0ms);
+        }
+
+        .dropdown-anim.is-open .dropdown-item-anim {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .decor-tree {
             position: fixed;
             right: 1.25rem;
@@ -589,25 +614,25 @@
 
                     {{-- Info Dropdown --}}
                     <div class="relative" id="info-wrapper">
-                        <button id="info-btn"
+                            <button id="info-btn"
                             class="flex items-center gap-1 transition-all duration-300 focus:outline-none 
                             {{ request()->is('tentang','latar-belakang','profil-sekolah') ? $activeClass : 'text-on-surface-variant hover:text-primary' }}">
                             {{ __('app.nav_info') }}
                             <span class="material-symbols-outlined text-lg transition-transform duration-300" id="info-chevron-icon">expand_more</span>
                         </button>
                         <div id="info-menu"
-                             class="hidden absolute left-0 mt-4 w-52 bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(42,47,50,0.08)] border border-outline-variant/30 overflow-hidden z-50 p-2 transform origin-top transition-all duration-200">
+                                class="hidden dropdown-anim absolute left-0 mt-4 w-52 bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(42,47,50,0.08)] border border-outline-variant/30 overflow-hidden z-50 p-2 transform origin-top transition-all duration-200">
                             @php $dropClass = "flex items-center gap-3 px-4 py-2.5 text-sm rounded-lg transition-colors font-medium"; @endphp
                             
-                            <a href="{{ url('/tentang') }}" class="{{ $dropClass }} {{ request()->is('tentang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
+                            <a href="{{ url('/tentang') }}" class="dropdown-item-anim {{ $dropClass }} {{ request()->is('tentang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 0ms;">
                                 <span class="material-symbols-outlined text-lg">person</span>
                                 {{ __('app.nav_about') }}
                             </a>
-                            <a href="{{ url('/latar-belakang') }}" class="{{ $dropClass }} mt-1 {{ request()->is('latar-belakang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
+                            <a href="{{ url('/latar-belakang') }}" class="dropdown-item-anim {{ $dropClass }} mt-1 {{ request()->is('latar-belakang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 60ms;">
                                 <span class="material-symbols-outlined text-lg">description</span>
                                 {{ __('app.nav_latar') }}
                             </a>
-                            <a href="{{ url('/profil-sekolah') }}" class="{{ $dropClass }} mt-1 {{ request()->is('profil-sekolah') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
+                            <a href="{{ url('/profil-sekolah') }}" class="dropdown-item-anim {{ $dropClass }} mt-1 {{ request()->is('profil-sekolah') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 120ms;">
                                 <span class="material-symbols-outlined text-lg">school</span>
                                 {{ __('app.nav_profil_sek') }}
                             </a>
@@ -703,46 +728,62 @@
                         </g>
                     </svg>
                 </label>
+                @php
+                    $languageOptions = [
+                        'id' => ['label' => __('app.lang_id'), 'code' => 'ID', 'flag' => 'id'],
+                        'en' => ['label' => __('app.lang_en'), 'code' => 'EN', 'flag' => 'gb'],
+                        'ja' => ['label' => __('app.lang_ja'), 'code' => 'JA', 'flag' => 'jp'],
+                        'vi' => ['label' => __('app.lang_vi'), 'code' => 'VI', 'flag' => 'vn'],
+                        'fil' => ['label' => __('app.lang_fil'), 'code' => 'FIL', 'flag' => 'ph'],
+                        'th' => ['label' => __('app.lang_th'), 'code' => 'TH', 'flag' => 'th'],
+                    ];
+                    $currentLocale = app()->getLocale();
+                    $currentLang = $languageOptions[$currentLocale] ?? $languageOptions['id'];
+                @endphp
+
                 {{-- Desktop Language Switcher --}}
                 <div class="relative hidden md:block" id="lang-wrapper">
                     <button id="lang-btn"
-                        class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary-container/30 text-primary hover:bg-primary-container transition-all duration-300 scale-100 active:scale-95 font-bold uppercase text-xs focus:outline-none font-headline tracking-wider">
-                        @if(app()->getLocale() === 'en')
-                            <span class="fi fi-gb fis rounded-sm text-sm"></span> EN
-                        @else
-                            <span class="fi fi-id fis rounded-sm text-sm"></span> ID
-                        @endif
+                        class="flex items-center gap-3 px-3.5 py-2 rounded-2xl bg-primary-container/30 text-primary hover:bg-primary-container transition-all duration-300 scale-100 active:scale-95 focus:outline-none font-headline dark:bg-[#1a232b] dark:text-[#7ff3be]">
+                        <span class="fi fi-{{ $currentLang['flag'] }} fis rounded-sm text-base shadow-sm"></span>
+                        <div class="flex flex-col items-start leading-tight">
+                            <span class="text-[9px] uppercase tracking-[0.2em] font-black text-primary/70 dark:text-[#7ff3be]/70">{{ __('app.language') }}</span>
+                            <span class="text-sm font-bold text-primary dark:text-[#7ff3be]">{{ $currentLang['label'] }}</span>
+                        </div>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary/70 px-2 py-0.5 rounded-full bg-primary-container/40 dark:bg-[#23323c] dark:text-[#7ff3be]/80">{{ $currentLang['code'] }}</span>
                         <span class="material-symbols-outlined text-sm transition-transform duration-300" id="lang-chevron">expand_more</span>
                     </button>
                     <div id="lang-menu"
-                         class="hidden absolute right-0 mt-3 w-44 bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(42,47,50,0.08)] border border-outline-variant/30 overflow-hidden z-50 p-2 transform origin-top-right transition-all duration-200">
-                        <a href="{{ route('lang.switch', 'id') }}"
-                           class="flex items-center justify-between px-3 py-2.5 text-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors font-medium {{ app()->getLocale() === 'id' ? 'text-primary' : '' }}">
-                            <div class="flex items-center gap-2.5">
-                                <span class="fi fi-id rounded-sm text-lg shadow-sm"></span> Indonesia
-                            </div>
-                            @if(app()->getLocale() === 'id') <span class="w-2 h-2 rounded-full bg-primary"></span> @endif
-                        </a>
-                        <a href="{{ route('lang.switch', 'en') }}"
-                           class="flex items-center justify-between px-3 py-2.5 text-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors mt-1 font-medium {{ app()->getLocale() === 'en' ? 'text-primary' : '' }}">
-                            <div class="flex items-center gap-2.5">
-                                <span class="fi fi-gb rounded-sm text-lg shadow-sm"></span> English
-                            </div>
-                            @if(app()->getLocale() === 'en') <span class="w-2 h-2 rounded-full bg-primary"></span> @endif
-                        </a>
+                         class="hidden absolute right-0 mt-3 w-72 bg-surface-container-lowest rounded-2xl shadow-[0_10px_40px_rgba(42,47,50,0.12)] border border-outline-variant/30 overflow-hidden z-50 p-3 transform origin-top-right transition-all duration-200 dark:bg-[#11181e] dark:border-[#24313a]">
+                        <div class="flex items-center justify-between px-2 pb-2">
+                            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-on-surface-variant/70 dark:text-[#a6b0ba]">{{ __('app.language') }}</span>
+                            <span class="text-[10px] font-semibold text-on-surface-variant/60 dark:text-[#8da0ad]">{{ __('app.active') }}</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            @foreach($languageOptions as $locale => $lang)
+                                <a href="{{ route('lang.switch', $locale) }}"
+                                   class="group flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container-low transition-all dark:hover:bg-[#1a232b] {{ $currentLocale === $locale ? 'bg-surface-container-low text-primary border-primary/20 dark:bg-[#1a232b] dark:text-[#7ff3be] dark:border-[#2f5b48]' : 'text-on-surface-variant dark:text-[#cbd5e1]' }}">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="fi fi-{{ $lang['flag'] }} rounded-sm text-lg shadow-sm"></span>
+                                        <div class="flex flex-col leading-tight">
+                                            <span class="text-sm font-semibold">{{ $lang['label'] }}</span>
+                                            <span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60 dark:text-[#94a3b8]">{{ $lang['code'] }}</span>
+                                        </div>
+                                    </div>
+                                    @if($currentLocale === $locale)
+                                        <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                                    @endif
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
 
-                {{-- Mobile: Language Toggle + Hamburger --}}
+                {{-- Mobile: Language Indicator + Hamburger --}}
                 <div class="flex items-center gap-2.5 md:hidden">
-                    <a href="{{ route('lang.switch', app()->getLocale() === 'id' ? 'en' : 'id') }}"
-                       class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/30 text-primary font-bold uppercase text-xs font-headline tracking-wider">
-                        @if(app()->getLocale() === 'en')
-                            <span class="fi fi-gb fis rounded-sm"></span> EN
-                        @else
-                            <span class="fi fi-id fis rounded-sm"></span> ID
-                        @endif
-                    </a>
+                    <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/30 text-primary font-bold uppercase text-xs font-headline tracking-wider">
+                        <span class="fi fi-{{ $currentLang['flag'] }} fis rounded-sm"></span> {{ $currentLang['code'] }}
+                    </span>
                     <button id="menu-btn" class="p-2 rounded-full hover:bg-surface-container-high transition-all duration-300 text-primary">
                         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -786,6 +827,27 @@
                     <a href="{{ url('/profil-sekolah') }}" class="{{ $mobDropClass }} mt-1 {{ request()->is('profil-sekolah') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low' }}">
                         <span class="material-symbols-outlined text-lg">school</span> {{ __('app.nav_profil_sek') }}
                     </a>
+                </div>
+
+                <div class="pt-5 mt-4 border-t border-outline-variant/20">
+                    <p class="text-xs text-on-surface-variant/70 dark:text-[#a6b0ba] px-4 mb-3 uppercase tracking-widest font-bold">{{ __('app.language') }}</p>
+                    <div class="grid grid-cols-2 gap-2 px-2">
+                        @foreach($languageOptions as $locale => $lang)
+                            <a href="{{ route('lang.switch', $locale) }}"
+                               class="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container-low transition-all dark:hover:bg-[#1a232b] {{ $currentLocale === $locale ? 'bg-surface-container-low text-primary border-primary/20 dark:bg-[#1a232b] dark:text-[#7ff3be] dark:border-[#2f5b48]' : 'text-on-surface-variant dark:text-[#cbd5e1]' }}">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="fi fi-{{ $lang['flag'] }} rounded-sm text-base shadow-sm"></span>
+                                    <div class="flex flex-col leading-tight">
+                                        <span class="text-sm font-semibold">{{ $lang['label'] }}</span>
+                                        <span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60 dark:text-[#94a3b8]">{{ $lang['code'] }}</span>
+                                    </div>
+                                </div>
+                                @if($currentLocale === $locale)
+                                    <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                                @endif
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -868,25 +930,59 @@
 
             if (!btn || !menu) return;
 
+            const isAnimated = menu.classList.contains('dropdown-anim');
+            const closeMenu = function () {
+                if (isAnimated) {
+                    menu.classList.remove('is-open');
+                    window.setTimeout(function () {
+                        if (!menu.classList.contains('is-open')) {
+                            menu.classList.add('hidden');
+                        }
+                    }, 200);
+                } else {
+                    menu.classList.add('hidden');
+                }
+                if (icon) icon.style.transform = '';
+            };
+
+            const openMenu = function () {
+                menu.classList.remove('hidden');
+                if (isAnimated) {
+                    window.requestAnimationFrame(function () {
+                        menu.classList.add('is-open');
+                    });
+                }
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            };
+
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isHidden = menu.classList.contains('hidden');
+                const isOpen = menu.classList.contains('is-open') || !menu.classList.contains('hidden');
                 
                 // Close all other dropdowns first (if any)
                 document.querySelectorAll('#lang-menu, #info-menu').forEach(m => {
-                    if(m !== menu) m.classList.add('hidden');
+                    if (m !== menu) {
+                        if (m.classList.contains('dropdown-anim')) {
+                            m.classList.remove('is-open');
+                            window.setTimeout(() => m.classList.add('hidden'), 200);
+                        } else {
+                            m.classList.add('hidden');
+                        }
+                    }
                 });
                 document.querySelectorAll('#lang-chevron, #info-chevron-icon').forEach(i => {
                     if(i !== icon) i.style.transform = '';
                 });
 
-                menu.classList.toggle('hidden');
-                if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : '';
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
 
             document.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                if(icon) icon.style.transform = '';
+                closeMenu();
             });
         }
 

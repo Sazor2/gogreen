@@ -355,7 +355,7 @@
         {{-- Badge Premium (Efek Glassmorphism Ditingkatkan) --}}
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-4 sm:mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
             <span class="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-pulse shadow-[0_0_10px_#00ff88]"></span>
-            Platform Peduli Lingkungan
+            {{ __('app.badge_environment_platform') }}
         </div>
 
         {{-- Judul --}}
@@ -364,19 +364,19 @@
         </h1>
         
         <p class="dashboard-hero-text text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-10 leading-relaxed drop-shadow-md max-w-xl">
-            Perubahan besar dimulai dari aksi kecil di lingkungan sekolah. Monitor jejak karbonmu dan mulai kebiasaan hijau dari sekarang.
+            {{ __('app.dashboard_hero_desc') }}
         </p>
         
         {{-- Tombol --}}
         <div class="dashboard-hero-actions flex flex-wrap gap-3 sm:gap-4">
             {{-- Tombol Mulai Hitung --}}
             <a href="{{ url('/kalkulator') }}" class="bg-[#a3e635] hover:bg-[#b4f825] text-[#0a2f22] px-6 py-3 sm:px-8 sm:py-4 rounded-full font-headline font-extrabold text-sm sm:text-base scale-100 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(163,230,53,0.3)] hover:shadow-[0_12px_25px_rgba(163,230,53,0.5)] text-center flex items-center gap-2">
-                <span class="material-symbols-outlined text-xl">recycling</span> Mulai Hitung
+                <span class="material-symbols-outlined text-xl">recycling</span> {{ __('app.dashboard_btn_start') }}
             </a>
             
             {{-- Tombol Jelajahi --}}
             <a href="{{ url('/tanaman') }}" class="bg-white/5 backdrop-blur-md text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-headline font-bold text-sm sm:text-base border border-white/30 hover:bg-white/20 hover:-translate-y-1 transition-all text-center flex items-center gap-2 shadow-lg hover:shadow-xl">
-                <span class="material-symbols-outlined text-xl">eco</span> Jelajahi
+                <span class="material-symbols-outlined text-xl">eco</span> {{ __('app.dashboard_btn_explore') }}
             </a>
         </div>
     </div>
@@ -395,10 +395,10 @@
             
             @php
             $navItems = [
-                ['title'=>'Kalkulator Sampah','icon'=>'recycling','link'=>'/kalkulator','desc'=>'Hitung dampak sampahmu', 'color'=>'primary'],
-                ['title'=>'Tanaman','icon'=>'eco','link'=>'/tanaman','desc'=>'Kenali tanaman hijau', 'color'=>'tertiary'],
-                ['title'=>'Tentang','icon'=>'school','link'=>'/profil-sekolah','desc'=>'Profil sekolah', 'color'=>'primary'],
-                ['title'=>'Contact','icon'=>'call','link'=>'/contact','desc'=>'Hubungi kami', 'color'=>'tertiary']
+                ['title'=>__('app.dashboard_nav_calc_title'),'icon'=>'recycling','link'=>'/kalkulator','desc'=>__('app.dashboard_nav_calc_desc'), 'color'=>'primary'],
+                ['title'=>__('app.dashboard_nav_plants_title'),'icon'=>'eco','link'=>'/tanaman','desc'=>__('app.dashboard_nav_plants_desc'), 'color'=>'tertiary'],
+                ['title'=>__('app.dashboard_nav_about_title'),'icon'=>'school','link'=>'/profil-sekolah','desc'=>__('app.dashboard_nav_about_desc'), 'color'=>'primary'],
+                ['title'=>__('app.dashboard_nav_contact_title'),'icon'=>'call','link'=>'/contact','desc'=>__('app.dashboard_nav_contact_desc'), 'color'=>'tertiary']
             ];
             @endphp
 
@@ -425,8 +425,8 @@
     {{-- Eco-System Features --}}
     <section class="dashboard-features mt-14 sm:mt-24 reveal-on-scroll">
         <div class="text-center md:text-left mb-10">
-            <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Fasilitas Utama</span>
-                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">Eco-System Features</h2>
+            <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">{{ __('app.dashboard_section_primary_label') }}</span>
+                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">{{ __('app.dashboard_section_primary_title') }}</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
             
@@ -437,9 +437,9 @@
                     <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">recycling</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">Kalkulator Sampah</h3>
-                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">Hitung dampak lingkungan dari sampah yang kamu hasilkan dan mulai perubahan dari sekarang.</p>
-                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Coba Kalkulator</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_feature_calc_title') }}</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">{{ __('app.dashboard_feature_calc_desc') }}</p>
+                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">{{ __('app.dashboard_feature_calc_cta') }}</a>
                 </div>
             </div>
 
@@ -450,9 +450,9 @@
                     <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">park</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">Edukasi Lingkungan</h3>
-                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">Pelajari cara menjaga bumi melalui informasi tanaman dan tips go green dengan mudah.</p>
-                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">Mulai Belajar</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_feature_edu_title') }}</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">{{ __('app.dashboard_feature_edu_desc') }}</p>
+                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">{{ __('app.dashboard_feature_edu_cta') }}</a>
                 </div>
             </div>
 
@@ -463,12 +463,12 @@
     <section class="dashboard-articles mt-16 sm:mt-28 reveal-on-scroll">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-10 gap-4 text-center sm:text-left">
             <div>
-                <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">Inspirasi Hijau</span>
-                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">Artikel & Edukasi</h2>
-                <p class="dashboard-section-lead text-on-surface-variant font-medium mt-2">Inspirasi terbaru untuk masa depan hijau.</p>
+                <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">{{ __('app.dashboard_articles_label') }}</span>
+                <h2 class="dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">{{ __('app.dashboard_articles_title') }}</h2>
+                <p class="dashboard-section-lead text-on-surface-variant font-medium mt-2">{{ __('app.dashboard_articles_subtitle') }}</p>
             </div>
             <a href="{{ url('/artikel') }}" class="bg-primary/10 text-primary px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm sm:text-base flex items-center gap-2 group hover:bg-primary hover:text-white transition-colors">
-                Lihat Semua <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                {{ __('app.dashboard_articles_view_all') }} <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
         </div>
         
@@ -476,28 +476,28 @@
             @php
             $articles = [
                 [
-                    'title' => 'Bahaya Sampah Plastik Sekali Pakai',
+                    'title' => __('app.dashboard_article_1_title'),
                     'link'  => '/artikel#artikel-plastik',
                     'image' => 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
-                    'tag'   => 'Environment',
-                    'date'  => '12 Okt 2023',
-                    'desc'  => 'Plastik sekali pakai adalah ancaman besar bagi lingkungan kita. Pelajari dampak buruknya dan bagaimana kita bisa menguranginya.'
+                    'tag'   => __('app.dashboard_article_1_tag'),
+                    'date'  => __('app.dashboard_article_1_date'),
+                    'desc'  => __('app.dashboard_article_1_desc')
                 ],
                 [
-                    'title' => 'Membangun Bank Sampah Sekolah',
+                    'title' => __('app.dashboard_article_2_title'),
                     'link'  => '/artikel#artikel-bank-sampah',
                     'image' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
-                    'tag'   => 'Community',
-                    'date'  => '28 Nov 2023',
-                    'desc'  => 'Bank sampah tidak hanya menjaga kebersihan, tapi juga bernilai ekonomis. Simak panduan membangun sistem bank sampah yang efektif.'
+                    'tag'   => __('app.dashboard_article_2_tag'),
+                    'date'  => __('app.dashboard_article_2_date'),
+                    'desc'  => __('app.dashboard_article_2_desc')
                 ],
                 [
-                    'title' => 'Manfaat Menanam Pohon di Sekitar',
+                    'title' => __('app.dashboard_article_3_title'),
                     'link'  => '/artikel#artikel-pohon',
                     'image' => 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
-                    'tag'   => 'Horticulture',
-                    'date'  => '05 Jan 2024',
-                    'desc'  => 'Menanam satu pohon bisa memberikan oksigen berkualitas. Mari pahami peran penting pepohonan dalam menekan emisi karbon.'
+                    'tag'   => __('app.dashboard_article_3_tag'),
+                    'date'  => __('app.dashboard_article_3_date'),
+                    'desc'  => __('app.dashboard_article_3_desc')
                 ]
             ];
             @endphp
@@ -535,7 +535,7 @@
                     </p>
 
                     <div class="mt-auto pt-3 sm:pt-4 border-t border-outline-variant/20 flex items-center gap-2 text-primary font-bold text-sm font-headline group-hover:translate-x-2 transition-transform">
-                        Baca selengkapnya <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        {{ __('app.dashboard_article_read_more') }} <span class="material-symbols-outlined text-base">arrow_forward</span>
                     </div>
                 </div>
             </a>
@@ -553,14 +553,14 @@
 
         <div class="relative z-10 max-w-none sm:max-w-2xl mx-auto px-4 sm:px-8">
             <h2 class="dashboard-cta-title font-headline text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] font-extrabold text-white leading-tight mb-4 sm:mb-6 tracking-tight drop-shadow-md">
-                Waktunya Hijaukan<br/>Langkahmu ☘
+                {!! __('app.dashboard_cta_title') !!}
             </h2>
             <p class="dashboard-cta-text text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-10 font-medium drop-shadow-sm">
-                Bergabunglah dengan gerakan ini. Mulai kontribusi nyatamu untuk sekolah dan bumi yang lebih bersih hari ini juga.
+                {{ __('app.dashboard_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="{{ url('/kalkulator') }}" class="dashboard-cta-action bg-tertiary-container text-on-tertiary-container px-8 py-4 sm:px-12 sm:py-5 rounded-full font-headline font-black text-base sm:text-lg shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-transform inline-block">
-                    Mulai Sekarang
+                    {{ __('app.dashboard_cta_button') }}
                 </a>
             </div>
         </div>

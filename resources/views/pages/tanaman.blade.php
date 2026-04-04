@@ -80,7 +80,7 @@
     <div class="relative max-w-7xl mx-auto px-6 md:px-8">
         <section class="relative mt-8 min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/pohon.jpg') }}" alt="Plant Management hero">
+        <img class="w-full h-full object-cover scale-105 transition-transform duration-[10s] group-hover:scale-110" src="{{ asset('images/pohon.jpg') }}" alt="{{ __('app.tanaman_hero_alt') }}">
         
         <div class="absolute inset-0 bg-gradient-to-r from-[#0a2f22]/95 via-[#0a2f22]/60 to-transparent"></div>
     </div>
@@ -88,15 +88,15 @@
     <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
         <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
             <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
-            Platform Peduli Lingkungan
+            {{ __('app.badge_environment_platform') }}
         </div>
 
         <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
-            Manajemen<br/>Tanaman Hijau
+            {!! __('app.tanaman_hero_title') !!}
         </h1>
 
         <p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed drop-shadow-md max-w-xl">
-            Koleksi 5 pohon asli Kalimantan Barat di lingkungan SMK Karya Bangsa Sintang. Kami merawat setiap tunas demi keseimbangan ekosistem lokal dan warisan masa depan.
+            {{ __('app.tanaman_hero_desc') }}
         </p>
         
         <div class="flex items-center gap-3 text-[#a2f31f] font-bold">
@@ -117,8 +117,8 @@
                         <span class="material-symbols-outlined text-[#006948] text-3xl">analytics</span>
                     </div>
                     <div>
-                        <h3 class="font-headline font-extrabold text-xl text-[#006948]">Status Tanaman</h3>
-                        <p class="text-[#575c60] text-sm font-medium">Kondisi kesehatan vegetasi berdasarkan pemantauan terakhir.</p>
+                        <h3 class="font-headline font-extrabold text-xl text-[#006948]">{{ __('app.tanaman_status_title') }}</h3>
+                        <p class="text-[#575c60] text-sm font-medium">{{ __('app.tanaman_status_desc') }}</p>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
@@ -131,11 +131,11 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach([
-                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => 'Pohon penghasil minyak tengkawang yang bernilai ekonomi tinggi. Digunakan untuk industri kosmetik dan farmasi. Kayu berkualitas baik untuk bahan bangunan. Berperan penting dalam menjaga keseimbangan ekosistem hutan tropis.', 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/tengkawang.jpg'],
-                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => 'Pohon penghasil getah yang dikenal sebagai jelutung asli. Getahnya digunakan sebagai bahan baku pembuatan karet. Kayu lunak berkualitas untuk furniture dan patung. Tersebar alami di kawasan Kalimantan Barat.', 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/jelutung.jpg'],
-                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => 'Kayu premium dengan warna merah cerah, sangat berharga untuk furniture mewah dan konstruksi. Tahan terhadap anai-anai dan cuaca ekstrem. Pohon penting dalam program reboisasi hutan tropis Indonesia. Membantu stabilisasi tanah dan pencegahan erosi.', 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/meranti.jpg'],
-                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => 'Pohon penghasil buah rambutan yang kaya vitamin C dan gizi. Buahnya dapat dikonsumsi segar atau diproses menjadi produk makanan. Akar dan daun memiliki khasiat tradisional untuk kesehatan. Menarik fauna lokal termasuk burung dan kelelawar.', 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/rambutan.jpg'],
-                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => 'Pohon berkayu sangat keras dan tahan lama, dikenal sebagai kayu besi. Digunakan untuk konstruksi rumah tradisional, tiang listrik, dan jembatan. Sangat berharga dan menjadi simbol kekayaan alam Kalimantan. Status langka dan dilindungi untuk kelestarian hutan.', 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'color' => 'bg-orange-500', 'bg' => 'images/tanaman/ulin.jpg'],
+                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/tengkawang.jpg'],
+                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/jelutung.jpg'],
+                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'color' => 'bg-blue-500', 'bg' => 'images/tanaman/meranti.jpg'],
+                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'color' => 'bg-green-500', 'bg' => 'images/tanaman/rambutan.jpg'],
+                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'color' => 'bg-orange-500', 'bg' => 'images/tanaman/ulin.jpg'],
             ] as $pohon)
             
             <article class="flex flex-col gap-5 group cursor-pointer hover:-translate-y-2 transition-all duration-300" 
@@ -175,14 +175,14 @@
                     
                     <div class="flex items-center gap-6 border-t border-[#d7dee3] pt-4">
                         <div class="flex flex-col">
-                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">Height</span>
+                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">{{ __('app.tanaman_card_height_label') }}</span>
                             <span class="font-headline font-bold text-[#2a2f32]">{{ $pohon['tinggi'] }}</span>
                         </div>
                         <div class="h-8 w-px bg-[#d7dee3]"></div>
                         <div class="flex flex-col">
-                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">Action</span>
+                            <span class="text-[10px] font-black text-[#999da1] tracking-tighter">{{ __('app.tanaman_card_action_label') }}</span>
                             <span class="text-[#006948] font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                                Details <span class="material-symbols-outlined !text-sm">arrow_forward</span>
+                                {{ __('app.tanaman_card_action_cta') }} <span class="material-symbols-outlined !text-sm">arrow_forward</span>
                             </span>
                         </div>
                     </div>
@@ -214,15 +214,15 @@
 
                 <div class="grid grid-cols-3 gap-2 mb-4">
                     <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
-                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Family</p>
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">{{ __('app.label_famili') }}</p>
                         <p id="modal-famili" class="font-bold text-[#2a2f32] text-xs"></p>
                     </div>
                     <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
-                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Location</p>
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">{{ __('app.label_lokasi') }}</p>
                         <p id="modal-lokasi" class="font-bold text-[#2a2f32] text-xs"></p>
                     </div>
                     <div class="bg-[#f3f7fb] p-3 rounded-xl border border-[#d7dee3]">
-                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">Height</p>
+                        <p class="text-[8px] font-black uppercase text-[#999da1] mb-0.5">{{ __('app.label_tinggi') }}</p>
                         <p id="modal-tinggi" class="font-bold text-[#2a2f32] text-xs"></p>
                     </div>
                 </div>
@@ -230,7 +230,7 @@
                 <div class="space-y-2 bg-[#f9fafb] p-4 rounded-xl border border-[#e5e7eb]">
                     <h4 class="font-headline font-extrabold text-[#006948] flex items-center gap-2 text-base">
                         <span class="w-1.5 h-1.5 bg-[#a2f31f] rounded-full"></span>
-                        Manfaat & Deskripsi
+                        {{ __('app.tanaman_benefits_title') }}
                     </h4>
                     <p id="modal-manfaat" class="text-[#575c60] leading-relaxed text-xs font-medium"></p>
                 </div>

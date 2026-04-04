@@ -178,7 +178,7 @@
             <div class="absolute inset-0 z-10 bg-gradient-to-t from-[var(--eco-dark)] via-[var(--eco-dark)]/40 to-transparent"></div>
             <img
                 src="{{ asset('images/background2.jpg') }}"
-                alt="Contact Go Green School"
+                alt="{{ __('app.contact_hero_alt') }}"
                 class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[0.2] transition-transform duration-1000 group-hover:scale-105"
             >
 
@@ -211,7 +211,7 @@
                         <span class="w-8 h-8 rounded-lg bg-[var(--eco-accent)]/20 flex items-center justify-center">
                             <span class="material-symbols-outlined text-[var(--eco-dark)] text-sm">hub</span>
                         </span>
-                        Connect with Us
+                        {{ __('app.contact_connect_title') }}
                     </h2>
 
                     <div class="space-y-8">
@@ -248,12 +248,12 @@
 
                     <div class="mt-12 pt-8 border-t border-slate-100 flex gap-4">
                         <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
-                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Response</p>
-                            <p class="font-headline font-bold text-slate-800 text-sm">Fast</p>
+                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">{{ __('app.contact_response_label') }}</p>
+                            <p class="font-headline font-bold text-slate-800 text-sm">{{ __('app.contact_response_value') }}</p>
                         </div>
                         <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
-                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Status</p>
-                            <p class="font-headline font-bold text-emerald-600 text-sm">Active</p>
+                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">{{ __('app.contact_status_label') }}</p>
+                            <p class="font-headline font-bold text-emerald-600 text-sm">{{ __('app.contact_status_value') }}</p>
                         </div>
                     </div>
                 </div>
@@ -262,8 +262,8 @@
             {{-- Form Card (Right) --}}
             <article class="lg:col-span-7 bg-white p-10 rounded-[2.5rem] editorial-shadow border border-emerald-50 reveal-on-scroll">
                 <div class="mb-10">
-                    <h2 class="text-3xl font-headline font-black text-[var(--eco-dark)] tracking-tight">Kirim Pesan</h2>
-                    <p class="text-slate-500 mt-2">Punya pertanyaan atau saran? Kami siap mendengarkan.</p>
+                    <h2 class="text-3xl font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.contact_form_title') }}</h2>
+                    <p class="text-slate-500 mt-2">{{ __('app.contact_form_lead') }}</p>
                 </div>
 
                 @if(session('contact_success'))
@@ -288,25 +288,25 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_name') }}</label>
-                            <input type="text" name="name" value="{{ old('name') }}" required placeholder="Nama lengkap Anda"
+                            <input type="text" name="name" value="{{ old('name') }}" required placeholder="{{ __('app.contact_name_ph') }}"
                                    class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_email') }}</label>
-                            <input type="email" name="email" value="{{ old('email') }}" required placeholder="Email aktif"
+                            <input type="email" name="email" value="{{ old('email') }}" required placeholder="{{ __('app.contact_email_ph') }}"
                                    class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
                         </div>
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_subject') }}</label>
-                        <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="Subjek pesan"
+                        <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="{{ __('app.contact_subject_ph') }}"
                                class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_message') }}</label>
-                        <textarea name="message" rows="5" required placeholder="Tuliskan pesan Anda di sini..."
+                        <textarea name="message" rows="5" required placeholder="{{ __('app.contact_message_ph') }}"
                                   class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700 resize-none">{{ old('message') }}</textarea>
                     </div>
 
@@ -328,14 +328,14 @@
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="contact-map-panel w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
-                    <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">Location</span>
-                    <h3 class="text-3xl font-headline font-black mb-6 leading-tight">Kunjungi Sekolah Kami</h3>
+                    <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">{{ __('app.contact_map_label') }}</span>
+                    <h3 class="text-3xl font-headline font-black mb-6 leading-tight">{{ __('app.contact_map_title') }}</h3>
                     <p class="text-white/70 mb-8 leading-relaxed font-medium">
                         {{ __('app.contact_address_val') }}
                     </p>
                     <a href="https://maps.google.com/?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat" target="_blank" 
                        class="inline-flex items-center gap-3 text-[var(--eco-accent)] font-bold text-sm hover:underline">
-                        Buka di Google Maps
+                        {{ __('app.contact_map_cta') }}
                         <span class="material-symbols-outlined text-sm">open_in_new</span>
                     </a>
                 </div>

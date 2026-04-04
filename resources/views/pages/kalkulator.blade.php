@@ -144,7 +144,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         <div class="relative z-10 px-8 md:px-12 max-w-2xl py-12">
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
-                Platform Peduli Lingkungan
+                {{ __('app.badge_environment_platform') }}
             </div>
             <h1 class="font-headline text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
                 {{ __('app.kalkulator_title') }}
@@ -193,13 +193,13 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                             <label for="kelas" class="text-sm font-semibold text-slate-800 mb-2 block">
                                 <span class="inline-flex items-center gap-1.5">
                                     <span class="material-symbols-outlined" style="font-size:18px;color:#059669;">school</span>
-                                    Kelas
+                                        {{ __('app.kalkulator_class_label') }}
                                 </span>
                             </label>
                             <input type="text"
                                    name="kelas"
                                    id="kelas"
-                                   placeholder="Contoh: XI RPL 1"
+                                       placeholder="{{ __('app.kalkulator_class_placeholder') }}"
                                    value="{{ old('kelas', request('kelas')) }}"
                                 required
                                    class="kalkulator-input w-full rounded-xl focus:outline-none"
@@ -211,7 +211,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                             <label for="jumlah_hari" class="text-sm font-semibold text-slate-800 mb-2 block">
                                 <span class="inline-flex items-center gap-1.5">
                                     <span class="material-symbols-outlined" style="font-size:18px;color:#059669;">calendar_month</span>
-                                    Jumlah Hari
+                                        {{ __('app.kalkulator_days_label') }}
                                 </span>
                             </label>
                             <input type="number"
@@ -225,7 +225,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                    class="kalkulator-input w-full rounded-xl focus:outline-none"
                                    style="background-color:#f6f8f7;border:2px solid #e2e8f0;padding:12px 14px;font-size:14px;color:#1e293b;">
                         </div>
-                        <p class="text-xs mb-6 -mt-4" style="color:#6b7280;margin-left:4px;">Masukkan total sampah yang dikumpulkan dalam beberapa hari. Contoh: 2 kg dalam 2 hari.</p>
+                        <p class="text-xs mb-6 -mt-4" style="color:#6b7280;margin-left:4px;">{{ __('app.kalkulator_days_helper') }}</p>
                         
                         {{-- Waste Type Rows --}}
                         <div class="space-y-2">
@@ -411,35 +411,35 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
     <div class="rounded-2xl border p-4 sm:p-5 reveal-on-scroll" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">Estimasi Otomatis</p>
-                <p class="text-sm font-semibold text-slate-700 mt-1">Perkiraan sampah selama 30 hari: <span id="thirty-days-estimate" class="font-black" style="color:#065f46;">{{ number_format($initialThirtyDays, 1, ',', '.') }} kg</span></p>
+                <p class="text-xs font-black uppercase tracking-wider" style="color:#059669;">{{ __('app.kalkulator_estimate_label') }}</p>
+                <p class="text-sm font-semibold text-slate-700 mt-1">{{ __('app.kalkulator_estimate_30days') }} <span id="thirty-days-estimate" class="font-black" style="color:#065f46;">{{ number_format($initialThirtyDays, 1, ',', '.') }} kg</span></p>
             </div>
             <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style="background-color:#ffffffcc;border:1px solid #a7f3d0;">
                 <span class="material-symbols-outlined" style="font-size:16px;color:#059669;">monitoring</span>
-                <span class="text-xs font-bold" style="color:#047857;">Rata-rata harian: <span id="daily-total-estimate">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg</span>
+                <span class="text-xs font-bold" style="color:#047857;">{{ __('app.kalkulator_daily_average') }} <span id="daily-total-estimate">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg</span>
             </div>
         </div>
 
         <div class="mt-4">
             <div class="flex items-center justify-between text-xs font-semibold" style="color:#065f46;">
-                <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:15px;">recycling</span> Kontribusi pengurangan sampah</span>
+                <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:15px;">recycling</span> {{ __('app.kalkulator_contribution_label') }}</span>
                 <span id="contribution-percent">{{ number_format($initialProgressPct, 1, ',', '.') }}%</span>
             </div>
             <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
                 <div id="contribution-bar" class="h-full rounded-full" style="width:{{ $initialProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
             </div>
-            <p class="mt-2 text-xs" style="color:#047857;">Setara sekitar <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> botol plastik 500ml.</p>
+            <p class="mt-2 text-xs" style="color:#047857;">{{ __('app.kalkulator_bottle_equivalent_prefix') }} <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> {{ __('app.kalkulator_bottle_equivalent_suffix') }}</p>
         </div>
 
         <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
             <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
-                <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">Preview Input</p>
-                <p class="text-sm mt-1" style="color:#065f46;">Total inputmu <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg untuk <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> hari (rata-rata <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> kg/hari).</p>
+                <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">{{ __('app.kalkulator_preview_title') }}</p>
+                <p class="text-sm mt-1" style="color:#065f46;">{{ __('app.kalkulator_preview_prefix') }} <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg {{ __('app.kalkulator_preview_mid') }} <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> {{ __('app.kalkulator_preview_mid_2') }} <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> {{ __('app.kalkulator_preview_suffix') }}</p>
             </div>
             <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#047857;">
                     <span class="material-symbols-outlined" style="font-size:14px;">emoji_events</span>
-                    Level Kamu
+                    {{ __('app.kalkulator_level_label') }}
                 </p>
                 <p id="gamification-level" class="text-sm mt-1 font-black" style="color:#065f46;">{{ __('app.reward_keep') }}</p>
             </div>
@@ -448,9 +448,9 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         <div class="mt-3 rounded-xl p-3" style="background-color:#ecfeff;border:1px solid #bae6fd;">
             <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#0f766e;">
                 <span class="material-symbols-outlined" style="font-size:14px;">eco</span>
-                Panel Dampak Lingkungan
+                {{ __('app.kalkulator_impact_panel_label') }}
             </p>
-            <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">Kamu menyelamatkan 0 botol plastik dan dampakmu setara menanam 0 pohon.</p>
+            <p id="impact-message" class="text-sm mt-1 font-semibold" style="color:#0f766e;">{{ __('app.kalkulator_impact_message', ['bottles' => 0, 'trees' => 0]) }}</p>
         </div>
     </div>
     <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6 reveal-on-scroll" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
@@ -458,30 +458,30 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
                     <span class="material-symbols-outlined" style="font-size:15px;">monitoring</span>
-                    Estimasi 30 Hari
+                    {{ __('app.kalkulator_estimate_30days_title') }}
                 </p>
-                <p class="text-sm font-semibold text-slate-700 mt-2">Perkiraan sampah selama 30 hari</p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">{{ __('app.kalkulator_estimate_30days_desc') }}</p>
                 <p id="result-total-kg" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultThirtyDays, 1, ',', '.') }} kg</p>
             </div>
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
                     <span class="material-symbols-outlined" style="font-size:15px;">recycling</span>
-                    Kontribusi
+                    {{ __('app.kalkulator_contribution_title') }}
                 </p>
-                <p class="text-sm font-semibold text-slate-700 mt-2">Kontribusi kamu terhadap pengurangan sampah</p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">{{ __('app.kalkulator_contribution_desc') }}</p>
                 <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
                     <div id="result-progress-bar" class="h-full rounded-full" style="width:{{ $resultProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
                 </div>
-                <p id="result-progress-text" class="text-xs mt-2 font-bold" style="color:#047857;">{{ number_format($resultProgressPct, 1, ',', '.') }}% dari target 300 kg</p>
+                <p id="result-progress-text" class="text-xs mt-2 font-bold" style="color:#047857;">{{ __('app.kalkulator_target_progress', ['percent' => number_format($resultProgressPct, 1, ',', '.')]) }}</p>
             </div>
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
                     <span class="material-symbols-outlined" style="font-size:15px;">eco</span>
-                    Dampak Setara
+                    {{ __('app.kalkulator_equivalent_title') }}
                 </p>
-                <p class="text-sm font-semibold text-slate-700 mt-2">Setara dengan</p>
+                <p class="text-sm font-semibold text-slate-700 mt-2">{{ __('app.kalkulator_equivalent_desc') }}</p>
                 <p id="result-bottle-value" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultThirtyDays / 0.02, 0, ',', '.') }}</p>
-                <p class="text-xs mt-1" style="color:#047857;">botol plastik 500ml</p>
+                <p class="text-xs mt-1" style="color:#047857;">{{ __('app.kalkulator_bottle_unit') }}</p>
                 @if(request()->filled('kelas'))
                     <span class="inline-flex items-center gap-1 mt-2 rounded-full px-2.5 py-1 text-xs font-bold" style="background-color:#dcfce7;color:#065f46;">
                         <span class="material-symbols-outlined" style="font-size:14px;">school</span>
@@ -602,6 +602,9 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
+const numberLocale = @json(app()->getLocale() === 'en' ? 'en-US' : 'id-ID');
+const pointsLabel = @json(__('app.satuan_poin'));
+
 window.renderKalkulatorChart = function () {
     const resultsEl = document.getElementById('kalkulator-results');
     const ctx = document.getElementById('wasteChart');
@@ -647,9 +650,9 @@ window.renderKalkulatorChart = function () {
                 tooltip: {
                     callbacks: {
                         label: function (ctx) {
-                            const poin = ctx.raw.toLocaleString('id-ID');
+                            const poin = ctx.raw.toLocaleString(numberLocale);
                             const pct  = percents[ctx.dataIndex];
-                            return `  ${poin} poin  (${pct}%)`;
+                            return '  ' + poin + ' ' + pointsLabel + '  (' + pct + '%)';
                         }
                     }
                 }
@@ -715,6 +718,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const rewardLabelWarrior = @json(__('app.reward_warrior'));
     const rewardLabelStarter = @json(__('app.reward_starter'));
     const rewardLabelKeep = @json(__('app.reward_keep'));
+    const impactMessageTemplate = @json(__('app.kalkulator_impact_message', ['bottles' => ':bottles', 'trees' => ':trees']));
+    const targetProgressTemplate = @json(__('app.kalkulator_target_progress', ['percent' => ':percent']));
 
     const refreshResultElements = function () {
         resultCard = document.getElementById('hasil-highlight-card');
@@ -727,7 +732,7 @@ document.addEventListener('DOMContentLoaded', function () {
     refreshResultElements();
 
     const formatNumber = function (value, digit) {
-        return Number(value).toLocaleString('id-ID', {
+        return Number(value).toLocaleString(numberLocale, {
             minimumFractionDigits: digit,
             maximumFractionDigits: digit,
         });
@@ -796,7 +801,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const treeEq = Math.max(0, Math.floor(projected30Kg / 60));
 
         if (impactMessageEl) {
-            impactMessageEl.textContent = 'Kamu menyelamatkan ' + formatNumber(bottleEq, 0) + ' botol plastik dan dampakmu setara menanam ' + formatNumber(treeEq, 0) + ' pohon.';
+            const message = impactMessageTemplate
+                .replace(':bottles', formatNumber(bottleEq, 0))
+                .replace(':trees', formatNumber(treeEq, 0));
+            impactMessageEl.textContent = message;
         }
 
         if (levelEl) {
@@ -857,7 +865,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (resultBottleValueEl) animateNumber(resultBottleValueEl, bottleEq, 0, '');
             if (resultProgressBarEl) resultProgressBarEl.style.width = progressPct + '%';
             if (resultProgressTextEl) {
-                resultProgressTextEl.textContent = formatNumber(progressPct, 1) + '% dari target 300 kg';
+                resultProgressTextEl.textContent = targetProgressTemplate.replace(':percent', formatNumber(progressPct, 1));
             }
             applyBigResultEffect(total30Days);
         }

@@ -131,7 +131,7 @@
                         {{ __('app.about_developer') }}
                     </span>
                     <h2 class="text-4xl md:text-5xl font-headline font-black text-[var(--eco-dark)] leading-[1.1] tracking-tight">
-                        Building Eco Digital Solutions
+                        {{ __('app.about_dev_heading') }}
                     </h2>
                 </div>
 
@@ -177,16 +177,16 @@
     <section class="bg-white py-24 px-4 sm:px-6 lg:px-8 border-y border-slate-100 reveal-on-scroll">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 text-center">
-                <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">Our Squad</span>
+                <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">{{ __('app.about_team_label') }}</span>
                 <h2 class="text-4xl font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.about_team_title') }}</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach([
-                    ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => ['Lead Developer', 'Systems Architect']],
-                    ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => ['UI / UX Designer', 'Design System']],
-                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => ['Backend Developer', 'Server Logic']],
-                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), 'Content Strategy']],
+                    ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => [__('app.about_job_lead_dev'), __('app.about_job_systems_arch')]],
+                    ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => [__('app.about_job_uiux_designer'), __('app.about_job_design_system')]],
+                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => [__('app.about_job_backend_dev'), __('app.about_job_server_logic')]],
+                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), __('app.about_job_content_strategy')]],
                 ] as $member)
                 <div class="team-card p-8 rounded-[2rem] bg-slate-50 flex flex-col items-center text-center reveal-on-scroll">
                     <div class="w-14 h-14 bg-[var(--eco-dark)] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20">

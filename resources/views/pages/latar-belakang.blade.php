@@ -200,7 +200,7 @@
                 <div class="bg-white/5 backdrop-blur-md rounded-[2rem] p-8 border border-white/10 reveal-on-scroll reveal-delay-1">
                     <h4 class="font-outfit font-black text-xl mb-6 flex items-center gap-3">
                         <span class="material-symbols-outlined text-[var(--eco-accent)]">inventory_2</span>
-                        Alat & Bahan
+                        {{ __('app.latar_materials_title') }}
                     </h4>
                     <ul class="space-y-4">
                         @foreach($alatBahanItems as $item)
@@ -215,7 +215,7 @@
                 <div class="bg-white/5 backdrop-blur-md rounded-[2rem] p-8 border border-white/10 reveal-on-scroll reveal-delay-2">
                     <h4 class="font-outfit font-black text-xl mb-6 flex items-center gap-3">
                         <span class="material-symbols-outlined text-[var(--eco-accent)]">format_list_numbered</span>
-                        Langkah Kerja
+                        {{ __('app.latar_steps_title') }}
                     </h4>
                     <div class="space-y-6">
                         @foreach($langkahItems as $index => $item)
@@ -239,21 +239,21 @@
                 <div class="flex gap-6">
                     <div class="text-4xl font-outfit font-black text-[var(--eco-accent)] stroke-black">01</div>
                     <div>
-                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">General Statement</h4>
+                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">{{ __('app.latar_explanation_general') }}</h4>
                         <p class="text-slate-500 text-sm">{{ __('app.latar_explanation_intro') }}</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
                     <div class="text-4xl font-outfit font-black text-[var(--eco-accent)]">02</div>
                     <div>
-                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">Sequenced Explanation</h4>
+                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">{{ __('app.latar_explanation_sequence') }}</h4>
                         <p class="text-slate-500 text-sm">{{ __('app.latar_explanation_body') }}</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
                     <div class="text-4xl font-outfit font-black text-[var(--eco-accent)]">03</div>
                     <div>
-                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">Conclusion</h4>
+                        <h4 class="font-bold text-[var(--eco-dark)] mb-2">{{ __('app.latar_explanation_conclusion_label') }}</h4>
                         <p class="text-slate-500 text-sm">{{ __('app.latar_explanation_conclusion') }}</p>
                     </div>
                 </div>
