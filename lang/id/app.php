@@ -95,14 +95,16 @@ return [
     'label_manfaat'          => 'MANFAAT',
     'label_status'           => 'STATUS',
 
-    'status_sangat_baik'     => 'Sangat Baik',
     'status_baik'            => 'Baik',
-    'status_perlu_perhatian' => 'Perlu Perhatian',
+    'status_cukup_baik'      => 'Cukup Baik',
+    'status_rentan'          => 'Rentan',
+    'status_terancam_punah'  => 'Terancam Punah',
 
-    'legend_title'           => 'Keterangan Status',
-    'legend_sangat_baik'     => 'Tumbuhan sehat, pertumbuhan optimal, tidak ada gangguan.',
-    'legend_baik'            => 'Tumbuhan sehat, perlu monitoring rutin setiap bulan.',
-    'legend_perlu_perhatian' => 'Butuh perawatan ekstra, perlindungan, dan pemantauan khusus.',
+    'legend_title'           => 'Keterangan Status Konservasi',
+    'legend_baik'            => 'Tidak ada ancaman, populasi stabil.',
+    'legend_cukup_baik'      => 'Populasi berkurang, monitoring diperlukan.',
+    'legend_rentan'          => 'Menghadapi risiko tinggi, perlu perlindungan.',
+    'legend_terancam_punah'  => 'Risiko kepunahan sangat tinggi, intervensi konservasi urgen.',
 
     'catatan_teknis'         => 'Catatan Teknis',
     'catatan_teknis_desc'    => 'Data pohon di atas disimpan sebagai :array langsung di dalam :controller. Tidak ada query ke database — data dirender langsung dari memori ke tampilan Blade.',
@@ -245,7 +247,7 @@ return [
     'latar_dasar_desc'       => 'Berdasarkan data Kementerian Lingkungan Hidup dan Kehutanan, deforestasi di Kalimantan Barat mencapai angka yang mengkhawatirkan. SMK Karya Bangsa Sintang berkomitmen untuk menjadi bagian dari solusi melalui program Green School yang terukur dan berbasis teknologi.',
 
     // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
-    'latar_information_title'    => '📋 INFORMASI',
+    'latar_information_title'    => 'INFORMASI',
     'latar_information_intro'    => 'Go Green School adalah sekolah yang mempromosikan kesadaran lingkungan dan praktik keberlanjutan. Sekolah mendorong siswa, guru, dan staf untuk peduli terhadap lingkungan dan mengurangi dampak negatif terhadap alam. Tujuan utama Go Green School adalah menciptakan lingkungan belajar yang bersih, sehat, dan ramah lingkungan.',
     'latar_information_body'     => 'Go Green School menerapkan berbagai program ramah lingkungan. Salah satu kegiatan utama adalah mengurangi limbah plastik dengan mendorong siswa membawa botol dan kotak makan yang dapat digunakan kembali. Sekolah juga menyediakan tempat sampah terpisah untuk limbah organik dan anorganik untuk mendukung program daur ulang.
 
@@ -254,7 +256,7 @@ Program penting lainnya adalah menanam pohon dan merawat taman sekolah. Pohon me
 Selain itu, pendidikan lingkungan terintegrasi dalam kegiatan pembelajaran. Siswa diajarkan tentang perubahan iklim, daur ulang, dan pentingnya melindungi alam. Melalui kegiatan ini, siswa mengembangkan tanggung jawab dan kesadaran terhadap lingkungan.',
     'latar_information_conclusion' => 'Kesimpulannya, Go Green School memainkan peran penting dalam melindungi lingkungan. Dengan menerapkan kebiasaan ramah lingkungan di sekolah, siswa belajar untuk peduli terhadap alam dan membangun masa depan yang lebih baik.',
 
-    'latar_description_title'    => '📖 DESKRIPSI',
+    'latar_description_title'    => 'DESKRIPSI',
     'latar_description_text'     => '"Green School Tracker" merupakan sebuah aplikasi berbasis web yang dirancang untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang, Kalimantan Barat. Aplikasi ini membantu sekolah dalam memantau pertumbuhan tanaman, mengelola informasi mengenai pohon lokal khas daerah, serta mengedukasi siswa tentang daur ulang sampah melalui fitur kalkulator bank sampah.
 
 Aplikasi ini menyediakan beberapa fitur utama yang mendukung kegiatan lingkungan di sekolah. Halaman utama menampilkan ringkasan data program penghijauan, seperti jumlah pohon yang ditanam, luas area penghijauan, jumlah spesies tanaman, serta kondisi kesehatan tanaman secara keseluruhan.
@@ -354,19 +356,13 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     'profil_sek_struktur_sub'    => 'Pimpinan dan tim yang mengelola program Go Green sekolah',
 
     // Study programs
-    'jurusan_tkj'            => 'Teknik Komputer & Jaringan',
-    'jurusan_mm'             => 'Multimedia',
-    'jurusan_ak'             => 'Akuntansi',
-    'jurusan_ap'             => 'Administrasi Perkantoran',
-    'jurusan_bdp'            => 'Bisnis Daring & Pemasaran',
-    'jurusan_at'             => 'Agribisnis Tanaman',
+    'jurusan_rpl'            => 'Rekayasa Perangkat Lunak',
+    'jurusan_perhotelan'     => 'Perhotelan',
+    'jurusan_tsm'            => 'Teknik Sepeda Motor',
     'jurusan_rombel_label'   => 'Rombel',
-    'jurusan_tkj_desc'       => 'Jaringan komputer, instalasi, dan sistem operasi',
-    'jurusan_mm_desc'        => 'Desain grafis, animasi, dan produksi media digital',
-    'jurusan_ak_desc'        => 'Pembukuan, laporan keuangan, dan perpajakan',
-    'jurusan_ap_desc'        => 'Administrasi kantor, kearsipan, dan kesekretariatan',
-    'jurusan_bdp_desc'       => 'Pemasaran produk secara online dan offline',
-    'jurusan_at_desc'        => 'Budidaya tanaman pangan dan hortikultura',
+    'jurusan_rpl_desc'       => 'Pemrograman, pengembangan aplikasi, dan rekayasa sistem perangkat lunak',
+    'jurusan_perhotelan_desc'=> 'Layanan tamu, tata graha, dan operasional industri perhotelan',
+    'jurusan_tsm_desc'       => 'Perawatan, perbaikan, dan diagnosis sistem sepeda motor',
 
     // Facilities
     'fasilitas_kelas'        => 'Ruang Kelas',
@@ -408,9 +404,9 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
 
     // Contact Us page
     'contact_title'          => 'Hubungi Kami',
-    'contact_desc'           => 'Ada pertanyaan atau ingin berkolaborasi? Kami siap membantu.',
+    'contact_desc'           => 'Ada pertanyaan tentang program sekolah kami atau ingin berkolaborasi? Tim kami siap membantu dengan respons cepat. Hubungi kami kapan saja untuk diskusi lebih lanjut.',
     'contact_info_title'     => 'Informasi Kontak',
-    'contact_form_title'     => 'Kirim Pesan',
+    'contact_form_title'     => 'Hubungi Kami Disini',
     'contact_form_desc'      => 'Isi formulir di bawah ini dan kami akan segera merespons.',
     'contact_name'           => 'Nama Lengkap',
     'contact_name_ph'        => 'Masukkan nama lengkap Anda',
@@ -631,4 +627,30 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     'filament_kalkulator_result_note' => 'Hasil ini hanya ditampilkan di layar. Data tidak disimpan ke database — hanya ada di Livewire session memory.',
     'filament_kalkulator_empty_sub'   => 'Hasil akan muncul di sini secara real-time',
     'tabel_keterangan'                => 'Keterangan',
+
+    // Plant data - Tanaman
+    // Pohon 1: Rafflesia Arnoldii
+    'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
+    'pohon_1_manfaat' => 'Bunga raksasa ini sangat bermanfaat sebagai magnet ekowisata botani yang mampu mendatangkan turis dan peneliti dari seluruh dunia. Di alam liar, kehadirannya menjadi indikator penting bagi ekologi untuk memastikan bahwa kawasan hutan primer tersebut masih murni dan terjaga.',
+    'pohon_1_tinggi'  => '± 1m (bunga)',
+
+    // Pohon 2: Kantong Semar
+    'pohon_2_lokasi'  => 'Hutan Hujan Tropis Nusantara',
+    'pohon_2_manfaat' => 'Tanaman karnivora ini sangat berperan menjaga keseimbangan ekosistem dengan menjadi pengendali alami populasi hama serangga di habitat sekitarnya. Selain bernilai jual sebagai tanaman hias, kantongnya juga sering dimanfaatkan masyarakat lokal sebagai wadah menanak nasi tradisional yang khas.',
+    'pohon_2_tinggi'  => '± 1-2m (merambat)',
+
+    // Pohon 3: Anggrek Hitam Kalimantan
+    'pohon_3_lokasi'  => 'Kalimantan',
+    'pohon_3_manfaat' => 'Tanaman endemik ini bernilai ekonomi luar biasa sebagai incaran utama kolektor tanaman hias kelas dunia berkat pesona eksotisnya. Selain itu, ia juga memiliki peranan penting secara budaya karena dijadikan maskot resmi kebanggaan Provinsi Kalimantan Timur.',
+    'pohon_3_tinggi'  => '± 30-60cm',
+
+    // Pohon 4: Cendana
+    'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
+    'pohon_4_manfaat' => 'Ekstrak minyak dari kayunya bernilai ekspor fantastis karena menjadi bahan baku utama pengikat aroma dalam industri parfum dan kosmetik mewah global. Potongan kayunya juga sangat bermanfaat untuk dijadikan dupa aromaterapi yang menenangkan, obat herbal, hingga kerajinan ukir bernilai seni tinggi.',
+    'pohon_4_tinggi'  => '± 10-15m',
+
+    // Pohon 5: Tengkawang
+    'pohon_5_lokasi'  => 'Hutan Kalimantan',
+    'pohon_5_manfaat' => 'Bijinya menghasilkan lemak nabati (Green Butter) bernilai tinggi yang diekspor sebagai bahan dasar pelembap kosmetik dan pengganti mentega kakao pada cokelat premium. Bagi masyarakat Dayak, minyak tengkawang juga sangat berharga karena secara turun-temurun digunakan untuk keperluan memasak hingga ritual pengobatan tradisional.',
+    'pohon_5_tinggi'  => '± 30m',
 ];

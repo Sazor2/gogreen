@@ -195,7 +195,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 mt-8">
     <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" alt="Calculator Hero">
+            <img class="w-full h-full object-cover" src="{{ asset('images/sampah.jpg') }}" alt="Calculator Hero">
         </div>
 
         <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>

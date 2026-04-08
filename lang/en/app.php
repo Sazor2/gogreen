@@ -95,14 +95,16 @@ return [
     'label_manfaat'          => 'BENEFITS',
     'label_status'           => 'STATUS',
 
-    'status_sangat_baik'     => 'Very Good',
     'status_baik'            => 'Good',
-    'status_perlu_perhatian' => 'Needs Attention',
+    'status_cukup_baik'      => 'Fair',
+    'status_rentan'          => 'Vulnerable',
+    'status_terancam_punah'  => 'Endangered',
 
-    'legend_title'           => 'Status Legend',
-    'legend_sangat_baik'     => 'Plant is healthy, optimal growth, no disturbances.',
-    'legend_baik'            => 'Plant is healthy, requires routine monthly monitoring.',
-    'legend_perlu_perhatian' => 'Requires extra care, protection, and special monitoring.',
+    'legend_title'           => 'Conservation Status Legend',
+    'legend_baik'            => 'No threats, stable population.',
+    'legend_cukup_baik'      => 'Declining population, monitoring required.',
+    'legend_rentan'          => 'Facing high risk, protection needed.',
+    'legend_terancam_punah'  => 'Very high extinction risk, urgent conservation intervention.',
 
     'catatan_teknis'         => 'Technical Note',
     'catatan_teknis_desc'    => 'Plant data above is stored as :array directly inside :controller. No database query — data is rendered directly from memory to the Blade view.',
@@ -245,7 +247,7 @@ return [
     'latar_dasar_desc'       => 'Based on data from the Ministry of Environment and Forestry, deforestation in West Kalimantan has reached alarming levels. SMK Karya Bangsa Sintang is committed to being part of the solution through a measurable, technology-based Green School program.',
 
     // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
-    'latar_information_title'    => '📋 INFORMATION',
+    'latar_information_title'    => 'INFORMATION',
     'latar_information_intro'    => 'A Go Green School is a school that promotes environmental awareness and sustainable practices. It encourages students, teachers, and staff to care for the environment and reduce negative impacts on nature. The main goal of a Go Green School is to create a clean, healthy, and eco-friendly learning environment.',
     'latar_information_body'     => 'A Go Green School applies various environmentally friendly programs. One of the main activities is reducing plastic waste by encouraging students to bring reusable bottles and lunch boxes. Schools also provide separate trash bins for organic and inorganic waste to support recycling programs.
 
@@ -254,7 +256,7 @@ Another important program is planting trees and maintaining school gardens. Tree
 In addition, environmental education is integrated into learning activities. Students are taught about climate change, recycling, and the importance of protecting nature. Through these activities, students develop responsibility and awareness toward the environment.',
     'latar_information_conclusion' => 'In conclusion, a Go Green School plays an important role in protecting the environment. By applying eco-friendly habits at school, students learn to care for nature and build a better future.',
 
-    'latar_description_title'    => '📖 DESCRIPTION',
+    'latar_description_title'    => 'DESCRIPTION',
     'latar_description_text'     => '"Green School Tracker" is a web application designed to support the greening and environmental management program at SMK Karya Bangsa Sintang, West Kalimantan. The application helps the school monitor plant growth, manage information about regional native trees, and educate students about waste recycling through a waste bank calculator feature.
 
 The application provides several main features that support environmental activities in the school. The main page displays a summary of the school\'s greening program statistics, including the total number of trees planted, total greening area, number of plant species, and overall plant health status.
@@ -354,19 +356,13 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     'profil_sek_struktur_sub'    => 'Leadership and team managing the school\'s Go Green program',
 
     // Study programs
-    'jurusan_tkj'            => 'Computer & Network Engineering',
-    'jurusan_mm'             => 'Multimedia',
-    'jurusan_ak'             => 'Accounting',
-    'jurusan_ap'             => 'Office Administration',
-    'jurusan_bdp'            => 'Online Business & Marketing',
-    'jurusan_at'             => 'Agricultural Business',
+    'jurusan_rpl'            => 'Software Engineering',
+    'jurusan_perhotelan'     => 'Hospitality',
+    'jurusan_tsm'            => 'Motorcycle Engineering',
     'jurusan_rombel_label'   => 'Class Groups',
-    'jurusan_tkj_desc'       => 'Computer networks, installation, and operating systems',
-    'jurusan_mm_desc'        => 'Graphic design, animation, and digital media production',
-    'jurusan_ak_desc'        => 'Bookkeeping, financial reports, and taxation',
-    'jurusan_ap_desc'        => 'Office administration, filing, and secretarial work',
-    'jurusan_bdp_desc'       => 'Online and offline product marketing',
-    'jurusan_at_desc'        => 'Food crop and horticulture cultivation',
+    'jurusan_rpl_desc'       => 'Programming, application development, and software system engineering',
+    'jurusan_perhotelan_desc'=> 'Guest service, housekeeping, and hotel industry operations',
+    'jurusan_tsm_desc'       => 'Maintenance, repair, and diagnosis of motorcycle systems',
 
     // Facilities
     'fasilitas_kelas'        => 'Classrooms',
@@ -408,9 +404,9 @@ Go Green actions help reduce these problems. For example, planting trees helps a
 
     // Contact Us page
     'contact_title'          => 'Contact Us',
-    'contact_desc'           => 'Have a question or want to collaborate? We are here to help.',
+    'contact_desc'           => 'Do you have questions about our programs or want to collaborate? Our team is ready to help with quick response times. Feel free to contact us anytime for further discussion.',
     'contact_info_title'     => 'Contact Information',
-    'contact_form_title'     => 'Send a Message',
+    'contact_form_title'     => 'Contact Us Here',
     'contact_form_desc'      => 'Fill in the form below and we will get back to you soon.',
     'contact_name'           => 'Full Name',
     'contact_name_ph'        => 'Enter your full name',
@@ -631,4 +627,30 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     'filament_kalkulator_result_note' => 'This result is shown on screen only. Data is not saved to the database and only lives in Livewire session memory.',
     'filament_kalkulator_empty_sub'   => 'Results will appear here in real time',
     'tabel_keterangan'                => 'Notes',
+
+    // Plant data
+    // Plant 1: Rafflesia Arnoldii
+    'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
+    'pohon_1_manfaat' => 'This giant flower is highly valuable as a botanical ecotourism magnet that attracts tourists and researchers from around the world. In the wild, its presence serves as an important ecological indicator to ensure that the primary forest area remains pristine and well-preserved.',
+    'pohon_1_tinggi'  => '± 1m (flower)',
+
+    // Plant 2: Pitcher Plant (Kantong Semar)
+    'pohon_2_lokasi'  => 'Tropical Rainforests of Nusantara',
+    'pohon_2_manfaat' => 'This carnivorous plant plays a vital role in maintaining ecosystem balance by naturally controlling pest insect populations in its habitat. Beyond its ornamental value, the pitcher is also traditionally used by local communities as a unique vessel for cooking rice in their culinary traditions.',
+    'pohon_2_tinggi'  => '± 1-2m (climbing)',
+
+    // Plant 3: Calypso Orchid (Anggrek Hitam Kalimantan)
+    'pohon_3_lokasi'  => 'Kalimantan',
+    'pohon_3_manfaat' => 'This endemic plant has extraordinary economic value as a prime target for world-class ornamental plant collectors due to its exotic charm. It also holds significant cultural importance as the official emblem of pride for East Kalimantan Province.',
+    'pohon_3_tinggi'  => '± 30-60cm',
+
+    // Plant 4: Sandalwood (Cendana)
+    'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
+    'pohon_4_manfaat' => 'The essential oil extracted from its wood has fantastic export value as a primary ingredient for fragrance fixation in the global luxury perfume and cosmetics industry. Its wood pieces are also valuable for making soothing aromatherapy incense, herbal medicine, and high-artistic crafts.',
+    'pohon_4_tinggi'  => '± 10-15m',
+
+    // Plant 5: Tengkawang (Borneo Camphor)
+    'pohon_5_lokasi'  => 'Kalimantan Forest',
+    'pohon_5_manfaat' => 'Its seeds produce high-value vegetable fat (Green Butter) exported as a key ingredient for cosmetic moisturizers and cocoa butter substitute in premium chocolate. For the Dayak people, tengkawang oil is also highly valuable as it has been traditionally used for cooking and in traditional healing rituals.',
+    'pohon_5_tinggi'  => '± 30m',
 ];

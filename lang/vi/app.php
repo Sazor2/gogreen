@@ -95,14 +95,16 @@ return [
     'label_manfaat'          => 'LỢI ÍCH',
     'label_status'           => 'TRẠNG THÁI',
 
-    'status_sangat_baik'     => 'Rất tốt',
     'status_baik'            => 'Tốt',
-    'status_perlu_perhatian' => 'Cần chú ý',
+    'status_cukup_baik'      => 'Khá',
+    'status_rentan'          => 'Dễ bị tổn thương',
+    'status_terancam_punah'  => 'Nguy cấp',
 
-    'legend_title'           => 'Chú giải trạng thái',
-    'legend_sangat_baik'     => 'Cây khỏe mạnh, sinh trưởng tối ưu, không có vấn đề.',
-    'legend_baik'            => 'Cây khỏe mạnh, cần theo dõi định kỳ hàng tháng.',
-    'legend_perlu_perhatian' => 'Cần chăm sóc bổ sung, bảo vệ và theo dõi đặc biệt.',
+    'legend_title'           => 'Trạng thái bảo tồn',
+    'legend_baik'            => 'Không có mối đe dọa, quần thể ổn định.',
+    'legend_cukup_baik'      => 'Quần thể giảm, cần giám sát.',
+    'legend_rentan'          => 'Đối mặt với rủi ro cao, cần bảo vệ.',
+    'legend_terancam_punah'  => 'Rủi ro tuyệt chủng rất cao, cần can thiệp bảo tồn khẩn cấp.',
 
     'catatan_teknis'         => 'Ghi chú kỹ thuật',
     'catatan_teknis_desc'    => 'Dữ liệu cây được lưu trực tiếp dưới dạng :array trong :controller. Không truy vấn cơ sở dữ liệu — dữ liệu được hiển thị trực tiếp từ bộ nhớ lên Blade.',
@@ -245,7 +247,7 @@ return [
     'latar_dasar_desc'       => 'Theo Bộ Môi trường và Lâm nghiệp, nạn phá rừng ở Tây Kalimantan đã ở mức đáng báo động. SMK Karya Bangsa Sintang cam kết là một phần của giải pháp qua chương trình Green School đo lường được và dựa trên công nghệ.',
 
     // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
-    'latar_information_title'    => '📋 THÔNG TIN',
+    'latar_information_title'    => 'THÔNG TIN',
     'latar_information_intro'    => 'Go Green School là trường học thúc đẩy ý thức môi trường và thực hành bền vững. Nhà trường khuyến khích học sinh, giáo viên và nhân viên quan tâm môi trường và giảm tác động tiêu cực đến thiên nhiên. Mục tiêu là tạo môi trường học tập sạch, lành mạnh và thân thiện môi trường.',
     'latar_information_body'     => 'Go Green School áp dụng nhiều chương trình thân thiện môi trường. Một hoạt động chính là giảm rác nhựa bằng cách khuyến khích học sinh mang chai và hộp ăn tái sử dụng. Trường cũng bố trí thùng rác hữu cơ và vô cơ để hỗ trợ tái chế.
 
@@ -254,7 +256,7 @@ Chương trình quan trọng khác là trồng và chăm sóc cây, vườn trư
 Ngoài ra, giáo dục môi trường được tích hợp trong hoạt động học tập. Học sinh được dạy về biến đổi khí hậu, tái chế và bảo vệ thiên nhiên, qua đó hình thành trách nhiệm và ý thức môi trường.',
     'latar_information_conclusion' => 'Kết luận: Go Green School đóng vai trò quan trọng trong bảo vệ môi trường. Khi thực hành thói quen xanh tại trường, học sinh học cách yêu thiên nhiên và xây dựng tương lai tốt đẹp hơn.',
 
-    'latar_description_title'    => '📖 MÔ TẢ',
+    'latar_description_title'    => 'MÔ TẢ',
     'latar_description_text'     => '"Green School Tracker" là ứng dụng web được thiết kế để hỗ trợ chương trình xanh hóa và quản lý môi trường tại SMK Karya Bangsa Sintang, Tây Kalimantan. Ứng dụng giúp theo dõi tăng trưởng cây, quản lý thông tin cây bản địa và giáo dục tái chế qua máy tính ngân hàng rác.
 
 Ứng dụng cung cấp các tính năng chính hỗ trợ hoạt động môi trường, bao gồm thống kê tổng số cây, diện tích xanh, số loài cây và tình trạng sức khỏe tổng thể.
@@ -354,19 +356,13 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
     'profil_sek_struktur_sub'    => 'Lãnh đạo và đội ngũ quản lý chương trình Go Green',
 
     // Study programs
-    'jurusan_tkj'            => 'Kỹ thuật máy tính & mạng',
-    'jurusan_mm'             => 'Đa phương tiện',
-    'jurusan_ak'             => 'Kế toán',
-    'jurusan_ap'             => 'Quản trị văn phòng',
-    'jurusan_bdp'            => 'Kinh doanh trực tuyến & marketing',
-    'jurusan_at'             => 'Kinh doanh nông nghiệp',
+    'jurusan_rpl'            => 'Kỹ thuật phần mềm',
+    'jurusan_perhotelan'     => 'Nghiệp vụ khách sạn',
+    'jurusan_tsm'            => 'Kỹ thuật xe máy',
     'jurusan_rombel_label'   => 'Nhóm lớp',
-    'jurusan_tkj_desc'       => 'Mạng máy tính, cài đặt và hệ điều hành',
-    'jurusan_mm_desc'        => 'Thiết kế đồ họa, hoạt hình và sản xuất truyền thông số',
-    'jurusan_ak_desc'        => 'Kế toán, báo cáo tài chính và thuế',
-    'jurusan_ap_desc'        => 'Hành chính văn phòng, lưu trữ và thư ký',
-    'jurusan_bdp_desc'       => 'Marketing sản phẩm online và offline',
-    'jurusan_at_desc'        => 'Canh tác cây lương thực và làm vườn',
+    'jurusan_rpl_desc'       => 'Lập trình, phát triển ứng dụng và kỹ thuật hệ thống phần mềm',
+    'jurusan_perhotelan_desc'=> 'Dịch vụ khách hàng, nghiệp vụ buồng phòng và vận hành khách sạn',
+    'jurusan_tsm_desc'       => 'Bảo dưỡng, sửa chữa và chẩn đoán hệ thống xe máy',
 
     // Facilities
     'fasilitas_kelas'        => 'Phòng học',
@@ -408,9 +404,9 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
 
     // Contact Us page
     'contact_title'          => 'Liên hệ',
-    'contact_desc'           => 'Có câu hỏi hoặc muốn hợp tác? Chúng tôi luôn sẵn sàng hỗ trợ.',
+    'contact_desc'           => 'Bạn có câu hỏi về các chương trình của chúng tôi không hoặc muốn hợp tác? Đội ngũ của chúng tôi sẵn sàng hỗ trợ với phản hồi nhanh chóng. Hãy liên hệ với chúng tôi bất kỳ lúc nào để thảo luận thêm.',
     'contact_info_title'     => 'Thông tin liên hệ',
-    'contact_form_title'     => 'Gửi tin nhắn',
+    'contact_form_title'     => 'Liên hệ với Chúng Tôi',
     'contact_form_desc'      => 'Điền vào biểu mẫu và chúng tôi sẽ phản hồi sớm.',
     'contact_name'           => 'Họ và tên',
     'contact_name_ph'        => 'Nhập họ và tên',
@@ -631,4 +627,30 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
     'filament_kalkulator_result_note' => 'Kết quả chỉ hiển thị trên màn hình. Dữ liệu không lưu vào cơ sở dữ liệu và chỉ tồn tại trong bộ nhớ phiên Livewire.',
     'filament_kalkulator_empty_sub'   => 'Kết quả sẽ hiển thị ở đây theo thời gian thực',
     'tabel_keterangan'                => 'Ghi chú',
+
+    // Plant data
+    // Plant 1: Rafflesia Arnoldii
+    'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
+    'pohon_1_manfaat' => 'Bông hoa khổng lồ này vô cùng quý giá như một nam châm du lịch sinh thái thực vật thu hút du khách và các nhà nghiên cứu từ khắp thế giới. Ở vùng hoang dã, sự có mặt của nó là một chỉ báo sinh thái quan trọng để đảm bảo rằng khu vực rừng nguyên sinh vẫn còn nguyên vẹn và được bảo vệ tốt.',
+    'pohon_1_tinggi'  => '± 1m (hoa)',
+
+    // Plant 2: Pitcher Plant
+    'pohon_2_lokasi'  => 'Rừng mưa nhiệt đới của Nusantara',
+    'pohon_2_manfaat' => 'Loài cây muỗng này đóng một vai trò quan trọng trong duy trì cân bằng sinh thái bằng cách kiểm soát tự nhiên quần thể côn trùng gây hại trong môi trường sống của nó. Ngoài giá trị trang trí, chiếc túi cũng thường được cộng đồng địa phương khai thác như một chiếc nồi nấu cơm truyền thống đặc biệt.',
+    'pohon_2_tinggi'  => '± 1-2m (leo)',
+
+    // Plant 3: Calypso Orchid
+    'pohon_3_lokasi'  => 'Kalimantan',
+    'pohon_3_manfaat' => 'Loài thực vật đặc hữu này có giá trị kinh tế phi thường là mục tiêu chính của những nhà sưu tập cây cảnh hàng đầu thế giới nhờ sự quyến rũ kỳ dị của nó. Ngoài ra, nó còn có ý nghĩa văn hóa quan trọng vì nó được chọn làm biểu tượng chính thức của tỉnh Kalimantan Đông.',
+    'pohon_3_tinggi'  => '± 30-60cm',
+
+    // Plant 4: Sandalwood
+    'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
+    'pohon_4_manfaat' => 'Dầu tinh dầu chiết xuất từ gỗ của nó có giá trị xuất khẩu tuyệt vời vì nó là thành phần chính trong ngành công nghiệp nước hoa hàng hiệu và mỹ phẩm toàn cầu. Những miếng gỗ của nó cũng rất có giá trị để làm nhang thơm tĩnh tâm, thuốc thảo dược và các tác phẩm thủ công có giá trị nghệ thuật cao.',
+    'pohon_4_tinggi'  => '± 10-15m',
+
+    // Plant 5: Tengkawang
+    'pohon_5_lokasi'  => 'Rừng Kalimantan',
+    'pohon_5_manfaat' => 'Hạt của nó tạo ra chất béo thực vật có giá trị cao (Bơ xanh) được xuất khẩu như một thành phần chính cho các chất dưỡng ẩm mỹ phẩm và chất thay thế bơ ca cao trong chocolate cao cấp. Đối với người Dayak, dầu tengkawang cũng rất quý giá vì nó được sử dụng theo truyền thống cho các nhu cầu nấu nướng và nghi lễ chữa bệnh truyền thống.',
+    'pohon_5_tinggi'  => '± 30m',
 ];

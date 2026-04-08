@@ -124,6 +124,14 @@
         box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
     }
 
+    .status-pill-baik { background: linear-gradient(145deg, #1faa63, #0f8d4f); border-color: #43d38a; }
+    .status-pill-cukup_baik { background: linear-gradient(145deg, #2f8dff, #276be0); border-color: #73b4ff; }
+    .status-pill-rentan { background: linear-gradient(145deg, #fb8c2a, #e06410); border-color: #ffb16c; }
+    .status-pill-terancam_punah { background: linear-gradient(145deg, #ff3b30, #d00000); border-color: #ff6b5f; }
+    .status-dot-baik { background: #9cfac6; }
+    .status-dot-cukup_baik { background: #cde5ff; }
+    .status-dot-rentan { background: #ffe0b8; }
+    .status-dot-terancam_punah { background: #ffb2ad; }
     .status-pill-excellent { background: linear-gradient(145deg, #1faa63, #0f8d4f); border-color: #43d38a; }
     .status-pill-good { background: linear-gradient(145deg, #2f8dff, #276be0); border-color: #73b4ff; }
     .status-pill-watch { background: linear-gradient(145deg, #fb8c2a, #e06410); border-color: #ffb16c; }
@@ -176,11 +184,6 @@
                 <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl">
                     {{ __('app.tanaman_hero_desc') }}
                 </p>
-
-                <div class="flex items-center gap-3 text-[#a2f31f] font-bold">
-                    <span class="material-symbols-outlined">info</span>
-                    <span class="text-sm italic">{{ __('app.tanaman_catatan') }}</span>
-                </div>
             </div>
 
         </section>
@@ -200,20 +203,21 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-excellent text-white">{{ __('app.status_sangat_baik') }}</span>
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-good text-white">{{ __('app.status_baik') }}</span>
-                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-watch text-white">{{ __('app.status_perlu_perhatian') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-baik text-white">{{ __('app.status_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-cukup_baik text-white">{{ __('app.status_cukup_baik') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-rentan text-white">{{ __('app.status_rentan') }}</span>
+                    <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-terancam_punah text-white">{{ __('app.status_terancam_punah') }}</span>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach([
-                ['id' => 1, 'nama' => 'Tengkawang', 'latin' => 'Shorea stenoptera', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => '± 30m', 'status' => __('app.status_sangat_baik'), 'tone' => 'excellent', 'bg' => 'images/tanaman/tengkawang.jpg'],
-                ['id' => 2, 'nama' => 'Jelutung', 'latin' => 'Dyera costulata', 'jenis' => 'Apocynaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => '± 40m', 'status' => __('app.status_baik'), 'tone' => 'good', 'bg' => 'images/tanaman/jelutung.jpg'],
-                ['id' => 3, 'nama' => 'Meranti Merah', 'latin' => 'Shorea lepidota', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => '± 35m', 'status' => __('app.status_baik'), 'tone' => 'good', 'bg' => 'images/tanaman/meranti.jpg'],
-                ['id' => 4, 'nama' => 'Rambutan Hutan', 'latin' => 'Nephelium lappaceum', 'jenis' => 'Sapindaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => '± 15m', 'status' => __('app.status_sangat_baik'), 'tone' => 'excellent', 'bg' => 'images/tanaman/rambutan.jpg'],
-                ['id' => 5, 'nama' => 'Ulin (Kayu Besi)', 'latin' => 'Eusideroxylon zwageri', 'jenis' => 'Lauraceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => '± 50m', 'status' => __('app.status_perlu_perhatian'), 'tone' => 'watch', 'bg' => 'images/tanaman/ulin.jpg'],
+                ['id' => 1, 'nama' => 'Rafflesia Arnoldii', 'latin' => 'Rafflesia arnoldii', 'jenis' => 'Rafflesiaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => __('app.pohon_1_tinggi'), 'status' => __('app.status_terancam_punah'), 'tone' => 'terancam_punah', 'bg' => 'images/tanaman/raflesia.jpg'],
+                ['id' => 2, 'nama' => 'Kantong Semar', 'latin' => 'Nepenthes spp.', 'jenis' => 'Nepenthaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => __('app.pohon_2_tinggi'), 'status' => __('app.status_rentan'), 'tone' => 'rentan', 'bg' => 'images/tanaman/kantongsemar.jpg'],
+                ['id' => 3, 'nama' => 'Anggrek Hitam Kalimantan', 'latin' => 'Coelogyne pandurata', 'jenis' => 'Orchidaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => __('app.pohon_3_tinggi'), 'status' => __('app.status_terancam_punah'), 'tone' => 'terancam_punah', 'bg' => 'images/tanaman/anggrekhitam.jpg'],
+                ['id' => 4, 'nama' => 'Cendana', 'latin' => 'Santalum album', 'jenis' => 'Santalaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => __('app.pohon_4_tinggi'), 'status' => __('app.status_rentan'), 'tone' => 'rentan', 'bg' => 'images/tanaman/cendana.jpg'],
+                ['id' => 5, 'nama' => 'Tengkawang', 'latin' => 'Shorea macrophylla', 'jenis' => 'Dipterocarpaceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => __('app.pohon_5_tinggi'), 'status' => __('app.status_rentan'), 'tone' => 'rentan', 'bg' => 'images/tanaman/Tengkawang.jpg'],
             ] as $pohon)
             
             <article class="flex flex-col gap-5 group cursor-pointer hover:-translate-y-2 transition-all duration-300" 
@@ -334,7 +338,7 @@
         document.getElementById('modal-manfaat').textContent = element.dataset.manfaat;
 
         statusEl.textContent = element.dataset.status;
-        statusEl.classList.remove('status-pill-excellent', 'status-pill-good', 'status-pill-watch', 'text-white');
+        statusEl.classList.remove('status-pill-excellent', 'status-pill-good', 'status-pill-watch', 'status-pill-baik', 'status-pill-cukup_baik', 'status-pill-rentan', 'status-pill-terancam_punah', 'text-white');
         if (element.dataset.statusTone) {
             statusEl.classList.add('status-pill-' + element.dataset.statusTone, 'text-white');
         }

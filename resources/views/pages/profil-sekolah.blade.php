@@ -156,7 +156,7 @@
     <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQtgIcghTWlgSYIlJXFz45mZOTRYmk7o5qw2kxvft-ez6VTDCBphsQrqFH97scw7aPmmxynDkog0Zup2D0kT5mjIoiG9pcheBpWqQzFCiuenvi4KPKY5yYOw027tPMs7fJrKxcjHycRzsOpIKqfdViF0vsxHEvF-sCuF56_QW84W2EP5CfVMggDBvhUrE6aMv9jQBebUlxxyb2_aUuHgKDzIquvowoRGVTxNmhhI95gsEEJ9vZT1nJojMDym5v5fvgrODs8JIzK-qn"
+                src="{{ asset('images/begeron.jpeg') }}"
                 alt="Profil Sekolah Hero"
                 class="w-full h-full object-cover"
             >
@@ -187,9 +187,9 @@
     <div class="max-w-7xl mx-auto md-grid-4col" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:1.25rem;">
         @foreach([
             ['icon' => 'groups',       'value' => '320+', 'label' => __('app.profil_sek_stat_siswa')],
-            ['icon' => 'school',       'value' => '28',   'label' => __('app.profil_sek_stat_guru')],
-            ['icon' => 'meeting_room', 'value' => '10',   'label' => __('app.profil_sek_stat_kelas')],
-            ['icon' => 'history',      'value' => '2003', 'label' => __('app.profil_sek_stat_tahun')],
+            ['icon' => 'school',       'value' => '13',   'label' => __('app.profil_sek_stat_guru')],
+            ['icon' => 'meeting_room', 'value' => '8',   'label' => __('app.profil_sek_stat_kelas')],
+            ['icon' => 'history',      'value' => '2020', 'label' => __('app.profil_sek_stat_tahun')],
         ] as $stat)
         <div class="stat-card bg-white flex flex-col items-center text-center reveal-on-scroll floating-soft" style="padding:32px 20px;border-radius:24px;box-shadow:var(--card-shadow);animation-delay: {{ $loop->index * 0.12 }}s;">
             <span class="stat-icon material-symbols-outlined" style="font-size:2.8rem;color:var(--primary-deep);margin-bottom:12px;opacity:0.8;">{{ $stat['icon'] }}</span>
@@ -303,12 +303,9 @@
         </div>
         <div class="md-grid-3col" style="display:grid;grid-template-columns:1fr;gap:2rem;">
             @foreach([
-                ['name' => __('app.jurusan_tkj'), 'icon' => 'lan', 'desc' => __('app.jurusan_tkj_desc'), 'rombel' => 3],
-                ['name' => __('app.jurusan_mm'), 'icon' => 'movie', 'desc' => __('app.jurusan_mm_desc'), 'rombel' => 2],
-                ['name' => __('app.jurusan_ak'), 'icon' => 'payments', 'desc' => __('app.jurusan_ak_desc'), 'rombel' => 2],
-                ['name' => __('app.jurusan_ap'), 'icon' => 'folder_shared', 'desc' => __('app.jurusan_ap_desc'), 'rombel' => 1],
-                ['name' => __('app.jurusan_bdp'), 'icon' => 'storefront', 'desc' => __('app.jurusan_bdp_desc'), 'rombel' => 1],
-                ['name' => __('app.jurusan_at'), 'icon' => 'potted_plant', 'desc' => __('app.jurusan_at_desc'), 'rombel' => 1],
+                ['name' => __('app.jurusan_rpl'), 'icon' => 'code', 'desc' => __('app.jurusan_rpl_desc'), 'rombel' => 3],
+                ['name' => __('app.jurusan_perhotelan'), 'icon' => 'domain', 'desc' => __('app.jurusan_perhotelan_desc'), 'rombel' => 2],
+                ['name' => __('app.jurusan_tsm'), 'icon' => 'two_wheeler', 'desc' => __('app.jurusan_tsm_desc'), 'rombel' => 3],
             ] as $j)
             <div class="program-card bg-white reveal-on-scroll" style="padding:2.5rem;border-radius:32px;box-shadow:var(--card-shadow);transition-delay: {{ $loop->index * 0.06 }}s;">
                 <div style="width:70px;height:70px;background-color:#f8fafc;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;color:var(--primary-deep);">

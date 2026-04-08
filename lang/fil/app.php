@@ -95,14 +95,16 @@ return [
     'label_manfaat'          => 'BENEPISYO',
     'label_status'           => 'KATAYUAN',
 
-    'status_sangat_baik'     => 'Napakahusay',
     'status_baik'            => 'Mabuti',
-    'status_perlu_perhatian' => 'Kailangang bantayan',
+    'status_cukup_baik'      => 'Patas',
+    'status_rentan'          => 'Mapanganib',
+    'status_terancam_punah'  => 'Nanganganib ng mawala',
 
-    'legend_title'           => 'Paliwanag ng katayuan',
-    'legend_sangat_baik'     => 'Malusog, optimal ang paglago, walang problema.',
-    'legend_baik'            => 'Malusog, kailangan ng buwanang monitoring.',
-    'legend_perlu_perhatian' => 'Kailangan ng dagdag na pag-aalaga, proteksyon, at espesyal na monitoring.',
+    'legend_title'           => 'Paliwanag ng status ng konserbasyon',
+    'legend_baik'            => 'Walang banta, matatag ang populasyon.',
+    'legend_cukup_baik'      => 'Bumababa ang populasyon, kailangan ng monitoring.',
+    'legend_rentan'          => 'Harap sa mataas na panganib, proteksyon na kinakailangan.',
+    'legend_terancam_punah'  => 'Napakataas na panganib ng pagkawala, kailangan ng agarang aksyon sa konserbasyon.',
 
     'catatan_teknis'         => 'Teknikal na tala',
     'catatan_teknis_desc'    => 'Ang data ng puno ay naka-save nang direkta bilang :array sa :controller. Walang database — ipinapakita ang data direkta mula sa memorya sa Blade.',
@@ -245,7 +247,7 @@ return [
     'latar_dasar_desc'       => 'Ayon sa Kagawaran ng Kapaligiran at Kagubatan, nakakaalarma ang pagkakalbo ng kagubatan sa Kanlurang Kalimantan. Nangangako ang SMK Karya Bangsa Sintang na maging bahagi ng solusyon sa pamamagitan ng programang Green School na nasusukat at batay sa teknolohiya.',
 
     // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
-    'latar_information_title'    => '📋 IMPORMASYON',
+    'latar_information_title'    => 'IMPORMASYON',
     'latar_information_intro'    => 'Ang Go Green School ay isang paaralan na nagtutulak ng kamalayan sa kapaligiran at napapanatiling gawi. Hinihikayat ng paaralan ang mga mag-aaral, guro, at kawani na magmalasakit sa kapaligiran at bawasan ang negatibong epekto sa kalikasan. Layunin nito ang malinis, malusog, at makakalikasan na kapaligiran sa pag-aaral.',
     'latar_information_body'     => 'Maraming programang makakalikasan ang Go Green School. Isang pangunahing aktibidad ang pagbabawas ng plastik sa pamamagitan ng paghikayat sa mga mag-aaral na magdala ng magagamit muli na bote at baunan. Nagbibigay din ang paaralan ng basurahan para sa organiko at anorganiko upang suportahan ang pagre-recycle.
 
@@ -254,7 +256,7 @@ Isa pang mahalagang programa ang pagtatanim at pag-aalaga ng mga puno at hardin 
 Bukod dito, isinama ang edukasyong pangkapaligiran sa pagkatuto. Tinuturuan ang mga mag-aaral tungkol sa pagbabago ng klima, pagre-recycle, at pagprotekta sa kalikasan upang mabuo ang pananagutan at kamalayan.',
     'latar_information_conclusion' => 'Konklusyon: Mahalaga ang Go Green School sa pangangalaga ng kapaligiran. Sa pagsasanay ng berdeng gawi sa paaralan, natututo ang mga mag-aaral na mahalin ang kalikasan at bumuo ng mas mabuting kinabukasan.',
 
-    'latar_description_title'    => '📖 PAGLALARAWAN',
+    'latar_description_title'    => 'PAGLALARAWAN',
     'latar_description_text'     => 'Ang "Green School Tracker" ay isang web app na idinisenyo upang suportahan ang programang pagpapaluntian ng paaralan at pamamahala ng kapaligiran sa SMK Karya Bangsa Sintang, Kanlurang Kalimantan. Tinutulungan nitong subaybayan ang paglago ng mga puno, pamahalaan ang impormasyon ng mga katutubong puno, at magturo ng pagre-recycle sa pamamagitan ng kalkulador ng bangko ng basura.
 
 Nagbibigay ang app ng mga pangunahing feature para sa mga aktibidad sa kapaligiran, kabilang ang istatistika ng kabuuang puno, luntiang lawak, bilang ng species, at pangkalahatang kondisyon ng kalusugan.
@@ -354,19 +356,13 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     'profil_sek_struktur_sub'    => 'Pamumuno at koponan ng pamamahala para sa programang Go Green',
 
     // Study programs
-    'jurusan_tkj'            => 'Inhinyeriyang Kompyuter at Network',
-    'jurusan_mm'             => 'Multimedia',
-    'jurusan_ak'             => 'Akawnting',
-    'jurusan_ap'             => 'Administrasyon ng Opisina',
-    'jurusan_bdp'            => 'Negosyong Online at Pagmemerkado',
-    'jurusan_at'             => 'Negosyong Agrikultura',
+    'jurusan_rpl'            => 'Software Engineering',
+    'jurusan_perhotelan'     => 'Hospitality',
+    'jurusan_tsm'            => 'Motorcycle Engineering',
     'jurusan_rombel_label'   => 'Rombel',
-    'jurusan_tkj_desc'       => 'Mga network ng kompyuter, pag-install, at sistemang operasyon',
-    'jurusan_mm_desc'        => 'Disenyo ng grapiko, animasyon, at produksiyon ng digital na media',
-    'jurusan_ak_desc'        => 'Akawnting, mga ulat pinansyal, at buwis',
-    'jurusan_ap_desc'        => 'Administrasyong pang-opisina, pag-archive, at sekretarya',
-    'jurusan_bdp_desc'       => 'Pagmemerkado ng produkto online at offline',
-    'jurusan_at_desc'        => 'Pagtatanim ng mga pananim at paghahalaman',
+    'jurusan_rpl_desc'       => 'Programming, pagbuo ng application, at software system engineering',
+    'jurusan_perhotelan_desc'=> 'Serbisyo sa bisita, housekeeping, at operasyon ng hotel industry',
+    'jurusan_tsm_desc'       => 'Pagpapanatili, pagkukumpuni, at diagnosis ng mga sistema ng motorsiklo',
 
     // Facilities
     'fasilitas_kelas'        => 'Silid-aralan',
@@ -408,9 +404,9 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
 
     // Contact Us page
     'contact_title'          => 'Makipag-ugnayan',
-    'contact_desc'           => 'May tanong o gustong makipagtulungan? Nandito kami para tumulong.',
+    'contact_desc'           => 'May tanong ka ba tungkol sa aming mga programa o gustong makipagtulungan? Ang aming koponan ay handa na tumulong sa mabilis na tugon. Makipag-ugnayan sa amin anumang oras para sa karagdagang pag-uusap.',
     'contact_info_title'     => 'Impormasyon ng kontak',
-    'contact_form_title'     => 'Magpadala ng mensahe',
+    'contact_form_title'     => 'Makipag-ugnayan sa Amin Dito',
     'contact_form_desc'      => 'Punan ang form at magbibigay kami ng tugon sa lalong madaling panahon.',
     'contact_name'           => 'Buong pangalan',
     'contact_name_ph'        => 'Ilagay ang buong pangalan',
@@ -631,4 +627,30 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     'filament_kalkulator_result_note' => 'Ipinapakita lang sa screen ang resulta. Ang data ay hindi sine-save sa database at nananatili lang sa memorya ng Livewire session.',
     'filament_kalkulator_empty_sub'   => 'Dito lalabas ang resulta sa tunay na oras',
     'tabel_keterangan'                => 'Tala',
+
+    // Plant data
+    // Plant 1: Rafflesia Arnoldii
+    'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
+    'pohon_1_manfaat' => 'Ang raksasang bulaklak na ito ay napakabomba bilang isang magnet sa botanical ecotourism na nakakaakit ng mga turista at mananaliksik mula sa buong mundo. Sa kalikasan, ang pagkakaroon nito ay isang mahalagang ecological indicator upang masiguro na ang pangunahing kagubatan ay nananatiling purong at well-preserved.',
+    'pohon_1_tinggi'  => '± 1m (bulaklak)',
+
+    // Plant 2: Pitcher Plant
+    'pohon_2_lokasi'  => 'Tropical Rainforests ng Nusantara',
+    'pohon_2_manfaat' => 'Ang carnivorous na halaman na ito ay may mahalagang papel sa pagpapanatili ng ecosystem balance sa pamamagitan ng natural na pagkontrol ng pest insect populations. Bukod sa ornamental value nito, ang pitero ay tradisyonal na ginagamit ng mga lokal na komunidad bilang isang kakaibang sisidlan para sa pagluluto ng kanin.',
+    'pohon_2_tinggi'  => '± 1-2m (umakyat)',
+
+    // Plant 3: Calypso Orchid
+    'pohon_3_lokasi'  => 'Kalimantan',
+    'pohon_3_manfaat' => 'Ang endemic na halaman na ito ay may kahanga-hangang economic value bilang pangunahing target ng world-class ornamental plant collectors dahil sa exotic charm nito. Mayroon din itong malaking cultural importance dahil ito ay official emblem ng East Kalimantan Province.',
+    'pohon_3_tinggi'  => '± 30-60cm',
+
+    // Plant 4: Sandalwood
+    'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
+    'pohon_4_manfaat' => 'Ang essential oil na napukaw mula sa kahoy nito ay may fantastic export value bilang primary ingredient para sa fragrance fixation sa global luxury perfume at cosmetics industry. Ang mga piraso ng kahoy ay useful din sa paggawa ng soothing aromatherapy incense, herbal medicine, at high-artistic crafts.',
+    'pohon_4_tinggi'  => '± 10-15m',
+
+    // Plant 5: Tengkawang
+    'pohon_5_lokasi'  => 'Kalimantan Forest',
+    'pohon_5_manfaat' => 'Ang mga binhi nito ay nagporoduce ng high-value vegetable fat (Green Butter) na nai-export bilang key ingredient para sa cosmetic moisturizers at cocoa butter substitute sa premium chocolate. Para sa Dayak people, ang tengkawang oil ay very valuable dahil ito ay traditionally ginagamit para sa pagluluto at sa traditional healing rituals.',
+    'pohon_5_tinggi'  => '± 30m',
 ];

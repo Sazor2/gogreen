@@ -122,7 +122,7 @@
     {{-- Hero Section (Dashboard Style) --}}
     <section class="relative mt-8 min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white max-w-7xl mx-auto rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmV1w1rWACjn3LP-TUCicQH2JDhg99b-gNEkwVNgNxGcSlMXbJWLPkaB3JyuAbf7xI4uNHFeD-PIM0guy0Xtql5iq2WFyXNfK1J7fTtoEtIgkwubJcQsoELVlQu6__pBbMtkMS4y76gm7rXCO800Y7EfvLIIycXKw_4Q1uZg_AOE-sCO6Sav5sNdGywsbOOUKmpumC6nUWpss064FjEm-tmnMdCRCG_pZ98eVaDFTTP99lhQcWStf8qzSVqaVzf5sszaCm49wvUocd" class="w-full h-full object-cover" alt="Background">
+            <img src="{{ asset('images/begeron.jpeg') }}" class="w-full h-full object-cover" alt="Background">
         </div>
 
         <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>

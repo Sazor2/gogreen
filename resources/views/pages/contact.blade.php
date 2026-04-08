@@ -187,7 +187,7 @@
         <section class="relative min-h-[420px] sm:min-h-[500px] rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img
-                    src="{{ asset('images/background2.jpg') }}"
+                    src="{{ asset('images/contact.jpg') }}"
                     alt="{{ __('app.contact_hero_alt') }}"
                     class="w-full h-full object-cover"
                 >

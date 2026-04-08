@@ -95,14 +95,16 @@ return [
     'label_manfaat'          => '効果',
     'label_status'           => '状態',
 
-    'status_sangat_baik'     => '非常に良好',
     'status_baik'            => '良好',
-    'status_perlu_perhatian' => '要注意',
+    'status_cukup_baik'      => '良',
+    'status_rentan'          => '脆弱',
+    'status_terancam_punah'  => '絶滅危惧種',
 
-    'legend_title'           => '状態凡例',
-    'legend_sangat_baik'     => '健康で成長良好、問題なし。',
-    'legend_baik'            => '健康。毎月の定期モニタリングが必要。',
-    'legend_perlu_perhatian' => '追加のケア・保護・特別監視が必要。',
+    'legend_title'           => '保全状態',
+    'legend_baik'            => '脅威なし、個体数は安定。',
+    'legend_cukup_baik'      => '個体数が減少し、監視が必要。',
+    'legend_rentan'          => '高いリスクに直面し、保護が必要。',
+    'legend_terancam_punah'  => '絶滅リスクが非常に高く、緊急の保全介入が必要。',
 
     'catatan_teknis'         => '技術メモ',
     'catatan_teknis_desc'    => '上記の植物データは :controller 内の :array に直接保存されています。データベースの問い合わせはなく、メモリから Blade ビューへ直接表示されます。',
@@ -245,7 +247,7 @@ return [
     'latar_dasar_desc'       => '環境林業省のデータによると、西カリマンタンの森林減少は深刻な水準に達しています。SMK Karya Bangsa Sintang は、測定可能かつ技術ベースのグリーンスクールプログラムで解決に貢献することを目指しています。',
 
     // Latar Belakang - 4 Card Section (Information, Description, Procedure, Explanation)
-    'latar_information_title'    => '📋 情報',
+    'latar_information_title'    => '情報',
     'latar_information_intro'    => 'Go Green School とは、環境意識と持続可能な実践を促進する学校です。生徒・教職員が環境に配慮し、自然への悪影響を減らすことを目指します。目的は、清潔で健康的、環境に優しい学習環境をつくることです。',
     'latar_information_body'     => 'Go Green School はさまざまな環境配慮プログラムを実施します。主な活動の一つはプラスチック廃棄物の削減で、再利用ボトルや弁当箱の持参を奨励します。学校は有機・無機に分けたゴミ箱を設置し、リサイクルを支援します。
 
@@ -254,7 +256,7 @@ return [
 環境教育も学習活動に組み込まれます。生徒は気候変動、リサイクル、自然保護の重要性を学び、責任感と環境意識を高めます。',
     'latar_information_conclusion' => '結論として、Go Green School は環境保護に重要な役割を果たします。学校での環境配慮習慣により、生徒は自然を大切にする心を育み、より良い未来を築きます。',
 
-    'latar_description_title'    => '📖 説明',
+    'latar_description_title'    => '説明',
     'latar_description_text'     => '"Green School Tracker" は、西カリマンタンの SMK Karya Bangsa Sintang における緑化・環境管理プログラムを支援するためのWebアプリケーションです。植物の成長を監視し、地域固有樹の情報を管理し、ゴミ銀行計算機を通じて廃棄物リサイクルの教育を行います。
 
 本アプリは、植樹数、緑化面積、植物種数、健康状態など、学校の緑化プログラム統計をまとめて表示します。
@@ -354,19 +356,13 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     'profil_sek_struktur_sub'    => 'Go Green プログラムを運営するリーダーとチーム',
 
     // Study programs
-    'jurusan_tkj'            => 'コンピュータ & ネットワーク工学',
-    'jurusan_mm'             => 'マルチメディア',
-    'jurusan_ak'             => '会計',
-    'jurusan_ap'             => 'オフィス管理',
-    'jurusan_bdp'            => 'オンライン事業 & マーケティング',
-    'jurusan_at'             => '農業ビジネス',
+    'jurusan_rpl'            => 'ソフトウェア工学',
+    'jurusan_perhotelan'     => 'ホテル学科',
+    'jurusan_tsm'            => '二輪車工学',
     'jurusan_rombel_label'   => 'クラスグループ',
-    'jurusan_tkj_desc'       => 'ネットワーク、インストール、OS運用',
-    'jurusan_mm_desc'        => 'グラフィックデザイン、アニメーション、デジタルメディア制作',
-    'jurusan_ak_desc'        => '簿記、財務報告、税務',
-    'jurusan_ap_desc'        => '事務管理、文書整理、秘書業務',
-    'jurusan_bdp_desc'       => 'オンライン・オフラインの製品マーケティング',
-    'jurusan_at_desc'        => '食用作物と園芸の栽培',
+    'jurusan_rpl_desc'       => 'プログラミング、アプリ開発、ソフトウェアシステム設計',
+    'jurusan_perhotelan_desc'=> '接客サービス、ハウスキーピング、ホテル運営',
+    'jurusan_tsm_desc'       => '二輪車システムの点検、整備、故障診断',
 
     // Facilities
     'fasilitas_kelas'        => '教室',
@@ -408,9 +404,9 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
 
     // Contact Us page
     'contact_title'          => 'お問い合わせ',
-    'contact_desc'           => '質問や協力のご相談がありますか？私たちがサポートします。',
+    'contact_desc'           => '当校のプログラムについてご質問ですか、またはコラボレーションをご希望ですか？私たちのチームは迅速な対応で皆様をサポートします。いつでもお気軽にお問い合わせください。',
     'contact_info_title'     => '連絡先情報',
-    'contact_form_title'     => 'メッセージを送る',
+    'contact_form_title'     => 'お問い合わせはこちらから',
     'contact_form_desc'      => '以下のフォームにご入力ください。折り返しご連絡します。',
     'contact_name'           => '氏名',
     'contact_name_ph'        => '氏名を入力',
@@ -631,4 +627,30 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     'filament_kalkulator_result_note' => 'この結果は画面表示のみです。データはデータベースに保存されず、Livewire セッションメモリにのみ保持されます。',
     'filament_kalkulator_empty_sub'   => '結果はリアルタイムでここに表示されます',
     'tabel_keterangan'                => '注記',
+
+    // Plant data
+    // Plant 1: Rafflesia Arnoldii
+    'pohon_1_lokasi'  => 'スマトラ（ベンクル、ジャンビ、リアウ）',
+    'pohon_1_manfaat' => 'この巨大な花は、世界中の観光客と研究者を惹きつけるボタニカルエコツーリズムの磁石として非常に価値があります。野生では、その存在は原生林地域が純潔に保たれていることを確認するための重要な生態指標として機能します。',
+    'pohon_1_tinggi'  => '± 1m（花）',
+
+    // Plant 2: Pitcher Plant
+    'pohon_2_lokasi'  => '努沙 トゥルガラ熱帯雨林',
+    'pohon_2_manfaat' => 'この食肉性植物は、その生息地での害虫個体群を自然に制御することで、生態系のバランスを維持する上で重要な役割を果たします。観賞用としての価値の他に、ピッチャーは現地のコミュニティによって、伝統的な米料理の調理器具として独特に使用されています。',
+    'pohon_2_tinggi'  => '± 1-2m（つるのような）',
+
+    // Plant 3: Calypso Orchid
+    'pohon_3_lokasi'  => 'カリマンタン',
+    'pohon_3_manfaat' => 'この固有種植物は、その異国的な魅力のために、世界的な観賞植物コレクターの主要な目標として、並外れた経済的価値を持っています。また、東カリマンタン州の公式エンブレムとして使用されているため、文化的に重要な意義も持っています。',
+    'pohon_3_tinggi'  => '± 30-60cm',
+
+    // Plant 4: Sandalwood
+    'pohon_4_lokasi'  => 'ヌサ・トゥンガラ（NTT）',
+    'pohon_4_manfaat' => '木から抽出されたエッセンシャルオイルは、グローバルな高級香水および化粧品業界での香料固定化の主要成分として、素晴らしい輸出価値を持っています。その木片は、心地よいアロマセラピーの線香、漢方薬、および高い芸術的価値を持つ工芸品の製造にも有用です。',
+    'pohon_4_tinggi'  => '± 10-15m',
+
+    // Plant 5: Tengkawang
+    'pohon_5_lokasi'  => 'カリマンタン森林',
+    'pohon_5_manfaat' => '種子から得られた高価値植物油（グリーンバター）は、化粧品保湿剤およびプレミアムチョコレート用ココアバター代替品として輸出される重要な原料です。ダヤク人にとって、テンカワン油は非常に貴重であり、調理と伝統的な治癒儀式に伝統的に使用されてきました。',
+    'pohon_5_tinggi'  => '± 30m',
 ];
