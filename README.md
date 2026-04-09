@@ -7,6 +7,113 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Go Green School
+
+Website edukasi lingkungan berbasis Laravel 11 yang menampilkan informasi tanaman khas daerah, kalkulator bank sampah, artikel edukasi, profil sekolah, dan panel admin Filament tanpa autentikasi.
+
+### Fitur Utama
+
+- Dashboard publik dengan navigasi info sekolah dan artikel
+- Informasi tanaman (list + modal detail) dengan data hardcoded
+- Kalkulator bank sampah (validasi server + estimasi client + chart)
+- Form kontak (kirim email ke alamat tujuan)
+- Multi-bahasa via session (id, en, ja, vi, fil, th)
+- Panel admin Filament di `/admin` (tanpa login, tanpa database)
+
+### Halaman Publik (Routes)
+
+- GET `/` - dashboard
+- GET `/tanaman` - informasi tanaman
+- GET `/kalkulator` - form kalkulator
+- POST `/kalkulator` - proses hitung poin
+- GET `/artikel` - artikel edukasi
+- GET `/tentang` - tentang proyek
+- GET `/latar-belakang` - latar belakang masalah
+- GET `/profil-sekolah` - profil sekolah
+- GET `/contact` - form kontak
+- POST `/contact` - kirim pesan kontak
+- GET `/lang/{locale}` - ganti bahasa (session)
+
+### Panel Admin (Filament)
+
+- GET `/admin` - dashboard admin
+- Page: GoGreenDashboard (statistik + agenda, hardcoded)
+- Page: InformasiTanaman (tabel tanaman, hardcoded)
+- Page: KalkulatorBankSampah (Livewire state, tanpa DB)
+
+### Data dan Penyimpanan
+
+- Data utama disimpan sebagai array hardcoded (tanpa database)
+- Session dipakai untuk locale dan flash message
+- Kalkulator publik menghitung di server, hasil ditampilkan di UI
+- Kalkulator Filament menghitung di Livewire state (memory)
+
+### Mail Kontak
+
+- Email tujuan diambil dari `MAIL_CONTACT_TO`
+- Jika tidak diset, fallback ke `MAIL_FROM_ADDRESS`
+- Mailer default: `log` (lihat `config/mail.php`)
+
+### Lokalisasi
+
+- Bahasa aktif disimpan di session oleh route `/lang/{locale}`
+- Middleware `SetLocale` membaca session dan set locale aplikasi
+
+### Alur Sistem (Mermaid)
+
+```mermaid
+flowchart TB
+	Start((Mulai)) --> Boot["Bootstrap Laravel<br/>bootstrap/app.php"]
+	Boot --> Middleware["Web middleware + SetLocale"]
+	Middleware --> Router{"Routing web.php"}
+
+	Router -->|GET /| Dashboard["GreenController@dashboard<br/>pages.dashboard"]
+	Router -->|GET /tanaman| Tanaman["GreenController@tanaman<br/>pages.tanaman"]
+	Router -->|GET /kalkulator| KalkulatorGet["GreenController@kalkulator<br/>pages.kalkulator"]
+	Router -->|POST /kalkulator| KalkulatorPost["GreenController@hitungSampah"]
+	Router -->|GET /contact| ContactGet["GreenController@contact<br/>pages.contact"]
+	Router -->|POST /contact| ContactPost["GreenController@contactSend"]
+	Router -->|GET /tentang| About["GreenController@about<br/>pages.about"]
+	Router -->|GET /latar-belakang| Latar["GreenController@latarBelakang<br/>pages.latar-belakang"]
+	Router -->|GET /artikel| Artikel["GreenController@artikel<br/>pages.artikel"]
+	Router -->|GET /profil-sekolah| Profil["GreenController@profilSekolah<br/>pages.profil-sekolah"]
+	Router -->|GET /lang/:locale| LangSwitch["GreenController@setLanguage<br/>session locale"]
+	Router -->|GET /admin| Filament["Filament Panel"]
+
+	subgraph Layout["Layout dan UI"]
+		LayoutView["layouts/app.blade.php<br/>navbar, footer, theme, lang"]
+		Translations["lang/* via __()"]
+		Assets["Tailwind CDN + Vite assets"]
+		LayoutView --> Translations
+		LayoutView --> Assets
+	end
+
+	Dashboard --> LayoutView
+	Tanaman --> LayoutView
+	KalkulatorGet --> LayoutView
+	ContactGet --> LayoutView
+	About --> LayoutView
+	Latar --> LayoutView
+	Artikel --> LayoutView
+	Profil --> LayoutView
+
+	subgraph KalkulatorDetail["Kalkulator (public)"]
+		KalkulatorPost --> Normalize["Normalize input berat"]
+		Normalize --> Validate["Validate kelas dan items"]
+		Validate --> Filter["Filter jenis dan berat > 0"]
+		Filter --> Hitung["Hitung poin per jenis dan total"]
+		Hitung --> Persen["Hitung persen kontribusi"]
+		Persen --> Kategori["Set kategori reward"]
+		Kategori --> Hasil["Return view pages.kalkulator dengan hasil"]
+	end
+
+	subgraph FilamentDetail["Filament Admin"]
+		Filament --> DashAdmin["GoGreenDashboard stats dan agenda"]
+		Filament --> TanamanAdmin["InformasiTanaman tabel tanaman"]
+		Filament --> KalkulatorAdmin["KalkulatorBankSampah Livewire"]
+	end
+```
+
 ## Setup Proyek (First Run)
 
 Panduan ini untuk teman tim setelah `git pull` di Herd, Laragon, atau lingkungan lokal lain.
