@@ -79,6 +79,25 @@ return [
     'quick_hitung_poin'      => 'ポイントを計算',
     'quick_kalkulator_sub'   => 'ゴミ銀行計算機',
 
+    'dashboard_intro_title'            => '私たちのグリーン活動はここから始まる',
+    'dashboard_intro_snippet'          => 'Go Green School は、環境意識と持続可能な実践を促進し、清潔で健康的かつ環境に優しい学習環境をつくる学校です。',
+    'dashboard_intro_badge'            => 'グリーン活動',
+    'dashboard_intro_modal_subtitle'   => '持続可能な未来に向けて、環境意識をともに育てる',
+    'dashboard_intro_section_1_title'  => '01. 定義とビジョン',
+    'dashboard_intro_section_2_title'  => '02. プログラムと活動',
+    'dashboard_intro_section_3_title'  => '03. 影響と結論',
+
+    'dashboard_desc_title'             => 'Go Green School とは？',
+    'dashboard_desc_snippet'           => 'Go Green School は、SMK Karya Bangsa Sintang の緑化と環境管理を軽量かつインタラクティブに支援するWebアプリです。',
+    'dashboard_desc_badge'             => 'Go Green School',
+    'dashboard_desc_modal_subtitle'    => '学校の環境管理を支えるデジタルサステナビリティプラットフォーム',
+    'dashboard_desc_section_1_title'   => '01. アプリについて',
+    'dashboard_desc_section_1_text'    => 'Go Green School は、西カリマンタンの SMK Karya Bangsa Sintang における緑化・環境管理プログラムを支援するために設計されたWebアプリです。植物の成長を監視し、地域固有樹木の情報を管理し、ゴミ銀行計算機機能を通して生徒にリサイクル教育を行います。',
+    'dashboard_desc_section_2_title'   => '02. 主な機能',
+    'dashboard_desc_section_2_text'    => 'このアプリには、学校の環境活動を支える主要機能があります。トップページでは、植樹本数、緑化面積、植物種数、植物の健康状態などの緑化プログラム概要を表示します。また、学校内にあるカリマンタンの在来植物について、現地名・学名、種類、植栽場所、生態的・経済的価値、推定樹高、健康状態などの情報を一覧表示します。',
+    'dashboard_desc_section_3_title'   => '03. ゴミ銀行計算機機能',
+    'dashboard_desc_section_3_text'    => 'さらに、廃棄物の種類と重量に応じてポイントを計算できるゴミ銀行計算機を搭載しています。この機能により、生徒はリサイクル活動の価値をシンプルかつインタラクティブに理解できます。データベースに依存しない設計のため軽量で実行しやすく、学習用途やデモにも適しています。',
+
     // Tanaman
     'tanaman_title'          => '植物管理',
     'tanaman_desc'           => 'SMK Karya Bangsa Sintang の環境にある西カリマンタン固有樹5本の一覧',
@@ -108,18 +127,6 @@ return [
 
     'catatan_teknis'         => '技術メモ',
     'catatan_teknis_desc'    => '上記の植物データは :controller 内の :array に直接保存されています。データベースの問い合わせはなく、メモリから Blade ビューへ直接表示されます。',
-
-    // Pohon data
-    'pohon_1_manfaat'        => 'テングカワン油を産出し高い経済価値があります。化粧品や医薬品に使用されます。建築用の良質な木材でもあります。熱帯林生態系のバランス維持に重要な役割を果たします。',
-    'pohon_1_lokasi'         => '学校前庭',
-    'pohon_2_manfaat'        => 'ジェルトゥンの樹液を産出します。樹液はゴムの原料として使用されます。家具や彫刻に適した軟材です。西カリマンタンに自然分布しています。',
-    'pohon_2_lokasi'         => '本館側',
-    'pohon_3_manfaat'        => '鮮やかな赤色の高級木材で、家具や建築に価値があります。シロアリや極端な気候に強く、インドネシアの熱帯林再生に重要です。土壌安定化と侵食防止に役立ちます。',
-    'pohon_3_lokasi'         => '東校庭',
-    'pohon_4_manfaat'        => 'ビタミンCが豊富なランブータンの果実を生産します。生食や加工に利用できます。根や葉は伝統的な薬用に使われます。鳥やコウモリなどの生物多様性を呼び込みます。',
-    'pohon_4_lokasi'         => '生徒駐車場',
-    'pohon_5_manfaat'        => '非常に硬く耐久性の高い鉄木です。伝統家屋、電柱、橋梁に使用されます。高い価値があり、カリマンタンの自然の象徴です。希少で保護対象となっています。',
-    'pohon_5_lokasi'         => '学校裏庭',
 
     // Kalkulator
     'kalkulator_title'       => 'ゴミ銀行計算機',
@@ -198,11 +205,30 @@ return [
     'tips_title'             => 'ポイントを増やすヒント',
     'tips_desc'              => '自宅で分別して毎日学校のゴミ銀行に持ち込みましょう。電子廃棄物は最もポイントが高いので、適切に処理してください。',
 
+    'kalkulator_guide_title'           => '家庭ごみを正しく効果的に処理する方法',
+    'kalkulator_guide_objective_text'  => '家庭でごみを適切に処理することで、最終処分場に送られるごみ量を減らし、環境汚染を防ぎ、再利用可能な素材の価値を活かすことができます。',
+    'kalkulator_guide_tools_label'     => '必要な道具と材料',
+    'kalkulator_guide_tool_1'          => '少なくとも3種類の分別容器（有機・無機・有害/B3）。',
+    'kalkulator_guide_tool_2'          => '手を保護するためのゴム手袋。',
+    'kalkulator_guide_tool_3'          => 'コンポスター容器またはバイオポア穴（有機ごみ用）。',
+    'kalkulator_guide_tool_4'          => 'リサイクルごみを集める袋または麻袋。',
+    'kalkulator_guide_steps_label'     => 'ごみ処理のステップ',
+    'kalkulator_guide_step_1_title'    => 'まず分別する',
+    'kalkulator_guide_step_1_text'     => '最初かつ最重要のステップは、発生源でごみを分けることです。有機ごみ（食べ残し、落ち葉）、無機ごみ（プラスチック、紙、ガラス、金属）、有害/B3ごみ（電池、蛍光灯、期限切れ薬）をそれぞれ分別してください。',
+    'kalkulator_guide_step_2_title'    => '有機ごみを堆肥化する',
+    'kalkulator_guide_step_2_text'     => '食べ残しや野菜くずを一般ごみに捨てないでください。有機ごみはコンポスターやバイオポア穴に入れ、土やEM4液を少量加えると分解が早まります。数週間で栄養豊富な堆肥になります。',
+    'kalkulator_guide_step_3_title'    => '無機ごみを洗って回収する',
+    'kalkulator_guide_step_3_text'     => 'プラスチック、ボトル、ガラスは臭い防止のため洗浄・乾燥してから保管します。ペットボトルや段ボールは潰して省スペース化します。十分集まったら、リサイクルや近隣のごみ銀行への持ち込みでポイントや現金化が可能です。',
+    'kalkulator_guide_step_4_title'    => '有害/B3ごみは別管理する',
+    'kalkulator_guide_step_4_text'     => '有害ごみは土壌や水を汚染するため、家庭ごみと混ぜてはいけません。安全な密閉容器で保管し、専門回収員または有害廃棄物処理施設へ引き渡してください。',
+    'kalkulator_guide_step_5_title'    => 'ごみの発生を減らす（Reduce）',
+    'kalkulator_guide_step_5_text'     => '最も効果的なのは発生源対策です。マイバッグ、再利用ボトル、洗って使える弁当箱を使い、使い捨てプラスチック包装を避けましょう。小さな習慣が日々のごみ削減につながります。',
+
     // Footer
     'footer_desc'            => 'SMK Karya Bangsa Sintang の環境・サステナビリティプログラム。',
     'footer_menu'            => 'メニュー',
     'footer_kontak'          => '連絡先',
-    'footer_credit'          => '制作',
+    'footer_credit'          => '第5グループにより制作',
 
     // About
     'about_title'            => '私たちについて',
@@ -257,7 +283,7 @@ return [
     'latar_information_conclusion' => '結論として、Go Green School は環境保護に重要な役割を果たします。学校での環境配慮習慣により、生徒は自然を大切にする心を育み、より良い未来を築きます。',
 
     'latar_description_title'    => '説明',
-    'latar_description_text'     => '"Green School Tracker" は、西カリマンタンの SMK Karya Bangsa Sintang における緑化・環境管理プログラムを支援するためのWebアプリケーションです。植物の成長を監視し、地域固有樹の情報を管理し、ゴミ銀行計算機を通じて廃棄物リサイクルの教育を行います。
+    'latar_description_text'     => '"Go Green School" は、西カリマンタンの SMK Karya Bangsa Sintang における緑化・環境管理プログラムを支援するためのWebアプリケーションです。植物の成長を監視し、地域固有樹の情報を管理し、ゴミ銀行計算機を通じて廃棄物リサイクルの教育を行います。
 
 本アプリは、植樹数、緑化面積、植物種数、健康状態など、学校の緑化プログラム統計をまとめて表示します。
 
@@ -498,7 +524,9 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     // Artikel page
     'artikel_title'                => 'Go Green 記事',
     'artikel_badge'                => 'Go Green 記事',
-    'artikel_hero_title'           => '学校でのグリーンアクションのヒント',
+    'artikel_hero_title'           => 'グリーンな学びを実践アクションへ！',
+    'artikel_hero_title_line_1'    => 'グリーンな学び',
+    'artikel_hero_title_line_2'    => '実践アクションへ！',
     'artikel_hero_desc'            => '廃棄物管理、ゴミ銀行、学校で実践できる環境プログラムの教育記事集。',
     'artikel_featured_label'       => '注目記事',
     'artikel_featured_title'       => '小さな行動で大きな影響',
@@ -508,6 +536,14 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     'artikel_featured_alt'         => '注目のGo Green記事',
     'artikel_latest_title'         => '最新記事',
     'artikel_latest_update'        => '週次更新',
+    'artikel_read_more'            => '続きを読む',
+    'artikel_explainer_label'      => '補足解説',
+    'artikel_explainer_title_main' => '地球温暖化と',
+    'artikel_explainer_title_accent' => 'Go Green の役割',
+    'artikel_explainer_p1'         => '地球温暖化とは、地球の気温が時間とともに上昇し続ける現象です。これは大気中の<strong>温室効果ガス</strong>によって起こります。<strong>Go Green</strong>の取り組みは、環境問題を減らし、温暖化の進行を遅らせる助けになります。',
+    'artikel_explainer_p2'         => '地球温暖化は、人間活動によって温室効果ガスが過剰に排出されることで進みます。特に<strong>二酸化炭素 (CO2)</strong> とメタンが主な要因です。電力・工場・交通での化石燃料の燃焼が大きな発生源で、これらのガスは<strong>温室効果</strong>によって熱を大気中に閉じ込め、地球の気温を上昇させます。',
+    'artikel_explainer_p3'         => '影響は明確で、極地の氷の融解、海面上昇、異常気象の増加、生態系の適応困難などが起こります。Go Green は、植樹による CO2 吸収、再生可能エネルギーの利用、省エネ、プラスチックごみ削減など、実践的な解決策を示します。',
+    'artikel_explainer_summary'    => '要するに、温暖化は大気に熱が過剰に閉じ込められることで起こります。Go Green の実践は、温室効果ガスの排出削減、環境バランスの維持、そして次世代のための地球保護に重要です。',
     'artikel_item_1_title'         => '教室でプラスチックごみを減らす3ステップ',
     'artikel_item_1_desc'          => 'マイボトル、弁当箱、使い捨て禁止で最大40%削減可能。',
     'artikel_item_1_tag'           => '教育',
@@ -630,27 +666,32 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
 
     // Plant data
     // Plant 1: Rafflesia Arnoldii
+    'tanaman_1_nama'  => 'ラフレシア・アルノルディ',
     'pohon_1_lokasi'  => 'スマトラ（ベンクル、ジャンビ、リアウ）',
     'pohon_1_manfaat' => 'この巨大な花は、世界中の観光客と研究者を惹きつけるボタニカルエコツーリズムの磁石として非常に価値があります。野生では、その存在は原生林地域が純潔に保たれていることを確認するための重要な生態指標として機能します。',
     'pohon_1_tinggi'  => '± 1m（花）',
 
     // Plant 2: Pitcher Plant
+    'tanaman_2_nama'  => 'ウツボカズラ',
     'pohon_2_lokasi'  => '努沙 トゥルガラ熱帯雨林',
     'pohon_2_manfaat' => 'この食肉性植物は、その生息地での害虫個体群を自然に制御することで、生態系のバランスを維持する上で重要な役割を果たします。観賞用としての価値の他に、ピッチャーは現地のコミュニティによって、伝統的な米料理の調理器具として独特に使用されています。',
     'pohon_2_tinggi'  => '± 1-2m（つるのような）',
 
     // Plant 3: Calypso Orchid
+    'tanaman_3_nama'  => 'カリマンタンヘビ蘭',
     'pohon_3_lokasi'  => 'カリマンタン',
     'pohon_3_manfaat' => 'この固有種植物は、その異国的な魅力のために、世界的な観賞植物コレクターの主要な目標として、並外れた経済的価値を持っています。また、東カリマンタン州の公式エンブレムとして使用されているため、文化的に重要な意義も持っています。',
     'pohon_3_tinggi'  => '± 30-60cm',
 
     // Plant 4: Sandalwood
+    'tanaman_4_nama'  => 'シダーウッド',
     'pohon_4_lokasi'  => 'ヌサ・トゥンガラ（NTT）',
     'pohon_4_manfaat' => '木から抽出されたエッセンシャルオイルは、グローバルな高級香水および化粧品業界での香料固定化の主要成分として、素晴らしい輸出価値を持っています。その木片は、心地よいアロマセラピーの線香、漢方薬、および高い芸術的価値を持つ工芸品の製造にも有用です。',
     'pohon_4_tinggi'  => '± 10-15m',
 
-    // Plant 5: Tengkawang
-    'pohon_5_lokasi'  => 'カリマンタン森林',
-    'pohon_5_manfaat' => '種子から得られた高価値植物油（グリーンバター）は、化粧品保湿剤およびプレミアムチョコレート用ココアバター代替品として輸出される重要な原料です。ダヤク人にとって、テンカワン油は非常に貴重であり、調理と伝統的な治癒儀式に伝統的に使用されてきました。',
-    'pohon_5_tinggi'  => '± 30m',
+    // Plant 5: Eboni Tree
+    'tanaman_5_nama'  => 'エボニーウッド',
+    'pohon_5_lokasi'  => 'スラウェシ',
+    'pohon_5_manfaat' => 'エクオニー事木は世界で最も優れたプレミアム事木として認められています。鮮やかな黒色と極めて稜密な記鉤造を特徴としています。この木材は高級家具、プロ用ギターやベースギターなどのプレミアム楽器、籠江球、見事な彫刻作品、壊電器の縁れ器に最適です。さらに、その樹肌を伝統登薬に創特高い使用方様を保有しています。',
+    'pohon_5_tinggi'  => '± 20-40m',
 ];

@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
@@ -87,6 +88,18 @@
 
     <style>
         .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined', 'Material Icons Outlined', sans-serif;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: 'liga';
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         /* Scroll Reveal Original Maintained */
@@ -1291,11 +1304,6 @@
                 'mascot_about_2',
                 'mascot_about_3',
             ],
-            request()->is('latar-belakang') => [
-                'mascot_latar_1',
-                'mascot_latar_2',
-                'mascot_latar_3',
-            ],
             request()->is('profil-sekolah') => [
                 'mascot_profil_1',
                 'mascot_profil_2',
@@ -1392,7 +1400,7 @@
                     <div class="relative" id="info-wrapper">
                             <button id="info-btn"
                             class="flex items-center gap-1 transition-all duration-300 focus:outline-none 
-                            {{ request()->is('tentang','latar-belakang','profil-sekolah') ? $activeClass : 'text-on-surface-variant hover:text-primary' }}">
+                            {{ request()->is('tentang','profil-sekolah') ? $activeClass : 'text-on-surface-variant hover:text-primary' }}">
                             {{ __('app.nav_info') }}
                             <span class="material-symbols-outlined text-lg transition-transform duration-300" id="info-chevron-icon">expand_more</span>
                         </button>
@@ -1403,10 +1411,6 @@
                             <a href="{{ url('/tentang') }}" class="dropdown-item-anim {{ $dropClass }} {{ request()->is('tentang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 0ms;">
                                 <span class="material-symbols-outlined text-lg">person</span>
                                 {{ __('app.nav_about') }}
-                            </a>
-                            <a href="{{ url('/latar-belakang') }}" class="dropdown-item-anim {{ $dropClass }} mt-1 {{ request()->is('latar-belakang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 60ms;">
-                                <span class="material-symbols-outlined text-lg">description</span>
-                                {{ __('app.nav_latar') }}
                             </a>
                             <a href="{{ url('/profil-sekolah') }}" class="dropdown-item-anim {{ $dropClass }} mt-1 {{ request()->is('profil-sekolah') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}" style="--dropdown-delay: 120ms;">
                                 <span class="material-symbols-outlined text-lg">school</span>
@@ -1597,9 +1601,6 @@
                     <a href="{{ url('/tentang') }}" class="{{ $mobDropClass }} {{ request()->is('tentang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low' }}">
                         <span class="material-symbols-outlined text-lg">person</span> {{ __('app.nav_about') }}
                     </a>
-                    <a href="{{ url('/latar-belakang') }}" class="{{ $mobDropClass }} mt-1 {{ request()->is('latar-belakang') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low' }}">
-                        <span class="material-symbols-outlined text-lg">description</span> {{ __('app.nav_latar') }}
-                    </a>
                     <a href="{{ url('/profil-sekolah') }}" class="{{ $mobDropClass }} mt-1 {{ request()->is('profil-sekolah') ? 'bg-surface-container-low text-primary' : 'text-on-surface-variant hover:bg-surface-container-low' }}">
                         <span class="material-symbols-outlined text-lg">school</span> {{ __('app.nav_profil_sek') }}
                     </a>
@@ -1659,7 +1660,6 @@
                 <div class="flex flex-col gap-2">
                     <h5 class="font-headline font-bold text-primary mb-2 uppercase text-xs tracking-widest">Information</h5>
                     <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="{{ url('/tentang') }}">{{ __('app.nav_about') }}</a>
-                    <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="{{ url('/latar-belakang') }}">{{ __('app.nav_latar') }}</a>
                     <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="{{ url('/profil-sekolah') }}">{{ __('app.nav_profil_sek') }}</a>
                 </div>
             </div>

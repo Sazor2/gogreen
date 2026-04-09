@@ -79,6 +79,25 @@ return [
     'quick_hitung_poin'      => 'Tính điểm',
     'quick_kalkulator_sub'   => 'Máy tính ngân hàng rác',
 
+    'dashboard_intro_title'            => 'Hành Trình Xanh Của Chúng Tôi Bắt Đầu Từ Đây',
+    'dashboard_intro_snippet'          => 'Go Green School là trường học thúc đẩy ý thức môi trường và thực hành bền vững nhằm tạo ra môi trường học tập sạch, khỏe mạnh và thân thiện với môi trường.',
+    'dashboard_intro_badge'            => 'Phong trào xanh',
+    'dashboard_intro_modal_subtitle'   => 'Cùng xây dựng ý thức môi trường cho một tương lai bền vững',
+    'dashboard_intro_section_1_title'  => '01. Định nghĩa & Tầm nhìn',
+    'dashboard_intro_section_2_title'  => '02. Chương trình & Hoạt động',
+    'dashboard_intro_section_3_title'  => '03. Tác động & Kết luận',
+
+    'dashboard_desc_title'             => 'Go Green School Là Gì?',
+    'dashboard_desc_snippet'           => 'Go Green School là ứng dụng web hỗ trợ chương trình phủ xanh và quản lý môi trường tại SMK Karya Bangsa Sintang theo cách nhẹ và tương tác.',
+    'dashboard_desc_badge'             => 'Go Green School',
+    'dashboard_desc_modal_subtitle'    => 'Nền tảng quản lý môi trường học đường hướng tới bền vững số',
+    'dashboard_desc_section_1_title'   => '01. Giới thiệu ứng dụng',
+    'dashboard_desc_section_1_text'    => 'Go Green School là một ứng dụng web được thiết kế để hỗ trợ chương trình phủ xanh và quản lý môi trường tại SMK Karya Bangsa Sintang, Tây Kalimantan. Ứng dụng giúp nhà trường theo dõi sự phát triển của cây, quản lý thông tin về cây bản địa địa phương, đồng thời giáo dục học sinh về tái chế rác thải thông qua tính năng máy tính ngân hàng rác.',
+    'dashboard_desc_section_2_title'   => '02. Tính năng chính',
+    'dashboard_desc_section_2_text'    => 'Ứng dụng cung cấp nhiều tính năng chính hỗ trợ hoạt động môi trường trong trường. Trang chính hiển thị tổng quan dữ liệu chương trình phủ xanh như số lượng cây đã trồng, diện tích phủ xanh, số loài cây và tình trạng sức khỏe tổng thể của cây. Ứng dụng cũng hiển thị danh sách đầy đủ các loài cây bản địa Kalimantan trong khuôn viên trường, kèm thông tin như tên địa phương và tên khoa học, loại cây, vị trí trồng, lợi ích sinh thái và kinh tế, chiều cao ước tính và tình trạng sức khỏe.',
+    'dashboard_desc_section_3_title'   => '03. Tính năng máy tính ngân hàng rác',
+    'dashboard_desc_section_3_text'    => 'Ngoài ra, ứng dụng còn được trang bị máy tính ngân hàng rác, cho phép người dùng tính điểm dựa trên loại và khối lượng rác. Tính năng này giúp học sinh hiểu giá trị của hoạt động tái chế theo cách đơn giản và tương tác. Ứng dụng được xây dựng không phụ thuộc cơ sở dữ liệu, nên nhẹ, dễ vận hành và phù hợp làm công cụ học tập hoặc trình diễn.',
+
     // Tanaman
     'tanaman_title'          => 'Quản lý cây xanh',
     'tanaman_desc'           => 'Danh sách 5 cây bản địa Tây Kalimantan tại SMK Karya Bangsa Sintang',
@@ -108,18 +127,6 @@ return [
 
     'catatan_teknis'         => 'Ghi chú kỹ thuật',
     'catatan_teknis_desc'    => 'Dữ liệu cây được lưu trực tiếp dưới dạng :array trong :controller. Không truy vấn cơ sở dữ liệu — dữ liệu được hiển thị trực tiếp từ bộ nhớ lên Blade.',
-
-    // Pohon data
-    'pohon_1_manfaat'        => 'Tạo dầu tengkawang có giá trị kinh tế cao. Dùng trong mỹ phẩm và dược phẩm. Gỗ chất lượng cho xây dựng. Đóng vai trò quan trọng trong cân bằng hệ sinh thái rừng nhiệt đới.',
-    'pohon_1_lokasi'         => 'Vườn trước trường',
-    'pohon_2_manfaat'        => 'Tạo nhựa jelutung bản địa. Nhựa được dùng làm nguyên liệu cao su. Gỗ mềm phù hợp cho đồ nội thất và điêu khắc. Phân bố tự nhiên ở Tây Kalimantan.',
-    'pohon_2_lokasi'         => 'Bên cạnh tòa nhà chính',
-    'pohon_3_manfaat'        => 'Gỗ cao cấp màu đỏ, giá trị cho nội thất và xây dựng. Chống mối và thời tiết khắc nghiệt. Quan trọng trong tái sinh rừng nhiệt đới Indonesia. Giúp ổn định đất và chống xói mòn.',
-    'pohon_3_lokasi'         => 'Vườn phía Đông',
-    'pohon_4_manfaat'        => 'Cho quả rambutan giàu vitamin C. Có thể ăn tươi hoặc chế biến. Rễ và lá có tác dụng y học truyền thống. Thu hút chim và dơi địa phương.',
-    'pohon_4_lokasi'         => 'Bãi đỗ xe học sinh',
-    'pohon_5_manfaat'        => 'Gỗ cực cứng và bền, còn gọi là gỗ sắt. Dùng làm nhà truyền thống, cột điện, cầu. Rất quý và là biểu tượng thiên nhiên Kalimantan. Hiếm và được bảo vệ.',
-    'pohon_5_lokasi'         => 'Sân sau trường',
 
     // Kalkulator
     'kalkulator_title'       => 'Máy tính ngân hàng rác',
@@ -198,11 +205,30 @@ return [
     'tips_title'             => 'Mẹo tăng điểm',
     'tips_desc'              => 'Phân loại rác từ nhà và mang đến ngân hàng rác mỗi ngày. Rác điện tử có điểm cao nhất — không vứt bừa bãi!',
 
+    'kalkulator_guide_title'           => 'Cách Xử Lý Rác Thải Sinh Hoạt Đúng Cách và Hiệu Quả',
+    'kalkulator_guide_objective_text'  => 'Tự xử lý rác nhằm giảm lượng rác đưa đến bãi chôn lấp, ngăn ô nhiễm môi trường và tái sử dụng vật liệu còn giá trị sử dụng hoặc giá trị kinh tế.',
+    'kalkulator_guide_tools_label'     => 'Dụng cụ và vật liệu cần chuẩn bị',
+    'kalkulator_guide_tool_1'          => 'Tối thiểu ba thùng rác riêng (hữu cơ, vô cơ và rác nguy hại/B3).',
+    'kalkulator_guide_tool_2'          => 'Găng tay cao su để bảo vệ tay.',
+    'kalkulator_guide_tool_3'          => 'Thùng ủ compost hoặc hố biopore (cho rác hữu cơ).',
+    'kalkulator_guide_tool_4'          => 'Túi hoặc bao để thu gom rác tái chế.',
+    'kalkulator_guide_steps_label'     => 'Các bước xử lý rác',
+    'kalkulator_guide_step_1_title'    => 'Phân loại ngay từ đầu',
+    'kalkulator_guide_step_1_text'     => 'Bước đầu tiên và quan trọng nhất là phân loại rác ngay tại nguồn. Chuẩn bị thùng riêng cho rác hữu cơ (thức ăn thừa, lá cây), rác vô cơ (nhựa, giấy, kính, kim loại) và rác nguy hại/B3 (pin, bóng đèn neon, thuốc hết hạn).',
+    'kalkulator_guide_step_2_title'    => 'Biến rác hữu cơ thành phân compost',
+    'kalkulator_guide_step_2_text'     => 'Không bỏ thức ăn thừa hoặc rau củ vào thùng rác chung. Cho rác hữu cơ vào thùng ủ compost hoặc hố biopore. Thêm một ít đất hoặc dung dịch EM4 để tăng tốc phân hủy. Ủ trong vài tuần đến khi thành phân compost giàu dinh dưỡng cho cây trồng.',
+    'kalkulator_guide_step_3_title'    => 'Làm sạch và thu gom rác vô cơ',
+    'kalkulator_guide_step_3_text'     => 'Với nhựa, chai lọ hoặc kính, hãy rửa sạch và làm khô trước để tránh mùi. Ép dẹt chai nhựa hoặc thùng carton để tiết kiệm chỗ. Sau khi gom đủ, bạn có thể tái chế thành đồ thủ công hoặc mang đến ngân hàng rác gần nhất để đổi điểm/tài khoản hoặc tiền mặt.',
+    'kalkulator_guide_step_4_title'    => 'Xử lý rác nguy hại/B3 riêng biệt',
+    'kalkulator_guide_step_4_text'     => 'Rác nguy hại không được vứt bừa bãi hoặc trộn chung với rác sinh hoạt vì có thể gây ô nhiễm đất và nước. Hãy lưu trữ trong hộp kín an toàn và giao cho đơn vị thu gom chuyên trách hoặc cơ sở xử lý chất thải nguy hại tại địa phương.',
+    'kalkulator_guide_step_5_title'    => 'Giảm phát sinh rác (Reduce)',
+    'kalkulator_guide_step_5_text'     => 'Xử lý hiệu quả nhất là phòng ngừa từ đầu. Hãy tập thói quen mang túi mua sắm cá nhân, dùng bình nước hoặc hộp ăn có thể rửa dùng lại, và tránh sản phẩm bao bì nhựa dùng một lần. Những thay đổi nhỏ này giúp giảm đáng kể lượng rác mỗi ngày.',
+
     // Footer
     'footer_desc'            => 'Chương trình môi trường & bền vững của SMK Karya Bangsa Sintang.',
     'footer_menu'            => 'Menu',
     'footer_kontak'          => 'Liên hệ',
-    'footer_credit'          => 'Thực hiện bởi',
+    'footer_credit'          => 'Thực hiện bởi Nhóm 5',
 
     // About
     'about_title'            => 'Về chúng tôi',
@@ -257,7 +283,7 @@ Ngoài ra, giáo dục môi trường được tích hợp trong hoạt động 
     'latar_information_conclusion' => 'Kết luận: Go Green School đóng vai trò quan trọng trong bảo vệ môi trường. Khi thực hành thói quen xanh tại trường, học sinh học cách yêu thiên nhiên và xây dựng tương lai tốt đẹp hơn.',
 
     'latar_description_title'    => 'MÔ TẢ',
-    'latar_description_text'     => '"Green School Tracker" là ứng dụng web được thiết kế để hỗ trợ chương trình xanh hóa và quản lý môi trường tại SMK Karya Bangsa Sintang, Tây Kalimantan. Ứng dụng giúp theo dõi tăng trưởng cây, quản lý thông tin cây bản địa và giáo dục tái chế qua máy tính ngân hàng rác.
+    'latar_description_text'     => '"Go Green School" là ứng dụng web được thiết kế để hỗ trợ chương trình xanh hóa và quản lý môi trường tại SMK Karya Bangsa Sintang, Tây Kalimantan. Ứng dụng giúp theo dõi tăng trưởng cây, quản lý thông tin cây bản địa và giáo dục tái chế qua máy tính ngân hàng rác.
 
 Ứng dụng cung cấp các tính năng chính hỗ trợ hoạt động môi trường, bao gồm thống kê tổng số cây, diện tích xanh, số loài cây và tình trạng sức khỏe tổng thể.
 
@@ -498,7 +524,9 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
     // Artikel page
     'artikel_title'                => 'Bài viết Go Green',
     'artikel_badge'                => 'Bài viết Go Green',
-    'artikel_hero_title'           => 'Cảm hứng hành động xanh tại trường',
+    'artikel_hero_title'           => 'Goc nhin xanh cho hanh dong thuc te!',
+    'artikel_hero_title_line_1'    => 'Goc nhin xanh',
+    'artikel_hero_title_line_2'    => 'cho hanh dong thuc te!',
     'artikel_hero_desc'            => 'Bộ sưu tập bài viết giáo dục về quản lý rác, ngân hàng rác và chương trình môi trường có thể áp dụng tại trường.',
     'artikel_featured_label'       => 'Bài viết nổi bật',
     'artikel_featured_title'       => 'Hành động nhỏ, tác động lớn',
@@ -508,6 +536,14 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
     'artikel_featured_alt'         => 'Bài viết nổi bật Go Green',
     'artikel_latest_title'         => 'Bài viết mới nhất',
     'artikel_latest_update'        => 'Cập nhật hằng tuần',
+    'artikel_read_more'            => 'Đọc thêm',
+    'artikel_explainer_label'      => 'Goc nhin bo sung',
+    'artikel_explainer_title_main' => 'Nong len toan cau va',
+    'artikel_explainer_title_accent' => 'vai tro cua Go Green',
+    'artikel_explainer_p1'         => 'Nong len toan cau la tinh trang nhiet do Trai Dat tang len theo thoi gian. Dieu nay xay ra do <strong>khi nha kinh</strong> trong khi quyen. Phong trao <strong>Go Green</strong> giup giam van de moi truong dong thoi lam cham toc do nong len toan cau.',
+    'artikel_explainer_p2'         => 'Nong len toan cau duoc kich hoat boi hoat dong cua con nguoi tao ra qua nhieu khi nha kinh, dac biet la <strong>carbon dioxide (CO2)</strong> va methane. Nguon chinh den tu dot nhien lieu hoa thach cho dien, nha may va giao thong. Cac khi nay giu nhiet trong khi quyen thong qua <strong>hieu ung nha kinh</strong>, lam nhiet do Trai Dat tiep tuc tang.',
+    'artikel_explainer_p3'         => 'Tac dong de thay ro: bang hai cuc tan nhanh hon, muc nuoc bien dang, thoi tiet cuc doan hon va nhieu sinh vat kho thich nghi. Cac hanh dong Go Green dua ra giai phap thuc te nhu trong cay hap thu CO2, dung nang luong tai tao, tiet kiem dien va giam rac thai nhua.',
+    'artikel_explainer_summary'    => 'Tom lai, nong len toan cau xay ra vi qua nhieu nhiet bi giu lai trong khi quyen. Thuc hanh Go Green rat quan trong de giam phat thai khi nha kinh, giu can bang moi truong va bao ve Trai Dat cho cac the he tuong lai.',
     'artikel_item_1_title'         => '3 bước giảm rác nhựa trong lớp',
     'artikel_item_1_desc'          => 'Bình nước cá nhân, hộp ăn, và cấm nhựa dùng một lần có thể giảm rác tới 40%.',
     'artikel_item_1_tag'           => 'Giáo dục',
@@ -519,7 +555,7 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
     'artikel_item_2_time'          => '6 phút',
     'artikel_item_2_date'          => 'Tháng 3/2026',
     'artikel_item_3_title'         => 'Cây bản địa phù hợp cho sân trường',
-    'artikel_item_3_desc'          => 'Tengkawang, jelutung và meranti làm mát khuôn viên và bảo vệ đa dạng sinh học.',
+    'artikel_item_3_desc'          => 'Eboni, jelutung và meranti làm mát khuôn viên và bảo vệ đa dạng sinh học.',
     'artikel_item_3_tag'           => 'Cây xanh',
     'artikel_item_3_time'          => '5 phút',
     'artikel_item_3_date'          => 'Tháng 2/2026',
@@ -630,27 +666,32 @@ Hành động Go Green giúp giảm vấn đề này. Trồng cây hấp thụ C
 
     // Plant data
     // Plant 1: Rafflesia Arnoldii
+    'tanaman_1_nama'  => 'Rafflesia Arnoldii',
     'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
     'pohon_1_manfaat' => 'Bông hoa khổng lồ này vô cùng quý giá như một nam châm du lịch sinh thái thực vật thu hút du khách và các nhà nghiên cứu từ khắp thế giới. Ở vùng hoang dã, sự có mặt của nó là một chỉ báo sinh thái quan trọng để đảm bảo rằng khu vực rừng nguyên sinh vẫn còn nguyên vẹn và được bảo vệ tốt.',
     'pohon_1_tinggi'  => '± 1m (hoa)',
 
     // Plant 2: Pitcher Plant
+    'tanaman_2_nama'  => 'Cây Túi Côn Trùng',
     'pohon_2_lokasi'  => 'Rừng mưa nhiệt đới của Nusantara',
     'pohon_2_manfaat' => 'Loài cây muỗng này đóng một vai trò quan trọng trong duy trì cân bằng sinh thái bằng cách kiểm soát tự nhiên quần thể côn trùng gây hại trong môi trường sống của nó. Ngoài giá trị trang trí, chiếc túi cũng thường được cộng đồng địa phương khai thác như một chiếc nồi nấu cơm truyền thống đặc biệt.',
     'pohon_2_tinggi'  => '± 1-2m (leo)',
 
     // Plant 3: Calypso Orchid
+    'tanaman_3_nama'  => 'Lan Đen Kalimantan',
     'pohon_3_lokasi'  => 'Kalimantan',
     'pohon_3_manfaat' => 'Loài thực vật đặc hữu này có giá trị kinh tế phi thường là mục tiêu chính của những nhà sưu tập cây cảnh hàng đầu thế giới nhờ sự quyến rũ kỳ dị của nó. Ngoài ra, nó còn có ý nghĩa văn hóa quan trọng vì nó được chọn làm biểu tượng chính thức của tỉnh Kalimantan Đông.',
     'pohon_3_tinggi'  => '± 30-60cm',
 
     // Plant 4: Sandalwood
+    'tanaman_4_nama'  => 'Cây Đàn Hương',
     'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
     'pohon_4_manfaat' => 'Dầu tinh dầu chiết xuất từ gỗ của nó có giá trị xuất khẩu tuyệt vời vì nó là thành phần chính trong ngành công nghiệp nước hoa hàng hiệu và mỹ phẩm toàn cầu. Những miếng gỗ của nó cũng rất có giá trị để làm nhang thơm tĩnh tâm, thuốc thảo dược và các tác phẩm thủ công có giá trị nghệ thuật cao.',
     'pohon_4_tinggi'  => '± 10-15m',
 
-    // Plant 5: Tengkawang
-    'pohon_5_lokasi'  => 'Rừng Kalimantan',
-    'pohon_5_manfaat' => 'Hạt của nó tạo ra chất béo thực vật có giá trị cao (Bơ xanh) được xuất khẩu như một thành phần chính cho các chất dưỡng ẩm mỹ phẩm và chất thay thế bơ ca cao trong chocolate cao cấp. Đối với người Dayak, dầu tengkawang cũng rất quý giá vì nó được sử dụng theo truyền thống cho các nhu cầu nấu nướng và nghi lễ chữa bệnh truyền thống.',
-    'pohon_5_tinggi'  => '± 30m',
+    // Plant 5: Eboni Tree
+    'tanaman_5_nama'  => 'Cây Gỗ Ebony',
+    'pohon_5_lokasi'  => 'Sulawesi',
+    'pohon_5_manfaat' => 'Gỗ Eboni được công nhận là loại gỗ cao cấp tốt nhất trên thế giới với màu đen sâu nổi bật và cấu trúc vô cùng chặt chẽ. Gỗ này có giá trị rất cao để chế tạo đồ nội thất sang trọng, các nhạc cụ cao cấp như đàn guitar chuyên nghiệp và bass guitar, trang sức, các tác phẩm điêu khắc và những vật sưu tập độc quyền. Ngoài ra, nhựa từ nó cũng được sử dụng truyền thống trong thuốc nam.',
+    'pohon_5_tinggi'  => '± 20-40m',
 ];

@@ -315,10 +315,10 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                 </label>
 
                                 <div class="flex items-center gap-1.5 flex-shrink-0" onclick="event.stopPropagation()">
-                                     <input type="text"
+                                                                         <input type="text"
                                            name="items[{{ $val }}]"
                                            id="input_{{ $val }}"
-                                         step="0.1" min="0" max="10000"
+                                                                                 step="0.1" min="0" max="1000"
                                          inputmode="decimal"
                                          pattern="[0-9]+([\\.,][0-9]+)?"
                                            placeholder="0"
@@ -654,6 +654,42 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         </div>
 
     </div>
+
+    <div class="mt-8 rounded-[3rem] p-8 sm:p-10 md:p-12 reveal-on-scroll" style="background-color:#064e3b;box-shadow:0 22px 50px rgba(6,78,59,0.22);">
+        <div class="max-w-3xl mb-8 sm:mb-10">
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-headline font-black text-white leading-tight">{{ __('app.kalkulator_guide_title') }}</h3>
+            <p class="text-emerald-50/80 text-sm sm:text-base italic mt-4">"{{ __('app.kalkulator_guide_objective_text') }}"</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            <div class="rounded-[2rem] p-6 sm:p-8 border border-white/10" style="background-color:rgba(255,255,255,0.06);backdrop-filter:blur(6px);">
+                <h4 class="font-headline font-black text-lg sm:text-xl mb-5 flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-[#a2f31f]" style="font-size:24px;">inventory_2</span>
+                    {{ __('app.kalkulator_guide_tools_label') }}
+                </h4>
+                <ul class="space-y-3 text-emerald-50/85 text-sm sm:text-base leading-relaxed">
+                    <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_1') }}</span></li>
+                    <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_2') }}</span></li>
+                    <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_3') }}</span></li>
+                    <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_4') }}</span></li>
+                </ul>
+            </div>
+
+            <div class="rounded-[2rem] p-6 sm:p-8 border border-white/10" style="background-color:rgba(255,255,255,0.06);backdrop-filter:blur(6px);">
+                <h4 class="font-headline font-black text-lg sm:text-xl mb-5 flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-[#a2f31f]" style="font-size:24px;">format_list_numbered</span>
+                    {{ __('app.kalkulator_guide_steps_label') }}
+                </h4>
+                <div class="space-y-5">
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">01</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_1_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_1_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">02</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_2_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_2_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">03</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_3_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_3_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">04</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_4_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_4_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">05</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_5_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_5_text') }}</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
     @endif
     </div>
 
@@ -825,16 +861,26 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const getSelectedDays = function () {
-        const daysRaw = daysInput ? parseInt(daysInput.value || '30', 10) : 30;
-        if (Number.isNaN(daysRaw) || daysRaw < 1) return 30;
+        if (!daysInput) return 1;
+
+        const raw = String(daysInput.value || '').trim();
+        if (raw === '') return 1;
+
+        const daysRaw = parseInt(raw, 10);
+        if (Number.isNaN(daysRaw) || daysRaw < 1) return 1;
         return Math.min(daysRaw, 365);
     };
 
-    const normalizeDaysInput = function () {
-        if (!daysInput) return 30;
+    const normalizeDaysInput = function (preserveEmpty) {
+        if (!daysInput) return 1;
 
-        const parsed = parseInt(daysInput.value || '30', 10);
-        const clamped = Number.isNaN(parsed) ? 30 : Math.min(365, Math.max(1, parsed));
+        const raw = String(daysInput.value || '').trim();
+        if (preserveEmpty && raw === '') {
+            return null;
+        }
+
+        const parsed = parseInt(raw, 10);
+        const clamped = Number.isNaN(parsed) ? 1 : Math.min(365, Math.max(1, parsed));
         daysInput.value = String(clamped);
         return clamped;
     };
@@ -852,8 +898,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const parsed = parseFloat(clean);
-        if (!Number.isNaN(parsed) && parsed > 10000) {
-            return '10000';
+        if (!Number.isNaN(parsed) && parsed > 1000) {
+            return '1000';
         }
 
         return clean;
@@ -935,15 +981,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (daysInput) {
         daysInput.addEventListener('input', function () {
-            normalizeDaysInput();
+            normalizeDaysInput(true);
             window.updateWasteEstimate();
         });
         daysInput.addEventListener('change', function () {
-            normalizeDaysInput();
+            normalizeDaysInput(false);
             window.updateWasteEstimate();
         });
         daysInput.addEventListener('blur', function () {
-            normalizeDaysInput();
+            normalizeDaysInput(false);
             window.updateWasteEstimate();
         });
     }

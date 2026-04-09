@@ -79,6 +79,25 @@ return [
     'quick_hitung_poin'      => 'Kalkulahin ang puntos',
     'quick_kalkulator_sub'   => 'Kalkulador ng bangko ng basura',
 
+    'dashboard_intro_title'            => 'Dito Nagsisimula ang Ating Kilusang Luntian',
+    'dashboard_intro_snippet'          => 'Ang Go Green School ay isang paaralan na nagtataguyod ng kamalayan sa kapaligiran at napapanatiling gawain upang makalikha ng malinis, malusog, at makakalikasang kapaligiran sa pag-aaral.',
+    'dashboard_intro_badge'            => 'Kilusang Luntian',
+    'dashboard_intro_modal_subtitle'   => 'Sabay-sabay na bumuo ng kamalayan sa kapaligiran para sa napapanatiling kinabukasan',
+    'dashboard_intro_section_1_title'  => '01. Depinisyon at Bisyon',
+    'dashboard_intro_section_2_title'  => '02. Programa at Gawain',
+    'dashboard_intro_section_3_title'  => '03. Epekto at Konklusyon',
+
+    'dashboard_desc_title'             => 'Ano ang Go Green School?',
+    'dashboard_desc_snippet'           => 'Ang Go Green School ay web application na sumusuporta sa mga programang pagpapaluntian at pamamahala ng kapaligiran sa SMK Karya Bangsa Sintang sa magaan at interaktibong paraan.',
+    'dashboard_desc_badge'             => 'Go Green School',
+    'dashboard_desc_modal_subtitle'    => 'Plataporma ng pamamahala sa kapaligiran ng paaralan para sa digital na pagpapanatili',
+    'dashboard_desc_section_1_title'   => '01. Tungkol sa Aplikasyon',
+    'dashboard_desc_section_1_text'    => 'Ang Go Green School ay isang web application na dinisenyo upang suportahan ang mga programang pagpapaluntian at pamamahala ng kapaligiran sa SMK Karya Bangsa Sintang, Kanlurang Kalimantan. Tinutulungan nito ang paaralan na subaybayan ang paglago ng mga halaman, pamahalaan ang impormasyon tungkol sa mga katutubong puno ng rehiyon, at turuan ang mga mag-aaral tungkol sa pagre-recycle sa pamamagitan ng tampok na kalkulador ng bangko ng basura.',
+    'dashboard_desc_section_2_title'   => '02. Pangunahing Tampok',
+    'dashboard_desc_section_2_text'    => 'May ilang pangunahing tampok ang app na sumusuporta sa mga gawaing pangkapaligiran sa paaralan. Ipinapakita ng pangunahing pahina ang buod ng datos ng programang pagpapaluntian, gaya ng bilang ng naitanim na puno, lawak ng luntiang lugar, bilang ng species ng halaman, at pangkalahatang kalagayan ng kalusugan ng mga halaman. Ipinapakita rin nito ang kumpletong listahan ng mga lokal na halaman ng Kalimantan sa paligid ng paaralan, kasama ang lokal at siyentipikong pangalan, uri ng halaman, lokasyon ng pagtatanim, benepisyong ekolohikal at pang-ekonomiya, tinatayang taas ng halaman, at kondisyon ng kalusugan nito.',
+    'dashboard_desc_section_3_title'   => '03. Tampok na Kalkulador ng Bangko ng Basura',
+    'dashboard_desc_section_3_text'    => 'Bukod dito, may kalkulador ng bangko ng basura ang app na nagpapahintulot sa user na kalkulahin ang puntos batay sa uri at bigat ng basura. Tinutulungan ng tampok na ito ang mga mag-aaral na maunawaan ang halaga ng pagre-recycle sa simple at interaktibong paraan. Ginawa ang app nang walang dependency sa database, kaya ito ay magaan, madaling patakbuhin, at angkop bilang kasangkapang pang-edukasyon o pang-demo.',
+
     // Tanaman
     'tanaman_title'          => 'Pamamahala ng mga halaman',
     'tanaman_desc'           => 'Listahan ng 5 katutubong puno ng Kanlurang Kalimantan sa SMK Karya Bangsa Sintang',
@@ -108,18 +127,6 @@ return [
 
     'catatan_teknis'         => 'Teknikal na tala',
     'catatan_teknis_desc'    => 'Ang data ng puno ay naka-save nang direkta bilang :array sa :controller. Walang database — ipinapakita ang data direkta mula sa memorya sa Blade.',
-
-    // Pohon data
-    'pohon_1_manfaat'        => 'Gumagawa ng langis ng tengkawang na mataas ang halagang pang-ekonomiya. Ginagamit sa kosmetiko at parmasyutiko. De-kalidad na kahoy para sa konstruksyon. Mahalaga sa balanse ng ekosistema ng kagubatan.',
-    'pohon_1_lokasi'         => 'Hardin sa harap ng paaralan',
-    'pohon_2_manfaat'        => 'Gumagawa ng katutubong dagta ng jelutung. Ginagamit bilang hilaw na materyal sa goma. Malambot na kahoy para sa muwebles at ukit. Likas na tumutubo sa Kanlurang Kalimantan.',
-    'pohon_2_lokasi'         => 'Sa tabi ng pangunahing gusali',
-    'pohon_3_manfaat'        => 'Mahalagang pulang kahoy para sa muwebles at konstruksyon. Matibay laban sa anay at matinding panahon. Mahalaga sa muling pag-usbong ng kagubatan ng Indonesia. Tumutulong sa pagpapatatag ng lupa at pag-iwas sa erosion.',
-    'pohon_3_lokasi'         => 'Hardin sa Silangan',
-    'pohon_4_manfaat'        => 'Namumunga ng rambutan na mayaman sa bitamina C. Maaaring kainin o iproseso. Ang ugat at dahon ay gamit sa tradisyunal na gamot. Nakaaakit ng mga lokal na ibon at paniki.',
-    'pohon_4_lokasi'         => 'Paradahan ng mga mag-aaral',
-    'pohon_5_manfaat'        => 'Napakatigas at matibay na kahoy, kilala bilang kahoy na bakal. Ginagamit sa tradisyunal na bahay, poste ng kuryente, at tulay. Napakahalaga at simbolo ng kalikasan ng Kalimantan. Bihira at protektado.',
-    'pohon_5_lokasi'         => 'Likod ng paaralan',
 
     // Kalkulator
     'kalkulator_title'       => 'Kalkulador ng bangko ng basura',
@@ -198,11 +205,30 @@ return [
     'tips_title'             => 'Mga tip para sa mas mataas na puntos',
     'tips_desc'              => 'Ihiwalay ang basura mula sa bahay at dalhin sa bangko ng basura araw-araw. Pinakamataas ang puntos ng e-waste — huwag itapon kung saan-saan!',
 
+    'kalkulator_guide_title'           => 'Paano Ayusin ang Basurang Bahay nang Tama at Epektibo',
+    'kalkulator_guide_objective_text'  => 'Ang sariling pagproseso ng basura ay naglalayong bawasan ang dami ng basurang napupunta sa tambakan, maiwasan ang polusyon, at mapakinabangan muli ang mga materyales na may gamit o halagang pang-ekonomiya pa.',
+    'kalkulator_guide_tools_label'     => 'Mga Kagamitan at Materyales na Kailangan',
+    'kalkulator_guide_tool_1'          => 'Hindi bababa sa tatlong magkakaibang basurahan (organiko, anorganiko, at B3/mapanganib).',
+    'kalkulator_guide_tool_2'          => 'Gomang guwantes para proteksyon sa kamay.',
+    'kalkulator_guide_tool_3'          => 'Lalagyan ng composter o butas na biopori (para sa organikong basura).',
+    'kalkulator_guide_tool_4'          => 'Supot o sako para sa naipong recyclable na basura.',
+    'kalkulator_guide_steps_label'     => 'Mga Hakbang sa Pagproseso ng Basura',
+    'kalkulator_guide_step_1_title'    => 'Mag-segregate mula pa lang sa simula',
+    'kalkulator_guide_step_1_text'     => 'Ang una at pinakamahalagang hakbang ay ang paghihiwalay ng basura mula sa pinagmulan. Maglaan ng hiwalay na basurahan para sa organiko (tirang pagkain, dahon), anorganiko (plastik, papel, salamin, metal), at B3 o mapanganib na basura (baterya, fluorescent lamp, expired na gamot).',
+    'kalkulator_guide_step_2_title'    => 'Gawing compost ang organikong basura',
+    'kalkulator_guide_step_2_text'     => 'Huwag itapon ang tirang pagkain o gulay sa pangkalahatang basurahan. Ilagay ang organikong basura sa composter o biopori. Magdagdag ng kaunting lupa o EM4 liquid para mapabilis ang pagkabulok. Iwanan ito nang ilang linggo hanggang maging compost na mayaman sa nutrisyon.',
+    'kalkulator_guide_step_3_title'    => 'Linisin at tipunin ang anorganikong basura',
+    'kalkulator_guide_step_3_text'     => 'Para sa plastik, bote, o salamin, linisin at patuyuin muna para maiwasan ang amoy. Pisain ang plastik na bote o karton para makatipid sa espasyo. Kapag marami na, puwedeng i-recycle bilang produkto o i-deposito sa pinakamalapit na waste bank kapalit ng points, balanse, o cash.',
+    'kalkulator_guide_step_4_title'    => 'Ihiwalay ang B3 o mapanganib na basura',
+    'kalkulator_guide_step_4_text'     => 'Ang B3 na basura ay hindi dapat itapon nang basta-basta o ihalo sa ibang basura sa bahay dahil maaaring makontamina ang lupa at tubig. Itago ito sa ligtas at saradong lalagyan at i-turn over sa awtorisadong kolektor o pasilidad para sa hazardous waste.',
+    'kalkulator_guide_step_5_title'    => 'Bawasan ang paglikha ng basura (Reduce)',
+    'kalkulator_guide_step_5_text'     => 'Pinakaepektibong pamamahala sa basura ang pag-iwas pa lang sa pinagmulan. Ugaliing magdala ng sariling eco bag, reusable na bote o lunch box, at iwasan ang single-use plastic packaging. Malaking bawas ito sa araw-araw na basurang kailangang iproseso.',
+
     // Footer
     'footer_desc'            => 'Programa sa kapaligiran at napapanatiling kaunlaran ng SMK Karya Bangsa Sintang.',
     'footer_menu'            => 'Menu',
     'footer_kontak'          => 'Makipag-ugnayan',
-    'footer_credit'          => 'Ginawa ni',
+    'footer_credit'          => 'Ginawa ni Grupo 5',
 
     // About
     'about_title'            => 'Tungkol sa Amin',
@@ -257,7 +283,7 @@ Bukod dito, isinama ang edukasyong pangkapaligiran sa pagkatuto. Tinuturuan ang 
     'latar_information_conclusion' => 'Konklusyon: Mahalaga ang Go Green School sa pangangalaga ng kapaligiran. Sa pagsasanay ng berdeng gawi sa paaralan, natututo ang mga mag-aaral na mahalin ang kalikasan at bumuo ng mas mabuting kinabukasan.',
 
     'latar_description_title'    => 'PAGLALARAWAN',
-    'latar_description_text'     => 'Ang "Green School Tracker" ay isang web app na idinisenyo upang suportahan ang programang pagpapaluntian ng paaralan at pamamahala ng kapaligiran sa SMK Karya Bangsa Sintang, Kanlurang Kalimantan. Tinutulungan nitong subaybayan ang paglago ng mga puno, pamahalaan ang impormasyon ng mga katutubong puno, at magturo ng pagre-recycle sa pamamagitan ng kalkulador ng bangko ng basura.
+    'latar_description_text'     => 'Ang "Go Green School" ay isang web app na idinisenyo upang suportahan ang programang pagpapaluntian ng paaralan at pamamahala ng kapaligiran sa SMK Karya Bangsa Sintang, Kanlurang Kalimantan. Tinutulungan nitong subaybayan ang paglago ng mga puno, pamahalaan ang impormasyon ng mga katutubong puno, at magturo ng pagre-recycle sa pamamagitan ng kalkulador ng bangko ng basura.
 
 Nagbibigay ang app ng mga pangunahing feature para sa mga aktibidad sa kapaligiran, kabilang ang istatistika ng kabuuang puno, luntiang lawak, bilang ng species, at pangkalahatang kondisyon ng kalusugan.
 
@@ -498,7 +524,9 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     // Artikel page
     'artikel_title'                => 'Mga artikulo ng Go Green',
     'artikel_badge'                => 'Mga artikulo ng Go Green',
-    'artikel_hero_title'           => 'Inspirasyon para sa luntiang aksyon sa paaralan',
+    'artikel_hero_title'           => 'Luntiang Kaalaman para sa Tunay na Aksyon!',
+    'artikel_hero_title_line_1'    => 'Luntiang Kaalaman',
+    'artikel_hero_title_line_2'    => 'para sa Tunay na Aksyon!',
     'artikel_hero_desc'            => 'Koleksyon ng mga artikulong pang-edukasyon tungkol sa pamamahala ng basura, bangko ng basura, at programang pangkapaligiran na puwedeng ipatupad sa paaralan.',
     'artikel_featured_label'       => 'Tampok na artikulo',
     'artikel_featured_title'       => 'Maliit na aksyon, malaking epekto',
@@ -508,6 +536,14 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     'artikel_featured_alt'         => 'Tampok na artikulo ng Go Green',
     'artikel_latest_title'         => 'Pinakabagong artikulo',
     'artikel_latest_update'        => 'Lingguhang update',
+    'artikel_read_more'            => 'Magbasa pa',
+    'artikel_explainer_label'      => 'Dagdag na Paliwanag',
+    'artikel_explainer_title_main' => 'Global Warming at ang',
+    'artikel_explainer_title_accent' => 'Papel ng Go Green',
+    'artikel_explainer_p1'         => 'Ang global warming ay ang patuloy na pagtaas ng init ng mundo sa paglipas ng panahon. Nangyayari ito dahil sa <strong>greenhouse gases</strong> sa atmospera. Ang kilusang <strong>Go Green</strong> ay tumutulong sa pagbawas ng mga suliraning pangkalikasan at sa pagpapabagal ng global warming.',
+    'artikel_explainer_p2'         => 'Ang global warming ay pinalalala ng gawain ng tao na naglalabas ng sobrang greenhouse gases, lalo na ang <strong>carbon dioxide (CO2)</strong> at methane. Pangunahing pinagmumulan nito ang pagsusunog ng fossil fuel para sa kuryente, pabrika, at transportasyon. Ang mga gas na ito ay nagkukulong ng init sa atmospera sa pamamagitan ng <strong>greenhouse effect</strong>, kaya patuloy na tumataas ang temperatura ng mundo.',
+    'artikel_explainer_p3'         => 'Malinaw ang epekto: mas mabilis matunaw ang yelo sa mga polo, tumataas ang lebel ng dagat, mas tumitindi ang matitinding panahon, at hirap makapag-angkop ang maraming nilalang. Nagbibigay ng konkretong solusyon ang Go Green gaya ng pagtatanim ng puno para sumipsip ng CO2, paggamit ng renewable energy, pagtitipid ng kuryente, at pagbawas ng plastik na basura.',
+    'artikel_explainer_summary'    => 'Sa madaling sabi, nangyayari ang global warming dahil masyadong maraming init ang nakukulong sa atmospera. Mahalaga ang pagsasabuhay ng Go Green upang mabawasan ang greenhouse gas emissions, mapanatili ang balanse ng kalikasan, at maprotektahan ang mundo para sa susunod na henerasyon.',
     'artikel_item_1_title'         => '3 hakbang para bawasan ang plastik sa klase',
     'artikel_item_1_desc'          => 'Personal na bote ng tubig, lunch box, at pagbabawal ng plastik na isang beses lang gamitin ay kayang magbawas ng basura hanggang 40%.',
     'artikel_item_1_tag'           => 'Edukasyon',
@@ -519,7 +555,7 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     'artikel_item_2_time'          => '6 minuto',
     'artikel_item_2_date'          => 'Mar 2026',
     'artikel_item_3_title'         => 'Mga katutubong punong angkop sa bakuran',
-    'artikel_item_3_desc'          => 'Ang tengkawang, jelutung, at meranti ay nagpapalamig sa paaralan at nagpoprotekta sa biyodibersidad.',
+    'artikel_item_3_desc'          => 'Ang eboni, jelutung, at meranti ay nagpapalamig sa paaralan at nagpoprotekta sa biyodibersidad.',
     'artikel_item_3_tag'           => 'Mga halaman',
     'artikel_item_3_time'          => '5 minuto',
     'artikel_item_3_date'          => 'Peb 2026',
@@ -630,27 +666,32 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
 
     // Plant data
     // Plant 1: Rafflesia Arnoldii
+    'tanaman_1_nama'  => 'Rafflesia Arnoldii',
     'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
     'pohon_1_manfaat' => 'Ang raksasang bulaklak na ito ay napakabomba bilang isang magnet sa botanical ecotourism na nakakaakit ng mga turista at mananaliksik mula sa buong mundo. Sa kalikasan, ang pagkakaroon nito ay isang mahalagang ecological indicator upang masiguro na ang pangunahing kagubatan ay nananatiling purong at well-preserved.',
     'pohon_1_tinggi'  => '± 1m (bulaklak)',
 
     // Plant 2: Pitcher Plant
+    'tanaman_2_nama'  => 'Pitcher Plant',
     'pohon_2_lokasi'  => 'Tropical Rainforests ng Nusantara',
     'pohon_2_manfaat' => 'Ang carnivorous na halaman na ito ay may mahalagang papel sa pagpapanatili ng ecosystem balance sa pamamagitan ng natural na pagkontrol ng pest insect populations. Bukod sa ornamental value nito, ang pitero ay tradisyonal na ginagamit ng mga lokal na komunidad bilang isang kakaibang sisidlan para sa pagluluto ng kanin.',
     'pohon_2_tinggi'  => '± 1-2m (umakyat)',
 
     // Plant 3: Calypso Orchid
+    'tanaman_3_nama'  => 'Bulaklak na Kalimantan',
     'pohon_3_lokasi'  => 'Kalimantan',
     'pohon_3_manfaat' => 'Ang endemic na halaman na ito ay may kahanga-hangang economic value bilang pangunahing target ng world-class ornamental plant collectors dahil sa exotic charm nito. Mayroon din itong malaking cultural importance dahil ito ay official emblem ng East Kalimantan Province.',
     'pohon_3_tinggi'  => '± 30-60cm',
 
     // Plant 4: Sandalwood
+    'tanaman_4_nama'  => 'Sandalwood',
     'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
     'pohon_4_manfaat' => 'Ang essential oil na napukaw mula sa kahoy nito ay may fantastic export value bilang primary ingredient para sa fragrance fixation sa global luxury perfume at cosmetics industry. Ang mga piraso ng kahoy ay useful din sa paggawa ng soothing aromatherapy incense, herbal medicine, at high-artistic crafts.',
     'pohon_4_tinggi'  => '± 10-15m',
 
-    // Plant 5: Tengkawang
-    'pohon_5_lokasi'  => 'Kalimantan Forest',
-    'pohon_5_manfaat' => 'Ang mga binhi nito ay nagporoduce ng high-value vegetable fat (Green Butter) na nai-export bilang key ingredient para sa cosmetic moisturizers at cocoa butter substitute sa premium chocolate. Para sa Dayak people, ang tengkawang oil ay very valuable dahil ito ay traditionally ginagamit para sa pagluluto at sa traditional healing rituals.',
-    'pohon_5_tinggi'  => '± 30m',
+    // Plant 5: Eboni Tree
+    'tanaman_5_nama'  => 'Ebony Tree',
+    'pohon_5_lokasi'  => 'Sulawesi',
+    'pohon_5_manfaat' => 'Ang eboni na kahoy ay kinikilala bilang finest premium wood sa buong mundo dahil sa striking black color at extremely dense texture. Ang kahoy na ito ay very valuable para sa paglikha ng luxury furniture, premium musical instruments tulad ng professional guitars at bass guitars, alahas, art carvings, at exclusive collectible items. Bukod dito, ang resin nito ay traditionally ginagamit sa herbal medicine.',
+    'pohon_5_tinggi'  => '± 20-40m',
 ];

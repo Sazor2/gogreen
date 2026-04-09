@@ -79,6 +79,25 @@ return [
     'quick_hitung_poin'      => 'Calculate Points',
     'quick_kalkulator_sub'   => 'Waste bank calculator',
 
+    'dashboard_intro_title'            => 'Our Green Movement Starts Here',
+    'dashboard_intro_snippet'          => 'Go Green School is a school that promotes environmental awareness and sustainable practices to create a clean, healthy, and eco-friendly learning environment.',
+    'dashboard_intro_badge'            => 'Green Movement',
+    'dashboard_intro_modal_subtitle'   => 'Building environmental awareness together for a sustainable future',
+    'dashboard_intro_section_1_title'  => '01. Definition & Vision',
+    'dashboard_intro_section_2_title'  => '02. Programs & Activities',
+    'dashboard_intro_section_3_title'  => '03. Impact & Conclusion',
+
+    'dashboard_desc_title'             => 'What Is Go Green School?',
+    'dashboard_desc_snippet'           => 'Go Green School is a web application that supports greening and environmental management programs at SMK Karya Bangsa Sintang in a lightweight and interactive way.',
+    'dashboard_desc_badge'             => 'Go Green School',
+    'dashboard_desc_modal_subtitle'    => 'A school environmental management platform for digital sustainability',
+    'dashboard_desc_section_1_title'   => '01. About the Application',
+    'dashboard_desc_section_1_text'    => 'Go Green School is a web application designed to support greening and environmental management programs at SMK Karya Bangsa Sintang, West Kalimantan. The application helps the school monitor plant growth, manage information about local native trees, and educate students about waste recycling through the waste bank calculator feature.',
+    'dashboard_desc_section_2_title'   => '02. Main Features',
+    'dashboard_desc_section_2_text'    => 'The application provides several key features that support environmental activities at school. The main page displays a summary of greening program data, such as total trees planted, green area coverage, number of plant species, and overall plant health conditions. It also displays a complete list of local Kalimantan plants in the school environment, including local and scientific names, plant types, planting locations, ecological and economic benefits, estimated plant heights, and health conditions.',
+    'dashboard_desc_section_3_title'   => '03. Waste Bank Calculator Feature',
+    'dashboard_desc_section_3_text'    => 'In addition, the application includes a waste bank calculator that allows users to calculate points based on waste type and weight. This feature helps students understand the value of recycling activities in a simple and interactive way. The application is built without database dependency, making it lightweight, easy to run, and suitable as a learning or demonstration tool.',
+
     // Tanaman
     'tanaman_title'          => 'Plant Management',
     'tanaman_desc'           => 'List of 5 West Kalimantan native trees in the SMK Karya Bangsa Sintang environment',
@@ -108,18 +127,6 @@ return [
 
     'catatan_teknis'         => 'Technical Note',
     'catatan_teknis_desc'    => 'Plant data above is stored as :array directly inside :controller. No database query — data is rendered directly from memory to the Blade view.',
-
-    // Pohon data
-    'pohon_1_manfaat'        => 'Produces tengkawang oil with high economic value. Used in cosmetics and pharmaceuticals. Quality timber for construction. Plays an important role in maintaining the balance of tropical forest ecosystems.',
-    'pohon_1_lokasi'         => 'Front School Garden',
-    'pohon_2_manfaat'        => 'Produces sap known as native jelutung. The sap is used as raw material for rubber. Soft wood suitable for furniture and carvings. Naturally distributed across West Kalimantan.',
-    'pohon_2_lokasi'         => 'Side of Main Building',
-    'pohon_3_manfaat'        => 'Premium timber with a bright red color, valuable for luxury furniture and construction. Resistant to termites and extreme weather. Important for tropical forest reforestation programs in Indonesia. Helps stabilize soil and prevent erosion.',
-    'pohon_3_lokasi'         => 'East School Garden',
-    'pohon_4_manfaat'        => 'Produces rambutan fruit rich in vitamin C and nutrients. The fruit can be eaten fresh or processed into food products. Roots and leaves have traditional medicinal uses. Attracts local fauna including birds and bats.',
-    'pohon_4_lokasi'         => 'Student Parking Area',
-    'pohon_5_manfaat'        => 'Extremely hard and durable timber known as ironwood. Used for traditional house construction, utility poles, and bridges. Highly valuable and a symbol of Kalimantan\'s natural wealth. Rare and protected for forest conservation.',
-    'pohon_5_lokasi'         => 'School Backyard',
 
     // Kalkulator
     'kalkulator_title'       => 'Waste Bank Calculator',
@@ -198,11 +205,30 @@ return [
     'tips_title'             => 'Tips to Earn More Points',
     'tips_desc'              => 'Sort your waste from home and bring it to the school waste bank every day. Electronic waste gives the most points — never throw it away carelessly!',
 
+    'kalkulator_guide_title'           => 'How to Process Household Waste Properly and Effectively',
+    'kalkulator_guide_objective_text'  => 'Independent waste processing aims to reduce the volume of waste ending up in landfills, prevent environmental pollution, and reuse materials that still have practical or economic value.',
+    'kalkulator_guide_tools_label'     => 'Required Tools and Materials',
+    'kalkulator_guide_tool_1'          => 'At least three separate bins (organic, inorganic, and hazardous/B3).',
+    'kalkulator_guide_tool_2'          => 'Rubber gloves to protect your hands.',
+    'kalkulator_guide_tool_3'          => 'A composter container or biopore hole (for organic waste).',
+    'kalkulator_guide_tool_4'          => 'Bags or sacks to collect recyclable waste.',
+    'kalkulator_guide_steps_label'     => 'Waste Processing Steps',
+    'kalkulator_guide_step_1_title'    => 'Sort Waste from the Start',
+    'kalkulator_guide_step_1_text'     => 'The first and most crucial step is to separate waste directly at its source. Use different bins for organic waste (food scraps, leaves), inorganic waste (plastic, paper, glass, metal), and hazardous/B3 waste (batteries, fluorescent lamps, expired medicine).',
+    'kalkulator_guide_step_2_title'    => 'Turn Organic Waste into Compost',
+    'kalkulator_guide_step_2_text'     => 'Do not throw food or vegetable leftovers into general waste bins. Put organic waste into a composter container or biopore hole. Add a bit of soil or EM4 liquid to speed up decomposition. Leave it for several weeks until it becomes nutrient-rich compost for your plants.',
+    'kalkulator_guide_step_3_title'    => 'Clean and Collect Inorganic Waste',
+    'kalkulator_guide_step_3_text'     => 'For plastic, bottles, or glass waste, clean and dry them first to prevent odor. Flatten plastic bottles or cardboard to save storage space. After collecting them, you can recycle them into crafts or deposit them at a nearby waste bank for savings or cash.',
+    'kalkulator_guide_step_4_title'    => 'Handle Hazardous/B3 Waste Properly',
+    'kalkulator_guide_step_4_text'     => 'Hazardous waste must not be disposed of carelessly or mixed with regular household waste because it can contaminate soil and water. Store it safely in a sealed container and hand it over to authorized sanitation officers or hazardous waste facilities in your city.',
+    'kalkulator_guide_step_5_title'    => 'Reduce Waste Production (Reduce)',
+    'kalkulator_guide_step_5_text'     => 'The most effective waste management starts with prevention. Get used to bringing your own shopping bag, reusable bottle, and washable lunch box, and avoid single-use plastic packaging. These small habits significantly reduce daily waste volume.',
+
     // Footer
     'footer_desc'            => 'Environmental Living & Sustainability Program of SMK Karya Bangsa Sintang.',
     'footer_menu'            => 'Menu',
     'footer_kontak'          => 'Contact',
-    'footer_credit'          => 'Made with',
+    'footer_credit'          => 'Made with Group 5',
 
     // About
     'about_title'            => 'About Us',
@@ -257,7 +283,7 @@ In addition, environmental education is integrated into learning activities. Stu
     'latar_information_conclusion' => 'In conclusion, a Go Green School plays an important role in protecting the environment. By applying eco-friendly habits at school, students learn to care for nature and build a better future.',
 
     'latar_description_title'    => 'DESCRIPTION',
-    'latar_description_text'     => '"Green School Tracker" is a web application designed to support the greening and environmental management program at SMK Karya Bangsa Sintang, West Kalimantan. The application helps the school monitor plant growth, manage information about regional native trees, and educate students about waste recycling through a waste bank calculator feature.
+    'latar_description_text'     => '"Go Green School" is a web application designed to support the greening and environmental management program at SMK Karya Bangsa Sintang, West Kalimantan. The application helps the school monitor plant growth, manage information about regional native trees, and educate students about waste recycling through a waste bank calculator feature.
 
 The application provides several main features that support environmental activities in the school. The main page displays a summary of the school\'s greening program statistics, including the total number of trees planted, total greening area, number of plant species, and overall plant health status.
 
@@ -498,7 +524,9 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     // Artikel page
     'artikel_title'                => 'Go Green Articles',
     'artikel_badge'                => 'Go Green Articles',
-    'artikel_hero_title'           => 'Inspiration for Green Action at School',
+    'artikel_hero_title'           => 'Green Insights for Real Action!',
+    'artikel_hero_title_line_1'    => 'Green Insights',
+    'artikel_hero_title_line_2'    => 'for Real Action!',
     'artikel_hero_desc'            => 'A collection of educational articles about waste management, waste banks, and environmental programs that can be applied at school.',
     'artikel_featured_label'       => 'Featured Articles',
     'artikel_featured_title'       => 'Simple Movements with Big Impact',
@@ -508,6 +536,14 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     'artikel_featured_alt'         => 'Featured Go Green article',
     'artikel_latest_title'         => 'Latest Articles',
     'artikel_latest_update'        => 'Weekly updates',
+    'artikel_read_more'            => 'Read more',
+    'artikel_explainer_label'      => 'Additional Insight',
+    'artikel_explainer_title_main' => 'Global Warming and',
+    'artikel_explainer_title_accent' => 'the Role of Go Green',
+    'artikel_explainer_p1'         => 'Global warming is a condition where Earth temperature keeps increasing over time. This happens because of <strong>greenhouse gases</strong> in the atmosphere. The <strong>Go Green</strong> movement helps reduce environmental problems while slowing global warming.',
+    'artikel_explainer_p2'         => 'Global warming is driven by human activities that release too many greenhouse gases, especially <strong>carbon dioxide (CO2)</strong> and methane. The main sources are fossil fuel combustion for electricity, factories, and transportation. These gases trap heat in the atmosphere through the <strong>greenhouse effect</strong>, causing Earth temperature to rise.',
+    'artikel_explainer_p3'         => 'The impacts are clear: polar ice melts faster, sea levels rise, weather becomes more extreme, and many living things struggle to adapt. Go Green actions offer real solutions, such as planting trees to absorb CO2, using renewable energy, saving electricity, and reducing plastic waste.',
+    'artikel_explainer_summary'    => 'In conclusion, global warming happens because too much heat is trapped in the atmosphere. Go Green practices are important to lower greenhouse gas emissions, maintain environmental balance, and protect Earth for future generations.',
     'artikel_item_1_title'         => '3 Steps to Reduce Plastic Waste in Class',
     'artikel_item_1_desc'          => 'Refill bottles, personal lunch boxes, and no single-use plastics can cut waste by up to 40%.',
     'artikel_item_1_tag'           => 'Education',
@@ -519,7 +555,7 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     'artikel_item_2_time'          => '6 min',
     'artikel_item_2_date'          => 'March 2026',
     'artikel_item_3_title'         => 'Local Trees Suitable for School Yards',
-    'artikel_item_3_desc'          => 'Tengkawang, jelutung, and meranti cool the campus and protect biodiversity.',
+    'artikel_item_3_desc'          => 'Eboni, jelutung, and meranti cool the campus and protect biodiversity.',
     'artikel_item_3_tag'           => 'Plants',
     'artikel_item_3_time'          => '5 min',
     'artikel_item_3_date'          => 'February 2026',
@@ -630,27 +666,32 @@ Go Green actions help reduce these problems. For example, planting trees helps a
 
     // Plant data
     // Plant 1: Rafflesia Arnoldii
+    'tanaman_1_nama'  => 'Rafflesia Arnoldii',
     'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
     'pohon_1_manfaat' => 'This giant flower is highly valuable as a botanical ecotourism magnet that attracts tourists and researchers from around the world. In the wild, its presence serves as an important ecological indicator to ensure that the primary forest area remains pristine and well-preserved.',
     'pohon_1_tinggi'  => '± 1m (flower)',
 
     // Plant 2: Pitcher Plant (Kantong Semar)
+    'tanaman_2_nama'  => 'Pitcher Plant',
     'pohon_2_lokasi'  => 'Tropical Rainforests of Nusantara',
     'pohon_2_manfaat' => 'This carnivorous plant plays a vital role in maintaining ecosystem balance by naturally controlling pest insect populations in its habitat. Beyond its ornamental value, the pitcher is also traditionally used by local communities as a unique vessel for cooking rice in their culinary traditions.',
     'pohon_2_tinggi'  => '± 1-2m (climbing)',
 
     // Plant 3: Calypso Orchid (Anggrek Hitam Kalimantan)
+    'tanaman_3_nama'  => 'Calypso Orchid',
     'pohon_3_lokasi'  => 'Kalimantan',
     'pohon_3_manfaat' => 'This endemic plant has extraordinary economic value as a prime target for world-class ornamental plant collectors due to its exotic charm. It also holds significant cultural importance as the official emblem of pride for East Kalimantan Province.',
     'pohon_3_tinggi'  => '± 30-60cm',
 
     // Plant 4: Sandalwood (Cendana)
+    'tanaman_4_nama'  => 'Sandalwood',
     'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
     'pohon_4_manfaat' => 'The essential oil extracted from its wood has fantastic export value as a primary ingredient for fragrance fixation in the global luxury perfume and cosmetics industry. Its wood pieces are also valuable for making soothing aromatherapy incense, herbal medicine, and high-artistic crafts.',
     'pohon_4_tinggi'  => '± 10-15m',
 
-    // Plant 5: Tengkawang (Borneo Camphor)
-    'pohon_5_lokasi'  => 'Kalimantan Forest',
-    'pohon_5_manfaat' => 'Its seeds produce high-value vegetable fat (Green Butter) exported as a key ingredient for cosmetic moisturizers and cocoa butter substitute in premium chocolate. For the Dayak people, tengkawang oil is also highly valuable as it has been traditionally used for cooking and in traditional healing rituals.',
-    'pohon_5_tinggi'  => '± 30m',
+    // Plant 5: Eboni Tree
+    'tanaman_5_nama'  => 'Ebony Tree',
+    'pohon_5_lokasi'  => 'Sulawesi',
+    'pohon_5_manfaat' => 'Ebony wood is recognized as the finest premium wood in the world due to its striking black color and extremely dense texture. This wood is highly valuable for crafting luxury furniture, premium musical instruments like professional guitars and bass guitars, jewelry, art carvings, and exclusive collectible items. Additionally, its resin has been traditionally used in herbal medicine.',
+    'pohon_5_tinggi'  => '± 20-40m',
 ];

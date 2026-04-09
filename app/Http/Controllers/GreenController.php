@@ -41,14 +41,6 @@ class GreenController extends Controller
     }
 
     /**
-     * Halaman Latar Belakang Masalah
-     */
-    public function latarBelakang()
-    {
-        return view('pages.latar-belakang');
-    }
-
-    /**
      * Halaman Artikel Go Green
      */
     public function artikel()
@@ -141,7 +133,7 @@ class GreenController extends Controller
         $request->validate([
             'kelas'   => 'required|string|max:100',
             'items'   => 'required|array',
-            'items.*' => 'nullable|numeric|min:0|max:10000',
+            'items.*' => 'nullable|numeric|min:0|max:1000',
         ], [
             'kelas.required' => __('app.val_kelas_required'),
         ]);

@@ -22,7 +22,7 @@ class InformasiTanaman extends Page
         return [
             [
                 'id'        => 1,
-                'nama'      => 'Tengkawang',
+                'nama'      => 'Pohon Eboni',
                 'nama_latin'=> 'Shorea stenoptera',
                 'jenis'     => 'Dipterocarpaceae',
                 'lokasi'    => 'Taman Depan Sekolah',

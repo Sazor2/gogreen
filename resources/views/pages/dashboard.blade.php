@@ -431,42 +431,231 @@
         </div>
     </section>
 
-    {{-- Eco-System Features --}}
+    {{-- Introduce & Description --}}
     <section class="dashboard-features mt-14 sm:mt-24 reveal-on-scroll">
-        <div class="text-center md:text-left mb-10">
-            <span class="text-tertiary font-bold tracking-[0.25em] text-xs uppercase mb-3 block">{{ __('app.dashboard_section_primary_label') }}</span>
-                <h2 class="dashboard-key-title dashboard-section-title font-headline text-2xl sm:text-3xl font-extrabold text-primary mb-6 sm:mb-10 tracking-tight text-center md:text-left">{{ __('app.dashboard_section_primary_title') }}</h2>
-        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
             
-            <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+              <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer"
+                  role="button"
+                  tabindex="0"
+                  onclick="openDashboardInfoModal('intro')"
+                  onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDashboardInfoModal('intro'); }">
                 <div class="absolute inset-0 bg-primary transition-colors duration-500 group-hover:bg-[#005b3e]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
                 <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
                     <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">recycling</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_feature_calc_title') }}</h3>
-                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">{{ __('app.dashboard_feature_calc_desc') }}</p>
-                    <a href="{{ url('/kalkulator') }}" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">{{ __('app.dashboard_feature_calc_cta') }}</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_intro_title') }}</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base line-clamp-4">{{ __('app.dashboard_intro_snippet') }}</p>
+                    <button type="button" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('intro')">{{ __('app.dashboard_article_read_more') }}</button>
                 </div>
             </div>
 
-            <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg">
+            <div class="dashboard-feature-card relative h-auto min-h-[260px] sm:h-[340px] md:h-[400px] rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer"
+                 role="button"
+                 tabindex="0"
+                 onclick="openDashboardInfoModal('desc')"
+                 onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDashboardInfoModal('desc'); }">
                 <div class="absolute inset-0 bg-tertiary transition-colors duration-500 group-hover:bg-[#375900]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
                 <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
                     <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">park</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_feature_edu_title') }}</h3>
-                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base">{{ __('app.dashboard_feature_edu_desc') }}</p>
-                    <a href="{{ url('/tanaman') }}" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow">{{ __('app.dashboard_feature_edu_cta') }}</a>
+                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_desc_title') }}</h3>
+                    <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base line-clamp-4">{{ __('app.dashboard_desc_snippet') }}</p>
+                    <button type="button" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('desc')">{{ __('app.dashboard_article_read_more') }}</button>
                 </div>
             </div>
 
         </div>
     </section>
+
+<div id="dashboard-info-modal-intro" class="fixed inset-0 z-[120] hidden items-center justify-center p-4" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-900/60" onclick="closeDashboardInfoModal('intro')"></div>
+        
+        <div class="relative z-10 w-full max-w-4xl max-h-[88vh] overflow-y-auto rounded-2xl bg-slate-50 shadow-2xl flex flex-col">
+            
+            <div class="bg-white px-6 sm:px-10 pt-8 pb-6 border-b border-gray-200">
+                <div class="flex items-start justify-between gap-6">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-glow" style="background: #d9f1e7; border: 1px solid #c3e5d8; box-shadow: 0 0 14px rgba(0, 105, 72, 0.14)">
+                            <span class="material-symbols-outlined text-white animate-pulse" style="font-size: 32px; color: #006948; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 32;">eco</span>
+                        </div>
+                        <div class="pt-1">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+                                <span class="material-symbols-outlined" style="font-size: 14px;">public</span> {{ __('app.dashboard_intro_badge') }}
+                            </span>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">{{ __('app.dashboard_intro_title') }}</h3>
+                            <p class="text-gray-600 text-sm sm:text-base font-medium">{{ __('app.dashboard_intro_modal_subtitle') }}</p>
+                        </div>
+                    </div>
+                    <button type="button" class="p-2 text-gray-400 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-colors flex-shrink-0" onclick="closeDashboardInfoModal('intro')" aria-label="Tutup popup Gerakan Hijau">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">close</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-1 px-6 sm:px-10 py-8 space-y-5">
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #d9f1e7; border: 1px solid #c3e5d8;">
+                        <span class="material-symbols-outlined group-hover:animate-spin-slow" style="font-size: 24px; color: #006948;">lightbulb</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_intro_section_1_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.latar_information_intro') }}</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #deefbe; border: 1px solid #cfe5a3;">
+                        <span class="material-symbols-outlined group-hover:animate-bounce-gentle" style="font-size: 24px; color: #406600;">nature</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_intro_section_2_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.latar_information_body') }}</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #d9f1e7; border: 1px solid #c3e5d8;">
+                        <span class="material-symbols-outlined group-hover:animate-spin-reverse" style="font-size: 24px; color: #006948;">auto_awesome</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_intro_section_3_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.latar_information_conclusion') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-info-modal-desc" class="fixed inset-0 z-[120] hidden items-center justify-center p-4" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-900/60" onclick="closeDashboardInfoModal('desc')"></div>
+        
+        <div class="relative z-10 w-full max-w-4xl max-h-[88vh] overflow-y-auto rounded-2xl bg-slate-50 shadow-2xl flex flex-col">
+            
+            <div class="bg-white px-6 sm:px-10 pt-8 pb-6 border-b border-gray-200">
+                <div class="flex items-start justify-between gap-6">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-glow" style="background: #d9f1e7; border: 1px solid #c3e5d8; box-shadow: 0 0 14px rgba(0, 105, 72, 0.14)">
+                            <span class="material-symbols-outlined text-white animate-pulse" style="font-size: 32px; color: #006948; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 32;">school</span>
+                        </div>
+                        <div class="pt-1">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+                                <span class="material-symbols-outlined" style="font-size: 14px;">public</span> {{ __('app.dashboard_desc_badge') }}
+                            </span>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">{{ __('app.dashboard_desc_title') }}</h3>
+                            <p class="text-gray-600 text-sm sm:text-base font-medium">{{ __('app.dashboard_desc_modal_subtitle') }}</p>
+                        </div>
+                    </div>
+                    <button type="button" class="p-2 text-gray-400 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-colors flex-shrink-0" onclick="closeDashboardInfoModal('desc')" aria-label="Tutup popup Go Green School">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">close</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-1 px-6 sm:px-10 py-8 space-y-5">
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #d9f1e7; border: 1px solid #c3e5d8;">
+                        <span class="material-symbols-outlined group-hover:animate-ping-slow" style="font-size: 24px; color: #006948;">devices</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_desc_section_1_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.dashboard_desc_section_1_text') }}</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #deefbe; border: 1px solid #cfe5a3;">
+                        <span class="material-symbols-outlined group-hover:animate-spin-slow" style="font-size: 24px; color: #406600;">settings</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_desc_section_2_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.dashboard_desc_section_2_text') }}</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 px-6 py-5 rounded-xl shadow-sm flex items-start gap-4 hover:border-gray-300 transition-all hover:shadow-md group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300 animate-shimmer" style="background: #d9f1e7; border: 1px solid #c3e5d8;">
+                        <span class="material-symbols-outlined group-hover:animate-bounce-gentle" style="font-size: 24px; color: #006948;">recycling</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-900 text-lg font-bold mb-2">{{ __('app.dashboard_desc_section_3_title') }}</p>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">{{ __('app.dashboard_desc_section_3_text') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2); }
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes spinReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes bounceGentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        @keyframes pingSlow {
+            75%, 100% { transform: scale(1.5); opacity: 0; }
+        }
+        .animate-glow { animation: glow 2.5s infinite; }
+        .animate-shimmer { animation: shimmer 2s infinite; }
+        .animate-spin-slow { animation: spinSlow 2s infinite linear; }
+        .animate-spin-reverse { animation: spinReverse 2.5s infinite linear; }
+        .animate-bounce-gentle { animation: bounceGentle 2s infinite; }
+        .animate-ping-slow { animation: pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+        html.dark.dashboard-page #dashboard-info-modal-intro .text-gray-900,
+        html.dark.dashboard-page #dashboard-info-modal-desc .text-gray-900 {
+            color: #e6f5ed !important;
+            text-shadow: 0 0 10px rgba(127, 243, 190, 0.18);
+        }
+
+        html.dark.dashboard-page #dashboard-info-modal-intro .text-gray-600,
+        html.dark.dashboard-page #dashboard-info-modal-desc .text-gray-600 {
+            color: #b6c7d3 !important;
+        }
+
+        html.dark.dashboard-page #dashboard-info-modal-intro p strong,
+        html.dark.dashboard-page #dashboard-info-modal-desc p strong {
+            color: #bff7de !important;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(127, 243, 190, 0.35);
+        }
+
+        html.dark.dashboard-page #dashboard-info-modal-intro .animate-glow,
+        html.dark.dashboard-page #dashboard-info-modal-desc .animate-glow,
+        html.dark.dashboard-page #dashboard-info-modal-intro .animate-shimmer,
+        html.dark.dashboard-page #dashboard-info-modal-desc .animate-shimmer {
+            background: linear-gradient(145deg, #133127, #1a3b2f) !important;
+            border-color: #3d7a62 !important;
+            box-shadow: 0 0 18px rgba(127, 243, 190, 0.35), inset 0 0 10px rgba(127, 243, 190, 0.18) !important;
+        }
+
+        html.dark.dashboard-page #dashboard-info-modal-intro .animate-glow .material-symbols-outlined,
+        html.dark.dashboard-page #dashboard-info-modal-desc .animate-glow .material-symbols-outlined,
+        html.dark.dashboard-page #dashboard-info-modal-intro .animate-shimmer .material-symbols-outlined,
+        html.dark.dashboard-page #dashboard-info-modal-desc .animate-shimmer .material-symbols-outlined {
+            color: #98f5cd !important;
+            text-shadow: 0 0 12px rgba(127, 243, 190, 0.7);
+        }
+    </style>
 
     {{-- Articles & Education Grid (Solusi #1: Kerangka Real Image) --}}
     <section class="dashboard-articles mt-16 sm:mt-28 reveal-on-scroll">
@@ -486,7 +675,7 @@
             $articles = [
                 [
                     'title' => __('app.dashboard_article_1_title'),
-                    'link'  => '/artikel#artikel-plastik',
+                    'link'  => 'https://www.detik.com/edu/detikpedia/d-6918652/ini-bahaya-plastik-sekali-pakai-yang-mengancam-lingkungan-kesehatan-manusia',
                     'image' => 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
                     'tag'   => __('app.dashboard_article_1_tag'),
                     'date'  => __('app.dashboard_article_1_date'),
@@ -494,7 +683,7 @@
                 ],
                 [
                     'title' => __('app.dashboard_article_2_title'),
-                    'link'  => '/artikel#artikel-bank-sampah',
+                    'link'  => 'https://plasticsmartcities.wwf.id/feature/article/bank-sampah-konsep-dan-peran-dalam-pengelolaan-lingkungan',
                     'image' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
                     'tag'   => __('app.dashboard_article_2_tag'),
                     'date'  => __('app.dashboard_article_2_date'),
@@ -502,7 +691,7 @@
                 ],
                 [
                     'title' => __('app.dashboard_article_3_title'),
-                    'link'  => '/artikel#artikel-pohon',
+                    'link'  => 'https://www.halodoc.com/artikel/ini-5-manfaat-menanam-pohon-di-sekitar-rumah',
                     'image' => 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600&auto=format&fit=crop', // Ganti dengan {{ asset('path/foto.jpg') }} nantinya
                     'tag'   => __('app.dashboard_article_3_tag'),
                     'date'  => __('app.dashboard_article_3_date'),
@@ -579,6 +768,30 @@
 
 {{-- Script untuk memicu animasi reveal-on-scroll (Solusi #2) --}}
 <script>
+    function openDashboardInfoModal(type) {
+        const modal = document.getElementById(`dashboard-info-modal-${type}`);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeDashboardInfoModal(type) {
+        const modal = document.getElementById(`dashboard-info-modal-${type}`);
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key !== 'Escape') return;
+        closeDashboardInfoModal('intro');
+        closeDashboardInfoModal('desc');
+    });
+
     document.addEventListener("DOMContentLoaded", function() {
         const revealElements = document.querySelectorAll(".reveal-on-scroll");
 

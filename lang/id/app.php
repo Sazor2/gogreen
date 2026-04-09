@@ -79,6 +79,25 @@ return [
     'quick_hitung_poin'      => 'Hitung Poin',
     'quick_kalkulator_sub'   => 'Kalkulator bank sampah',
 
+    'dashboard_intro_title'            => 'Gerakan Hijau Kami Dimulai dari Sini',
+    'dashboard_intro_snippet'          => 'Go Green School adalah sekolah yang mempromosikan kesadaran lingkungan dan praktik keberlanjutan untuk menciptakan lingkungan belajar yang bersih, sehat, dan ramah lingkungan.',
+    'dashboard_intro_badge'            => 'Gerakan Hijau',
+    'dashboard_intro_modal_subtitle'   => 'Membangun kesadaran lingkungan bersama untuk masa depan berkelanjutan',
+    'dashboard_intro_section_1_title'  => '01. Definisi & Visi',
+    'dashboard_intro_section_2_title'  => '02. Program & Kegiatan',
+    'dashboard_intro_section_3_title'  => '03. Dampak & Kesimpulan',
+
+    'dashboard_desc_title'             => 'Apa Itu Go Green School?',
+    'dashboard_desc_snippet'           => 'Go Green School adalah aplikasi web untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang secara ringan dan interaktif.',
+    'dashboard_desc_badge'             => 'Go Green School',
+    'dashboard_desc_modal_subtitle'    => 'Platform pengelolaan lingkungan sekolah untuk keberlanjutan digital',
+    'dashboard_desc_section_1_title'   => '01. Tentang Aplikasi',
+    'dashboard_desc_section_1_text'    => 'Go Green School merupakan sebuah aplikasi berbasis web yang dirancang untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang, Kalimantan Barat. Aplikasi ini membantu sekolah dalam memantau pertumbuhan tanaman, mengelola informasi mengenai pohon lokal khas daerah, serta mengedukasi siswa tentang daur ulang sampah melalui fitur kalkulator bank sampah.',
+    'dashboard_desc_section_2_title'   => '02. Fitur Utama',
+    'dashboard_desc_section_2_text'    => 'Aplikasi ini menyediakan beberapa fitur utama yang mendukung kegiatan lingkungan di sekolah. Halaman utama menampilkan ringkasan data program penghijauan, seperti jumlah pohon yang ditanam, luas area penghijauan, jumlah spesies tanaman, serta kondisi kesehatan tanaman secara keseluruhan. Aplikasi ini juga menampilkan daftar lengkap tanaman lokal Kalimantan yang ada di lingkungan sekolah, beserta informasi seperti nama lokal dan nama ilmiah, jenis tanaman, lokasi penanaman, manfaat ekologis dan ekonomis, perkiraan tinggi tanaman, serta kondisi kesehatannya.',
+    'dashboard_desc_section_3_title'   => '03. Fitur Kalkulator Bank Sampah',
+    'dashboard_desc_section_3_text'    => 'Selain itu, aplikasi juga dilengkapi dengan fitur kalkulator bank sampah yang memungkinkan pengguna menghitung poin berdasarkan jenis dan berat sampah. Fitur ini membantu siswa memahami nilai dari kegiatan daur ulang secara sederhana dan interaktif. Aplikasi ini dibangun tanpa ketergantungan database, sehingga bersifat ringan, mudah dijalankan, dan cocok digunakan sebagai media pembelajaran maupun demonstrasi.',
+
     // Tanaman
     'tanaman_title'          => 'Manajemen Tanaman',
     'tanaman_desc'           => 'Daftar 5 pohon khas Kalimantan Barat di lingkungan SMK Karya Bangsa Sintang',
@@ -108,18 +127,6 @@ return [
 
     'catatan_teknis'         => 'Catatan Teknis',
     'catatan_teknis_desc'    => 'Data pohon di atas disimpan sebagai :array langsung di dalam :controller. Tidak ada query ke database — data dirender langsung dari memori ke tampilan Blade.',
-
-    // Pohon data
-    'pohon_1_manfaat'        => 'Pohon penghasil minyak tengkawang yang bernilai ekonomi tinggi. Digunakan untuk industri kosmetik dan farmasi. Kayu berkualitas baik untuk bahan bangunan. Berperan penting dalam menjaga keseimbangan ekosistem hutan tropis.',
-    'pohon_1_lokasi'         => 'Taman Depan Sekolah',
-    'pohon_2_manfaat'        => 'Pohon penghasil getah yang dikenal sebagai jelutung asli. Getahnya digunakan sebagai bahan baku pembuatan karet. Kayu lunak berkualitas untuk furniture dan patung. Tersebar alami di kawasan Kalimantan Barat.',
-    'pohon_2_lokasi'         => 'Samping Gedung Utama',
-    'pohon_3_manfaat'        => 'Kayu premium dengan warna merah cerah, sangat berharga untuk furniture mewah dan konstruksi. Tahan terhadap anai-anai dan cuaca ekstrem. Pohon penting dalam program reboisasi hutan tropis Indonesia. Membantu stabilisasi tanah dan pencegahan erosi.',
-    'pohon_3_lokasi'         => 'Kebun Sekolah Timur',
-    'pohon_4_manfaat'        => 'Pohon penghasil buah rambutan yang kaya vitamin C dan gizi. Buahnya dapat dikonsumsi segar atau diproses menjadi produk makanan. Akar dan daun memiliki khasiat tradisional untuk kesehatan. Menarik fauna lokal termasuk burung dan kelelawar.',
-    'pohon_4_lokasi'         => 'Area Parkir Siswa',
-    'pohon_5_manfaat'        => 'Pohon berkayu sangat keras dan tahan lama, dikenal sebagai kayu besi. Digunakan untuk konstruksi rumah tradisional, tiang listrik, dan jembatan. Sangat berharga dan menjadi simbol kekayaan alam Kalimantan. Status langka dan dilindungi untuk kelestarian hutan.',
-    'pohon_5_lokasi'         => 'Halaman Belakang Sekolah',
 
     // Kalkulator
     'kalkulator_title'       => 'Kalkulator Bank Sampah',
@@ -198,11 +205,30 @@ return [
     'tips_title'             => 'Tips Meningkatkan Poin',
     'tips_desc'              => 'Pisahkan sampah sejak dari rumah dan bawa ke bank sampah sekolah setiap hari. Sampah elektronik memberikan poin terbanyak — jangan dibuang sembarangan!',
 
+    'kalkulator_guide_title'           => 'Cara Mengolah Sampah Rumah Tangga dengan Benar dan Efektif',
+    'kalkulator_guide_objective_text'  => 'Mengolah sampah secara mandiri bertujuan untuk mengurangi volume limbah yang berakhir di tempat pembuangan akhir (TPA), mencegah pencemaran lingkungan, serta memanfaatkan kembali material yang masih memiliki nilai guna atau ekonomi.',
+    'kalkulator_guide_tools_label'     => 'Alat dan Bahan yang Diperlukan',
+    'kalkulator_guide_tool_1'          => 'Minimal tiga tempat sampah berbeda (untuk organik, anorganik, dan B3).',
+    'kalkulator_guide_tool_2'          => 'Sarung tangan karet untuk melindungi tangan.',
+    'kalkulator_guide_tool_3'          => 'Wadah komposter atau lubang biopori (untuk sampah organik).',
+    'kalkulator_guide_tool_4'          => 'Kantong atau karung untuk mengumpulkan sampah daur ulang.',
+    'kalkulator_guide_steps_label'     => 'Langkah-Langkah Pengolahan',
+    'kalkulator_guide_step_1_title'    => 'Lakukan Pemilahan Sejak Awal',
+    'kalkulator_guide_step_1_text'     => 'Langkah pertama dan paling krusial adalah memisahkan sampah langsung dari sumbernya. Sediakan tempat sampah yang berbeda untuk sampah organik (sisa makanan, dedaunan), sampah anorganik (plastik, kertas, kaca, logam), dan sampah B3 atau Bahan Berbahaya dan Beracun (baterai, lampu neon, obat kedaluwarsa).',
+    'kalkulator_guide_step_2_title'    => 'Olah Sampah Organik Menjadi Kompos',
+    'kalkulator_guide_step_2_text'     => 'Jangan buang sisa makanan atau sayuran ke tempat sampah umum. Masukkan sampah organik ke dalam wadah komposter atau lubang tanah (biopori). Tambahkan sedikit tanah atau cairan EM4 untuk mempercepat pembusukan. Biarkan selama beberapa minggu hingga berubah menjadi pupuk kompos yang kaya nutrisi untuk tanaman di pekarangan Anda.',
+    'kalkulator_guide_step_3_title'    => 'Bersihkan dan Kumpulkan Sampah Anorganik',
+    'kalkulator_guide_step_3_text'     => 'Untuk limbah plastik, botol, atau kaca, bersihkan dan keringkan terlebih dahulu agar tidak menimbulkan bau. Pipihkan botol plastik atau kardus untuk menghemat tempat penyimpanan. Setelah terkumpul, Anda bisa mendaur ulangnya menjadi barang kerajinan atau menyetorkannya ke Bank Sampah terdekat untuk ditukar menjadi saldo atau uang tunai.',
+    'kalkulator_guide_step_4_title'    => 'Tangani Sampah B3 Secara Khusus',
+    'kalkulator_guide_step_4_text'     => 'Sampah B3 tidak boleh dibuang sembarangan atau disatukan dengan limbah rumah tangga lainnya karena dapat mencemari tanah dan air. Simpan dalam wadah tertutup yang aman dan serahkan kepada petugas kebersihan khusus, atau bawa ke fasilitas pengolahan limbah berbahaya yang tersedia di kota Anda.',
+    'kalkulator_guide_step_5_title'    => 'Kurangi Produksi Sampah (Reduce)',
+    'kalkulator_guide_step_5_text'     => 'Pengolahan paling efektif adalah pencegahan. Biasakan untuk membawa tas belanja sendiri, menggunakan botol minum atau kotak makan yang bisa dicuci (reusable), serta menghindari produk dengan kemasan plastik sekali pakai. Langkah kecil ini akan sangat mengurangi volume sampah yang harus Anda olah setiap harinya.',
+
     // Footer
     'footer_desc'            => 'Program Lingkungan Hidup & Sustainability SMK Karya Bangsa Sintang.',
     'footer_menu'            => 'Menu',
     'footer_kontak'          => 'Kontak',
-    'footer_credit'          => 'Dibuat dengan',
+    'footer_credit'          => 'Dibuat dengan Kelompok 5',
 
     // About
     'about_title'            => 'Tentang Kami',
@@ -257,7 +283,7 @@ Selain itu, pendidikan lingkungan terintegrasi dalam kegiatan pembelajaran. Sisw
     'latar_information_conclusion' => 'Kesimpulannya, Go Green School memainkan peran penting dalam melindungi lingkungan. Dengan menerapkan kebiasaan ramah lingkungan di sekolah, siswa belajar untuk peduli terhadap alam dan membangun masa depan yang lebih baik.',
 
     'latar_description_title'    => 'DESKRIPSI',
-    'latar_description_text'     => '"Green School Tracker" merupakan sebuah aplikasi berbasis web yang dirancang untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang, Kalimantan Barat. Aplikasi ini membantu sekolah dalam memantau pertumbuhan tanaman, mengelola informasi mengenai pohon lokal khas daerah, serta mengedukasi siswa tentang daur ulang sampah melalui fitur kalkulator bank sampah.
+    'latar_description_text'     => '"Go Green School" merupakan sebuah aplikasi berbasis web yang dirancang untuk mendukung program penghijauan dan pengelolaan lingkungan di SMK Karya Bangsa Sintang, Kalimantan Barat. Aplikasi ini membantu sekolah dalam memantau pertumbuhan tanaman, mengelola informasi mengenai pohon lokal khas daerah, serta mengedukasi siswa tentang daur ulang sampah melalui fitur kalkulator bank sampah.
 
 Aplikasi ini menyediakan beberapa fitur utama yang mendukung kegiatan lingkungan di sekolah. Halaman utama menampilkan ringkasan data program penghijauan, seperti jumlah pohon yang ditanam, luas area penghijauan, jumlah spesies tanaman, serta kondisi kesehatan tanaman secara keseluruhan.
 
@@ -498,7 +524,9 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     // Artikel page
     'artikel_title'                => 'Artikel Go Green',
     'artikel_badge'                => 'Artikel Go Green',
-    'artikel_hero_title'           => 'Inspirasi Aksi Hijau di Sekolah',
+    'artikel_hero_title'           => 'Wawasan Hijau untuk Aksi Nyata!',
+    'artikel_hero_title_line_1'    => 'Wawasan Hijau',
+    'artikel_hero_title_line_2'    => 'untuk Aksi Nyata!',
     'artikel_hero_desc'            => 'Kumpulan artikel edukatif seputar pengelolaan sampah, bank sampah, dan program lingkungan yang bisa langsung diterapkan di sekolah.',
     'artikel_featured_label'       => 'Artikel Pilihan',
     'artikel_featured_title'       => 'Gerakan Sederhana yang Memberi Dampak Besar',
@@ -508,6 +536,14 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     'artikel_featured_alt'         => 'Artikel pilihan Go Green',
     'artikel_latest_title'         => 'Artikel Terbaru',
     'artikel_latest_update'        => 'Update mingguan',
+    'artikel_read_more'            => 'Baca selengkapnya',
+    'artikel_explainer_label'      => 'Penjelasan Tambahan',
+    'artikel_explainer_title_main' => 'Pemanasan Global dan',
+    'artikel_explainer_title_accent' => 'Peran Go Green',
+    'artikel_explainer_p1'         => 'Pemanasan global adalah kondisi saat suhu Bumi meningkat dari waktu ke waktu. Hal ini terjadi karena adanya <strong>gas rumah kaca</strong> di atmosfer. Gerakan <strong>Go Green</strong> membantu mengurangi masalah lingkungan sekaligus memperlambat laju pemanasan global.',
+    'artikel_explainer_p2'         => 'Pemanasan global dipicu oleh aktivitas manusia yang menghasilkan banyak gas rumah kaca, terutama <strong>karbon dioksida (CO2)</strong> dan metana. Sumber utamanya berasal dari pembakaran bahan bakar fosil untuk listrik, pabrik, dan kendaraan. Gas-gas ini menahan panas di atmosfer melalui <strong>efek rumah kaca</strong>, sehingga suhu Bumi terus naik.',
+    'artikel_explainer_p3'         => 'Dampaknya terlihat jelas: es kutub mencair lebih cepat, permukaan laut naik, cuaca makin ekstrem, dan banyak makhluk hidup kesulitan beradaptasi. Tindakan Go Green memberi solusi nyata, seperti menanam pohon untuk menyerap CO2, memakai energi terbarukan, menghemat listrik, dan mengurangi limbah plastik.',
+    'artikel_explainer_summary'    => 'Kesimpulannya, pemanasan global terjadi karena terlalu banyak panas terjebak di atmosfer. Praktik Go Green penting untuk menurunkan emisi gas rumah kaca, menjaga keseimbangan lingkungan, dan melindungi bumi agar tetap aman untuk generasi mendatang.',
     'artikel_item_1_title'         => '3 Langkah Kurangi Sampah Plastik di Kelas',
     'artikel_item_1_desc'          => 'Botol isi ulang, kotak makan pribadi, dan aturan tanpa plastik sekali pakai bisa memangkas sampah hingga 40%.',
     'artikel_item_1_tag'           => 'Edukasi',
@@ -519,7 +555,7 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     'artikel_item_2_time'          => '6 menit',
     'artikel_item_2_date'          => 'Maret 2026',
     'artikel_item_3_title'         => 'Pohon Lokal yang Cocok untuk Halaman Sekolah',
-    'artikel_item_3_desc'          => 'Tengkawang, jelutung, dan meranti mampu menyejukkan area sekolah sekaligus menjaga biodiversitas.',
+    'artikel_item_3_desc'          => 'Eboni, jelutung, dan meranti mampu menyejukkan area sekolah sekaligus menjaga biodiversitas.',
     'artikel_item_3_tag'           => 'Tanaman',
     'artikel_item_3_time'          => '5 menit',
     'artikel_item_3_date'          => 'Februari 2026',
@@ -630,27 +666,32 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
 
     // Plant data - Tanaman
     // Pohon 1: Rafflesia Arnoldii
+    'tanaman_1_nama'  => 'Rafflesia Arnoldii',
     'pohon_1_lokasi'  => 'Sumatra (Bengkulu, Jambi, Riau)',
     'pohon_1_manfaat' => 'Bunga raksasa ini sangat bermanfaat sebagai magnet ekowisata botani yang mampu mendatangkan turis dan peneliti dari seluruh dunia. Di alam liar, kehadirannya menjadi indikator penting bagi ekologi untuk memastikan bahwa kawasan hutan primer tersebut masih murni dan terjaga.',
     'pohon_1_tinggi'  => '± 1m (bunga)',
 
     // Pohon 2: Kantong Semar
+    'tanaman_2_nama'  => 'Kantong Semar',
     'pohon_2_lokasi'  => 'Hutan Hujan Tropis Nusantara',
     'pohon_2_manfaat' => 'Tanaman karnivora ini sangat berperan menjaga keseimbangan ekosistem dengan menjadi pengendali alami populasi hama serangga di habitat sekitarnya. Selain bernilai jual sebagai tanaman hias, kantongnya juga sering dimanfaatkan masyarakat lokal sebagai wadah menanak nasi tradisional yang khas.',
     'pohon_2_tinggi'  => '± 1-2m (merambat)',
 
     // Pohon 3: Anggrek Hitam Kalimantan
+    'tanaman_3_nama'  => 'Anggrek Hitam Kalimantan',
     'pohon_3_lokasi'  => 'Kalimantan',
     'pohon_3_manfaat' => 'Tanaman endemik ini bernilai ekonomi luar biasa sebagai incaran utama kolektor tanaman hias kelas dunia berkat pesona eksotisnya. Selain itu, ia juga memiliki peranan penting secara budaya karena dijadikan maskot resmi kebanggaan Provinsi Kalimantan Timur.',
     'pohon_3_tinggi'  => '± 30-60cm',
 
     // Pohon 4: Cendana
+    'tanaman_4_nama'  => 'Cendana',
     'pohon_4_lokasi'  => 'Nusa Tenggara (NTT)',
     'pohon_4_manfaat' => 'Ekstrak minyak dari kayunya bernilai ekspor fantastis karena menjadi bahan baku utama pengikat aroma dalam industri parfum dan kosmetik mewah global. Potongan kayunya juga sangat bermanfaat untuk dijadikan dupa aromaterapi yang menenangkan, obat herbal, hingga kerajinan ukir bernilai seni tinggi.',
     'pohon_4_tinggi'  => '± 10-15m',
 
-    // Pohon 5: Tengkawang
-    'pohon_5_lokasi'  => 'Hutan Kalimantan',
-    'pohon_5_manfaat' => 'Bijinya menghasilkan lemak nabati (Green Butter) bernilai tinggi yang diekspor sebagai bahan dasar pelembap kosmetik dan pengganti mentega kakao pada cokelat premium. Bagi masyarakat Dayak, minyak tengkawang juga sangat berharga karena secara turun-temurun digunakan untuk keperluan memasak hingga ritual pengobatan tradisional.',
-    'pohon_5_tinggi'  => '± 30m',
+    // Pohon 5: Eboni
+    'tanaman_5_nama'  => 'Pohon Eboni',
+    'pohon_5_lokasi'  => 'Sulawesi',
+    'pohon_5_manfaat' => 'Kayu eboni dikenal sebagai kayu premium terbaik di dunia karena warna hitam legamnya yang elegan dan tekstur yang sangat padat. Kayu ini sangat berharga untuk pembuatan perabotan mewah, alat musik bernilai tinggi seperti gitar dan gitar bass profesional, perhiasan, ukiran seni, dan berbagai barang koleksi eksklusif. Selain itu, getahnya juga digunakan tradisional untuk pengobatan herbal.',
+    'pohon_5_tinggi'  => '± 20-40m',
 ];
