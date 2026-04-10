@@ -1246,24 +1246,24 @@
 
         @media (max-width: 768px) {
             .decor-tree {
-                right: 1rem;
-                bottom: 2.6rem;
+                right: 0.75rem;
+                bottom: 2rem;
             }
 
             .decor-tree .tree-wrap {
-                width: 72px;
-                height: 72px;
+                width: 58px;
+                height: 58px;
             }
 
             .speech-bubble {
-                right: -8px;
-                bottom: calc(100% + 18px);
-                width: 196px;
-                font-size: 12px;
+                right: -6px;
+                bottom: calc(100% + 14px);
+                width: 156px;
+                font-size: 11px;
             }
 
             .speech-bubble-body {
-                font-size: 12px;
+                font-size: 11px;
             }
         }
     </style>
