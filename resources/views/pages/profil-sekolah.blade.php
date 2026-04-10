@@ -152,23 +152,23 @@
 </style>
 
 {{-- Hero Section --}}
-<div class="relative max-w-7xl mx-auto px-6 md:px-8 mt-8">
-    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+<div class="relative w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-8">
+    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img
-                src="{{ asset('images/begeron.jpeg') }}"
+                src="{{ asset('images/sekolahkb.png') }}"
                 alt="Profil Sekolah Hero"
                 class="w-full h-full object-cover"
             >
         </div>
 
-        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/70 via-[#0a2f22]/30 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
         <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
         <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
-                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default reveal-on-scroll reveal-delay-1">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] shadow-[0_0_10px_#a2f31f] pulse-glow"></span>
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default reveal-on-scroll reveal-delay-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] shadow-[0_0_10px_#a2f31f] pulse-glow"></span>
                 {{ __('app.badge_environment_platform') }}
             </div>
             <h1 class="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white reveal-on-scroll reveal-delay-2">

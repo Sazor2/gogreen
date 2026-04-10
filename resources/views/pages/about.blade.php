@@ -116,17 +116,82 @@
     html.dark.about-page .about-member-icon {
         color: #a2f31f;
     }
+
+    /* Click-based Flip Card Animation */
+    .flip-card-wrapper {
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .flip-card-container {
+        position: relative;
+        width: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card-container.flipped {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        width: 100%;
+        backface-visibility: hidden;
+        border-radius: 2.5rem;
+    }
+
+    .flip-card-front {
+        z-index: 2;
+    }
+
+    .flip-card-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: rotateY(180deg);
+        background-image: url('{{ asset("images/team.jpg") }}');
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(0, 0, 0, 0.4);
+        background-blend-mode: overlay;
+    }
+
+    .flip-card-back::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        border-radius: 2.5rem;
+    }
+
+    .flip-card-back-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        color: white;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 900;
+        font-family: 'DM Sans', sans-serif;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        z-index: 1;
+    }
 </style>
 
 <main class="font-body bg-[var(--eco-bg)] min-h-screen pb-20">
     {{-- Hero Section (Dashboard Style) --}}
-    <section class="relative mt-8 min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white max-w-7xl mx-auto rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
+<div class="relative w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-8">
+    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img src="{{ asset('images/begeron.jpeg') }}" class="w-full h-full object-cover" alt="Background">
+            <img src="{{ asset('images/sekolahkb.png') }}" class="w-full h-full object-cover" alt="Background">
         </div>
 
-        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/70 via-[#0a2f22]/30 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
         <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
         <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
@@ -143,6 +208,7 @@
         </div>
 
     </section>
+</div>
 
     {{-- Developer Profile --}}
     <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
@@ -173,22 +239,34 @@
             <div class="relative">
                 <div class="absolute -inset-6 bg-[var(--eco-accent)]/20 rounded-[3rem] rotate-3 -z-10"></div>
                 
-                <div class="bg-white p-12 rounded-[2.5rem] editorial-shadow text-center border border-emerald-50 reveal-on-scroll">
-                    <div class="relative w-32 h-32 mx-auto mb-8">
-                        <div class="absolute inset-0 bg-[var(--eco-accent)] rounded-full animate-ping opacity-20"></div>
-                        <div class="relative w-full h-full bg-slate-50 rounded-full flex items-center justify-center border-4 border-white shadow-inner">
-                            <span class="material-symbols-outlined text-5xl text-[var(--eco-dark)]">person</span>
-                        </div>
-                    </div>
+                <div class="flip-card-wrapper editorial-shadow reveal-on-scroll" onclick="document.querySelector('.flip-card-container').classList.toggle('flipped')">
+                    <div class="flip-card-container">
+                        <!-- Front: Original Card Content -->
+                        <div class="flip-card-front bg-white p-12 rounded-[2.5rem] text-center border border-emerald-50">
+                            <div class="relative w-32 h-32 mx-auto mb-8">
+                                <div class="absolute inset-0 bg-[var(--eco-accent)] rounded-full animate-ping opacity-20"></div>
+                                <div class="relative w-full h-full bg-slate-50 rounded-full flex items-center justify-center border-4 border-white shadow-inner">
+                                    <span class="material-symbols-outlined text-5xl text-[var(--eco-dark)]">person</span>
+                                </div>
+                            </div>
 
-                    <h3 class="text-3xl font-headline font-black text-[var(--eco-dark)] mb-2">{{ __('app.about_name') }}</h3>
-                    <p class="text-[var(--eco-medium)] font-black text-xs tracking-[0.2em] uppercase mb-6">{{ __('app.about_role') }}</p>
-                    
-                    <div class="inline-block px-6 py-3 rounded-2xl bg-slate-50 border border-slate-100">
-                        <p class="text-slate-400 text-xs font-bold leading-relaxed">
-                            {{ __('app.about_school') }} <br> 
-                            <span class="text-[var(--eco-dark)] uppercase tracking-widest text-[10px]">{{ __('app.about_year') }}</span>
-                        </p>
+                            <h3 class="text-3xl font-headline font-black text-[var(--eco-dark)] mb-2">{{ __('app.about_name') }}</h3>
+                            <p class="text-[var(--eco-medium)] font-black text-xs tracking-[0.2em] uppercase mb-6">{{ __('app.about_role') }}</p>
+                            
+                            <div class="inline-block px-6 py-3 rounded-2xl bg-slate-50 border border-slate-100">
+                                <p class="text-slate-400 text-xs font-bold leading-relaxed">
+                                    {{ __('app.about_school') }} <br> 
+                                    <span class="text-[var(--eco-dark)] uppercase tracking-widest text-[10px]">{{ __('app.about_year') }}</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Back: Photo -->
+                        <div class="flip-card-back w-full rounded-[2.5rem] border border-emerald-50 relative" style="height: 440px;">
+                            <div class="flip-card-back-text">
+                                "{{ __('app.about_name') }}"
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -198,8 +198,8 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <img class="w-full h-full object-cover" src="{{ asset('images/sampah.jpg') }}" alt="Calculator Hero">
         </div>
 
-        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/70 via-[#0a2f22]/30 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
         <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
         <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
