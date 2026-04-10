@@ -180,29 +180,255 @@
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         z-index: 1;
     }
+
+    /* Mobile-only tuning: keep desktop untouched */
+    @media (max-width: 768px) {
+        .about-main {
+            padding-bottom: 3.25rem;
+        }
+
+        .about-hero-overlay-left,
+        .about-hero-overlay-right {
+            display: none !important;
+        }
+
+        .about-hero-glow {
+            display: none !important;
+        }
+
+        /* Keep animation behavior consistent with desktop */
+        .reveal-on-scroll {
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .tech-card {
+            transition: all 0.3s ease;
+        }
+
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-dev-section,
+        .about-team-section,
+        .about-tools-section {
+            padding-top: 3.4rem;
+            padding-bottom: 3.4rem;
+        }
+
+        .about-dev-grid {
+            gap: 2rem;
+        }
+
+        .about-dev-stack {
+            gap: 0.35rem;
+            padding-top: 0.25rem;
+        }
+
+        .about-dev-stack span {
+            font-size: 10px;
+            padding: 0.34rem 0.62rem;
+            border-radius: 0.6rem;
+        }
+
+        .about-dev-copy span {
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.45rem;
+        }
+
+        .about-dev-copy h2 {
+            font-size: 1.7rem;
+        }
+
+        .about-dev-copy p {
+            font-size: 0.86rem;
+            line-height: 1.55;
+        }
+
+        .about-flip-front {
+            height: 340px;
+            padding: 1.6rem;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-flip-front .relative.w-32.h-32 {
+            width: 5.5rem;
+            height: 5.5rem;
+            min-width: 5.5rem;
+            min-height: 5.5rem;
+            aspect-ratio: 1 / 1;
+            margin-bottom: 0.9rem;
+        }
+
+        .about-flip-front .relative.w-32.h-32 > div,
+        .about-flip-front .relative.w-32.h-32 > div > div {
+            border-radius: 9999px;
+        }
+
+        .about-flip-front h3 {
+            font-size: 1.45rem;
+        }
+
+        .about-flip-front p {
+            font-size: 10px;
+        }
+
+        .about-flip-back {
+            height: 340px !important;
+            border-radius: 2rem;
+        }
+
+        .about-team-head,
+        .about-tools-head {
+            margin-bottom: 1.75rem;
+        }
+
+        .about-team-head span,
+        .about-tools-head span {
+            font-size: 10px;
+            letter-spacing: 0.16em;
+        }
+
+        .about-team-head h2,
+        .about-tools-head h2 {
+            font-size: 1.75rem;
+        }
+
+        .about-team-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .about-team-grid .team-card {
+            padding: 0.85rem;
+            border-radius: 1rem;
+        }
+
+        .about-team-grid .about-member-icon-wrap {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 0.7rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .about-team-grid .about-member-icon {
+            font-size: 1.05rem;
+        }
+
+        .about-team-grid h4 {
+            font-size: 0.8rem;
+            min-height: 2.1rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .about-team-grid .space-y-2 {
+            row-gap: 0.2rem;
+        }
+
+        .about-team-grid .space-y-2 span {
+            font-size: 8px;
+            letter-spacing: 0.08em;
+        }
+
+        .about-tools-box {
+            padding: 1rem;
+            border-radius: 1.5rem;
+        }
+
+        .about-tools-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+        }
+
+        .about-tools-grid .tech-card {
+            padding: 0.6rem;
+            border-radius: 0.8rem;
+        }
+
+        .about-tool-head {
+            gap: 0.45rem;
+            margin-bottom: 0.42rem;
+        }
+
+        .about-tools-grid .tech-card .w-10 {
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+        }
+
+        .about-tools-grid .tech-card .material-symbols-outlined {
+            font-size: 0.95rem;
+        }
+
+        .about-tool-name {
+            font-size: 0.66rem;
+            line-height: 1.25;
+            margin-bottom: 0;
+            overflow-wrap: normal;
+            word-break: keep-all;
+            hyphens: none;
+        }
+
+        .about-tool-desc {
+            font-size: 0.56rem;
+            line-height: 1.3;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .about-hero-wrap {
+            margin-top: 1rem !important;
+        }
+
+        .about-hero-section {
+            min-height: 380px;
+            border-radius: 1.25rem;
+        }
+
+        .about-hero-content {
+            padding: 2rem 1.25rem;
+            max-width: none;
+        }
+
+        .about-hero-title {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero-subtitle {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.55;
+        }
+    }
 </style>
 
-<main class="font-body bg-[var(--eco-bg)] min-h-screen pb-20">
+<main class="about-main font-body bg-[var(--eco-bg)] min-h-screen pb-20">
     {{-- Hero Section (Dashboard Style) --}}
-<div class="relative w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-8">
-    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
+<div class="about-hero-wrap relative w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-6 sm:mt-8">
+    <section class="about-hero-section relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center text-white rounded-3xl editorial-shadow group reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)]">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img src="{{ asset('images/sekolahkb.png') }}" class="w-full h-full object-cover" alt="Background">
         </div>
 
-        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/70 via-[#0a2f22]/30 to-transparent z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
-        <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+        <div class="about-hero-overlay-left absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/70 via-[#0a2f22]/30 to-transparent z-10"></div>
+        <div class="about-hero-overlay-right absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
+        <div class="about-hero-glow absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-        <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+        <div class="about-hero-content relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12">
+            <div class="about-hero-badge inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-4 sm:mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
                 {{ __('app.badge_environment_platform') }}
             </div>
-            <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            <h1 class="about-hero-title font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl text-white">
                 {{ __('app.about_title') }}
             </h1>
-            <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
+            <p class="about-hero-subtitle text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-10 leading-relaxed drop-shadow-md max-w-xl font-body">
                 {{ __('app.about_subtitle') }}
             </p>
         </div>
@@ -211,9 +437,9 @@
 </div>
 
     {{-- Developer Profile --}}
-    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
+    <section class="about-dev-section py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
+        <div class="about-dev-grid grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="about-dev-copy space-y-8">
                 <div>
                     <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">
                         {{ __('app.about_developer') }}
@@ -227,7 +453,7 @@
                     {{ __('app.about_desc') }}
                 </p>
 
-                <div class="flex flex-wrap gap-2 pt-4">
+                <div class="about-dev-stack flex flex-wrap gap-2 pt-4">
                     @foreach(['Laravel 11', 'Livewire', 'Filament', 'TailwindCSS', 'Vite', 'PHP 8'] as $tech)
                     <span class="px-4 py-2 rounded-xl text-[11px] font-black bg-white border border-slate-100 text-slate-700 shadow-sm uppercase tracking-wider">
                         {{ $tech }}
@@ -242,7 +468,7 @@
                 <div class="flip-card-wrapper editorial-shadow reveal-on-scroll" onclick="document.querySelector('.flip-card-container').classList.toggle('flipped')">
                     <div class="flip-card-container">
                         <!-- Front: Original Card Content -->
-                        <div class="flip-card-front bg-white p-12 rounded-[2.5rem] text-center border border-emerald-50">
+                        <div class="about-flip-front flip-card-front bg-white p-12 rounded-[2.5rem] text-center border border-emerald-50">
                             <div class="relative w-32 h-32 mx-auto mb-8">
                                 <div class="absolute inset-0 bg-[var(--eco-accent)] rounded-full animate-ping opacity-20"></div>
                                 <div class="relative w-full h-full bg-slate-50 rounded-full flex items-center justify-center border-4 border-white shadow-inner">
@@ -262,7 +488,7 @@
                         </div>
 
                         <!-- Back: Photo -->
-                        <div class="flip-card-back w-full rounded-[2.5rem] border border-emerald-50 relative" style="height: 440px;">
+                        <div class="about-flip-back flip-card-back w-full rounded-[2.5rem] border border-emerald-50 relative" style="height: 440px;">
                             <div class="flip-card-back-text">
                                 "{{ __('app.about_name') }}"
                             </div>
@@ -274,14 +500,14 @@
     </section>
 
     {{-- Team Section --}}
-    <section class="bg-white py-24 px-4 sm:px-6 lg:px-8 border-y border-slate-100 reveal-on-scroll">
+    <section class="about-team-section bg-white py-24 px-4 sm:px-6 lg:px-8 border-y border-slate-100 reveal-on-scroll">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-16 text-center">
+            <div class="about-team-head mb-16 text-center">
                 <span class="text-[var(--eco-medium)] font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">{{ __('app.about_team_label') }}</span>
                 <h2 class="text-4xl font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.about_team_title') }}</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="about-team-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach([
                     ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => [__('app.about_job_lead_dev'), __('app.about_job_systems_arch')]],
                     ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => [__('app.about_job_uiux_designer'), __('app.about_job_design_system')]],
@@ -305,21 +531,21 @@
     </section>
 
     {{-- Tools Section (Dark Mode Vibes) --}}
-    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
-        <div class="about-tech-section bg-[var(--eco-dark)] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
+    <section class="about-tools-section py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal-on-scroll">
+        <div class="about-tools-box about-tech-section bg-[var(--eco-dark)] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
             <div class="absolute -top-20 -left-20 w-80 h-80 bg-[var(--eco-accent)] opacity-10 rounded-full blur-[100px]"></div>
 
             <div class="relative z-10">
-                <div class="text-center mb-16">
+                <div class="about-tools-head text-center mb-16">
                     <h2 class="text-4xl font-headline font-black text-white tracking-tight">{{ __('app.about_tech_title') }}</h2>
                     <div class="w-20 h-1.5 bg-[var(--eco-accent)] mx-auto mt-6 rounded-full"></div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="about-tools-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach([
                         ['name' => 'Laravel 11',    'desc' => __('app.tech_laravel_desc'),  'icon' => 'data_object'],
                         ['name' => 'Blade',         'desc' => __('app.tech_blade_desc'),    'icon' => 'article'],
-                        ['name' => 'TailwindCSS',   'desc' => __('app.tech_tailwind_desc'), 'icon' => 'css'],
+                        ['name' => 'Tailwind CSS',  'desc' => __('app.tech_tailwind_desc'), 'icon' => 'css'],
                         ['name' => 'Vite',          'desc' => __('app.tech_vite_desc'),     'icon' => 'bolt'],
                         ['name' => 'Filament',      'desc' => __('app.tech_filament_desc'), 'icon' => 'dashboard_customize'],
                         ['name' => 'Livewire',      'desc' => __('app.tech_livewire_desc'), 'icon' => 'sync_alt'],
@@ -328,15 +554,13 @@
                         ['name' => 'MySQL',         'desc' => __('app.tech_mysql_desc'),    'icon' => 'storage'],
                     ] as $tech)
                     <div class="tech-card p-6 rounded-2xl reveal-on-scroll">
-                        <div class="flex items-start gap-4">
+                        <div class="about-tool-head flex items-center gap-4">
                             <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
                                 <span class="material-symbols-outlined text-[var(--eco-accent)] text-xl">{{ $tech['icon'] }}</span>
                             </div>
-                            <div>
-                                <h4 class="font-headline font-bold text-white mb-2">{{ $tech['name'] }}</h4>
-                                <p class="text-sm text-emerald-100/50 leading-relaxed font-medium">{{ $tech['desc'] }}</p>
-                            </div>
+                            <h4 class="about-tool-name font-headline font-bold text-white mb-0">{{ $tech['name'] }}</h4>
                         </div>
+                        <p class="about-tool-desc text-sm text-emerald-100/50 leading-relaxed font-medium">{{ $tech['desc'] }}</p>
                     </div>
                     @endforeach
                 </div>

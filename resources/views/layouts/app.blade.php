@@ -359,6 +359,17 @@
             border-color: #24313a;
         }
 
+        @media (max-width: 768px) {
+            .reduceMotionToggle {
+                width: 3.2em;
+                height: 3.2em;
+            }
+
+            .mobile-theme-toggle {
+                margin-left: 0.35rem;
+            }
+        }
+
         html.dark .border-emerald-50 {
             border-color: #1f2a33;
         }
@@ -1246,24 +1257,74 @@
 
         @media (max-width: 768px) {
             .decor-tree {
-                right: 0.75rem;
-                bottom: 2rem;
+                right: 0.4rem;
+                bottom: 1.35rem;
             }
 
             .decor-tree .tree-wrap {
-                width: 58px;
-                height: 58px;
+                width: 120px;
+                height: 152px;
+                scale: 0.72;
+                transform-origin: bottom right;
             }
 
             .speech-bubble {
-                right: -6px;
-                bottom: calc(100% + 14px);
-                width: 156px;
+                right: 10px;
+                bottom: calc(100% - 40px);
+                width: 168px;
+                max-width: calc(100vw - 24px);
+                padding: 9px 10px 10px;
+                border-radius: 14px;
                 font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .speech-bubble-header {
+                gap: 4px;
+                margin-bottom: 5px;
+                padding: 2px 7px;
+                font-size: 9px;
+                letter-spacing: 0.06em;
+            }
+
+            .speech-bubble-title-dot {
+                width: 5px;
+                height: 5px;
+                box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
             }
 
             .speech-bubble-body {
                 font-size: 11px;
+            }
+
+            .speech-bubble::after {
+                right: 16px;
+                border-left-width: 7px;
+                border-right-width: 7px;
+                border-top-width: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .decor-tree {
+                right: 0.35rem;
+                bottom: 1.25rem;
+            }
+
+            .decor-tree .tree-wrap {
+                scale: 0.64;
+            }
+
+            .speech-bubble {
+                right: 8px;
+                bottom: calc(100% - 52px);
+                width: 154px;
+                max-width: calc(100vw - 20px);
+                font-size: 10px;
+            }
+
+            .speech-bubble-body {
+                font-size: 10px;
             }
         }
     </style>
@@ -1373,9 +1434,12 @@
             
             {{-- Left Side: Logo & Main Menu --}}
             <div class="flex items-center gap-10">
-                <a href="{{ url('/') }}" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <a href="{{ url('/') }}" class="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
                     <img src="{{ asset('images/logo-removebg-preview.png') }}" alt="Go Green Logo" class="h-10 w-auto drop-shadow-sm">
-                    <span class="text-2xl font-black text-primary font-headline tracking-tight">Go Green School</span>
+                    <span class="text-[1rem] sm:text-2xl leading-tight font-black text-primary font-headline tracking-tight">
+                        <span class="sm:hidden">Go Green<br>School</span>
+                        <span class="hidden sm:inline">Go Green School</span>
+                    </span>
                 </a>
 
                 <div class="hidden md:flex items-center gap-6 font-headline font-bold tracking-tight">
@@ -1424,7 +1488,7 @@
             {{-- Right Side: Language & Mobile Menu --}}
             <div class="flex items-center gap-4">
                 <label
-                    class="reduceMotionToggle st-reduceMotionToggleBtn"
+                    class="reduceMotionToggle st-reduceMotionToggleBtn mobile-theme-toggle"
                     for="themeToggle"
                 >
                     <input
@@ -1561,9 +1625,24 @@
 
                 {{-- Mobile: Language Indicator + Hamburger --}}
                 <div class="flex items-center gap-2.5 md:hidden">
-                    <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/30 text-primary font-bold uppercase text-xs font-headline tracking-wider">
-                        <span class="fi fi-{{ $currentLang['flag'] }} fis rounded-sm"></span> {{ $currentLang['code'] }}
-                    </span>
+                    <div class="relative" id="lang-mobile-wrapper">
+                        <button id="lang-mobile-btn" type="button" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/30 text-primary font-bold uppercase text-xs font-headline tracking-wider hover:bg-primary-container/50 transition-colors duration-200">
+                            <span class="fi fi-{{ $currentLang['flag'] }} fis rounded-sm"></span> {{ $currentLang['code'] }}
+                            <span class="material-symbols-outlined text-sm" id="lang-mobile-chevron">expand_more</span>
+                        </button>
+                        <div id="lang-mobile-menu" class="hidden absolute right-0 mt-2 w-52 bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(42,47,50,0.14)] border border-outline-variant/30 p-2 z-50 dark:bg-[#11181e] dark:border-[#24313a]">
+                            @foreach($languageOptions as $locale => $lang)
+                                <a href="{{ route('lang.switch', $locale) }}"
+                                   class="flex items-center justify-between gap-2 px-2.5 py-2 rounded-lg border border-transparent hover:border-primary/20 hover:bg-surface-container-low transition-all dark:hover:bg-[#1a232b] {{ $currentLocale === $locale ? 'bg-surface-container-low text-primary border-primary/20 dark:bg-[#1a232b] dark:text-[#7ff3be] dark:border-[#2f5b48]' : 'text-on-surface-variant dark:text-[#cbd5e1]' }}">
+                                    <div class="flex items-center gap-2">
+                                        <span class="fi fi-{{ $lang['flag'] }} rounded-sm text-sm shadow-sm"></span>
+                                        <span class="text-xs font-semibold">{{ $lang['label'] }}</span>
+                                    </div>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest">{{ $lang['code'] }}</span>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
                     <button id="menu-btn" class="p-2 rounded-full hover:bg-surface-container-high transition-all duration-300 text-primary">
                         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -1606,7 +1685,7 @@
                     </a>
                 </div>
 
-                <div class="pt-5 mt-4 border-t border-outline-variant/20">
+                <div id="mobile-language-section" class="hidden pt-5 mt-4 border-t border-outline-variant/20">
                     <p class="text-xs text-on-surface-variant/70 dark:text-[#a6b0ba] px-4 mb-3 uppercase tracking-widest font-bold">{{ __('app.language') }}</p>
                     <div class="grid grid-cols-2 gap-2 px-2">
                         @foreach($languageOptions as $locale => $lang)
@@ -1679,7 +1758,12 @@
     <script>
         // Mobile nav
         const btn = document.getElementById('menu-btn');
+        const langMobileBtn = document.getElementById('lang-mobile-btn');
+        const langMobileMenu = document.getElementById('lang-mobile-menu');
+        const langMobileWrapper = document.getElementById('lang-mobile-wrapper');
+        const langMobileChevron = document.getElementById('lang-mobile-chevron');
         const menu = document.getElementById('mobile-menu');
+        const mobileLangSection = document.getElementById('mobile-language-section');
         const iconOpen = document.getElementById('icon-open');
         const iconClose = document.getElementById('icon-close');
         if(btn && menu){
@@ -1694,6 +1778,23 @@
                     menu.classList.add('hidden');
                     iconOpen.classList.remove('hidden');
                     iconClose.classList.add('hidden');
+                }
+            });
+        }
+        if (langMobileBtn && langMobileMenu && langMobileWrapper) {
+            langMobileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = langMobileMenu.classList.contains('hidden');
+                langMobileMenu.classList.toggle('hidden');
+                if (langMobileChevron) {
+                    langMobileChevron.style.transform = isHidden ? 'rotate(180deg)' : '';
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!langMobileWrapper.contains(e.target)) {
+                    langMobileMenu.classList.add('hidden');
+                    if (langMobileChevron) langMobileChevron.style.transform = '';
                 }
             });
         }

@@ -93,6 +93,21 @@
         transition: all 0.25s ease;
     }
 
+    .contact-card-title {
+        font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+        line-height: 1.25;
+    }
+
+    .contact-card-text {
+        font-size: clamp(0.86rem, 1.05vw, 0.96rem);
+        line-height: 1.55;
+    }
+
+    .contact-label {
+        font-size: 10px;
+        letter-spacing: 0.13em;
+    }
+
     html.dark .contact-connect-icon {
         color: #98f5cd;
         text-shadow: 0 0 10px rgba(127, 243, 190, 0.45);
@@ -178,13 +193,19 @@
         transform-origin: 490px 200px;
         animation: rotate 11s ease-in-out infinite;
     }
+
+    @media (max-width: 640px) {
+        .contact-form-grid {
+            gap: 0.9rem;
+        }
+    }
 </style>
 
 <div class="bg-[var(--eco-background)] min-h-screen pb-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12 font-body">
+    <div class="relative z-10 w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-6 sm:mt-8 font-body">
 
         {{-- Hero Section (Dashboard Style) --}}
-        <section class="relative min-h-[420px] sm:min-h-[500px] rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
+        <section class="relative min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img
                     src="{{ asset('images/contact.jpg') }}"
@@ -197,84 +218,86 @@
             <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
             <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-            <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+            <div class="relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12">
                 <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
                     {{ __('app.badge_environment_platform') }}
                 </span>
-                <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+                <h1 class="font-headline text-[2.3rem] sm:text-[3.1rem] md:text-[4.3rem] font-extrabold leading-[1.07] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl text-white">
                     {{ __('app.contact_form_title') }}
                 </h1>
-                <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl">
+                <p class="text-white/90 text-sm sm:text-base md:text-lg font-medium mb-6 sm:mb-8 leading-relaxed drop-shadow-md max-w-xl">
                     {{ __('app.contact_desc') }}
                 </p>
             </div>
 
         </section>
+    </div>
 
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 pt-12 sm:pt-16 pb-20">
         {{-- Main Grid --}}
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-30">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 -mt-16 sm:-mt-20 relative z-30">
             
             {{-- Info Card (Left) --}}
             <aside class="lg:col-span-5 space-y-6">
-                <div class="bg-white p-10 rounded-[2rem] editorial-shadow border border-emerald-50 h-full reveal-on-scroll">
-                    <h2 class="text-2xl font-headline font-black text-[var(--eco-dark)] mb-8 flex items-center gap-3">
+                <div class="bg-white p-6 sm:p-8 rounded-[1.75rem] editorial-shadow border border-emerald-50 h-full reveal-on-scroll">
+                    <h2 class="contact-card-title font-headline font-black text-[var(--eco-dark)] mb-6 sm:mb-7 flex items-center gap-3">
                         <span class="w-8 h-8 rounded-lg bg-[var(--eco-accent)]/20 flex items-center justify-center">
                             <span class="material-symbols-outlined contact-connect-icon text-sm">hub</span>
                         </span>
                         {{ __('app.contact_connect_title') }}
                     </h2>
 
-                    <div class="space-y-8">
-                        <div class="flex gap-5">
-                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                    <div class="space-y-6 sm:space-y-7">
+                        <div class="flex gap-4 sm:gap-5">
+                            <div class="w-11 h-11 rounded-xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
                                 <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">location_on</span>
                             </div>
                             <div>
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_address_title') }}</p>
-                                <p class="text-sm font-semibold text-slate-700 leading-relaxed">{{ __('app.contact_address_val') }}</p>
+                                <p class="contact-label font-black text-slate-400 uppercase mb-1">{{ __('app.contact_address_title') }}</p>
+                                <p class="contact-card-text font-semibold text-slate-700 leading-relaxed">{{ __('app.contact_address_val') }}</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-5">
-                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                        <div class="flex gap-4 sm:gap-5">
+                            <div class="w-11 h-11 rounded-xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
                                 <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">alternate_email</span>
                             </div>
                             <div>
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_email_title') }}</p>
-                                <a href="mailto:{{ __('app.contact_email_val') }}" class="text-sm font-bold text-[var(--eco-dark)] hover:text-[var(--eco-medium)] transition-colors">{{ __('app.contact_email_val') }}</a>
+                                <p class="contact-label font-black text-slate-400 uppercase mb-1">{{ __('app.contact_email_title') }}</p>
+                                <a href="mailto:{{ __('app.contact_email_val') }}" class="contact-card-text font-bold text-[var(--eco-dark)] hover:text-[var(--eco-medium)] transition-colors">{{ __('app.contact_email_val') }}</a>
                             </div>
                         </div>
 
-                        <div class="flex gap-5">
-                            <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
+                        <div class="flex gap-4 sm:gap-5">
+                            <div class="w-11 h-11 rounded-xl bg-slate-50 flex items-center justify-center text-[var(--eco-medium)] flex-shrink-0">
                                 <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">phone_in_talk</span>
                             </div>
                             <div>
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ __('app.contact_phone_title') }}</p>
-                                <p class="text-sm font-bold text-slate-700">{{ __('app.contact_phone_val') }}</p>
+                                <p class="contact-label font-black text-slate-400 uppercase mb-1">{{ __('app.contact_phone_title') }}</p>
+                                <p class="contact-card-text font-bold text-slate-700">{{ __('app.contact_phone_val') }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-12 pt-8 border-t border-slate-100 flex gap-4">
-                        <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
+                    <div class="mt-9 sm:mt-10 pt-6 border-t border-slate-100 flex gap-3">
+                        <div class="flex-1 bg-slate-50 p-3.5 rounded-xl text-center">
                             <p class="text-[9px] font-black text-slate-400 uppercase mb-1">{{ __('app.contact_response_label') }}</p>
-                            <p class="font-headline font-bold text-slate-800 text-sm">{{ __('app.contact_response_value') }}</p>
+                            <p class="font-headline font-bold text-slate-800 text-xs sm:text-sm">{{ __('app.contact_response_value') }}</p>
                         </div>
-                        <div class="flex-1 bg-slate-50 p-4 rounded-2xl text-center">
+                        <div class="flex-1 bg-slate-50 p-3.5 rounded-xl text-center">
                             <p class="text-[9px] font-black text-slate-400 uppercase mb-1">{{ __('app.contact_status_label') }}</p>
-                            <p class="font-headline font-bold text-emerald-600 text-sm">{{ __('app.contact_status_value') }}</p>
+                            <p class="font-headline font-bold text-emerald-600 text-xs sm:text-sm">{{ __('app.contact_status_value') }}</p>
                         </div>
                     </div>
                 </div>
             </aside>
 
             {{-- Form Card (Right) --}}
-            <article class="lg:col-span-7 bg-white p-10 rounded-[2.5rem] editorial-shadow border border-emerald-50 reveal-on-scroll">
-                <div class="mb-10">
-                    <h2 class="text-3xl font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.contact_form_title') }}</h2>
-                    <p class="text-slate-500 mt-2">{{ __('app.contact_form_lead') }}</p>
+            <article class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[1.75rem] editorial-shadow border border-emerald-50 reveal-on-scroll">
+                <div class="mb-7 sm:mb-8">
+                    <h2 class="contact-card-title font-headline font-black text-[var(--eco-dark)] tracking-tight">{{ __('app.contact_form_title') }}</h2>
+                    <p class="contact-card-text text-slate-500 mt-2">{{ __('app.contact_form_lead') }}</p>
                 </div>
 
                 @if(session('contact_success'))
@@ -284,7 +307,7 @@
                 </div>
                 @endif
 
-                <form id="contact-form" action="{{ route('contact.send') }}" method="POST" class="space-y-6">
+                <form id="contact-form" action="{{ route('contact.send') }}" method="POST" class="space-y-5 sm:space-y-6">
                     @csrf
                     @if($errors->any())
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-xl mb-6">
@@ -296,52 +319,52 @@
                     </div>
                     @endif
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="contact-form-grid grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_name') }}</label>
+                            <label class="contact-label font-black text-slate-400 uppercase ml-1">{{ __('app.contact_name') }}</label>
                             <input type="text" name="name" value="{{ old('name') }}" required placeholder="{{ __('app.contact_name_ph') }}"
-                                   class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
+                                   class="contact-input w-full px-4 py-3.5 rounded-xl text-[13px] sm:text-sm font-bold text-slate-700">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_email') }}</label>
+                            <label class="contact-label font-black text-slate-400 uppercase ml-1">{{ __('app.contact_email') }}</label>
                             <input type="email" name="email" value="{{ old('email') }}" required placeholder="{{ __('app.contact_email_ph') }}"
-                                   class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
+                                   class="contact-input w-full px-4 py-3.5 rounded-xl text-[13px] sm:text-sm font-bold text-slate-700">
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_subject') }}</label>
+                        <label class="contact-label font-black text-slate-400 uppercase ml-1">{{ __('app.contact_subject') }}</label>
                         <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="{{ __('app.contact_subject_ph') }}"
-                               class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700">
+                               class="contact-input w-full px-4 py-3.5 rounded-xl text-[13px] sm:text-sm font-bold text-slate-700">
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ __('app.contact_message') }}</label>
+                        <label class="contact-label font-black text-slate-400 uppercase ml-1">{{ __('app.contact_message') }}</label>
                         <textarea name="message" rows="5" required placeholder="{{ __('app.contact_message_ph') }}"
-                                  class="contact-input w-full px-5 py-4 rounded-2xl text-sm font-bold text-slate-700 resize-none">{{ old('message') }}</textarea>
+                                  class="contact-input w-full px-4 py-3.5 rounded-xl text-[13px] sm:text-sm font-bold text-slate-700 resize-none">{{ old('message') }}</textarea>
                     </div>
 
-                    <button type="submit" class="btn-eco-vibes w-full py-5 rounded-[1.5rem] font-headline font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                    <button type="submit" class="btn-eco-vibes w-full py-4 rounded-[1rem] font-headline font-black text-xs sm:text-sm uppercase tracking-[0.14em] flex items-center justify-center gap-2.5">
                         {{ __('app.contact_send') }}
-                        <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+                        <span class="material-symbols-outlined text-base sm:text-lg">arrow_right_alt</span>
                     </button>
                 </form>
             </article>
         </div>
 
         {{-- Map Section --}}
-        <section class="bg-white rounded-[2.5rem] overflow-hidden editorial-shadow border border-emerald-50 reveal-on-scroll">
+        <section class="bg-white rounded-[1.75rem] overflow-hidden editorial-shadow border border-emerald-50 reveal-on-scroll mt-8 sm:mt-10">
             <div class="flex flex-col md:flex-row h-full">
-                <div class="w-full md:w-1/2 min-h-[350px]">
+                <div class="w-full md:w-1/2 min-h-[300px] sm:min-h-[350px]">
                     <iframe
                         src="https://maps.google.com/maps?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat&output=embed&z=17&hl=id"
                         width="100%" height="100%" style="border:0; filter: grayscale(0.2) contrast(1.1);"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="contact-map-panel w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
+                <div class="contact-map-panel w-full md:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
                     <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">{{ __('app.contact_map_label') }}</span>
-                    <h3 class="text-3xl font-headline font-black mb-6 leading-tight">{{ __('app.contact_map_title') }}</h3>
-                    <p class="text-white/70 mb-8 leading-relaxed font-medium">
+                    <h3 class="contact-card-title font-headline font-black mb-4 sm:mb-5 leading-tight">{{ __('app.contact_map_title') }}</h3>
+                    <p class="text-white/70 mb-6 sm:mb-7 leading-relaxed font-medium contact-card-text">
                         {{ __('app.contact_address_val') }}
                     </p>
                     <a href="https://maps.google.com/?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat" target="_blank" 
@@ -352,7 +375,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 </div>
 
 <div id="contact-loading" class="contact-loading" aria-hidden="true">

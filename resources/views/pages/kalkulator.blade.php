@@ -182,6 +182,101 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         color: #c7d3de !important;
     }
 
+    .kalkulator-page .waste-row {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) minmax(88px, 96px) 18px;
+        align-items: center;
+        column-gap: 0.65rem;
+        overflow: hidden;
+    }
+
+    .kalkulator-page .waste-label {
+        min-width: 0;
+    }
+
+    .kalkulator-page .waste-name {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .kalkulator-page .waste-rate {
+        white-space: nowrap;
+    }
+
+    .kalkulator-page .waste-input-wrap {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.35rem;
+    }
+
+    .kalkulator-page .check-circle {
+        justify-self: end;
+        transform: translateX(2px);
+    }
+
+    .kalkulator-page .reward-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .kalkulator-page .reward-range {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 106px;
+        white-space: nowrap;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 640px) {
+        html.kalkulator-page {
+            font-size: 15px;
+        }
+
+        .kalkulator-page .kalkulator-hero {
+            min-height: 380px;
+            margin-top: 1rem;
+            border-radius: 1.25rem;
+        }
+
+        .kalkulator-page .kalkulator-hero-content {
+            padding: 2rem 1.25rem;
+        }
+
+        .kalkulator-page .kalkulator-hero-title {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .kalkulator-page .kalkulator-hero-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .kalkulator-page .waste-row {
+            grid-template-columns: 40px minmax(0, 1fr) minmax(82px, 90px) 16px;
+            padding: 0.7rem;
+            column-gap: 0.45rem;
+        }
+
+        .kalkulator-page .waste-input-wrap .weight-input {
+            width: 4.1rem;
+            padding: 0.5rem 0.55rem;
+            font-size: 13px;
+        }
+    }
+
 </style>
 
 <div class="kalkulator-page bg-[#f3f7fb] font-body text-[#2a2f32]">
@@ -192,8 +287,8 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
     <span class="material-symbols-outlined floating-recycle recycle-4" style="top:66%; right:14%; font-size:38px;">recycling</span>
     <span class="material-symbols-outlined floating-recycle recycle-5" style="top:80%; left:44%; font-size:50px;">recycling</span>
 </div>
-<div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 mt-8">
-    <section class="relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+<div class="kalkulator-shell mobile-pattern-shell relative z-10 w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-6 sm:mt-8">
+    <section class="kalkulator-hero relative min-h-[420px] sm:min-h-[500px] overflow-hidden flex items-center rounded-3xl reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img class="w-full h-full object-cover" src="{{ asset('images/sampah.jpg') }}" alt="Calculator Hero">
         </div>
@@ -202,15 +297,15 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/70 via-[#0a2f22]/25 to-transparent z-10"></div>
         <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-        <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+        <div class="kalkulator-hero-content relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12">
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
                 {{ __('app.badge_environment_platform') }}
             </div>
-            <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+            <h1 class="kalkulator-hero-title font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl text-white">
                 {{ __('app.kalkulator_title') }}
             </h1>
-            <div class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
+            <div class="kalkulator-hero-text text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-8 leading-relaxed drop-shadow-md max-w-xl font-body">
                 {{ __('app.hero_kalkulator_desc') }}
             </div>
         </div>
@@ -219,7 +314,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 </div>
 </div>
 {{-- Main Content Grid --}}
-<main id="kalkulator-section" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 font-body" style="padding-top:3rem;padding-bottom:5rem;margin-top:-2.5rem;position:relative;z-index:20;">
+<main id="kalkulator-section" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 font-body" style="padding-top:2rem;padding-bottom:5rem;margin-top:0.25rem;position:relative;z-index:20;">
     <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="lg-grid-kalkulator">
 
         {{-- Left Column: Calculator Form --}}
@@ -309,12 +404,12 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                           style="color:{{ $info['color'] }};font-size:22px;font-variation-settings:'FILL' 1,'wght' 400;">{{ $info['icon'] }}</span>
                                 </div>
 
-                                <label class="flex-1 cursor-pointer select-none" for="input_{{ $val }}">
-                                    <p class="text-sm font-semibold text-slate-800">{{ $info['label'] }}</p>
-                                    <p class="text-xs" style="color:#94a3b8;">{{ $info['poin'] }} {{ __('app.satuan_poin') }}/kg</p>
+                                <label class="waste-label cursor-pointer select-none" for="input_{{ $val }}">
+                                    <p class="waste-name text-sm font-semibold text-slate-800">{{ $info['label'] }}</p>
+                                    <p class="waste-rate text-xs" style="color:#94a3b8;">{{ $info['poin'] }} {{ __('app.satuan_poin') }}/kg</p>
                                 </label>
 
-                                <div class="flex items-center gap-1.5 flex-shrink-0" onclick="event.stopPropagation()">
+                                <div class="waste-input-wrap" onclick="event.stopPropagation()">
                                                                          <input type="text"
                                            name="items[{{ $val }}]"
                                            id="input_{{ $val }}"
@@ -323,7 +418,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                                          pattern="[0-9]+([\\.,][0-9]+)?"
                                            placeholder="0"
                                            value="{{ $currentBerat ?? '' }}"
-                                           class="kalkulator-input weight-input w-24 text-right focus:outline-none rounded-xl"
+                                         class="kalkulator-input weight-input w-20 sm:w-24 text-right focus:outline-none rounded-xl"
                                            style="background-color:#f6f8f7;border:2px solid transparent;padding:10px 12px;font-size:14px;color:#1e293b;"
                                            {{ $isActive ? '' : 'disabled' }}>
                                     <span class="text-xs font-bold" style="color:#94a3b8;">kg</span>
@@ -331,10 +426,10 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
 
                                 <div class="check-circle flex-shrink-0 flex items-center justify-center rounded-full border-2"
                                      id="check_{{ $val }}"
-                                     style="width:24px;height:24px;{{ $isActive ? 'background-color:#059669;border-color:#059669;' : 'background-color:transparent;border-color:#e2e8f0;' }}">
+                                                                            style="width:18px;height:18px;{{ $isActive ? 'background-color:#059669;border-color:#059669;' : 'background-color:transparent;border-color:#e2e8f0;' }}">
                                     <span class="material-symbols-outlined"
                                           id="checkicon_{{ $val }}"
-                                          style="font-size:14px;font-variation-settings:'FILL' 1,'wght' 700;color:white;display:{{ $isActive ? 'block' : 'none' }};">check</span>
+                                                                                    style="font-size:10px;font-variation-settings:'FILL' 1,'wght' 700;color:white;display:{{ $isActive ? 'block' : 'none' }};">check</span>
                                 </div>
                             </div>
                             @endforeach
@@ -386,17 +481,17 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                         ['jenis' => __('app.jenis_organik'),    'poin' => 20,  'icon' => 'compost',               'kategori' => __('app.kategori_organik'),   'contoh' => __('app.contoh_organik')],
                         ['jenis' => __('app.jenis_elektronik'), 'poin' => 100, 'icon' => 'battery_charging_full', 'kategori' => __('app.kategori_b3'),        'contoh' => __('app.contoh_elektronik')],
                     ] as $row)
-                    <div class="flex items-center justify-between p-4 transition-colors hover:bg-emerald-50/30" style="border-bottom:1px solid rgba(6,78,59,0.05);">
-                        <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-between gap-3 p-4 transition-colors hover:bg-emerald-50/30" style="border-bottom:1px solid rgba(6,78,59,0.05);">
+                        <div class="flex items-center gap-3 min-w-0">
                             <div class="flex items-center justify-center" style="width:40px;height:40px;border-radius:8px;background-color:#ecfdf5;color:#059669;">
                                 <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1,'wght' 400;">{{ $row['icon'] }}</span>
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <p class="text-sm font-bold text-slate-900">{{ $row['jenis'] }}</p>
                                 <p class="uppercase" style="font-size:10px;color:#94a3b8;">{{ $row['kategori'] }}</p>
                             </div>
                         </div>
-                        <span class="font-black" style="color:#059669;">{{ $row['poin'] }} {{ __('app.satuan_poin') }}</span>
+                        <span class="w-24 text-right text-xs sm:text-sm font-black tabular-nums whitespace-nowrap" style="color:#059669;">{{ number_format($row['poin'], 0, ',', '.') }} {{ __('app.satuan_poin') }}/kg</span>
                     </div>
                     @endforeach
                 </div>
@@ -411,42 +506,42 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                 <div class="space-y-4">
                     <div class="relative pb-4" style="padding-left:32px;border-left:2px solid #d1fae5;">
                         <div class="absolute" style="left:-8px;top:0;width:14px;height:14px;border-radius:50%;background-color:#059669;border:2px solid white;"></div>
-                        <div class="flex items-center justify-between">
+                        <div class="reward-row">
                             <div>
                                 <h6 class="font-bold text-sm text-slate-900">{{ __('app.reward_champion') }}</h6>
                                 <p class="text-xs" style="color:#94a3b8;">{{ __('app.reward_champion_desc') }}</p>
                             </div>
-                            <span class="text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">{{ __('app.reward_champion_range') }}</span>
+                            <span class="reward-range text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">500+ points</span>
                         </div>
                     </div>
                     <div class="relative pb-4" style="padding-left:32px;border-left:2px solid #d1fae5;">
                         <div class="absolute" style="left:-8px;top:0;width:14px;height:14px;border-radius:50%;background-color:#11d473;border:2px solid white;"></div>
-                        <div class="flex items-center justify-between">
+                        <div class="reward-row">
                             <div>
                                 <h6 class="font-bold text-sm text-slate-900">{{ __('app.reward_warrior') }}</h6>
                                 <p class="text-xs" style="color:#94a3b8;">{{ __('app.reward_warrior_desc') }}</p>
                             </div>
-                            <span class="text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">{{ __('app.reward_warrior_range') }}</span>
+                            <span class="reward-range text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">200-499 points</span>
                         </div>
                     </div>
                     <div class="relative pb-4" style="padding-left:32px;border-left:2px solid #d1fae5;">
                         <div class="absolute" style="left:-8px;top:0;width:14px;height:14px;border-radius:50%;background-color:#6ee7b7;border:2px solid white;"></div>
-                        <div class="flex items-center justify-between">
+                        <div class="reward-row">
                             <div>
                                 <h6 class="font-bold text-sm text-slate-900">{{ __('app.reward_starter') }}</h6>
                                 <p class="text-xs" style="color:#94a3b8;">{{ __('app.reward_starter_desc') }}</p>
                             </div>
-                            <span class="text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">{{ __('app.reward_starter_range') }}</span>
+                            <span class="reward-range text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">50-199 points</span>
                         </div>
                     </div>
                     <div class="relative" style="padding-left:32px;">
                         <div class="absolute" style="left:-8px;top:0;width:14px;height:14px;border-radius:50%;background-color:#cbd5e1;border:2px solid white;"></div>
-                        <div class="flex items-center justify-between">
+                        <div class="reward-row">
                             <div>
                                 <h6 class="font-bold text-sm text-slate-900">{{ __('app.reward_keep') }}</h6>
                                 <p class="text-xs" style="color:#94a3b8;">{{ __('app.reward_keep_desc') }}</p>
                             </div>
-                            <span class="text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">{{ __('app.reward_keep_range') }}</span>
+                            <span class="reward-range text-xs font-bold px-2 py-1" style="background-color:#f1f5f9;border-radius:6px;">0-49 points</span>
                         </div>
                     </div>
                 </div>
@@ -493,7 +588,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <p class="mt-2 text-xs" style="color:#047857;">{{ __('app.kalkulator_bottle_equivalent_prefix') }} <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> {{ __('app.kalkulator_bottle_equivalent_suffix') }}</p>
         </div>
 
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div class="rounded-xl p-3" style="background-color:#ffffffc9;border:1px solid #c7f9dc;">
                 <p class="text-xs font-black uppercase tracking-wider" style="color:#047857;">{{ __('app.kalkulator_preview_title') }}</p>
                 <p class="text-sm mt-1" style="color:#065f46;">{{ __('app.kalkulator_preview_prefix') }} <span id="input-preview-total" class="font-black">{{ number_format($initialDailyTotal, 1, ',', '.') }}</span> kg {{ __('app.kalkulator_preview_mid') }} <span id="input-preview-days" class="font-black">{{ $initialDays }}</span> {{ __('app.kalkulator_preview_mid_2') }} <span id="input-preview-kg" class="font-black">{{ number_format($initialDailyAverage, 1, ',', '.') }}</span> {{ __('app.kalkulator_preview_suffix') }}</p>
@@ -516,7 +611,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         </div>
     </div>
     <div id="hasil-highlight-card" class="mt-8 rounded-2xl border border-emerald-100 p-5 sm:p-6 reveal-on-scroll" style="background:linear-gradient(130deg,#ecfdf5 0%,#ffffff 48%,#f0fdf4 100%);box-shadow:0 18px 38px rgba(6,78,59,0.10);" data-total-input="{{ $hasil['total_berat'] }}">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div class="rounded-xl p-4" style="background-color:#ffffffd6;border:1px solid #d1fae5;">
                 <p class="text-xs font-black uppercase tracking-wider inline-flex items-center gap-1" style="color:#059669;">
                     <span class="material-symbols-outlined" style="font-size:15px;">monitoring</span>
@@ -658,7 +753,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
     <div class="mt-8 rounded-[3rem] p-8 sm:p-10 md:p-12 reveal-on-scroll" style="background-color:#064e3b;box-shadow:0 22px 50px rgba(6,78,59,0.22);">
         <div class="max-w-3xl mb-8 sm:mb-10">
             <h3 class="text-2xl sm:text-3xl md:text-4xl font-headline font-black text-white leading-tight">{{ __('app.kalkulator_guide_title') }}</h3>
-            <p class="text-emerald-50/80 text-sm sm:text-base italic mt-4">"{{ __('app.kalkulator_guide_objective_text') }}"</p>
+            <p class="text-emerald-50/80 text-[13px] sm:text-sm md:text-base italic mt-4">"{{ __('app.kalkulator_guide_objective_text') }}"</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
@@ -667,7 +762,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                     <span class="material-symbols-outlined text-[#a2f31f]" style="font-size:24px;">inventory_2</span>
                     {{ __('app.kalkulator_guide_tools_label') }}
                 </h4>
-                <ul class="space-y-3 text-emerald-50/85 text-sm sm:text-base leading-relaxed">
+                <ul class="space-y-3 text-emerald-50/85 text-[13px] sm:text-sm md:text-base leading-relaxed">
                     <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_1') }}</span></li>
                     <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_2') }}</span></li>
                     <li class="flex gap-3"><span class="w-1.5 h-1.5 mt-2 rounded-full bg-[#a2f31f]"></span><span>{{ __('app.kalkulator_guide_tool_3') }}</span></li>
@@ -681,11 +776,11 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                     {{ __('app.kalkulator_guide_steps_label') }}
                 </h4>
                 <div class="space-y-5">
-                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">01</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_1_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_1_text') }}</p></div></div>
-                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">02</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_2_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_2_text') }}</p></div></div>
-                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">03</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_3_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_3_text') }}</p></div></div>
-                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">04</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_4_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_4_text') }}</p></div></div>
-                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">05</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_5_title') }}</p><p class="text-emerald-50/80 text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_5_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">01</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_1_title') }}</p><p class="text-emerald-50/80 text-[13px] sm:text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_1_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">02</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_2_title') }}</p><p class="text-emerald-50/80 text-[13px] sm:text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_2_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">03</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_3_title') }}</p><p class="text-emerald-50/80 text-[13px] sm:text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_3_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">04</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_4_title') }}</p><p class="text-emerald-50/80 text-[13px] sm:text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_4_text') }}</p></div></div>
+                    <div class="flex gap-3"><span class="font-headline font-black text-[#a2f31f]/70">05</span><div><p class="text-emerald-50 font-semibold text-sm sm:text-base">{{ __('app.kalkulator_guide_step_5_title') }}</p><p class="text-emerald-50/80 text-[13px] sm:text-sm leading-relaxed mt-1">{{ __('app.kalkulator_guide_step_5_text') }}</p></div></div>
                 </div>
             </div>
         </div>

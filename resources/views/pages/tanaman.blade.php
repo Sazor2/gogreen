@@ -152,6 +152,19 @@
         border-color: #24313a;
         color: #dbe3ea;
     }
+
+    @media (max-width: 640px) {
+        .tanaman-status-list {
+            gap: 0.4rem;
+        }
+
+        .tanaman-status-list .status-pill {
+            padding: 0.28rem 0.5rem;
+            font-size: 9px;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+    }
 </style>
 
 <div class="tanaman-page bg-[#f3f7fb] font-body text-[#2a2f32]">
@@ -161,8 +174,8 @@
         <span class="material-symbols-outlined floating-growth growth-3" style="top:63%; left:18%; font-size:27px;">grass</span>
     </div>
     
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
-        <section class="relative mt-8 min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
+    <div class="relative z-10 w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-6 sm:mt-8">
+        <section class="relative min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden reveal-on-scroll shadow-[0_32px_64px_rgba(10,47,34,0.15)] group">
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img class="w-full h-full object-cover" src="{{ asset('images/pohon.jpg') }}" alt="{{ __('app.tanaman_hero_alt') }}">
             </div>
@@ -171,17 +184,17 @@
             <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
             <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-            <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12">
+            <div class="relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12">
                 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-headline uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
                     {{ __('app.badge_environment_platform') }}
                 </div>
 
-                <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6 drop-shadow-2xl text-white">
+                <h1 class="font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl text-white">
                     {!! __('app.tanaman_hero_title') !!}
                 </h1>
 
-                <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-8 leading-relaxed drop-shadow-md max-w-xl">
+                <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-8 leading-relaxed drop-shadow-md max-w-xl">
                     {{ __('app.tanaman_hero_desc') }}
                 </p>
             </div>
@@ -202,7 +215,7 @@
                         <p class="text-[#575c60] text-sm font-medium">{{ __('app.tanaman_status_desc') }}</p>
                     </div>
                 </div>
-                <div class="flex flex-wrap gap-2">
+                <div class="tanaman-status-list flex flex-nowrap gap-2 overflow-x-auto pb-1">
                     <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-baik text-white">{{ __('app.status_baik') }}</span>
                     <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-cukup_baik text-white">{{ __('app.status_cukup_baik') }}</span>
                     <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest status-pill status-pill-rentan text-white">{{ __('app.status_rentan') }}</span>
@@ -215,9 +228,9 @@
             @foreach([
                 ['id' => 1, 'nama' => __('app.tanaman_1_nama'), 'latin' => 'Rafflesia arnoldii', 'jenis' => 'Rafflesiaceae', 'lokasi' => __('app.pohon_1_lokasi'), 'manfaat' => __('app.pohon_1_manfaat'), 'tinggi' => __('app.pohon_1_tinggi'), 'status' => __('app.status_terancam_punah'), 'tone' => 'terancam_punah', 'bg' => 'images/tanaman/raflesia.jpg'],
                 ['id' => 2, 'nama' => __('app.tanaman_2_nama'), 'latin' => 'Nepenthes spp.', 'jenis' => 'Nepenthaceae', 'lokasi' => __('app.pohon_2_lokasi'), 'manfaat' => __('app.pohon_2_manfaat'), 'tinggi' => __('app.pohon_2_tinggi'), 'status' => __('app.status_rentan'), 'tone' => 'rentan', 'bg' => 'images/tanaman/kantongsemar.jpg'],
-                ['id' => 3, 'nama' => __('app.tanaman_3_nama'), 'latin' => 'Coelogyne pandurata', 'jenis' => 'Orchidaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => __('app.pohon_3_tinggi'), 'status' => __('app.status_terancam_punah'), 'tone' => 'terancam_punah', 'bg' => 'images/tanaman/anggrekhitam.jpg'],
                 ['id' => 4, 'nama' => __('app.tanaman_4_nama'), 'latin' => 'Santalum album', 'jenis' => 'Santalaceae', 'lokasi' => __('app.pohon_4_lokasi'), 'manfaat' => __('app.pohon_4_manfaat'), 'tinggi' => __('app.pohon_4_tinggi'), 'status' => __('app.status_rentan'), 'tone' => 'rentan', 'bg' => 'images/tanaman/cendana.jpg'],
                 ['id' => 5, 'nama' => __('app.tanaman_5_nama'), 'latin' => 'Diospyros celebica', 'jenis' => 'Ebenaceae', 'lokasi' => __('app.pohon_5_lokasi'), 'manfaat' => __('app.pohon_5_manfaat'), 'tinggi' => __('app.pohon_5_tinggi'), 'status' => __('app.status_baik'), 'tone' => 'baik', 'bg' => 'images/tanaman/Eboni.jpg'],
+                ['id' => 3, 'nama' => __('app.tanaman_3_nama'), 'latin' => 'Coelogyne pandurata', 'jenis' => 'Orchidaceae', 'lokasi' => __('app.pohon_3_lokasi'), 'manfaat' => __('app.pohon_3_manfaat'), 'tinggi' => __('app.pohon_3_tinggi'), 'status' => __('app.status_terancam_punah'), 'tone' => 'terancam_punah', 'bg' => 'images/tanaman/anggrekhitam.jpg'],
             ] as $pohon)
             
             <article class="flex flex-col gap-5 group cursor-pointer hover:-translate-y-2 transition-all duration-300" 
@@ -251,8 +264,31 @@
                 </div>
 
                 <div class="px-2">
-                    <h4 class="font-headline text-2xl font-extrabold text-[#006948] leading-tight mb-1 group-hover:text-[#a2f31f] transition-colors">
-                        {{ $pohon['nama'] }}
+                    @php
+                        $displayNama = e($pohon['nama']);
+                        $titleClass = 'font-headline text-[1.55rem] sm:text-[1.65rem] font-extrabold text-[#006948] leading-tight mb-1 group-hover:text-[#a2f31f] transition-colors';
+
+                        if (!in_array($pohon['id'], [4, 5], true)) {
+                            $words = preg_split('/\s+/', trim($pohon['nama']));
+                            if (is_array($words) && count($words) >= 2) {
+                                if ((int) $pohon['id'] === 3 && count($words) >= 3) {
+                                    $lineOne = implode(' ', array_slice($words, 0, 2));
+                                    $lineTwo = implode(' ', array_slice($words, 2));
+                                    $displayNama = e($lineOne) . '<br>' . e($lineTwo);
+                                } else {
+                                    $lineOne = $words[0];
+                                    $lineTwo = implode(' ', array_slice($words, 1));
+                                    $displayNama = e($lineOne) . '<br>' . e($lineTwo);
+                                }
+                            }
+                        }
+
+                        if ((int) $pohon['id'] === 5) {
+                            $titleClass .= ' whitespace-nowrap';
+                        }
+                    @endphp
+                    <h4 class="{{ $titleClass }}">
+                        {!! $displayNama !!}
                     </h4>
                     <p class="text-[#575c60] text-sm italic font-medium mb-4">{{ $pohon['latin'] }}</p>
                     
@@ -278,20 +314,20 @@
     <div id="tanaman-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-[#0a0f12]/60 backdrop-blur-md" onclick="closeTanamanModal()"></div>
         
-        <div class="relative w-full max-w-lg bg-white rounded-[2rem] overflow-hidden shadow-2xl transform transition-all">
+        <div class="relative w-full max-w-md sm:max-w-lg max-h-[82vh] overflow-y-auto bg-white rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl transform transition-all">
             <button onclick="closeTanamanModal()" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/20 backdrop-blur-lg hover:bg-white text-[#2a2f32] rounded-full flex items-center justify-center transition-all group">
                 <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">close</span>
             </button>
 
-            <div class="relative h-56 sm:h-64">
+            <div class="relative h-40 sm:h-52">
                 <img id="modal-image" class="w-full h-full object-cover" src="">
                 <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80"></div>
             </div>
 
-            <div class="px-6 pb-6 -mt-16 relative z-10">
+            <div class="px-4 sm:px-6 pb-5 sm:pb-6 -mt-10 sm:-mt-12 relative z-10">
                 <div class="mb-4 bg-white rounded-2xl p-4 shadow-lg">
                     <span id="modal-status" class="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm bg-white border border-[#d7dee3]"></span>
-                    <h2 id="modal-nama" class="text-2xl md:text-3xl font-extrabold text-[#006948] mt-2 mb-1 font-headline tracking-tight"></h2>
+                    <h2 id="modal-nama" class="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#006948] mt-2 mb-1 font-headline tracking-tight"></h2>
                     <p id="modal-latin" class="text-sm italic text-[#575c60] mb-3 font-medium"></p>
                 </div>
 
