@@ -71,6 +71,38 @@
         color: #b6c3cf;
     }
 
+    .dashboard-desc-badge {
+        transition: all 0.3s ease;
+    }
+
+    html.dark.dashboard-page .dashboard-desc-badge {
+        background: rgba(14, 42, 32, 0.92);
+        border-color: rgba(127, 243, 190, 0.7);
+        color: #ddfff0;
+        box-shadow: 0 0 16px rgba(127, 243, 190, 0.48), inset 0 0 12px rgba(127, 243, 190, 0.16);
+    }
+
+    html.dark.dashboard-page .dashboard-desc-badge .material-symbols-outlined {
+        color: #7ff3be;
+        text-shadow: 0 0 14px rgba(127, 243, 190, 0.8);
+    }
+
+    .dashboard-intro-badge {
+        transition: all 0.3s ease;
+    }
+
+    html.dark.dashboard-page .dashboard-intro-badge {
+        background: rgba(14, 42, 32, 0.92);
+        border-color: rgba(127, 243, 190, 0.7);
+        color: #ddfff0;
+        box-shadow: 0 0 16px rgba(127, 243, 190, 0.48), inset 0 0 12px rgba(127, 243, 190, 0.16);
+    }
+
+    html.dark.dashboard-page .dashboard-intro-badge .material-symbols-outlined {
+        color: #7ff3be;
+        text-shadow: 0 0 14px rgba(127, 243, 190, 0.8);
+    }
+
     /* Dark Forest Framing Pillar */
     .forest-pillar-left {
         position: absolute;
@@ -98,6 +130,17 @@
     @media (max-width: 640px) {
         html.dashboard-page {
             font-size: 15px;
+        }
+
+        .dashboard-feature-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .dashboard-feature-readmore {
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         .dashboard-hero {
@@ -208,6 +251,27 @@
 
         .dashboard-features p {
             font-size: 0.85rem;
+        }
+
+        html.dark.dashboard-page .dashboard-feature-badge {
+            background: rgba(127, 243, 190, 0.2);
+            border-color: rgba(127, 243, 190, 0.55);
+            box-shadow: 0 0 16px rgba(127, 243, 190, 0.28), inset 0 0 14px rgba(127, 243, 190, 0.12);
+        }
+
+        html.dark.dashboard-page .dashboard-feature-badge .material-symbols-outlined {
+            color: #bff7de;
+            text-shadow: 0 0 12px rgba(127, 243, 190, 0.65);
+        }
+
+        html.dark.dashboard-page .dashboard-feature-badge-label {
+            color: #ddfff0;
+            text-shadow: 0 0 14px rgba(127, 243, 190, 0.75), 0 0 24px rgba(127, 243, 190, 0.45);
+        }
+
+        html.dark.dashboard-page .dashboard-feature-intro-title,
+        html.dark.dashboard-page .dashboard-feature-desc-title {
+            text-shadow: 0 0 10px rgba(127, 243, 190, 0.4);
         }
 
         .dashboard-features a {
@@ -443,12 +507,12 @@
                 <div class="absolute inset-0 bg-primary transition-colors duration-500 group-hover:bg-[#005b3e]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
                 <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
-                    <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                    <div class="dashboard-feature-badge bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">recycling</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_intro_title') }}</h3>
+                    <h3 class="dashboard-feature-badge-label dashboard-feature-intro-title font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_intro_title') }}</h3>
                     <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base line-clamp-4">{{ __('app.dashboard_intro_snippet') }}</p>
-                    <button type="button" class="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('intro')">{{ __('app.dashboard_article_read_more') }}</button>
+                    <button type="button" class="dashboard-feature-readmore inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('intro')">{{ __('app.dashboard_article_read_more') }}</button>
                 </div>
             </div>
 
@@ -460,12 +524,12 @@
                 <div class="absolute inset-0 bg-tertiary transition-colors duration-500 group-hover:bg-[#375900]"></div>
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
                 <div class="dashboard-feature-content relative p-5 sm:p-8 md:p-10 z-10 w-full sm:absolute sm:bottom-0">
-                    <div class="bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
+                    <div class="dashboard-feature-badge bg-white/20 backdrop-blur-sm w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 border border-white/30 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-white text-2xl sm:text-3xl">park</span>
                     </div>
-                    <h3 class="font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_desc_title') }}</h3>
+                    <h3 class="dashboard-feature-badge-label dashboard-feature-desc-title font-headline text-2xl sm:text-3xl font-extrabold text-white mb-2 sm:mb-3">{{ __('app.dashboard_desc_title') }}</h3>
                     <p class="text-white/80 mb-4 sm:mb-6 max-w-sm text-sm md:text-base line-clamp-4">{{ __('app.dashboard_desc_snippet') }}</p>
-                    <button type="button" class="inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('desc')">{{ __('app.dashboard_article_read_more') }}</button>
+                    <button type="button" class="dashboard-feature-readmore inline-block bg-tertiary-container text-on-tertiary-container px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-headline font-bold text-sm hover:shadow-lg transition-shadow" onclick="event.stopPropagation(); openDashboardInfoModal('desc')">{{ __('app.dashboard_article_read_more') }}</button>
                 </div>
             </div>
 
@@ -484,7 +548,7 @@
                             <span class="material-symbols-outlined text-white animate-pulse" style="font-size: 32px; color: #006948; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 32;">eco</span>
                         </div>
                         <div class="pt-1">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+                            <span class="dashboard-intro-badge inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
                                 <span class="material-symbols-outlined" style="font-size: 14px;">public</span> {{ __('app.dashboard_intro_badge') }}
                             </span>
                             <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">{{ __('app.dashboard_intro_title') }}</h3>
@@ -543,7 +607,7 @@
                             <span class="material-symbols-outlined text-white animate-pulse" style="font-size: 32px; color: #006948; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 32;">school</span>
                         </div>
                         <div class="pt-1">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+                            <span class="dashboard-desc-badge inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
                                 <span class="material-symbols-outlined" style="font-size: 14px;">public</span> {{ __('app.dashboard_desc_badge') }}
                             </span>
                             <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">{{ __('app.dashboard_desc_title') }}</h3>

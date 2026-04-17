@@ -183,8 +183,46 @@
 
     /* Mobile-only tuning: keep desktop untouched */
     @media (max-width: 768px) {
+        html.about-page,
+        html.about-page body {
+            overflow-x: hidden;
+        }
+
         .about-main {
             padding-bottom: 3.25rem;
+            overflow-x: hidden;
+        }
+
+        .about-main > .about-hero-wrap,
+        .about-main > .about-dev-section,
+        .about-main > .about-team-section,
+        .about-main > .about-tools-section {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-dev-section,
+        .about-team-section,
+        .about-tools-section {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .about-dev-visual {
+            overflow: visible;
+        }
+
+        .about-dev-tilt-bg {
+            inset: 0.05rem;
+            transform: rotate(4deg);
+            transform-origin: center;
+        }
+
+        .about-dev-visual .flip-card-wrapper {
+            width: min(100%, 19.75rem);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .about-hero-overlay-left,
@@ -380,6 +418,21 @@
     }
 
     @media (max-width: 640px) {
+        html.about-page nav > div {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        html.about-page nav a > span > .sm\:hidden {
+            white-space: nowrap;
+            font-size: 0.95rem;
+            line-height: 1.08;
+        }
+
+        html.about-page nav .flex.items-center.gap-4 {
+            gap: 0.55rem;
+        }
+
         .about-hero-wrap {
             margin-top: 1rem !important;
         }
@@ -462,8 +515,8 @@
                 </div>
             </div>
 
-            <div class="relative">
-                <div class="absolute -inset-6 bg-[var(--eco-accent)]/20 rounded-[3rem] rotate-3 -z-10"></div>
+            <div class="about-dev-visual relative">
+                <div class="about-dev-tilt-bg absolute -inset-6 bg-[var(--eco-accent)]/20 rounded-[3rem] rotate-3 -z-10"></div>
                 
                 <div class="flip-card-wrapper editorial-shadow reveal-on-scroll" onclick="document.querySelector('.flip-card-container').classList.toggle('flipped')">
                     <div class="flip-card-container">

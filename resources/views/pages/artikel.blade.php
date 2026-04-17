@@ -15,31 +15,22 @@
     }
 
     .artikel-card {
-        background: #ffffff;
-        border: 1px solid rgba(6, 78, 59, 0.08);
-        box-shadow: 0 18px 38px rgba(16, 33, 25, 0.08);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
         height: 100%;
         display: flex;
         flex-direction: column;
     }
 
-    .artikel-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 26px 55px rgba(16, 33, 25, 0.15);
-    }
-
     .artikel-tag {
-        background: rgba(16, 185, 129, 0.12);
-        color: #047857;
-        border: 1px solid rgba(16, 185, 129, 0.25);
+        background: rgba(255, 255, 255, 0.9);
+        color: #006948;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 2px 10px rgba(2, 44, 34, 0.12);
     }
 
     .artikel-cover {
         position: relative;
         overflow: hidden;
-        border-radius: 16px;
-        height: 190px;
+        border-radius: 0;
         flex-shrink: 0;
     }
 
@@ -93,13 +84,7 @@
     }
 
     html.dark.artikel-page .artikel-card {
-        background: #11181e;
-        border-color: #24313a;
         box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
-    }
-
-    html.dark.artikel-page .artikel-card:hover {
-        box-shadow: 0 26px 55px rgba(0, 0, 0, 0.55);
     }
 
     html.dark.artikel-page .artikel-tag {
@@ -163,40 +148,154 @@
     html.dark.artikel-page .go-green-card .text-slate-900 {
         color: #e6edf3 !important;
     }
+
+    @media (max-width: 768px) {
+        .artikel-list-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .artikel-tag-wrap {
+            top: 0.45rem;
+            left: 0.45rem;
+        }
+
+        .artikel-tag {
+            font-size: 0.52rem;
+            letter-spacing: 0.05em;
+            padding: 0.18rem 0.42rem;
+            justify-content: flex-start;
+            gap: 0.2rem;
+        }
+
+        .artikel-tag .material-symbols-outlined {
+            font-size: 0.62rem !important;
+        }
+
+        .artikel-card-compact-image .artikel-cover {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .artikel-card-compact-image .artikel-cover img {
+            width: 84%;
+            height: 84%;
+            object-fit: contain;
+        }
+
+        .artikel-card-compact-image .artikel-cover .artikel-cover-overlay {
+            display: none;
+        }
+
+        .artikel-latest-title {
+            font-size: 1.2rem;
+        }
+
+        .artikel-latest-update {
+            font-size: 0.68rem;
+        }
+
+        .artikel-card-title {
+            font-size: 0.84rem;
+            line-height: 1.3;
+        }
+
+        .artikel-card-desc {
+            font-size: 0.72rem;
+            line-height: 1.45;
+        }
+
+        .artikel-card-meta {
+            font-size: 0.62rem;
+            margin-top: 0.45rem;
+        }
+
+        .artikel-featured-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+        }
+
+        .artikel-featured-title {
+            font-size: 1.15rem;
+            line-height: 1.25;
+        }
+
+        .artikel-featured-desc {
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .go-green-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .artikel-hero-wrap {
+            margin-top: 1rem !important;
+        }
+
+        .artikel-hero-section {
+            min-height: 380px;
+            border-radius: 1.25rem;
+        }
+
+        .artikel-hero-content {
+            padding: 2rem 1.25rem;
+            max-width: none;
+        }
+
+        .artikel-hero-title {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .artikel-hero-text {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.55;
+        }
+    }
 </style>
 
-<section class="relative mt-8 min-h-[420px] sm:min-h-[500px] max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
-    <div class="absolute inset-0 z-0 overflow-hidden">
-        <img class="w-full h-full object-cover" src="{{ asset('images/artikel.jpg') }}" alt="{{ __('app.artikel_hero_title') }}">
-    </div>
+<div class="artikel-hero-wrap relative z-10 w-full max-w-none sm:max-w-7xl mx-auto px-2 sm:px-6 md:px-8 mt-6 sm:mt-8">
+    <section class="artikel-hero-section relative min-h-[420px] sm:min-h-[500px] flex items-center rounded-3xl overflow-hidden shadow-[0_32px_64px_rgba(10,47,34,0.15)] group reveal-on-scroll">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img class="w-full h-full object-cover" src="{{ asset('images/artikel.jpg') }}" alt="{{ __('app.artikel_hero_title') }}">
+        </div>
 
-    <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
-    <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
-    <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-[#0a2f22]/90 via-[#0a2f22]/50 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-full md:w-1/3 bg-gradient-to-l from-[#0a2f22]/90 via-[#0a2f22]/60 to-transparent z-10"></div>
+        <div class="absolute top-1/2 -translate-y-1/2 -right-20 w-[500px] h-[500px] bg-[#00ff88]/20 blur-[100px] rounded-full z-10 pointer-events-none"></div>
 
-    <div class="relative z-20 px-8 md:px-12 max-w-2xl py-12 text-white">
-        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
-            {{ __('app.badge_environment_platform') }}
-        </span>
-        <h1 class="text-[2.2rem] sm:text-[3.1rem] md:text-[4.4rem] font-black leading-[1.05] tracking-tight mb-6 drop-shadow-2xl">
-            <span class="block">{{ __('app.artikel_hero_title_line_1') }}</span>
-            <span class="block">{{ __('app.artikel_hero_title_line_2') }}</span>
-        </h1>
-        <p class="text-white/90 text-base sm:text-lg md:text-xl font-medium leading-relaxed drop-shadow-md max-w-xl">
-            {{ __('app.artikel_hero_desc') }}
-        </p>
-    </div>
+        <div class="artikel-hero-content relative z-20 px-4 sm:px-8 md:px-12 max-w-none sm:max-w-2xl py-10 sm:py-12 text-white">
+            <span class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-[0.15em] mb-4 sm:mb-6 shadow-lg transition-colors hover:bg-white/20 hover:border-white/50 cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#a2f31f] animate-pulse shadow-[0_0_10px_#a2f31f]"></span>
+                {{ __('app.badge_environment_platform') }}
+            </span>
+            <h1 class="artikel-hero-title font-headline text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl">
+                <span class="block">{{ __('app.artikel_hero_title_line_1') }}</span>
+                <span class="block">{{ __('app.artikel_hero_title_line_2') }}</span>
+            </h1>
+            <p class="artikel-hero-text text-white/90 text-base sm:text-lg md:text-xl font-medium mb-6 sm:mb-10 leading-relaxed drop-shadow-md max-w-xl">
+                {{ __('app.artikel_hero_desc') }}
+            </p>
+        </div>
 
-</section>
+    </section>
+</div>
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10 pb-16">
     <div class="bg-white rounded-2xl border border-emerald-50 p-6 md:p-8 shadow-sm reveal-on-scroll">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
             <div class="lg:col-span-2">
-                <p class="text-sm font-bold uppercase tracking-widest text-emerald-700">{{ __('app.artikel_featured_label') }}</p>
-                <h2 class="text-2xl md:text-3xl font-black text-slate-800 mt-2">{{ __('app.artikel_featured_title') }}</h2>
-                <p class="text-slate-600 mt-3">{{ __('app.artikel_featured_desc') }}</p>
+                <p class="artikel-featured-label text-sm font-bold uppercase tracking-widest text-emerald-700">{{ __('app.artikel_featured_label') }}</p>
+                <h2 class="artikel-featured-title text-2xl md:text-3xl font-black text-slate-800 mt-2">{{ __('app.artikel_featured_title') }}</h2>
+                <p class="artikel-featured-desc text-slate-600 mt-3">{{ __('app.artikel_featured_desc') }}</p>
                 <div class="mt-5 flex flex-wrap gap-3">
                     <a href="{{ url('/kalkulator') }}" class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors">{{ __('app.artikel_featured_btn_calculate') }}</a>
                     <a href="{{ url('/tanaman') }}" class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-800 font-semibold border border-emerald-100 hover:bg-emerald-100 transition-colors">{{ __('app.artikel_featured_btn_plants') }}</a>
@@ -212,11 +311,11 @@
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
     <div class="flex items-center justify-between mb-6 reveal-on-scroll">
-        <h3 class="text-2xl font-black text-slate-800">{{ __('app.artikel_latest_title') }}</h3>
-        <span class="text-sm font-semibold text-emerald-700">{{ __('app.artikel_latest_update') }}</span>
+        <h3 class="artikel-latest-title text-2xl font-black text-slate-800">{{ __('app.artikel_latest_title') }}</h3>
+        <span class="artikel-latest-update text-sm font-semibold text-emerald-700">{{ __('app.artikel_latest_update') }}</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+    <div class="artikel-list-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         @foreach([
             [
                 'id' => 'artikel-plastik',
@@ -227,7 +326,7 @@
                 'date' => __('app.dashboard_article_1_date'),
                 'image' => 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=1200&auto=format&fit=crop',
                 'icon' => 'recycling',
-                'link' => '#artikel-plastik',
+                'link' => 'https://www.detik.com/edu/detikpedia/d-6918652/ini-bahaya-plastik-sekali-pakai-yang-mengancam-lingkungan-kesehatan-manusia',
             ],
             [
                 'id' => 'artikel-bank-sampah',
@@ -238,7 +337,7 @@
                 'date' => __('app.dashboard_article_2_date'),
                 'image' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1200&auto=format&fit=crop',
                 'icon' => 'calculate',
-                'link' => '#artikel-bank-sampah',
+                'link' => 'https://plasticsmartcities.wwf.id/feature/article/bank-sampah-konsep-dan-peran-dalam-pengelolaan-lingkungan',
             ],
             [
                 'id' => 'artikel-pohon',
@@ -318,33 +417,45 @@
                 'link' => 'https://www.liputan6.com/hot/read/6256368/7-model-kebun-sayur-mini-di-sekolah-sebagai-media-edukasi-gizi-dan-lingkungan',
             ],
         ] as $artikel)
-        <article id="{{ $artikel['id'] }}" class="artikel-card rounded-2xl p-5 reveal-on-scroll">
-            <div class="artikel-cover">
-                <img src="{{ $artikel['image'] }}" alt="{{ $artikel['title'] }}">
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(2,44,34,0.35) 0%, transparent 70%);"></div>
-                <div class="absolute top-3 left-3 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider artikel-tag px-3 py-1 rounded-full">
+        @php $isExternal = \Illuminate\Support\Str::startsWith($artikel['link'], ['http://', 'https://']); @endphp
+        @php $isCompactImage = in_array($artikel['id'], ['artikel-3r-sekolah', 'artikel-b3'], true); @endphp
+        <a id="{{ $artikel['id'] }}"
+           href="{{ $artikel['link'] }}"
+           @if($isExternal) target="_blank" rel="noopener noreferrer" @endif
+           class="artikel-card {{ $isCompactImage ? 'artikel-card-compact-image' : '' }} bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_4px_20px_rgba(42,47,50,0.04)] hover:shadow-[0_16px_40px_rgba(0,105,72,0.12)] border border-outline-variant/10 flex flex-col group transition-all duration-500 hover:-translate-y-3 reveal-on-scroll">
+            <div class="artikel-cover h-40 sm:h-52 relative overflow-hidden bg-surface-container-high">
+                <img src="{{ $artikel['image'] }}" alt="{{ $artikel['title'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" loading="lazy">
+                <div class="artikel-cover-overlay absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+                <div class="artikel-tag-wrap absolute top-4 left-4 z-10">
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider artikel-tag px-3 py-1 rounded-full">
                     <span class="material-symbols-outlined" style="font-size:14px;">{{ $artikel['icon'] }}</span>
                     {{ $artikel['tag'] }}
+                    </span>
                 </div>
             </div>
-            <div class="mt-4 flex flex-col flex-1">
-                <h4 class="text-lg font-bold text-slate-800 leading-snug line-clamp-2">{{ $artikel['title'] }}</h4>
-                <p class="text-sm text-slate-600 mt-2 line-clamp-3">{{ $artikel['desc'] }}</p>
-                <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-semibold">
+
+            <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow relative">
+                <div class="artikel-card-meta flex items-center gap-1.5 text-xs text-on-surface-variant font-medium mb-3">
+                    <span class="material-symbols-outlined text-[1rem]">calendar_today</span>
                     <span>{{ $artikel['date'] }}</span>
+                    <span aria-hidden="true">•</span>
                     <span>{{ $artikel['time'] }}</span>
                 </div>
-                <div class="mt-4 pt-3 border-t border-emerald-50/80">
-                    @php $isExternal = \Illuminate\Support\Str::startsWith($artikel['link'], ['http://', 'https://']); @endphp
-                    <a href="{{ $artikel['link'] }}"
-                       @if($isExternal) target="_blank" rel="noopener noreferrer" @endif
-                       class="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-800 transition-colors">
-                        {{ __('app.artikel_read_more') }}
-                        <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
-                    </a>
+
+                <h4 class="artikel-card-title font-headline text-lg sm:text-xl font-extrabold text-primary leading-snug mb-3 group-hover:text-tertiary transition-colors line-clamp-2">
+                    {{ $artikel['title'] }}
+                </h4>
+
+                <p class="artikel-card-desc text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-4 sm:mb-6 flex-grow">
+                    {{ $artikel['desc'] }}
+                </p>
+
+                <div class="mt-auto pt-3 sm:pt-4 border-t border-outline-variant/20 flex items-center gap-2 text-primary font-bold text-sm font-headline group-hover:translate-x-2 transition-transform">
+                    {{ __('app.artikel_read_more') }}
+                    <span class="material-symbols-outlined text-base">arrow_forward</span>
                 </div>
             </div>
-        </article>
+        </a>
         @endforeach
     </div>
 </section>
