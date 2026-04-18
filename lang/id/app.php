@@ -228,7 +228,7 @@ return [
     'footer_desc'            => 'Program Lingkungan Hidup & Sustainability SMK Karya Bangsa Sintang.',
     'footer_menu'            => 'Menu',
     'footer_kontak'          => 'Kontak',
-    'footer_credit'          => 'Dibuat dengan Kelompok 5',
+    'footer_credit'          => 'Dibuat Oleh Kelompok 5',
 
     // About
     'about_title'            => 'Tentang Kami',
