@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/Language-Multi--Locale-16a34a" alt="Multi Locale">
 </p>
 
-## Tentang Proyek
+## 🌿 Tentang Proyek
 
 Go Green School adalah website edukasi lingkungan yang berisi:
 
@@ -30,7 +30,7 @@ Go Green School adalah website edukasi lingkungan yang berisi:
 - Dukungan multi-bahasa (id, en, ja, vi, fil, th)
 - Panel admin Filament
 
-## Fitur Publik
+## 🚀 Fitur Publik
 
 - **Dashboard** — Hero section dengan fitur interaktif, informasi gerakan hijau, dan call-to-action
 - **Tanaman** — Katalog informasi 5 tanaman khas Kalimantan Barat dengan deskripsi detail
@@ -64,7 +64,7 @@ Go Green School adalah website edukasi lingkungan yang berisi:
 - **Session-Based Localization** — Manajemen bahasa via session, bukan database
 - **Asset Pipeline Vite** — Fast development server dan optimasi build production
 
-## Pembagian Tugas Tim
+## 👥 Pembagian Tugas Tim
 
 Berikut rincian kontribusi setiap anggota tim dalam pengembangan proyek Go Green School.
 
@@ -94,12 +94,21 @@ Berikut rincian kontribusi setiap anggota tim dalam pengembangan proyek Go Green
   - Mengembangkan ide dan konsep kreatif untuk konten promosi
   - Berfokus pada perencanaan konten
 
-### Poster Kelompok Go Green School
 
-Berikut adalah hasil karya dan kreativitas proyek kami berupa poster edukasi lingkungan, desain materi pembelajaran, dan dokumentasi visual website Go Green School.
+### 🎨 Poster Kelompok Go Green School
+
+Poster ini menampilkan seluruh anggota tim dan identitas proyek Go Green School secara utuh. Digunakan untuk dokumentasi proyek dan publikasi media sosial.
 
 <img src="public/images/readme/Poster-kelompok5.png" width="700" alt="Poster Kelompok Go Green School">
 
+**Poster Edukasi - Identitas Proyek (Tim Go Green School)**
+
+
 <img src="public/images/readme/Desain-Teks1.png" width="700" alt="Desain Teks Eksplanasi">
 
+**Poster Edukasi - Teks Eksplanasi (Bahasa Indonesia)**
+
+
 <img src="public/images/readme/Desain-Teks2.png" width="700" alt="Desain Teks Prosedur">
+
+**Poster Edukasi - Teks Prosedur (Bahasa Indonesia)**
