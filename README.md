@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Go Green School</h1>
+<h1 align="center">🌿GO GREEN SCHOOL🌿</h1>
 
 <p align="center">
   Website edukasi lingkungan berbasis Laravel 11 untuk pembelajaran sekolah hijau.
@@ -17,6 +17,8 @@
   <img src="https://img.shields.io/badge/Tailwind-Custom-06b6d4" alt="Tailwind">
   <img src="https://img.shields.io/badge/Language-Multi--Locale-16a34a" alt="Multi Locale">
 </p>
+
+---
 
 ## 🌿 Tentang Proyek
 
@@ -94,21 +96,20 @@ Berikut rincian kontribusi setiap anggota tim dalam pengembangan proyek Go Green
   - Mengembangkan ide dan konsep kreatif untuk konten promosi
   - Berfokus pada perencanaan konten
 
+## 🎨 Dokumentasi Poster & Desain Website
 
-### 🎨 Poster Kelompok Go Green School
+**Poster Tampilan & Fitur Website (Digital Marketing)**
 
-Poster ini menampilkan seluruh anggota tim dan identitas proyek Go Green School secara utuh. Digunakan untuk dokumentasi proyek dan publikasi media sosial.
+<img src="public/images/readme/Poster-kelompok5.png" width="700" alt="Poster Tampilan & Fitur Website">
 
-<img src="public/images/readme/Poster-kelompok5.png" width="700" alt="Poster Kelompok Go Green School">
-
-**Poster Edukasi - Identitas Proyek (Tim Go Green School)**
-
-
-<img src="public/images/readme/Desain-Teks1.png" width="700" alt="Desain Teks Eksplanasi">
+---
 
 **Poster Edukasi - Teks Eksplanasi (Bahasa Indonesia)**
 
+<img src="public/images/readme/Desain-Teks1.png" width="700" alt="Desain Teks Eksplanasi">
 
-<img src="public/images/readme/Desain-Teks2.png" width="700" alt="Desain Teks Prosedur">
+---
 
 **Poster Edukasi - Teks Prosedur (Bahasa Indonesia)**
+
+<img src="public/images/readme/Desain-Teks2.png" width="700" alt="Desain Teks Prosedur">
