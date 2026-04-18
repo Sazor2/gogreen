@@ -113,3 +113,11 @@ Berikut rincian kontribusi setiap anggota tim dalam pengembangan proyek Go Green
 **Poster Edukasi - Teks Prosedur (Bahasa Indonesia)**
 
 <img src="public/images/readme/Desain-Teks2.png" width="700" alt="Desain Teks Prosedur">
+
+---
+
+## 🎬 Video Promosi
+
+Selain pembuatan poster dan website, proyek Go Green School juga dilengkapi dengan video promosi berkualitas. Anda dapat menonton dan membagikan video promosi kami melalui tautan berikut:
+
+**[Video Promosi (Facebook)](https://www.facebook.com/share/1Dh2CRhKnV/)**
