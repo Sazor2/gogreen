@@ -564,8 +564,8 @@
                 @foreach([
                     ['name' => 'Nabil Aqbar Kurnia Wijaya Putra', 'icon' => 'code', 'jobs' => [__('app.about_job_lead_dev'), __('app.about_job_systems_arch')]],
                     ['name' => 'Fiersia Vinderly', 'icon' => 'brush', 'jobs' => [__('app.about_job_uiux_designer'), __('app.about_job_design_system')]],
-                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => [__('app.about_job_backend_dev'), __('app.about_job_server_logic')]],
-                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content'), __('app.about_job_content_strategy')]],
+                    ['name' => 'Yosua', 'icon' => 'dns', 'jobs' => [__('app.about_job_content_strategy')]],
+                    ['name' => 'Giovinco', 'icon' => 'eco', 'jobs' => [__('app.about_role_content')]],
                 ] as $member)
                 <div class="team-card p-8 rounded-[2rem] bg-slate-50 flex flex-col items-center text-center reveal-on-scroll">
                     <div class="about-member-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
