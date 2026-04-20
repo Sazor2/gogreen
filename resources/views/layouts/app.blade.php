@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Go Green School') — {{ __('app.hero_school') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-removebg-preview.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo-removebg-preview.png') }}">
     
     {{-- Flag Icons for Language Switcher --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
