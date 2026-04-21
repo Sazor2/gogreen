@@ -447,7 +447,7 @@ Tindakan Go Green membantu mengurangi masalah-masalah ini. Misalnya, menanam poh
     'contact_address_title'  => 'Alamat',
     'contact_address_val'    => 'Jl. MT. Haryono, Sintang, Kalimantan Barat 78611',
     'contact_phone_title'    => 'Telepon',
-    'contact_phone_val'      => '(0565) 21234',
+    'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'Email',
     'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
     'contact_hours_title'    => 'Jam Operasional',

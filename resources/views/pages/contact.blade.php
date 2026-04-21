@@ -352,31 +352,6 @@
             </article>
         </div>
 
-        {{-- Map Section --}}
-        <section class="bg-white rounded-[1.75rem] overflow-hidden editorial-shadow border border-emerald-50 reveal-on-scroll mt-8 sm:mt-10">
-            <div class="flex flex-col md:flex-row h-full">
-                <div class="w-full md:w-1/2 min-h-[300px] sm:min-h-[350px]">
-                    <iframe
-                        src="https://maps.google.com/maps?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat&output=embed&z=17&hl=id"
-                        width="100%" height="100%" style="border:0; filter: grayscale(0.2) contrast(1.1);"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="contact-map-panel w-full md:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col justify-center bg-[var(--eco-dark)] text-white">
-                    <span class="text-[var(--eco-accent)] text-[10px] font-black uppercase tracking-[0.3em] mb-4">{{ __('app.contact_map_label') }}</span>
-                    <h3 class="contact-card-title font-headline font-black mb-4 sm:mb-5 leading-tight">{{ __('app.contact_map_title') }}</h3>
-                    <p class="text-white/70 mb-6 sm:mb-7 leading-relaxed font-medium contact-card-text">
-                        {{ __('app.contact_address_val') }}
-                    </p>
-                    <a href="https://maps.google.com/?q=SMK+Karya+Bangsa+Sintang,+Jl.+MT.+Haryono,+Sintang,+Kalimantan+Barat" target="_blank" 
-                       class="inline-flex items-center gap-3 text-[var(--eco-accent)] font-bold text-sm hover:underline">
-                        {{ __('app.contact_map_cta') }}
-                        <span class="material-symbols-outlined text-sm">open_in_new</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-</div>
 
 <div id="contact-loading" class="contact-loading" aria-hidden="true">
     <svg viewBox="0 0 500 500" aria-hidden="true">

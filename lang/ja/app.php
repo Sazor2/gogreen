@@ -447,7 +447,7 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     'contact_address_title'  => '住所',
     'contact_address_val'    => 'Jl. MT. Haryono, Sintang, West Kalimantan 78611',
     'contact_phone_title'    => '電話',
-    'contact_phone_val'      => '(0565) 21234',
+    'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'メール',
     'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
     'contact_hours_title'    => '営業時間',

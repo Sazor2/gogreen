@@ -447,7 +447,7 @@ return [
     'contact_address_title'  => 'ที่อยู่',
     'contact_address_val'    => 'Jl. MT. Haryono, Sintang, กาลิมันตันตะวันตก 78611',
     'contact_phone_title'    => 'โทรศัพท์',
-    'contact_phone_val'      => '(0565) 21234',
+    'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'อีเมล',
     'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
     'contact_hours_title'    => 'เวลาทำการ',

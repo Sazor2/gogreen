@@ -162,7 +162,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(5, 150, 105, 0.3));
         border-radius: 2.5rem;
     }
 
