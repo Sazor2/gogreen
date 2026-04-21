@@ -451,7 +451,7 @@ Ang mga aksyong Go Green ay nakakatulong na bawasan ito. Ang pagtatanim ng puno 
     'contact_phone_title'    => 'Telepono',
     'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'Email',
-    'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
+    'contact_email_val'      => 'schoolgogreen8@gmail.com',
     'contact_hours_title'    => 'Oras ng operasyon',
     'contact_hours_val'      => 'Lunes – Biyernes: 07:00 – 16:00 WIB',
     'contact_map_title'      => 'Lokasyon ng paaralan',

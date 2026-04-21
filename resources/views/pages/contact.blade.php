@@ -265,7 +265,7 @@
                             </div>
                             <div>
                                 <p class="contact-label font-black text-slate-400 uppercase mb-1">{{ __('app.contact_email_title') }}</p>
-                                <a href="mailto:{{ __('app.contact_email_val') }}" class="contact-card-text font-bold text-[var(--eco-dark)] hover:text-[var(--eco-medium)] transition-colors">{{ __('app.contact_email_val') }}</a>
+                                <p class="contact-card-text font-bold text-[var(--eco-dark)]">{{ __('app.contact_email_val') }}</p>
                             </div>
                         </div>
 
@@ -276,6 +276,27 @@
                             <div>
                                 <p class="contact-label font-black text-slate-400 uppercase mb-1">{{ __('app.contact_phone_title') }}</p>
                                 <p class="contact-card-text font-bold text-slate-700">{{ __('app.contact_phone_val') }}</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <p class="contact-label font-black text-slate-400 uppercase mb-3">Sosial Media</p>
+                            <div class="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-3.5">
+                                <div class="flex items-center justify-between gap-3 mb-2">
+                                    <div class="flex items-center gap-2.5 min-w-0">
+                                        <span class="text-emerald-600 flex items-center justify-center flex-shrink-0">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                                                <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.026 4.388 11.021 10.125 11.927V15.56H7.078v-3.487h3.047V9.413c0-3.021 1.792-4.688 4.533-4.688 1.312 0 2.686.236 2.686.236v2.965h-1.514c-1.491 0-1.956.931-1.956 1.886v2.261h3.328l-.532 3.487h-2.796V24C19.612 23.094 24 18.099 24 12.073z"/>
+                                            </svg>
+                                        </span>
+                                        <p class="text-sm font-bold text-[var(--eco-dark)] truncate">Go Greenschool</p>
+                                    </div>
+                                    <span class="inline-flex items-center rounded-md bg-emerald-100 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-emerald-700">Buka</span>
+                                </div>
+                                <a href="https://www.facebook.com/share/1Dh2CRhKnV/" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-emerald-100 px-3 py-2 text-xs font-bold text-emerald-700 transition-colors hover:bg-emerald-200">
+                                    <span class="material-symbols-outlined" style="font-size:16px;line-height:1;">open_in_new</span>
+                                    Buka Halaman Facebook
+                                </a>
                             </div>
                         </div>
                     </div>

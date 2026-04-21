@@ -451,7 +451,7 @@ Go Green の行動はこれらの問題を減らします。植樹はCO₂を吸
     'contact_phone_title'    => '電話',
     'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'メール',
-    'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
+    'contact_email_val'      => 'schoolgogreen8@gmail.com',
     'contact_hours_title'    => '営業時間',
     'contact_hours_val'      => '月–金: 07:00 – 16:00 WIB',
     'contact_map_title'      => '学校へのアクセス',

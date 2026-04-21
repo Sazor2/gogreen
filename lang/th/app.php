@@ -451,7 +451,7 @@ return [
     'contact_phone_title'    => 'โทรศัพท์',
     'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'อีเมล',
-    'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
+    'contact_email_val'      => 'schoolgogreen8@gmail.com',
     'contact_hours_title'    => 'เวลาทำการ',
     'contact_hours_val'      => 'จันทร์ – ศุกร์: 07:00 – 16:00 WIB',
     'contact_map_title'      => 'ที่ตั้งโรงเรียน',

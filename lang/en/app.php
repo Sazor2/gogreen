@@ -451,7 +451,7 @@ Go Green actions help reduce these problems. For example, planting trees helps a
     'contact_phone_title'    => 'Phone',
     'contact_phone_val'      => '+62 851-3838-0579',
     'contact_email_title'    => 'Email',
-    'contact_email_val'      => 'smkkaryabangsasintang@gmail.com',
+    'contact_email_val'      => 'schoolgogreen8@gmail.com',
     'contact_hours_title'    => 'Operating Hours',
     'contact_hours_val'      => 'Monday – Friday: 07:00 – 16:00 WIB',
     'contact_map_title'      => 'Visit Our School',

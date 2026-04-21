@@ -33,7 +33,7 @@ foreach (array_keys($jenisConfig) as $jenisKey) {
 $initialDays = min(365, max(1, (int) old('jumlah_hari', request('jumlah_hari', 30))));
 $initialDailyAverage = $initialDailyTotal / $initialDays;
 $initialThirtyDays = $initialDailyAverage * 30;
-$initialBottleEq = $initialThirtyDays / 0.02;
+$initialGallonEq = $initialThirtyDays / 0.76;
 $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 300) * 100) : 0;
 @endphp
 
@@ -564,6 +564,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
         $resultDays = min(365, max(1, (int) old('jumlah_hari', request('jumlah_hari', 30))));
         $resultThirtyDays = $hasil['total_berat'] * (30 / $resultDays);
         $resultProgressPct = min(100, ($resultThirtyDays / 300) * 100);
+        $resultMarineEq = $resultThirtyDays > 0 ? max(1, floor($resultThirtyDays / 20)) : 0;
     @endphp
     <div class="rounded-2xl border p-4 sm:p-5 reveal-on-scroll" style="border-color:#bbf7d0;background:linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 55%, #dcfce7 100%);box-shadow:0 12px 28px rgba(6,78,59,0.10);">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -585,7 +586,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
             <div class="mt-2 h-2.5 rounded-full overflow-hidden" style="background-color:#bbf7d0;">
                 <div id="contribution-bar" class="h-full rounded-full" style="width:{{ $initialProgressPct }}%;background:linear-gradient(90deg,#10b981,#34d399,#4ade80);"></div>
             </div>
-            <p class="mt-2 text-xs" style="color:#047857;">{{ __('app.kalkulator_bottle_equivalent_prefix') }} <span id="bottle-equivalent" class="font-bold">{{ number_format($initialBottleEq, 0, ',', '.') }}</span> {{ __('app.kalkulator_bottle_equivalent_suffix') }}</p>
+            <p class="mt-2 text-xs" style="color:#047857;">{{ __('app.kalkulator_bottle_equivalent_prefix') }} <span id="bottle-equivalent" class="font-bold">{{ number_format($initialGallonEq, 0, ',', '.') }}</span> {{ __('app.kalkulator_bottle_equivalent_suffix') }}</p>
         </div>
 
         <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -637,7 +638,7 @@ $initialProgressPct = $initialThirtyDays > 0 ? min(100, ($initialThirtyDays / 30
                     {{ __('app.kalkulator_equivalent_title') }}
                 </p>
                 <p class="text-sm font-semibold text-slate-700 mt-2">{{ __('app.kalkulator_equivalent_desc') }}</p>
-                <p id="result-bottle-value" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultThirtyDays / 0.02, 0, ',', '.') }}</p>
+                <p id="result-bottle-value" class="text-2xl font-black mt-1" style="color:#065f46;">{{ number_format($resultMarineEq, 0, ',', '.') }}</p>
                 <p class="text-xs mt-1" style="color:#047857;">{{ __('app.kalkulator_bottle_unit') }}</p>
                 @if(request()->filled('kelas'))
                     <span class="inline-flex items-center gap-1 mt-2 rounded-full px-2.5 py-1 text-xs font-bold" style="background-color:#dcfce7;color:#065f46;">
@@ -891,17 +892,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let errorsContainer = document.getElementById('kalkulator-errors');
     let emptyContainer = document.getElementById('kalkulator-empty');
     const daysInput = document.getElementById('jumlah_hari');
-    const thirtyDaysEl = document.getElementById('thirty-days-estimate');
-    const dailyEl = document.getElementById('daily-total-estimate');
-    const progressEl = document.getElementById('contribution-percent');
-    const progressBarEl = document.getElementById('contribution-bar');
-    const bottleEqEl = document.getElementById('bottle-equivalent');
-    const daysLabelEl = document.getElementById('selected-days-label');
-    const previewTotalEl = document.getElementById('input-preview-total');
-    const previewDaysEl = document.getElementById('input-preview-days');
-    const previewKgEl = document.getElementById('input-preview-kg');
-    const levelEl = document.getElementById('gamification-level');
-    const impactMessageEl = document.getElementById('impact-message');
+    let thirtyDaysEl = null;
+    let dailyEl = null;
+    let progressEl = null;
+    let progressBarEl = null;
+    let bottleEqEl = null;
+    let daysLabelEl = null;
+    let previewTotalEl = null;
+    let previewDaysEl = null;
+    let previewKgEl = null;
+    let levelEl = null;
+    let impactMessageEl = null;
     let resultCard = null;
     let resultTotalKgEl = null;
     let resultBottleValueEl = null;
@@ -915,6 +916,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const targetProgressTemplate = @json(__('app.kalkulator_target_progress', ['percent' => ':percent']));
 
     const refreshResultElements = function () {
+        thirtyDaysEl = document.getElementById('thirty-days-estimate');
+        dailyEl = document.getElementById('daily-total-estimate');
+        progressEl = document.getElementById('contribution-percent');
+        progressBarEl = document.getElementById('contribution-bar');
+        bottleEqEl = document.getElementById('bottle-equivalent');
+        daysLabelEl = document.getElementById('selected-days-label');
+        previewTotalEl = document.getElementById('input-preview-total');
+        previewDaysEl = document.getElementById('input-preview-days');
+        previewKgEl = document.getElementById('input-preview-kg');
+        levelEl = document.getElementById('gamification-level');
+        impactMessageEl = document.getElementById('impact-message');
         resultCard = document.getElementById('hasil-highlight-card');
         resultTotalKgEl = document.getElementById('result-total-kg');
         resultBottleValueEl = document.getElementById('result-bottle-value');
@@ -1049,7 +1061,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const dailyAverage = totalInput / days;
         const total30Days = dailyAverage * 30;
         const progressPct = total30Days > 0 ? Math.min(100, (total30Days / 300) * 100) : 0;
-        const bottleEq = total30Days / 0.02;
+        const ecoBottleEq = total30Days / 0.02;
+        const gallonEq = total30Days / 0.76;
+        const marineEq = total30Days > 0 ? Math.max(1, Math.floor(total30Days / 20)) : 0;
 
         if (daysLabelEl) daysLabelEl.textContent = String(days);
         if (previewDaysEl) previewDaysEl.textContent = String(days);
@@ -1059,13 +1073,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (thirtyDaysEl) animateNumber(thirtyDaysEl, total30Days, 1, ' kg');
         if (progressEl) animateNumber(progressEl, progressPct, 1, '%');
         if (progressBarEl) progressBarEl.style.width = progressPct + '%';
-        if (bottleEqEl) animateNumber(bottleEqEl, bottleEq, 0, '');
+        if (bottleEqEl) animateNumber(bottleEqEl, gallonEq, 0, '');
 
-        updateImpactPanels(total30Days, bottleEq);
+        updateImpactPanels(total30Days, ecoBottleEq);
 
         if (resultCard) {
             if (resultTotalKgEl) animateNumber(resultTotalKgEl, total30Days, 1, ' kg');
-            if (resultBottleValueEl) animateNumber(resultBottleValueEl, bottleEq, 0, '');
+            if (resultBottleValueEl) animateNumber(resultBottleValueEl, marineEq, 0, '');
             if (resultProgressBarEl) resultProgressBarEl.style.width = progressPct + '%';
             if (resultProgressTextEl) {
                 resultProgressTextEl.textContent = targetProgressTemplate.replace(':percent', formatNumber(progressPct, 1));
