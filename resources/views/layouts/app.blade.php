@@ -1582,6 +1582,8 @@
                         'vi' => ['label' => __('app.lang_vi'), 'code' => 'VI', 'flag' => 'vn'],
                         'fil' => ['label' => __('app.lang_fil'), 'code' => 'FIL', 'flag' => 'ph'],
                         'th' => ['label' => __('app.lang_th'), 'code' => 'TH', 'flag' => 'th'],
+                        'zh' => ['label' => __('app.lang_zh'), 'code' => 'ZH', 'flag' => 'cn'],
+                        'ru' => ['label' => __('app.lang_ru'), 'code' => 'RU', 'flag' => 'ru'],
                     ];
                     $currentLocale = app()->getLocale();
                     $currentLang = $languageOptions[$currentLocale] ?? $languageOptions['id'];

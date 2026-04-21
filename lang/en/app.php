@@ -20,6 +20,8 @@ return [
     'lang_vi'        => 'Vietnamese',
     'lang_fil'       => 'Filipino',
     'lang_th'        => 'Thai',
+    'lang_zh'        => 'Chinese',
+    'lang_ru'        => 'Russian',
     'active'         => 'Active',
 
     // Dashboard

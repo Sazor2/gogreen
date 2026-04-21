@@ -20,6 +20,8 @@ return [
     'lang_vi'        => 'Tiếng Việt',
     'lang_fil'       => 'Tiếng Filipino',
     'lang_th'        => 'Tiếng Thái',
+    'lang_zh'        => 'Tiếng Trung',
+    'lang_ru'        => 'Tiếng Nga',
     'active'         => 'Đang chọn',
 
     // Dashboard

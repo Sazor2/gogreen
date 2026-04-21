@@ -89,7 +89,7 @@ class GreenController extends Controller
      */
     public function setLanguage(string $locale)
     {
-        if (in_array($locale, ['id', 'en', 'ja', 'vi', 'fil', 'th'])) {
+        if (in_array($locale, ['id', 'en', 'ja', 'vi', 'fil', 'th', 'zh', 'ru'])) {
             session(['locale' => $locale]);
         }
         return redirect()->back();

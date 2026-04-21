@@ -20,6 +20,8 @@ return [
     'lang_vi'        => 'Biyetnamita',
     'lang_fil'       => 'Filipino',
     'lang_th'        => 'Thai',
+    'lang_zh'        => 'Tsino',
+    'lang_ru'        => 'Ruso',
     'active'         => 'Aktibo',
 
     // Dashboard

@@ -20,6 +20,8 @@ return [
     'lang_vi'        => 'ベトナム語',
     'lang_fil'       => 'フィリピノ語',
     'lang_th'        => 'タイ語',
+    'lang_zh'        => '中国語',
+    'lang_ru'        => 'ロシア語',
     'active'         => '選択中',
 
     // Dashboard
