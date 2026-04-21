@@ -816,7 +816,7 @@
         <div class="text-center" style="margin-bottom:5rem;">
             <div class="bg-white reveal-on-scroll reveal-delay-1" style="display:inline-block;padding:3.5rem 4rem;border-radius:40px;box-shadow:var(--card-shadow);border-top:10px solid var(--primary-deep);">
                 <div style="width:120px;height:120px;background-color:#f1f5f9;border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;color:#cbd5e1;">
-                    <img src="{{ asset('images/logo-removebg-preview.png') }}" alt="Go Green Logo" style="width:70%;height:70%;object-fit:contain;">
+                    <span class="material-symbols-outlined" style="font-size:4rem;color:#94a3b8;">person</span>
                 </div>
                 <h4 class="font-black text-2xl mb-1 text-slate-800">Bill Yosua, S.Pd.,M.Pd.,Gr</h4>
                 <p class="font-black text-sm uppercase tracking-widest" style="color:var(--accent-green);">{{ __('app.profil_sek_kepsek') }}</p>
@@ -831,7 +831,7 @@
             ] as $org)
             <div class="bg-white text-center reveal-on-scroll" style="padding:3rem 2rem;border-radius:32px;box-shadow:var(--card-shadow);transition-delay: {{ $loop->index * 0.08 }}s;">
                 <div style="width:86px;height:86px;background-color:#f1f5f9;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:#cbd5e1;">
-                    <img src="{{ asset('images/logo-removebg-preview.png') }}" alt="Go Green Logo" style="width:70%;height:70%;object-fit:contain;">
+                    <span class="material-symbols-outlined" style="font-size:2.9rem;color:#94a3b8;">person</span>
                 </div>
                 <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">{{ $org['jabatan'] }}</p>
                 <h4 class="font-black text-xl text-slate-800 italic tracking-tight">{{ $org['nama'] }}</h4>
