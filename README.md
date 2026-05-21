@@ -89,13 +89,6 @@ Berikut rincian kontribusi setiap anggota tim dalam pengembangan proyek Go Green
   - Mengelola publikasi dan aktivitas media sosial proyek
   - Mengelola media sosial bersama tim publikasi
 
-- Giovinco
-  - Content & documentation
-  - Mengelola proses pengambilan footage video proyek
-  - Menyusun konten edukatif dan dokumentasi proyek
-  - Mengembangkan ide dan konsep kreatif untuk konten promosi
-  - Berfokus pada perencanaan konten
-
 ## 🎨 Dokumentasi Poster & Desain Website
 
 **Poster Tampilan & Fitur Website (Digital Marketing)**
